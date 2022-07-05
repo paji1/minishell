@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
+/*   search.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/02 21:01:38 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/07/04 16:42:17 by tel-mouh         ###   ########.fr       */
+/*   Created: 2022/07/04 13:37:20 by tel-mouh          #+#    #+#             */
+/*   Updated: 2022/07/05 00:38:04 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPES_H
-# define TYPES_H
+#include "minishell.h"
 
-
-typedef struct s_node
+int contain(t_node **node, int data)
 {
-	int data;
-	int level;
-	struct s_node *right;
-	struct s_node *left;	
-}t_node;
-
-
-#endif
+	if ((*node) == NULL)
+		return 0;
+	if (data == (*node)->data)
+		return 1;
+	if (data < (*node)->data)
+		return contain(&(*node)->left, data);
+	else
+		return contain(&(*node)->right, data);
+}

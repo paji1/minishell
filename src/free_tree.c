@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
+/*   free_tree.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/02 21:01:38 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/07/04 16:42:17 by tel-mouh         ###   ########.fr       */
+/*   Created: 2022/07/04 18:11:33 by tel-mouh          #+#    #+#             */
+/*   Updated: 2022/07/04 18:28:14 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPES_H
-# define TYPES_H
+#include "minishell.h"
 
-
-typedef struct s_node
+void free_tree(t_node **node)
 {
-	int data;
-	int level;
-	struct s_node *right;
-	struct s_node *left;	
-}t_node;
-
-
-#endif
+	if ((*node) == NULL)
+		return ;
+	free_tree(&(*node)->left);
+	free_tree(&(*node)->right);
+	free(*node);
+	*node = NULL;
+}

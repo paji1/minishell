@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jul  2 21:36:00 2022
+# Make data base, printed on Tue Jul  5 01:07:57 2022
 
 # Variables
 
@@ -18,12 +18,12 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 WSLENV = VSCODE_WSL_EXT_LOCATION/up
 # default
 .SHELLFLAGS := -c
-# makefile (from 'Makefile', line 28)
+# makefile (from 'Makefile', line 31)
 OBJ = $(addprefix obj/, $(SRC:.c=.o))
-# makefile (from 'Makefile', line 27)
-SRC = main.c insert.c
-# makefile (from 'Makefile', line 17)
-HEADERS := include/minishell.h include/types.h
+# makefile (from 'Makefile', line 30)
+SRC = main.c insert.c search.c free_tree.c depth_first_values.c
+# makefile (from 'Makefile', line 20)
+HEADERS := include/stack.h
 # environment
 VSCODE_LOG_NATIVE = false
 # automatic
@@ -36,13 +36,13 @@ VSCODE_LOG_NATIVE = false
 CURDIR := /home/taha/desktop/Minishell_learn
 # makefile (from 'Makefile', line 13)
 SHELL := /bin/bash 
-# makefile (from 'Makefile', line 21)
+# makefile (from 'Makefile', line 24)
 RM = rm -rf
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # environment
 _ = /home/taha/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/node
-# makefile (from 'Makefile', line 66)
+# makefile (from 'Makefile', line 69)
 x = -1+1
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
@@ -54,9 +54,9 @@ W = /mnt/c/Users/Taha/Desktop/
 LESS_TERMCAP_se = [0m
 # environment
 VSCODE_VERBOSE_LOGGING = true
-# makefile (from 'Makefile', line 45)
+# makefile (from 'Makefile', line 48)
 CODE_RESTORE_CURSOR = '\033[u'
-# makefile (from 'Makefile', line 44)
+# makefile (from 'Makefile', line 47)
 CODE_SAVE_CURSOR = '\033[s'
 # environment
 VSCODE_CWD = /mnt/c/Users/Taha/AppData/Local/Programs/Microsoft VS Code
@@ -70,7 +70,7 @@ VSCODE_WSL_DEBUG_INFO = true
 LESS_TERMCAP_mb = [1;32m
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
-# makefile (from 'Makefile', line 33)
+# makefile (from 'Makefile', line 36)
 OBJ_UTILS = $(addprefix obj/utils/, $(SRC_UTILS:.c=.o))
 # environment
 SPACESHIP_VERSION = 3.16.7
@@ -84,7 +84,7 @@ LS_COLORS = no=00:fi=00:di=34:ow=34;40:ln=35:pi=30;44:so=35;44:do=35;44:bd=33;44
 %F = $(notdir $%)
 # environment
 DISPLAY = 172.22.112.1:10.0
-# makefile (from 'Makefile', line 37)
+# makefile (from 'Makefile', line 40)
 COLOR = '\033[0;32m'
 # environment
 LESS_TERMCAP_me = [0m
@@ -93,12 +93,13 @@ VSCODE_PIPE_LOGGING = true
 # environment
 WD = /mnt/c/Users/Taha/Downloads/
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-cb1d070f-28ee-4f83-9571-98e3adee8b6e.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-6399a88e-4e40-44d0-b61c-6341ff4ec558.sock
 # environment
 WSL_INTEROP = /run/WSL/11_interop
-# makefile (from 'Makefile', line 43)
+# makefile (from 'Makefile', line 46)
 lines = $(shell tput lines)
-# makefile (from 'Makefile', line 40)
+ 
+# makefile (from 'Makefile', line 43)
 GREEN = '\033[0;32m'
 # environment
 LESS_TERMCAP_ue = [0m
@@ -109,13 +110,13 @@ HOME = /home/taha
 # environment
 LOGNAME = taha
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 COLOR1 = \033[1;\033[1;31m
 # environment
 ZSH = /home/taha/.oh-my-zsh
-# makefile (from 'Makefile', line 23)
-CFLAG = -pthread -Wall -Werror -Wextra -I include
+# makefile (from 'Makefile', line 26)
+CFLAG = -g -pthread -Wall -Werror -Wextra -I include
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -132,17 +133,17 @@ MAKECMDGOALS := all
 SHLVL = 0
 # environment
 LESS_TERMCAP_so = [01;33m
-# makefile (from 'Makefile', line 22)
-CC = gcc -g
+# makefile (from 'Makefile', line 25)
+CC = gcc 
 # default
 MAKE_VERSION := 4.1
 # environment
 USER = taha
 # makefile
 .DEFAULT_GOAL := all
-# makefile (from 'Makefile', line 50)
+# makefile (from 'Makefile', line 53)
 NAME = ./Minishell
-# makefile (from 'Makefile', line 39)
+# makefile (from 'Makefile', line 42)
 RE = '\033[0;34m'
 # environment
 COLOR4 = \033[1;\033[1;31m
@@ -154,7 +155,7 @@ LESS = -R
 VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/Taha/.vscode/extensions/ms-vscode-remote.remote-wsl-0.66.3
 # default
 MAKE_COMMAND := make
-# makefile (from 'Makefile', line 38)
+# makefile (from 'Makefile', line 41)
 NC = '\033[0m'
 # environment
 COLOR2 = \033[1;\033[1;31m
@@ -174,7 +175,7 @@ MFLAGS = -pqrR
 LESS_TERMCAP_us = [1;4;31m
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
-# makefile (from 'Makefile', line 41)
+# makefile (from 'Makefile', line 44)
 YELLOW = '\033[0;33m'
 # automatic
 +F = $(notdir $+)
@@ -184,7 +185,7 @@ VSCODE_HANDLES_SIGPIPE = true
 MAKEFILES := 
 # automatic
 <F = $(notdir $<)
-# makefile (from 'Makefile', line 46)
+# makefile (from 'Makefile', line 49)
 CODE_CURSOR_IN_SCROLL_AREA = "\033[1A"
 # environment
 PAGER = less
@@ -202,8 +203,8 @@ SPACESHIP_ROOT = /home/taha/.oh-my-zsh/custom/themes/spaceship-prompt
 SUFFIXES := 
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
-# makefile (from 'Makefile', line 32)
-SRC_UTILS = 
+# makefile (from 'Makefile', line 35)
+SRC_UTILS = stack.c
 # default
 .RECIPEPREFIX := 
 # environment
@@ -217,7 +218,7 @@ WSL_DISTRO_NAME = Ubuntu-18.04
 # environment
 COLOR3 = \033[1;\033[1;31m
 # variable set hash-table stats:
-# Load=103/1024=10%, Rehash=0, Collisions=15/159=9%
+# Load=103/1024=10%, Rehash=0, Collisions=18/162=11%
 
 # Pattern-specific Variable Values
 
@@ -225,16 +226,16 @@ COLOR3 = \033[1;\033[1;31m
 
 # Directories
 
-# include (device 2064, inode 118331): 2 files, no impossibilities so far.
-# . (device 2064, inode 117325): 8 files, no impossibilities.
-# src (device 2064, inode 118338): 4 files, no impossibilities so far.
+# include (device 2064, inode 118331): 3 files, no impossibilities so far.
+# . (device 2064, inode 117325): 10 files, no impossibilities.
+# src (device 2064, inode 118338): 7 files, no impossibilities so far.
 
-# 14 files, no impossibilities in 3 directories.
+# 20 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
-obj/%.o: src/%.c include/minishell.h include/types.h
-#  recipe to execute (from 'Makefile', line 66):
+obj/%.o: src/%.c include/stack.h
+#  recipe to execute (from 'Makefile', line 69):
 	@ mkdir -p obj
 	@ mkdir -p obj/utils
 	@ $(CC) $(CFLAG) -c $< -o $@
@@ -268,17 +269,15 @@ all: Minishell
 # Load=0/32=0%, Rehash=0, Collisions=0/19=0%
 
 # Not a target:
-include/minishell.h:
-#  Implicit rule search has been done.
-#  Last modified 2022-07-02 21:01:26.832757
-#  File has been updated.
-#  Successfully updated.
+obj/free_tree.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
-obj/main.o: src/main.c include/minishell.h include/types.h
+obj/main.o: src/main.c include/stack.h
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'main'
- 
-#  Last modified 2022-07-02 20:20:27.472757
+#  Last modified 2022-07-05 01:01:51.9433273
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # automatic
@@ -288,18 +287,18 @@ obj/main.o: src/main.c include/minishell.h include/types.h
 # automatic
 # * := main
 # automatic
-# + := src/main.c include/minishell.h include/types.h
+# + := src/main.c include/stack.h
 # automatic
 # | := 
 # automatic
 # < := src/main.c
 # automatic
-# ^ := src/main.c include/minishell.h include/types.h
+# ^ := src/main.c include/stack.h
 # automatic
-# ? := src/main.c include/minishell.h include/types.h
+# ? := src/main.c
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=6/30=20%
-#  recipe to execute (from 'Makefile', line 66):
+#  recipe to execute (from 'Makefile', line 69):
 	@ mkdir -p obj
 	@ mkdir -p obj/utils
 	@ $(CC) $(CFLAG) -c $< -o $@
@@ -320,20 +319,26 @@ obj/main.o: src/main.c include/minishell.h include/types.h
 	@tput el
 
 # Not a target:
+obj/depth_first_values.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-02 21:05:27.272757
+#  Last modified 2022-07-05 01:07:51.7633273
 #  File has been updated.
 #  Successfully updated.
 
-Minishell: obj/main.o obj/insert.o
+Minishell: obj/main.o obj/insert.o obj/search.o obj/free_tree.o obj/depth_first_values.o obj/utils/stack.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-07-02 20:20:27.662757
+#  Last modified 2022-07-05 01:01:52.5133273
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/19=0%
-#  recipe to execute (from 'Makefile', line 58):
+#  recipe to execute (from 'Makefile', line 61):
 	@printf  ${CODE_RESTORE_CURSOR}""
 	@tput el
 	@ printf ${GREEN}"\rMaking is done ✅\n"${NC}
@@ -344,13 +349,13 @@ fclean: clean
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 90):
+#  recipe to execute (from 'Makefile', line 93):
 	@ $(RM) $(NAME)
 
 # Not a target:
 src/main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-02 21:00:56.272757
+#  Last modified 2022-07-05 01:03:58.2133273
 #  File has been updated.
 #  Successfully updated.
 
@@ -375,31 +380,44 @@ clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 86):
+#  recipe to execute (from 'Makefile', line 89):
 	@ $(RM) $(OBJ)
 	@ $(RM) $(OBJ_UTILS)
 
+ 
 # Not a target:
-include/types.h:
+obj/search.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+obj/utils/stack.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+include/stack.h:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-02 21:04:09.602757
+#  Last modified 2022-07-04 20:43:40.1633273
 #  File has been updated.
 #  Successfully updated.
 
 # files hash-table stats:
-# Load=13/1024=1%, Rehash=0, Collisions=0/38=0%
+# Load=16/1024=2%, Rehash=0, Collisions=0/43=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 28 / storage = 244 B / avg = 8 B
-# current buf: size = 8162 B / used = 244 B / count = 28 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 37 / storage = 361 B / avg = 9 B
+# current buf: size = 8162 B / used = 361 B / count = 37 / avg = 9 B
 
-# strcache performance: lookups = 52 / hit rate = 46%
+# strcache performance: lookups = 59 / hit rate = 37%
 # hash-table stats:
-# Load=28/8192=0%, Rehash=0, Collisions=2/52=4%
-# Finished Make data base on Sat Jul  2 21:36:00 2022
+# Load=37/8192=0%, Rehash=0, Collisions=2/59=3%
+# Finished Make data base on Tue Jul  5 01:07:57 2022
 
  

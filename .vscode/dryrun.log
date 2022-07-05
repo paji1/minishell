@@ -2,7 +2,7 @@ make --dry-run --keep-going --print-directory
 make: Entering directory '/home/taha/desktop/Minishell_learn'
 mkdir -p obj
 mkdir -p obj/utils
-gcc -g -pthread -Wall -Werror -Wextra -I include -c src/main.c -o obj/main.o
+gcc  -g -pthread -Wall -Werror -Wextra -I include -c src/main.c -o obj/main.o
 tput civis
 printf main.o"\n"
 printf  '\033[s'""
@@ -17,11 +17,12 @@ printf  "\033[1A"""
 printf  '\033[s'""
 printf '\033[0;34m'"🔷 Making the  --> "'\033[0m' 
 tput el
+ 
 mkdir -p obj
 mkdir -p obj/utils
-gcc -g -pthread -Wall -Werror -Wextra -I include -c src/insert.c -o obj/insert.o
+gcc  -g -pthread -Wall -Werror -Wextra -I include -c src/depth_first_values.c -o obj/depth_first_values.o
 tput civis
-printf insert.o"\n"
+printf depth_first_values.o"\n"
 printf  '\033[s'""
 printf "\033[1;0f"
 sleep 0.05
@@ -34,10 +35,11 @@ printf  "\033[1A"""
 printf  '\033[s'""
 printf '\033[0;34m'"🔷 Making the  --> "'\033[0m' 
 tput el
+ 
 printf  '\033[u'""
 tput el
 printf '\033[0;32m'"\rMaking is done ✅\n"'\033[0m'
 tput cvvis
-gcc -g -pthread -Wall -Werror -Wextra -I include obj/main.o obj/insert.o  -o ./Minishell
+gcc  -g -pthread -Wall -Werror -Wextra -I include obj/main.o obj/insert.o obj/search.o obj/free_tree.o obj/depth_first_values.o obj/utils/stack.o -o ./Minishell
 make: Leaving directory '/home/taha/desktop/Minishell_learn'
  

@@ -6,7 +6,7 @@
 #    By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/07/02 21:05:27 by tel-mouh         ###   ########.fr        #
+#    Updated: 2022/07/05 01:07:51 by tel-mouh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,21 +15,24 @@ SHELL := /bin/bash # Use bash syntax
 # #################HEADERS###########################
 HEADERS = minishell.h types.h
 HEADERS := $(addprefix include/, $(HEADERS))
+# #################HEADERS_utils###########################
+HEADERS = stack.h
+HEADERS := $(addprefix include/, $(HEADERS))
 
 # ################COMMANDS###########################
 
 RM = rm -rf
-CC = gcc -g
-CFLAG = -pthread -Wall -Werror -Wextra -I include
+CC = gcc 
+CFLAG = -g -pthread -Wall -Werror -Wextra -I include
 
 # ################SRCS_Objs##########################
 
-SRC = main.c insert.c
+SRC = main.c insert.c search.c free_tree.c depth_first_values.c
 OBJ = $(addprefix obj/, $(SRC:.c=.o))
 
 # ################SRCS_Objs_Utils####################
 
-SRC_UTILS = 
+SRC_UTILS = stack.c
 OBJ_UTILS = $(addprefix obj/utils/, $(SRC_UTILS:.c=.o))
 
 # ################COLOR##############################
