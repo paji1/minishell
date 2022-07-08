@@ -1,0 +1,42 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/taha/desktop/Minishell_learn/libft'
+make: Leaving directory '/home/taha/desktop/Minishell_learn/libft'
+ 
+make: *** No rule to make target 'obj/ft_abs.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_memcpy.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_strlcat.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_atoi.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_memmove.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_strlcpy.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_bzero.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_memset.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_strlen.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_calloc.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_putchar_fd.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_strmapi.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_in_tab.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_putendl_fd.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_strncmp.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_isalnum.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_putnbr_fd.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_strnstr.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_isalpha.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_putstr_fd.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_strrchr.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_isascii.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_split.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_strtrim.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_isdigit.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_strchr.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_substr.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_isprint.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_strcmp.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_tolower.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_itoa.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_strdup.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_toupper.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_memchr.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_striteri.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_memcmp.o', needed by 'Minishell'.
+make: *** No rule to make target 'obj/ft_strjoin.o', needed by 'Minishell'.
+

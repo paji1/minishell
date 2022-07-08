@@ -6,7 +6,7 @@
 #    By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/07/05 01:07:51 by tel-mouh         ###   ########.fr        #
+#    Updated: 2022/07/08 19:49:37 by tel-mouh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ CFLAG = -g -pthread -Wall -Werror -Wextra -I include
 
 # ################SRCS_Objs##########################
 
-SRC = main.c insert.c search.c free_tree.c depth_first_values.c
+SRC = main.c insert.c search.c free_tree.c depth_first_values.c brefirstrev.c
 OBJ = $(addprefix obj/, $(SRC:.c=.o))
 
 # ################SRCS_Objs_Utils####################
@@ -57,13 +57,15 @@ x  = -1
 
 all : $(NAME)
 
-$(NAME): $(OBJ) $(OBJ_UTILS)
+$(NAME): library $(OBJ) $(OBJ_UTILS)
 	@printf  ${CODE_RESTORE_CURSOR}""
 	@tput el
 	@ printf ${GREEN}"\rMaking is done ✅\n"${NC}
 	@ tput cvvis
 	@ $(CC) $(CFLAG) $(OBJ) $(OBJ_UTILS) -o $(NAME)
 
+library :
+	@ make -C libft
 
 obj/%.o : src/%.c $(HEADERS)
 	@ mkdir -p obj
@@ -88,8 +90,10 @@ obj/%.o : src/%.c $(HEADERS)
 clean :
 	@ $(RM) $(OBJ)
 	@ $(RM) $(OBJ_UTILS)
+	@ make clean -C libft
 
 fclean : clean
 	@ $(RM) $(NAME)
+	@ make fclean -C libft
 
 re : fclean all

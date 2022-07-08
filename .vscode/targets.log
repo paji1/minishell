@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Jul  5 01:07:57 2022
+# Make data base, printed on Fri Jul  8 19:52:09 2022
 
 # Variables
 
@@ -21,7 +21,7 @@ WSLENV = VSCODE_WSL_EXT_LOCATION/up
 # makefile (from 'Makefile', line 31)
 OBJ = $(addprefix obj/, $(SRC:.c=.o))
 # makefile (from 'Makefile', line 30)
-SRC = main.c insert.c search.c free_tree.c depth_first_values.c
+SRC = main.c insert.c search.c free_tree.c depth_first_values.c brefirstrev.c
 # makefile (from 'Makefile', line 20)
 HEADERS := include/stack.h
 # environment
@@ -42,8 +42,8 @@ RM = rm -rf
 VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # environment
 _ = /home/taha/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/node
-# makefile (from 'Makefile', line 69)
-x = -1+1
+# makefile (from 'Makefile', line 54)
+x = -1
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # 'override' directive
@@ -80,10 +80,10 @@ VSCODE_LOG_STACK = false
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
 LS_COLORS = no=00:fi=00:di=34:ow=34;40:ln=35:pi=30;44:so=35;44:do=35;44:bd=33;44:cd=37;44:or=05;37;41:mi=05;37;41:ex=01;31:*.cmd=01;31:*.exe=01;31:*.com=01;31:*.bat=01;31:*.reg=01;31:*.app=01;31:*.txt=32:*.org=32:*.md=32:*.mkd=32:*.h=32:*.hpp=32:*.c=32:*.C=32:*.cc=32:*.cpp=32:*.cxx=32:*.objc=32:*.cl=32:*.sh=32:*.bash=32:*.csh=32:*.zsh=32:*.el=32:*.vim=32:*.java=32:*.pl=32:*.pm=32:*.py=32:*.rb=32:*.hs=32:*.php=32:*.htm=32:*.html=32:*.shtml=32:*.erb=32:*.haml=32:*.xml=32:*.rdf=32:*.css=32:*.sass=32:*.scss=32:*.less=32:*.js=32:*.coffee=32:*.man=32:*.0=32:*.1=32:*.2=32:*.3=32:*.4=32:*.5=32:*.6=32:*.7=32:*.8=32:*.9=32:*.l=32:*.n=32:*.p=32:*.pod=32:*.tex=32:*.go=32:*.sql=32:*.csv=32:*.sv=32:*.svh=32:*.v=32:*.vh=32:*.vhd=32:*.bmp=33:*.cgm=33:*.dl=33:*.dvi=33:*.emf=33:*.eps=33:*.gif=33:*.jpeg=33:*.jpg=33:*.JPG=33:*.mng=33:*.pbm=33:*.pcx=33:*.pdf=33:*.pgm=33:*.png=33:*.PNG=33:*.ppm=33:*.pps=33:*.ppsx=33:*.ps=33:*.svg=33:*.svgz=33:*.tga=33:*.tif=33:*.tiff=33:*.xbm=33:*.xcf=33:*.xpm=33:*.xwd=33:*.xwd=33:*.yuv=33:*.nef=33:*.NEF=33:*.aac=33:*.au=33:*.flac=33:*.m4a=33:*.mid=33:*.midi=33:*.mka=33:*.mp3=33:*.mpa=33:*.mpeg=33:*.mpg=33:*.ogg=33:*.opus=33:*.ra=33:*.wav=33:*.anx=33:*.asf=33:*.avi=33:*.axv=33:*.flc=33:*.fli=33:*.flv=33:*.gl=33:*.m2v=33:*.m4v=33:*.mkv=33:*.mov=33:*.MOV=33:*.mp4=33:*.mp4v=33:*.mpeg=33:*.mpg=33:*.nuv=33:*.ogm=33:*.ogv=33:*.ogx=33:*.qt=33:*.rm=33:*.rmvb=33:*.swf=33:*.vob=33:*.webm=33:*.wmv=33:*.doc=31:*.docx=31:*.rtf=31:*.odt=31:*.dot=31:*.dotx=31:*.ott=31:*.xls=31:*.xlsx=31:*.ods=31:*.ots=31:*.ppt=31:*.pptx=31:*.odp=31:*.otp=31:*.fla=31:*.psd=31:*.7z=1;35:*.apk=1;35:*.arj=1;35:*.bin=1;35:*.bz=1;35:*.bz2=1;35:*.cab=1;35:*.deb=1;35:*.dmg=1;35:*.gem=1;35:*.gz=1;35:*.iso=1;35:*.jar=1;35:*.msi=1;35:*.rar=1;35:*.rpm=1;35:*.tar=1;35:*.tbz=1;35:*.tbz2=1;35:*.tgz=1;35:*.tx=1;35:*.war=1;35:*.xpi=1;35:*.xz=1;35:*.z=1;35:*.Z=1;35:*.zip=1;35:*.zst=1;35:*.ANSI-30-black=30:*.ANSI-01;30-brblack=01;30:*.ANSI-31-red=31:*.ANSI-01;31-brred=01;31:*.ANSI-32-green=32:*.ANSI-01;32-brgreen=01;32:*.ANSI-33-yellow=33:*.ANSI-01;33-bryellow=01;33:*.ANSI-34-blue=34:*.ANSI-01;34-brblue=01;34:*.ANSI-35-magenta=35:*.ANSI-01;35-brmagenta=01;35:*.ANSI-36-cyan=36:*.ANSI-01;36-brcyan=01;36:*.ANSI-37-white=37:*.ANSI-01;37-brwhite=01;37:*.log=01;32:*~=01;32:*#=01;32:*.bak=01;33:*.BAK=01;33:*.old=01;33:*.OLD=01;33:*.org_archive=01;33:*.off=01;33:*.OFF=01;33:*.dist=01;33:*.DIST=01;33:*.orig=01;33:*.ORIG=01;33:*.swp=01;33:*.swo=01;33:*.v=01;33:*.gpg=34:*.gpg=34:*.pgp=34:*.asc=34:*.3des=34:*.aes=34:*.enc=34:*.sqlite=34:
+# environment
+SPACESHIP_BATTERY_SHOW = false
 # automatic
 %F = $(notdir $%)
-# environment
-DISPLAY = 172.22.112.1:10.0
 # makefile (from 'Makefile', line 40)
 COLOR = '\033[0;32m'
 # environment
@@ -93,12 +93,11 @@ VSCODE_PIPE_LOGGING = true
 # environment
 WD = /mnt/c/Users/Taha/Downloads/
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-6399a88e-4e40-44d0-b61c-6341ff4ec558.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-06f7b212-da0c-4f3e-9779-3d6359187181.sock
 # environment
-WSL_INTEROP = /run/WSL/11_interop
+WSL_INTEROP = /run/WSL/619_interop
 # makefile (from 'Makefile', line 46)
 lines = $(shell tput lines)
- 
 # makefile (from 'Makefile', line 43)
 GREEN = '\033[0;32m'
 # environment
@@ -110,7 +109,7 @@ HOME = /home/taha
 # environment
 LOGNAME = taha
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 COLOR1 = \033[1;\033[1;31m
 # environment
@@ -218,7 +217,7 @@ WSL_DISTRO_NAME = Ubuntu-18.04
 # environment
 COLOR3 = \033[1;\033[1;31m
 # variable set hash-table stats:
-# Load=103/1024=10%, Rehash=0, Collisions=18/162=11%
+# Load=103/1024=10%, Rehash=0, Collisions=17/145=12%
 
 # Pattern-specific Variable Values
 
@@ -226,16 +225,15 @@ COLOR3 = \033[1;\033[1;31m
 
 # Directories
 
-# include (device 2064, inode 118331): 3 files, no impossibilities so far.
-# . (device 2064, inode 117325): 10 files, no impossibilities.
-# src (device 2064, inode 118338): 7 files, no impossibilities so far.
+# . (device 2064, inode 117325): 11 files, no impossibilities.
+# src (device 2064, inode 118338): No files, no impossibilities so far.
 
-# 20 files, no impossibilities in 3 directories.
+# 11 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
 obj/%.o: src/%.c include/stack.h
-#  recipe to execute (from 'Makefile', line 69):
+#  recipe to execute (from 'Makefile', line 71):
 	@ mkdir -p obj
 	@ mkdir -p obj/utils
 	@ $(CC) $(CFLAG) -c $< -o $@
@@ -266,7 +264,7 @@ all: Minishell
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/19=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
 
 # Not a target:
 obj/free_tree.o:
@@ -274,49 +272,18 @@ obj/free_tree.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-obj/main.o: src/main.c include/stack.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'main'
-#  Last modified 2022-07-05 01:01:51.9433273
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := obj/main.o
-# automatic
-# % := 
-# automatic
-# * := main
-# automatic
-# + := src/main.c include/stack.h
-# automatic
-# | := 
-# automatic
-# < := src/main.c
-# automatic
-# ^ := src/main.c include/stack.h
-# automatic
-# ? := src/main.c
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=6/30=20%
-#  recipe to execute (from 'Makefile', line 69):
-	@ mkdir -p obj
-	@ mkdir -p obj/utils
-	@ $(CC) $(CFLAG) -c $< -o $@
-	@tput civis
-	$(eval x=$(x)+1)
-	@ printf $(notdir $@)"\n"
-	@ printf  ${CODE_SAVE_CURSOR}""
-	@ printf "\033[$(lines);0f"
-	@ sleep 0.05
-	@number=$x ; while [[ $$number -ge 0 ]] ; do \
-        printf ${YELLOW}"🟩"${NC}  ;\
-        ((number = number - 1)) ; \
-    done
-	@printf  ${CODE_RESTORE_CURSOR}""
-	@printf  ${CODE_CURSOR_IN_SCROLL_AREA}""
-	@printf  ${CODE_SAVE_CURSOR}""
-	@printf ${RE}"🔷 Making the  --> "${NC} 
-	@tput el
+# Not a target:
+obj/main.o:
+ 
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 obj/depth_first_values.o:
@@ -327,17 +294,23 @@ obj/depth_first_values.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-05 01:07:51.7633273
+#  Last modified 2022-07-08 19:49:37.0114817
 #  File has been updated.
 #  Successfully updated.
 
-Minishell: obj/main.o obj/insert.o obj/search.o obj/free_tree.o obj/depth_first_values.o obj/utils/stack.o
+# Not a target:
+obj/brefirstrev.o:
 #  Implicit rule search has not been done.
-#  Last modified 2022-07-05 01:01:52.5133273
+#  Modification time never checked.
+#  File has not been updated.
+
+Minishell: library obj/main.o obj/insert.o obj/search.o obj/free_tree.o obj/depth_first_values.o obj/brefirstrev.o obj/utils/stack.o
+#  Implicit rule search has not been done.
+#  Last modified 2022-07-08 19:51:23.2414817
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/19=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
 #  recipe to execute (from 'Makefile', line 61):
 	@printf  ${CODE_RESTORE_CURSOR}""
 	@tput el
@@ -349,15 +322,36 @@ fclean: clean
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 93):
+#  recipe to execute (from 'Makefile', line 96):
 	@ $(RM) $(NAME)
+	@ make fclean -C libft
 
-# Not a target:
-src/main.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-07-05 01:03:58.2133273
+library:
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := library
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := 
+# automatic
+# | := 
+# automatic
+# < := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/11=9%
+#  recipe to execute (from 'Makefile', line 68):
+	@ make -C libft
 
 # Not a target:
 .DEFAULT:
@@ -380,11 +374,11 @@ clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 89):
+#  recipe to execute (from 'Makefile', line 91):
 	@ $(RM) $(OBJ)
 	@ $(RM) $(OBJ_UTILS)
+	@ make clean -C libft
 
- 
 # Not a target:
 obj/search.o:
 #  Implicit rule search has not been done.
@@ -397,27 +391,20 @@ obj/utils/stack.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-include/stack.h:
-#  Implicit rule search has been done.
-#  Last modified 2022-07-04 20:43:40.1633273
-#  File has been updated.
-#  Successfully updated.
-
 # files hash-table stats:
-# Load=16/1024=2%, Rehash=0, Collisions=0/43=0%
+# Load=16/1024=2%, Rehash=0, Collisions=0/42=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 37 / storage = 361 B / avg = 9 B
-# current buf: size = 8162 B / used = 361 B / count = 37 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 30 / storage = 294 B / avg = 9 B
+# current buf: size = 8162 B / used = 294 B / count = 30 / avg = 9 B
 
-# strcache performance: lookups = 59 / hit rate = 37%
+# strcache performance: lookups = 49 / hit rate = 38%
 # hash-table stats:
-# Load=37/8192=0%, Rehash=0, Collisions=2/59=3%
-# Finished Make data base on Tue Jul  5 01:07:57 2022
+# Load=30/8192=0%, Rehash=0, Collisions=1/49=2%
+# Finished Make data base on Fri Jul  8 19:52:09 2022
 
  

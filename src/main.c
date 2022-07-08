@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/07/05 01:46:19 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/07/07 05:38:36 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,53 +20,32 @@
 //            -2    3  15  18
 //                   \                            /
 //                    4
-void brefirstrev(t_node *node)
-{
-	t_stack *stack;
-	t_stack *stack_b;
-	t_node *current;
 
-	stack = NULL;
-	stack_b = NULL;
-	push(&stack, new_element(node));
-	while (stack)
-	{
-		while (stack)
-		{
-			push(&stack_b, new_element(stack->node));
-			printf("%d\n", stack->node->data);
-			pop(&stack);
-		}
-		while(stack_b)
-		{
-			current = pop(&stack_b);
-			if  (current->right != NULL)
-				push(&stack, new_element(current->right));
-			if  (current->left != NULL)
-				push(&stack, new_element(current->left));
-			
-		}
-	}
-	free_stack(&stack);
-	free_stack(&stack_b);
-}
 
 int main(void)
 {
 	t_node *node;
 	
 	node = NULL;
-	insert(&node, new_node(10));
 	// insert(&node, new_node(1));
-	insert(&node, new_node(-1));
-	insert(&node, new_node(17));
-	insert(&node, new_node(15));
-	insert(&node, new_node(3));
-	insert(&node, new_node(18));
-	insert(&node, new_node(4));
-	insert(&node, new_node(-2));
-	// printf("%p\n", stack);
-	brefirstrev(node);
+	node = new_node(addition, TOKEN);
+	node->left = new_node(multiply, TOKEN);
+	node->left->left = new_node(8, NUM);
+	node->left->right = new_node(3, NUM);
+	node->right = new_node(addition, TOKEN);
+	// node->right->right = new_node(1, NUM);
+	node->right->left = new_node(multiply, TOKEN);
+	node->right->left->left = new_node(-4, NUM);
+	node->right->left->right = new_node(8, NUM);
+	// insert(&node, new_node(-1, NUM));
+	// insert(&node, new_node(17, NUM));
+	// insert(&node, new_node(15, NUM));
+	// insert(&node, new_node(3, NUM));
+	// insert(&node, new_node(18, NUM));
+	// insert(&node, new_node(4, NUM));
+	// insert(&node, new_node(-2, NUM));
+	preorder(node);
+	printf("%d\n", node->data);
 	free_tree(&node);
 	// 	printf("%d\n", contain(&node, i));
 	return 0;
