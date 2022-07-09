@@ -6,7 +6,7 @@
 #    By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/07/08 19:49:37 by tel-mouh         ###   ########.fr        #
+#    Updated: 2022/07/08 20:55:59 by tel-mouh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ SHELL := /bin/bash # Use bash syntax
 HEADERS = minishell.h types.h
 HEADERS := $(addprefix include/, $(HEADERS))
 # #################HEADERS_utils###########################
-HEADERS = stack.h
-HEADERS := $(addprefix include/, $(HEADERS))
+UHEADERS = stack.h
+UHEADERS := $(addprefix include/, $(UHEADERS))
 
 # ################COMMANDS###########################
 
@@ -51,6 +51,8 @@ CODE_CURSOR_IN_SCROLL_AREA="\033[1A"
 # ###############executable##########################
 
 NAME = ./Minishell
+LIBFT = libft/library/libft.a
+ILIBFT = libft/include
 x  = -1
 
 # ###################################################
@@ -62,12 +64,12 @@ $(NAME): library $(OBJ) $(OBJ_UTILS)
 	@tput el
 	@ printf ${GREEN}"\rMaking is done ✅\n"${NC}
 	@ tput cvvis
-	@ $(CC) $(CFLAG) $(OBJ) $(OBJ_UTILS) -o $(NAME)
+	@ $(CC) $(CFLAG) $(OBJ) $(OBJ_UTILS) -I $(ILIBFT) $(LIBFT) -o $(NAME)
 
 library :
 	@ make -C libft
 
-obj/%.o : src/%.c $(HEADERS)
+obj/%.o : src/%.c  $(HEADERS) $(UHEADERS)
 	@ mkdir -p obj
 	@ mkdir -p obj/utils
 	@ $(CC) $(CFLAG) -c $< -o $@

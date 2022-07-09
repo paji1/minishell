@@ -6,7 +6,7 @@
 #    By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/07/08 19:50:53 by tel-mouh         ###   ########.fr        #
+#    Updated: 2022/07/08 20:03:24 by tel-mouh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,8 @@ $(NAME): $(OBJ) $(OBJ_UTILS)
 	@ mkdir -p library
 	@ printf  ${CODE_RESTORE_CURSOR}""
 	@ tput el
-	@ printf ${RE}"\rLibft Created successfully ✅\n"${NC}
+	@ printf ${RE}"\rLibft Created successfully\n"${NC}
+	@ printf ${RE}"\r-----------------------------------\n"${NC}
 	@ tput cvvis
 	@ $(AR) $(NAME) $(OBJ) 
 

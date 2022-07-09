@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jul  8 19:52:09 2022
+# Make data base, printed on Fri Jul  8 20:56:14 2022
 
 # Variables
 
@@ -15,17 +15,15 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # automatic
 ?F = $(notdir $?)
 # environment
-WSLENV = VSCODE_WSL_EXT_LOCATION/up
+WSLENV = VSCODE_WSL_EXT_LOCATION/up:VSCODE_SERVER_TAR/up
 # default
 .SHELLFLAGS := -c
 # makefile (from 'Makefile', line 31)
 OBJ = $(addprefix obj/, $(SRC:.c=.o))
 # makefile (from 'Makefile', line 30)
 SRC = main.c insert.c search.c free_tree.c depth_first_values.c brefirstrev.c
-# makefile (from 'Makefile', line 20)
-HEADERS := include/stack.h
-# environment
-VSCODE_LOG_NATIVE = false
+# makefile (from 'Makefile', line 17)
+HEADERS := include/minishell.h include/types.h
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -41,8 +39,8 @@ RM = rm -rf
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # environment
-_ = /home/taha/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/node
-# makefile (from 'Makefile', line 54)
+_ = /home/taha/.vscode-server/bin/92d25e35d9bf1a6b16f7d0758f25d48ace11e5b9/node
+# makefile (from 'Makefile', line 56)
 x = -1
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
@@ -52,8 +50,6 @@ GNUMAKEFLAGS :=
 W = /mnt/c/Users/Taha/Desktop/
 # environment
 LESS_TERMCAP_se = [0m
-# environment
-VSCODE_VERBOSE_LOGGING = true
 # makefile (from 'Makefile', line 48)
 CODE_RESTORE_CURSOR = '\033[u'
 # makefile (from 'Makefile', line 47)
@@ -63,7 +59,7 @@ VSCODE_CWD = /mnt/c/Users/Taha/AppData/Local/Programs/Microsoft VS Code
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/taha/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/bin/remote-cli:/home/linuxbrew/.linuxbrew/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/CMake/bin:/mnt/c/MinGW/bin:/mnt/c/Program Files (x86)/GnuWin32/bin:/mnt/c/Program Files/PuTTY/:/mnt/c/Program Files (x86)/GNU Arm Embedded Toolchain/10 2021.10/bin:/mnt/c/Users/Taha/AppData/Local/Programs/Python/Python310/Scripts/:/mnt/c/Users/Taha/AppData/Local/Programs/Python/Python310/:/mnt/c/Users/Taha/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/Taha/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/Taha/AppData/Local/Programs/Microsoft VS Code Insiders/bin:/mnt/c/Program Files/JetBrains/PyCharm 2021.3.3/bin
+PATH = /home/taha/.vscode-server/bin/92d25e35d9bf1a6b16f7d0758f25d48ace11e5b9/bin/remote-cli:/home/linuxbrew/.linuxbrew/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/CMake/bin:/mnt/c/MinGW/bin:/mnt/c/Program Files (x86)/GnuWin32/bin:/mnt/c/Program Files/PuTTY/:/mnt/c/Program Files (x86)/GNU Arm Embedded Toolchain/10 2021.10/bin:/mnt/c/Users/Taha/AppData/Local/Programs/Python/Python310/Scripts/:/mnt/c/Users/Taha/AppData/Local/Programs/Python/Python310/:/mnt/c/Users/Taha/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/Taha/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/Taha/AppData/Local/Programs/Microsoft VS Code Insiders/bin:/mnt/c/Program Files/JetBrains/PyCharm 2021.3.3/bin:/mnt/c/MinGW/bin:/mnt/c/Program Files (x86)/GnuWin32/bin
 # environment
 VSCODE_WSL_DEBUG_INFO = true
 # environment
@@ -74,8 +70,12 @@ LSCOLORS = Gxfxcxdxbxegedabagacad
 OBJ_UTILS = $(addprefix obj/utils/, $(SRC_UTILS:.c=.o))
 # environment
 SPACESHIP_VERSION = 3.16.7
+# makefile (from 'Makefile', line 46)
+lines = $(shell tput lines)
 # environment
-VSCODE_LOG_STACK = false
+ELECTRON_RUN_AS_NODE = 1
+# environment
+VSCODE_SERVER_TAR = /mnt/c/Users/Taha/AppData/Local/Temp/vscode-remote-wsl/92d25e35d9bf1a6b16f7d0758f25d48ace11e5b9/vscode-server-stable-linux-x64.tar.gz
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -89,19 +89,17 @@ COLOR = '\033[0;32m'
 # environment
 LESS_TERMCAP_me = [0m
 # environment
-VSCODE_PIPE_LOGGING = true
-# environment
 WD = /mnt/c/Users/Taha/Downloads/
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-06f7b212-da0c-4f3e-9779-3d6359187181.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-79e3940d-9360-4210-87af-b7ff4ffb7be8.sock
 # environment
-WSL_INTEROP = /run/WSL/619_interop
-# makefile (from 'Makefile', line 46)
-lines = $(shell tput lines)
+WSL_INTEROP = /run/WSL/12_interop
 # makefile (from 'Makefile', line 43)
 GREEN = '\033[0;32m'
 # environment
 LESS_TERMCAP_ue = [0m
+# makefile (from 'Makefile', line 55)
+ILIBFT = libft/include
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -130,6 +128,8 @@ MAKE = $(MAKE_COMMAND)
 MAKECMDGOALS := all
 # environment
 SHLVL = 0
+# makefile (from 'Makefile', line 54)
+LIBFT = libft/library/libft.a
 # environment
 LESS_TERMCAP_so = [01;33m
 # makefile (from 'Makefile', line 25)
@@ -178,6 +178,8 @@ LESS_TERMCAP_us = [1;4;31m
 YELLOW = '\033[0;33m'
 # automatic
 +F = $(notdir $+)
+# makefile (from 'Makefile', line 20)
+UHEADERS := include/stack.h
 # environment
 VSCODE_HANDLES_SIGPIPE = true
 # default
@@ -211,13 +213,11 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_EXTHOST_WILL_SEND_SOCKET = true
-# environment
 WSL_DISTRO_NAME = Ubuntu-18.04
 # environment
 COLOR3 = \033[1;\033[1;31m
 # variable set hash-table stats:
-# Load=103/1024=10%, Rehash=0, Collisions=17/145=12%
+# Load=103/1024=10%, Rehash=0, Collisions=14/145=10%
 
 # Pattern-specific Variable Values
 
@@ -232,8 +232,8 @@ COLOR3 = \033[1;\033[1;31m
 
 # Implicit Rules
 
-obj/%.o: src/%.c include/stack.h
-#  recipe to execute (from 'Makefile', line 71):
+obj/%.o: src/%.c include/minishell.h include/types.h include/stack.h
+#  recipe to execute (from 'Makefile', line 73):
 	@ mkdir -p obj
 	@ mkdir -p obj/utils
 	@ $(CC) $(CFLAG) -c $< -o $@
@@ -294,7 +294,7 @@ obj/depth_first_values.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-08 19:49:37.0114817
+#  Last modified 2022-07-08 20:55:59.1816511
 #  File has been updated.
 #  Successfully updated.
 
@@ -306,23 +306,23 @@ obj/brefirstrev.o:
 
 Minishell: library obj/main.o obj/insert.o obj/search.o obj/free_tree.o obj/depth_first_values.o obj/brefirstrev.o obj/utils/stack.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-07-08 19:51:23.2414817
+#  Last modified 2022-07-08 20:56:06.0716511
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/3=0%
-#  recipe to execute (from 'Makefile', line 61):
+#  recipe to execute (from 'Makefile', line 63):
 	@printf  ${CODE_RESTORE_CURSOR}""
 	@tput el
 	@ printf ${GREEN}"\rMaking is done ✅\n"${NC}
 	@ tput cvvis
-	@ $(CC) $(CFLAG) $(OBJ) $(OBJ_UTILS) -o $(NAME)
+	@ $(CC) $(CFLAG) $(OBJ) $(OBJ_UTILS) -I $(ILIBFT) $(LIBFT) -o $(NAME)
 
 fclean: clean
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 96):
+#  recipe to execute (from 'Makefile', line 98):
 	@ $(RM) $(NAME)
 	@ make fclean -C libft
 
@@ -350,7 +350,7 @@ library:
 # ? := 
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/11=9%
-#  recipe to execute (from 'Makefile', line 68):
+#  recipe to execute (from 'Makefile', line 70):
 	@ make -C libft
 
 # Not a target:
@@ -374,7 +374,7 @@ clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 91):
+#  recipe to execute (from 'Makefile', line 93):
 	@ $(RM) $(OBJ)
 	@ $(RM) $(OBJ_UTILS)
 	@ make clean -C libft
@@ -399,12 +399,12 @@ obj/utils/stack.o:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 30 / storage = 294 B / avg = 9 B
-# current buf: size = 8162 B / used = 294 B / count = 30 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 32 / storage = 330 B / avg = 10 B
+# current buf: size = 8162 B / used = 330 B / count = 32 / avg = 10 B
 
-# strcache performance: lookups = 49 / hit rate = 38%
+# strcache performance: lookups = 51 / hit rate = 37%
 # hash-table stats:
-# Load=30/8192=0%, Rehash=0, Collisions=1/49=2%
-# Finished Make data base on Fri Jul  8 19:52:09 2022
+# Load=32/8192=0%, Rehash=0, Collisions=1/51=2%
+# Finished Make data base on Fri Jul  8 20:56:14 2022
 
  

@@ -5,6 +5,6 @@ printf  '\033[u'""
 tput el
 printf '\033[0;32m'"\rMaking is done ✅\n"'\033[0m'
 tput cvvis
-gcc  -g -pthread -Wall -Werror -Wextra -I include obj/main.o obj/insert.o obj/search.o obj/free_tree.o obj/depth_first_values.o obj/brefirstrev.o obj/utils/stack.o -o ./Minishell
+gcc  -g -pthread -Wall -Werror -Wextra -I include obj/main.o obj/insert.o obj/search.o obj/free_tree.o obj/depth_first_values.o obj/brefirstrev.o obj/utils/stack.o -I libft/include libft/library/libft.a -o ./Minishell
 make: Leaving directory '/home/taha/desktop/Minishell_learn'
  

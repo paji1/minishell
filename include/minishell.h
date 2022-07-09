@@ -6,13 +6,12 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/07/07 04:50:24 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/07/08 19:59:48 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
-
 
 
 # include <unistd.h>
@@ -21,6 +20,9 @@
 # include <stdlib.h>
 # include "types.h"
 # include "stack.h"
+
+// --------include libft header-----------------
+# include "../libft/include/libft.h"
 
 void	insert(t_node **node, t_node *new);
 int		contain(t_node **node, int data);

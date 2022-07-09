@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 21:01:38 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/07/07 05:26:42 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/07/08 20:13:33 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ typedef struct s_node
 	struct s_node *right;
 	struct s_node *left;	
 }t_node;
+
+typedef struct s_vars
+{
+	char *cmd;
+	char **tab_cmd;
+	t_node *node;
+} t_vars;
 
 
 #endif
