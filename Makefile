@@ -6,7 +6,7 @@
 #    By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/07/08 20:55:59 by tel-mouh         ###   ########.fr        #
+#    Updated: 2022/07/21 01:04:57 by tel-mouh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,19 +59,22 @@ x  = -1
 
 all : $(NAME)
 
-$(NAME): library $(OBJ) $(OBJ_UTILS)
+$(NAME): $(OBJ) $(OBJ_UTILS) | library
 	@printf  ${CODE_RESTORE_CURSOR}""
 	@tput el
 	@ printf ${GREEN}"\rMaking is done ✅\n"${NC}
-	@ tput cvvis
 	@ $(CC) $(CFLAG) $(OBJ) $(OBJ_UTILS) -I $(ILIBFT) $(LIBFT) -o $(NAME)
+	@ tput cvvis
 
-library :
+library : 
 	@ make -C libft
 
 obj/%.o : src/%.c  $(HEADERS) $(UHEADERS)
 	@ mkdir -p obj
 	@ mkdir -p obj/utils
+	$ nu=$x ; if [[ $$nu -eq -1 ]] ; then \
+	printf ${RE}"🔷 Making the  --> "${NC} \
+	 ; fi
 	@ $(CC) $(CFLAG) -c $< -o $@
 	@tput civis
 	$(eval x=$(x)+1)
@@ -98,4 +101,7 @@ fclean : clean
 	@ $(RM) $(NAME)
 	@ make fclean -C libft
 
-re : fclean all
+re : 
+	@make fclean
+	@make -C libft
+	@make all
