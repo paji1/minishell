@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/07/09 02:42:47 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/07/21 00:56:03 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,31 +21,34 @@
 //                       /  \                         /
 //                      -4  8
 
-// 8 * 3 + (-4) * 8 + 1
+// (8 * 3) + (((-4) * 8) + 1)
 
 static int check_types(char *s)
 {
 	char *op;
-	
+
 	op = "-+*/";
 	while(*op)
 	{
 		if (ft_strchr(s, *op))
 			return (TOKEN);
-		op++;	
+		op++;
 	}
 	return (NUM);
 }
 
-t_node	*sub_tree(char *left, char *right, char *data)
+void	nested(t_node **node, int token, int right)
 {
-	t_node	*node;
+	t_node *temp;
 
-	node = new_node(*data, TOKEN);
-	node->left = new_node(ft_atoi(left), NUM);
-	node->right = new_node(ft_atoi(right), NUM);
-	return (node);
+	temp = (*node)->right;
+	(*node)->right = new_node(token, TOKEN);
+	(*node)->right->left = temp;
+	(*node)->right->right = new_node(right , NUM);
 }
+
+
+
 void parse(char **s, t_node **node)
 {
 	int 	i;
@@ -58,10 +61,7 @@ void parse(char **s, t_node **node)
 		{
 			if (s[i][0] == multiply)
 			{
-				temp = (*node)->right;
-				(*node)->right = new_node(multiply, TOKEN);
-				(*node)->right->left = temp;
-				(*node)->right->right = new_node(ft_atoi(s[++i]), NUM);
+				nested(node, multiply, atoi(s[++i]));
 			}
 			else if (s[i][0] == addition)
 			{
@@ -73,7 +73,7 @@ void parse(char **s, t_node **node)
 		}
 		else
 		{
-			(*node) = new_node(s[i+1][0], TOKEN);
+			(*node) = new_node(s[i + 1][0], TOKEN);
 			(*node)->left = new_node(ft_atoi(s[i]), NUM);
 			(*node)->right = new_node(ft_atoi(s[i + 2]), NUM);
 			i += 2;
