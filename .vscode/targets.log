@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jul  8 20:56:14 2022
+# Make data base, printed on Tue Aug 16 02:11:12 2022
 
 # Variables
 
@@ -15,23 +15,24 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # automatic
 ?F = $(notdir $?)
 # environment
-WSLENV = VSCODE_WSL_EXT_LOCATION/up:VSCODE_SERVER_TAR/up
+WSLENV = VSCODE_WSL_EXT_LOCATION/up
 # default
 .SHELLFLAGS := -c
-# makefile (from 'Makefile', line 31)
+# makefile (from 'Makefile', line 32)
 OBJ = $(addprefix obj/, $(SRC:.c=.o))
 # makefile (from 'Makefile', line 30)
-SRC = main.c insert.c search.c free_tree.c depth_first_values.c brefirstrev.c
+SRC = main.c new_node.c search.c free_tree.c calcul.c insertions.c parse.c dir.c init.c
 # makefile (from 'Makefile', line 17)
 HEADERS := include/minishell.h include/types.h
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
+ 
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /home/taha/desktop/Minishell_learn
+CURDIR := /home/taha/Desktop/Minishell_learn
 # makefile (from 'Makefile', line 13)
 SHELL := /bin/bash 
 # makefile (from 'Makefile', line 24)
@@ -39,9 +40,11 @@ RM = rm -rf
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # environment
-_ = /home/taha/.vscode-server/bin/92d25e35d9bf1a6b16f7d0758f25d48ace11e5b9/node
-# makefile (from 'Makefile', line 56)
-x = -1
+_ = /home/taha/.vscode-server/bin/6d9b74a70ca9c7733b29f0456fd8195364076dda/node
+# makefile (from 'Makefile', line 82)
+x = 2
+# environment
+WALLABY_PRODUCTION = true
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # 'override' directive
@@ -50,32 +53,30 @@ GNUMAKEFLAGS :=
 W = /mnt/c/Users/Taha/Desktop/
 # environment
 LESS_TERMCAP_se = [0m
-# makefile (from 'Makefile', line 48)
+# makefile (from 'Makefile', line 56)
 CODE_RESTORE_CURSOR = '\033[u'
-# makefile (from 'Makefile', line 47)
+# makefile (from 'Makefile', line 55)
 CODE_SAVE_CURSOR = '\033[s'
 # environment
 VSCODE_CWD = /mnt/c/Users/Taha/AppData/Local/Programs/Microsoft VS Code
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/taha/.vscode-server/bin/92d25e35d9bf1a6b16f7d0758f25d48ace11e5b9/bin/remote-cli:/home/linuxbrew/.linuxbrew/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/CMake/bin:/mnt/c/MinGW/bin:/mnt/c/Program Files (x86)/GnuWin32/bin:/mnt/c/Program Files/PuTTY/:/mnt/c/Program Files (x86)/GNU Arm Embedded Toolchain/10 2021.10/bin:/mnt/c/Users/Taha/AppData/Local/Programs/Python/Python310/Scripts/:/mnt/c/Users/Taha/AppData/Local/Programs/Python/Python310/:/mnt/c/Users/Taha/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/Taha/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/Taha/AppData/Local/Programs/Microsoft VS Code Insiders/bin:/mnt/c/Program Files/JetBrains/PyCharm 2021.3.3/bin:/mnt/c/MinGW/bin:/mnt/c/Program Files (x86)/GnuWin32/bin
+PATH = /home/taha/.vscode-server/bin/6d9b74a70ca9c7733b29f0456fd8195364076dda/bin/remote-cli:/home/linuxbrew/.linuxbrew/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Users/Taha/AppData/Local/Programs/Python/Python310/Scripts/:/mnt/c/Users/Taha/AppData/Local/Programs/Python/Python310/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/CMake/bin:/mnt/c/MinGW/bin:/mnt/c/Program Files (x86)/GnuWin32/bin:/mnt/c/Program Files/PuTTY/:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Program Files/nodejs/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files/Intel/Intel(R) Management Engine Components/DAL:/mnt/c/Program Files (x86)/GNU Arm Embedded Toolchain/10 2021.10/bin:/mnt/c/Users/Taha/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/Taha/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/Taha/AppData/Local/Programs/Microsoft VS Code Insiders/bin:/mnt/c/Program Files/JetBrains/PyCharm 2021.3.3/bin:/mnt/c/MinGW/bin:/mnt/c/Program Files (x86)/GnuWin32/bin:/mnt/c/Users/Taha/.dotnet/tools:/mnt/c/Users/Taha/AppData/Local/Programs/oh-my-posh/bin:/mnt/c/Users/Taha/AppData/Roaming/npm
 # environment
 VSCODE_WSL_DEBUG_INFO = true
 # environment
 LESS_TERMCAP_mb = [1;32m
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
-# makefile (from 'Makefile', line 36)
+# makefile (from 'Makefile', line 37)
 OBJ_UTILS = $(addprefix obj/utils/, $(SRC_UTILS:.c=.o))
 # environment
 SPACESHIP_VERSION = 3.16.7
-# makefile (from 'Makefile', line 46)
+# makefile (from 'Makefile', line 49)
 lines = $(shell tput lines)
 # environment
 ELECTRON_RUN_AS_NODE = 1
-# environment
-VSCODE_SERVER_TAR = /mnt/c/Users/Taha/AppData/Local/Temp/vscode-remote-wsl/92d25e35d9bf1a6b16f7d0758f25d48ace11e5b9/vscode-server-stable-linux-x64.tar.gz
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -84,21 +85,23 @@ LS_COLORS = no=00:fi=00:di=34:ow=34;40:ln=35:pi=30;44:so=35;44:do=35;44:bd=33;44
 SPACESHIP_BATTERY_SHOW = false
 # automatic
 %F = $(notdir $%)
-# makefile (from 'Makefile', line 40)
+# environment
+DISPLAY = 172.21.176.1:10.0
+# makefile (from 'Makefile', line 41)
 COLOR = '\033[0;32m'
 # environment
 LESS_TERMCAP_me = [0m
 # environment
 WD = /mnt/c/Users/Taha/Downloads/
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-79e3940d-9360-4210-87af-b7ff4ffb7be8.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-9ef3daaf-5e17-461c-8f2b-ffa6177ee1a7.sock
 # environment
-WSL_INTEROP = /run/WSL/12_interop
-# makefile (from 'Makefile', line 43)
+WSL_INTEROP = /run/WSL/11_interop
+# makefile (from 'Makefile', line 44)
 GREEN = '\033[0;32m'
 # environment
 LESS_TERMCAP_ue = [0m
-# makefile (from 'Makefile', line 55)
+# makefile (from 'Makefile', line 63)
 ILIBFT = libft/include
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
@@ -113,13 +116,15 @@ COLOR1 = \033[1;\033[1;31m
 # environment
 ZSH = /home/taha/.oh-my-zsh
 # makefile (from 'Makefile', line 26)
-CFLAG = -g -pthread -Wall -Werror -Wextra -I include
+CFLAG = -g -pthread -Wall -Werror -Wextra -I include 
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
 LESS_TERMCAP_md = [1;32m
+# makefile (from 'Makefile', line 51)
+num = $(shell echo `ls src/*.c src/utils/*.c | wc -l`)
 # environment
 MAKELEVEL := 0
 # default
@@ -128,7 +133,7 @@ MAKE = $(MAKE_COMMAND)
 MAKECMDGOALS := all
 # environment
 SHLVL = 0
-# makefile (from 'Makefile', line 54)
+# makefile (from 'Makefile', line 62)
 LIBFT = libft/library/libft.a
 # environment
 LESS_TERMCAP_so = [01;33m
@@ -140,9 +145,9 @@ MAKE_VERSION := 4.1
 USER = taha
 # makefile
 .DEFAULT_GOAL := all
-# makefile (from 'Makefile', line 53)
+# makefile (from 'Makefile', line 61)
 NAME = ./Minishell
-# makefile (from 'Makefile', line 42)
+# makefile (from 'Makefile', line 43)
 RE = '\033[0;34m'
 # environment
 COLOR4 = \033[1;\033[1;31m
@@ -154,7 +159,7 @@ LESS = -R
 VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/Taha/.vscode/extensions/ms-vscode-remote.remote-wsl-0.66.3
 # default
 MAKE_COMMAND := make
-# makefile (from 'Makefile', line 41)
+# makefile (from 'Makefile', line 42)
 NC = '\033[0m'
 # environment
 COLOR2 = \033[1;\033[1;31m
@@ -174,7 +179,7 @@ MFLAGS = -pqrR
 LESS_TERMCAP_us = [1;4;31m
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
-# makefile (from 'Makefile', line 44)
+# makefile (from 'Makefile', line 45)
 YELLOW = '\033[0;33m'
 # automatic
 +F = $(notdir $+)
@@ -184,14 +189,16 @@ UHEADERS := include/stack.h
 VSCODE_HANDLES_SIGPIPE = true
 # default
 MAKEFILES := 
+# makefile (from 'Makefile', line 53)
+i_num := 3
 # automatic
 <F = $(notdir $<)
-# makefile (from 'Makefile', line 49)
+# makefile (from 'Makefile', line 57)
 CODE_CURSOR_IN_SCROLL_AREA = "\033[1A"
 # environment
 PAGER = less
 # environment
-PWD = /home/taha/desktop/Minishell_learn
+PWD = /home/taha/Desktop/Minishell_learn
 # environment
 LC_ALL = C
 # environment
@@ -204,10 +211,12 @@ SPACESHIP_ROOT = /home/taha/.oh-my-zsh/custom/themes/spaceship-prompt
 SUFFIXES := 
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
-# makefile (from 'Makefile', line 35)
-SRC_UTILS = stack.c
+# makefile (from 'Makefile', line 36)
+SRC_UTILS = stack.c check_types.c
 # default
 .RECIPEPREFIX := 
+# makefile (from 'Makefile', line 50)
+cols = $(shell tput cols)
 # environment
 LANG = C
 # environment
@@ -217,7 +226,7 @@ WSL_DISTRO_NAME = Ubuntu-18.04
 # environment
 COLOR3 = \033[1;\033[1;31m
 # variable set hash-table stats:
-# Load=103/1024=10%, Rehash=0, Collisions=14/145=10%
+# Load=107/1024=10%, Rehash=0, Collisions=18/190=9%
 
 # Pattern-specific Variable Values
 
@@ -225,24 +234,27 @@ COLOR3 = \033[1;\033[1;31m
 
 # Directories
 
+# include (device 2064, inode 118331): 3 files, no impossibilities so far.
 # . (device 2064, inode 117325): 11 files, no impossibilities.
-# src (device 2064, inode 118338): No files, no impossibilities so far.
+# src (device 2064, inode 118338): 12 files, no impossibilities so far.
 
-# 11 files, no impossibilities in 2 directories.
+# 26 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
 obj/%.o: src/%.c include/minishell.h include/types.h include/stack.h
-#  recipe to execute (from 'Makefile', line 73):
+#  recipe to execute (from 'Makefile', line 82):
 	@ mkdir -p obj
 	@ mkdir -p obj/utils
+	$ nu=$x ; if [[ $$nu -eq -1 ]] ; then \
+	printf ${RE}"🔷 Making the  --> "${NC} \
+	 ; fi
 	@ $(CC) $(CFLAG) -c $< -o $@
 	@tput civis
-	$(eval x=$(x)+1)
+	$(eval x=$(shell expr $(x) + $(i_num) ))
 	@ printf $(notdir $@)"\n"
 	@ printf  ${CODE_SAVE_CURSOR}""
 	@ printf "\033[$(lines);0f"
-	@ sleep 0.05
 	@number=$x ; while [[ $$number -ge 0 ]] ; do \
         printf ${YELLOW}"🟩"${NC}  ;\
         ((number = number - 1)) ; \
@@ -257,6 +269,34 @@ obj/%.o: src/%.c include/minishell.h include/types.h include/stack.h
 
 # Files
 
+obj/calcul.o: src/calcul.c include/minishell.h include/types.h include/stack.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'calcul'
+#  Last modified 2022-08-16 02:08:39.6182229
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 82):
+	@ mkdir -p obj
+	@ mkdir -p obj/utils
+	$ nu=$x ; if [[ $$nu -eq -1 ]] ; then \
+	printf ${RE}"🔷 Making the  --> "${NC} \
+	 ; fi
+	@ $(CC) $(CFLAG) -c $< -o $@
+	@tput civis
+	$(eval x=$(shell expr $(x) + $(i_num) ))
+	@ printf $(notdir $@)"\n"
+	@ printf  ${CODE_SAVE_CURSOR}""
+	@ printf "\033[$(lines);0f"
+	@number=$x ; while [[ $$number -ge 0 ]] ; do \
+        printf ${YELLOW}"🟩"${NC}  ;\
+        ((number = number - 1)) ; \
+    done
+	@printf  ${CODE_RESTORE_CURSOR}""
+	@printf  ${CODE_CURSOR_IN_SCROLL_AREA}""
+	@printf  ${CODE_SAVE_CURSOR}""
+	@printf ${RE}"🔷 Making the  --> "${NC} 
+	@tput el
+
 all: Minishell
 #  Command line target.
 #  Implicit rule search has been done.
@@ -264,94 +304,186 @@ all: Minishell
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/27=0%
 
 # Not a target:
-obj/free_tree.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-obj/main.o:
+include/minishell.h:
+#  Implicit rule search has been done.
  
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Last modified 2022-08-16 02:06:15.1282229
+#  File has been updated.
+#  Successfully updated.
 
-# Not a target:
-.SUFFIXES:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+obj/free_tree.o: src/free_tree.c include/minishell.h include/types.h include/stack.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'free_tree'
+#  Last modified 2022-08-16 02:08:39.5482229
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 82):
+	@ mkdir -p obj
+	@ mkdir -p obj/utils
+	$ nu=$x ; if [[ $$nu -eq -1 ]] ; then \
+	printf ${RE}"🔷 Making the  --> "${NC} \
+	 ; fi
+	@ $(CC) $(CFLAG) -c $< -o $@
+	@tput civis
+	$(eval x=$(shell expr $(x) + $(i_num) ))
+	@ printf $(notdir $@)"\n"
+	@ printf  ${CODE_SAVE_CURSOR}""
+	@ printf "\033[$(lines);0f"
+	@number=$x ; while [[ $$number -ge 0 ]] ; do \
+        printf ${YELLOW}"🟩"${NC}  ;\
+        ((number = number - 1)) ; \
+    done
+	@printf  ${CODE_RESTORE_CURSOR}""
+	@printf  ${CODE_CURSOR_IN_SCROLL_AREA}""
+	@printf  ${CODE_SAVE_CURSOR}""
+	@printf ${RE}"🔷 Making the  --> "${NC} 
+	@tput el
 
-# Not a target:
-obj/depth_first_values.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+obj/main.o: src/main.c include/minishell.h include/types.h include/stack.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'main'
+#  Last modified 2022-08-16 02:11:09.6282229
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 82):
+	@ mkdir -p obj
+	@ mkdir -p obj/utils
+	$ nu=$x ; if [[ $$nu -eq -1 ]] ; then \
+	printf ${RE}"🔷 Making the  --> "${NC} \
+	 ; fi
+	@ $(CC) $(CFLAG) -c $< -o $@
+	@tput civis
+	$(eval x=$(shell expr $(x) + $(i_num) ))
+	@ printf $(notdir $@)"\n"
+	@ printf  ${CODE_SAVE_CURSOR}""
+	@ printf "\033[$(lines);0f"
+	@number=$x ; while [[ $$number -ge 0 ]] ; do \
+        printf ${YELLOW}"🟩"${NC}  ;\
+        ((number = number - 1)) ; \
+    done
+	@printf  ${CODE_RESTORE_CURSOR}""
+	@printf  ${CODE_CURSOR_IN_SCROLL_AREA}""
+	@printf  ${CODE_SAVE_CURSOR}""
+	@printf ${RE}"🔷 Making the  --> "${NC} 
+	@tput el
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-08 20:55:59.1816511
+#  Last modified 2022-08-16 02:11:05.0482229
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
-obj/brefirstrev.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+src/calcul.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-10 19:35:35.0958478
+#  File has been updated.
+#  Successfully updated.
 
-Minishell: library obj/main.o obj/insert.o obj/search.o obj/free_tree.o obj/depth_first_values.o obj/brefirstrev.o obj/utils/stack.o
+Minishell: obj/main.o obj/new_node.o obj/search.o obj/free_tree.o obj/calcul.o obj/insertions.o obj/parse.o obj/dir.o obj/init.o obj/utils/stack.o obj/utils/check_types.o | library
 #  Implicit rule search has not been done.
-#  Last modified 2022-07-08 20:56:06.0716511
+#  Last modified 2022-08-16 02:08:40.0482229
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
-#  recipe to execute (from 'Makefile', line 63):
+# Load=0/32=0%, Rehash=0, Collisions=0/27=0%
+#  recipe to execute (from 'Makefile', line 70):
+	@ printf "\033[$(lines);0f"
+	@ tput el
 	@printf  ${CODE_RESTORE_CURSOR}""
 	@tput el
 	@ printf ${GREEN}"\rMaking is done ✅\n"${NC}
+	@ $(CC) $(CFLAG) $(OBJ) $(OBJ_UTILS) -I $(ILIBFT) $(LIBFT) -lreadline -o $(NAME)
 	@ tput cvvis
-	@ $(CC) $(CFLAG) $(OBJ) $(OBJ_UTILS) -I $(ILIBFT) $(LIBFT) -o $(NAME)
+
+obj/new_node.o: src/new_node.c include/minishell.h include/types.h include/stack.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'new_node'
+#  Last modified 2022-08-16 02:08:39.3882229
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 82):
+	@ mkdir -p obj
+	@ mkdir -p obj/utils
+	$ nu=$x ; if [[ $$nu -eq -1 ]] ; then \
+	printf ${RE}"🔷 Making the  --> "${NC} \
+	 ; fi
+	@ $(CC) $(CFLAG) -c $< -o $@
+	@tput civis
+	$(eval x=$(shell expr $(x) + $(i_num) ))
+	@ printf $(notdir $@)"\n"
+	@ printf  ${CODE_SAVE_CURSOR}""
+	@ printf "\033[$(lines);0f"
+	@number=$x ; while [[ $$number -ge 0 ]] ; do \
+        printf ${YELLOW}"🟩"${NC}  ;\
+        ((number = number - 1)) ; \
+    done
+	@printf  ${CODE_RESTORE_CURSOR}""
+	@printf  ${CODE_CURSOR_IN_SCROLL_AREA}""
+	@printf  ${CODE_SAVE_CURSOR}""
+	@printf ${RE}"🔷 Making the  --> "${NC} 
+	@tput el
 
 fclean: clean
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 98):
+#  recipe to execute (from 'Makefile', line 109):
 	@ $(RM) $(NAME)
 	@ make fclean -C libft
 
+# Not a target:
+src/free_tree.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 02:07:57.2782229
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+src/main.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 02:09:26.0782229
+#  File has been updated.
+#  Successfully updated.
+
 library:
 #  Implicit rule search has not been done.
-#  Implicit/static pattern stem: ''
-#  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := library
-# automatic
-# % := 
-# automatic
-# * := 
-# automatic
-# + := 
-# automatic
-# | := 
-# automatic
-# < := 
-# automatic
-# ^ := 
-# automatic
-# ? := 
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/11=9%
-#  recipe to execute (from 'Makefile', line 70):
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 79):
 	@ make -C libft
+
+obj/insertions.o: src/insertions.c include/minishell.h include/types.h include/stack.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'insertions'
+#  Last modified 2022-08-16 02:08:39.6682229
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 82):
+	@ mkdir -p obj
+	@ mkdir -p obj/utils
+	$ nu=$x ; if [[ $$nu -eq -1 ]] ; then \
+	printf ${RE}"🔷 Making the  --> "${NC} \
+	 ; fi
+	@ $(CC) $(CFLAG) -c $< -o $@
+	@tput civis
+	$(eval x=$(shell expr $(x) + $(i_num) ))
+	@ printf $(notdir $@)"\n"
+	@ printf  ${CODE_SAVE_CURSOR}""
+	@ printf "\033[$(lines);0f"
+	@number=$x ; while [[ $$number -ge 0 ]] ; do \
+        printf ${YELLOW}"🟩"${NC}  ;\
+        ((number = number - 1)) ; \
+    done
+	@printf  ${CODE_RESTORE_CURSOR}""
+	@printf  ${CODE_CURSOR_IN_SCROLL_AREA}""
+	@printf  ${CODE_SAVE_CURSOR}""
+	@printf ${RE}"🔷 Making the  --> "${NC} 
+	@tput el
 
 # Not a target:
 .DEFAULT:
@@ -359,31 +491,174 @@ library:
 #  Modification time never checked.
 #  File has not been updated.
 
-re: fclean all
+re:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+#  recipe to execute (from 'Makefile', line 113):
+	@make fclean
+	@make -C libft
+	@make all
 
-# Not a target:
-obj/insert.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+obj/parse.o: src/parse.c include/minishell.h include/types.h include/stack.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'parse'
+#  Last modified 2022-08-16 02:08:39.7282229
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 82):
+	@ mkdir -p obj
+	@ mkdir -p obj/utils
+	$ nu=$x ; if [[ $$nu -eq -1 ]] ; then \
+	printf ${RE}"🔷 Making the  --> "${NC} \
+	 ; fi
+	@ $(CC) $(CFLAG) -c $< -o $@
+	@tput civis
+	$(eval x=$(shell expr $(x) + $(i_num) ))
+	@ printf $(notdir $@)"\n"
+	@ printf  ${CODE_SAVE_CURSOR}""
+	@ printf "\033[$(lines);0f"
+	@number=$x ; while [[ $$number -ge 0 ]] ; do \
+        printf ${YELLOW}"🟩"${NC}  ;\
+        ((number = number - 1)) ; \
+    done
+	@printf  ${CODE_RESTORE_CURSOR}""
+	@printf  ${CODE_CURSOR_IN_SCROLL_AREA}""
+	@printf  ${CODE_SAVE_CURSOR}""
+	@printf ${RE}"🔷 Making the  --> "${NC} 
+	@tput el
 
 clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 93):
+#  recipe to execute (from 'Makefile', line 104):
 	@ $(RM) $(OBJ)
 	@ $(RM) $(OBJ_UTILS)
 	@ make clean -C libft
 
+obj/init.o: src/init.c include/minishell.h include/types.h include/stack.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'init'
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := obj/init.o
+# automatic
+# % := 
+# automatic
+# * := init
+# automatic
+# + := src/init.c include/minishell.h include/types.h include/stack.h
+# automatic
+# | := 
+# automatic
+# < := src/init.c
+# automatic
+# ^ := src/init.c include/minishell.h include/types.h include/stack.h
+# automatic
+# ? := src/init.c include/minishell.h include/types.h include/stack.h
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=9/38=24%
+#  recipe to execute (from 'Makefile', line 82):
+	@ mkdir -p obj
+	@ mkdir -p obj/utils
+	$ nu=$x ; if [[ $$nu -eq -1 ]] ; then \
+	printf ${RE}"🔷 Making the  --> "${NC} \
+	 ; fi
+	@ $(CC) $(CFLAG) -c $< -o $@
+	@tput civis
+	$(eval x=$(shell expr $(x) + $(i_num) ))
+	@ printf $(notdir $@)"\n"
+	@ printf  ${CODE_SAVE_CURSOR}""
+	@ printf "\033[$(lines);0f"
+	@number=$x ; while [[ $$number -ge 0 ]] ; do \
+        printf ${YELLOW}"🟩"${NC}  ;\
+        ((number = number - 1)) ; \
+    done
+	@printf  ${CODE_RESTORE_CURSOR}""
+	@printf  ${CODE_CURSOR_IN_SCROLL_AREA}""
+	@printf  ${CODE_SAVE_CURSOR}""
+	@printf ${RE}"🔷 Making the  --> "${NC} 
+	@tput el
+
+obj/dir.o: src/dir.c include/minishell.h include/types.h include/stack.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'dir'
+#  Last modified 2022-08-16 02:08:39.7882229
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 82):
+	@ mkdir -p obj
+	@ mkdir -p obj/utils
+	$ nu=$x ; if [[ $$nu -eq -1 ]] ; then \
+	printf ${RE}"🔷 Making the  --> "${NC} \
+	 ; fi
+	@ $(CC) $(CFLAG) -c $< -o $@
+	@tput civis
+	$(eval x=$(shell expr $(x) + $(i_num) ))
+	@ printf $(notdir $@)"\n"
+	@ printf  ${CODE_SAVE_CURSOR}""
+	@ printf "\033[$(lines);0f"
+	@number=$x ; while [[ $$number -ge 0 ]] ; do \
+        printf ${YELLOW}"🟩"${NC}  ;\
+        ((number = number - 1)) ; \
+    done
+	@printf  ${CODE_RESTORE_CURSOR}""
+	@printf  ${CODE_CURSOR_IN_SCROLL_AREA}""
+	@printf  ${CODE_SAVE_CURSOR}""
+	@printf ${RE}"🔷 Making the  --> "${NC} 
+ 
+	@tput el
+
 # Not a target:
-obj/search.o:
+src/new_node.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-11 14:43:55.1101178
+#  File has been updated.
+#  Successfully updated.
+
+obj/search.o: src/search.c include/minishell.h include/types.h include/stack.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'search'
+#  Last modified 2022-08-16 02:08:39.4882229
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 82):
+	@ mkdir -p obj
+	@ mkdir -p obj/utils
+	$ nu=$x ; if [[ $$nu -eq -1 ]] ; then \
+	printf ${RE}"🔷 Making the  --> "${NC} \
+	 ; fi
+	@ $(CC) $(CFLAG) -c $< -o $@
+	@tput civis
+	$(eval x=$(shell expr $(x) + $(i_num) ))
+	@ printf $(notdir $@)"\n"
+	@ printf  ${CODE_SAVE_CURSOR}""
+	@ printf "\033[$(lines);0f"
+	@number=$x ; while [[ $$number -ge 0 ]] ; do \
+        printf ${YELLOW}"🟩"${NC}  ;\
+        ((number = number - 1)) ; \
+    done
+	@printf  ${CODE_RESTORE_CURSOR}""
+	@printf  ${CODE_CURSOR_IN_SCROLL_AREA}""
+	@printf  ${CODE_SAVE_CURSOR}""
+	@printf ${RE}"🔷 Making the  --> "${NC} 
+	@tput el
+
+# Not a target:
+obj/utils/check_types.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+
+# Not a target:
+src/insertions.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 01:25:49.8682229
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 obj/utils/stack.o:
@@ -391,20 +666,62 @@ obj/utils/stack.o:
 #  Modification time never checked.
 #  File has not been updated.
 
+# Not a target:
+src/parse.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 01:26:00.1382229
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+include/types.h:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 02:07:22.2082229
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+src/init.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 02:10:36.6882229
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+include/stack.h:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-04 20:43:40.1633273
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+src/dir.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-16 02:02:53.1182229
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+src/search.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-05 00:38:04.8833273
+#  File has been updated.
+#  Successfully updated.
+
 # files hash-table stats:
-# Load=16/1024=2%, Rehash=0, Collisions=0/42=0%
+# Load=32/1024=3%, Rehash=0, Collisions=0/140=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 32 / storage = 330 B / avg = 10 B
-# current buf: size = 8162 B / used = 330 B / count = 32 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 67 / storage = 674 B / avg = 10 B
+# current buf: size = 8162 B / used = 674 B / count = 67 / avg = 10 B
 
-# strcache performance: lookups = 51 / hit rate = 37%
+# strcache performance: lookups = 149 / hit rate = 55%
 # hash-table stats:
-# Load=32/8192=0%, Rehash=0, Collisions=1/51=2%
-# Finished Make data base on Fri Jul  8 20:56:14 2022
+# Load=67/8192=1%, Rehash=0, Collisions=2/149=1%
+# Finished Make data base on Tue Aug 16 02:11:12 2022
 
  

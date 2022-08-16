@@ -1,42 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
+/*   check_types.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/02 21:01:38 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/08/16 04:44:05 by tel-mouh         ###   ########.fr       */
+/*   Created: 2022/08/09 23:15:58 by tel-mouh          #+#    #+#             */
+/*   Updated: 2022/08/09 23:19:04 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPES_H
-# define TYPES_H
+#include "../../include/minishell.h"
 
-# define TOKEN 1
-# define NUM 0
-
-
-enum TOKENS
+int	check_types(char *s)
 {
-	division = '/' ,multiply = '*' ,addition = '+',subtraction = '-'
-};
+	char *op;
 
-typedef struct s_node
-{
-	int data;
-	int type;
-	struct s_node *right;
-	struct s_node *left;	
-}t_node;
-
-typedef struct s_vars
-{
-	char	*cmd;
-	char	**tab_cmd;
-	t_node	*node;
-	char	*base_name;
-} t_vars;
-
-
-#endif
+	op = "-+*/";
+	while(*op)
+	{
+		if (ft_strchr(s, *op))
+			return (TOKEN);
+		op++;
+	}
+	return (NUM);
+}

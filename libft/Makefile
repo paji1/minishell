@@ -6,7 +6,7 @@
 #    By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/07/08 20:03:24 by tel-mouh         ###   ########.fr        #
+#    Updated: 2022/08/10 20:44:12 by tel-mouh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,10 @@ GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 
 lines=$(shell tput lines)
+cols=$(shell tput cols)
+num=$(shell echo `ls src/*.c | wc -l`)
+i_num=$(shell echo "($(cols)/$(num))"  | bc)
+# i_num:=$(shell expr $(cols) / $(num))
 CODE_SAVE_CURSOR='\033[s'
 CODE_RESTORE_CURSOR='\033[u'
 CODE_CURSOR_IN_SCROLL_AREA="\033[1A"
@@ -66,9 +70,12 @@ x  = -1
 # ###################################################
 
 all : $(NAME)
+	
 
 $(NAME): $(OBJ) $(OBJ_UTILS)
 	@ mkdir -p library
+	@ printf "\033[$(lines);0f"
+	@ tput el
 	@ printf  ${CODE_RESTORE_CURSOR}""
 	@ tput el
 	@ printf ${RE}"\rLibft Created successfully\n"${NC}
@@ -82,7 +89,7 @@ obj/%.o : src/%.c $(HEADERS)
 	@ mkdir -p obj/utils
 	@ $(CC) $(CFLAG) -c $< -o $@
 	@tput civis
-	$(eval x=$(x)+1)
+	$(eval x=$(shell expr $(x) + $(i_num) ))
 	@ printf $(notdir $@)"\n"
 	@ printf  ${CODE_SAVE_CURSOR}""
 	@ printf "\033[$(lines);0f"

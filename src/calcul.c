@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   depth_first_values.c                               :+:      :+:    :+:   */
+/*   calcul.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 01:05:25 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/07/08 20:18:52 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/08/16 05:34:38 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,19 @@ static int operation(int x, int op, int y)
 	return 0;
 }
 
-void preorder(t_node *node)
+void calculate(t_node *node)
 {
 	if (node == NULL)
 		return ;
-	preorder(node->left);
-	preorder(node->right);
-	if (node->right && node->left)
+	calculate(node->left);
+	calculate(node->right);
+	if (node->right && node->left && node->type == TOKEN)
 	{
 		node->data = operation(node->left->data, node->data, node->right->data);
 		node->left->data = 0;
 		node->right->data = 0;
-		
-	}
-	// printf("%d \n", node->data);
-	if (node->type == TOKEN)
 		node->type = NUM;
+	}
 }
 
 void iter_print(t_node *node)

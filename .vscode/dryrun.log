@@ -1,10 +1,31 @@
 make --dry-run --keep-going --print-directory
-make: Entering directory '/home/taha/desktop/Minishell_learn'
+make: Entering directory '/home/taha/Desktop/Minishell_learn'
+mkdir -p obj
+mkdir -p obj/utils
+nu=-1 ; if [[ $nu -eq -1 ]] ; then \
+printf '\033[0;34m'"🔷 Making the  --> "'\033[0m' \
+ ; fi
+gcc  -g -pthread -Wall -Werror -Wextra -I include  -c src/init.c -o obj/init.o
+tput civis
+printf init.o"\n"
+printf  '\033[s'""
+printf "\033[24;0f"
+number=2 ; while [[ $number -ge 0 ]] ; do \
+        printf '\033[0;33m'"🟩"'\033[0m'  ;\
+        ((number = number - 1)) ; \
+    done
+printf  '\033[u'""
+printf  "\033[1A"""
+printf  '\033[s'""
+printf '\033[0;34m'"🔷 Making the  --> "'\033[0m' 
+tput el
 make -C libft
+printf "\033[24;0f"
+tput el
 printf  '\033[u'""
 tput el
 printf '\033[0;32m'"\rMaking is done ✅\n"'\033[0m'
+gcc  -g -pthread -Wall -Werror -Wextra -I include  obj/main.o obj/new_node.o obj/search.o obj/free_tree.o obj/calcul.o obj/insertions.o obj/parse.o obj/dir.o obj/init.o obj/utils/stack.o obj/utils/check_types.o -I libft/include libft/library/libft.a -lreadline -o ./Minishell
 tput cvvis
-gcc  -g -pthread -Wall -Werror -Wextra -I include obj/main.o obj/insert.o obj/search.o obj/free_tree.o obj/depth_first_values.o obj/brefirstrev.o obj/utils/stack.o -I libft/include libft/library/libft.a -o ./Minishell
-make: Leaving directory '/home/taha/desktop/Minishell_learn'
+make: Leaving directory '/home/taha/Desktop/Minishell_learn'
  

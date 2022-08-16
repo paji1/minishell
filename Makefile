@@ -6,7 +6,7 @@
 #    By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/07/21 01:04:57 by tel-mouh         ###   ########.fr        #
+#    Updated: 2022/08/16 02:11:05 by tel-mouh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,16 +23,17 @@ UHEADERS := $(addprefix include/, $(UHEADERS))
 
 RM = rm -rf
 CC = gcc 
-CFLAG = -g -pthread -Wall -Werror -Wextra -I include
+CFLAG = -g -pthread -Wall -Werror -Wextra -I include 
 
 # ################SRCS_Objs##########################
 
-SRC = main.c insert.c search.c free_tree.c depth_first_values.c brefirstrev.c
+SRC = main.c new_node.c search.c free_tree.c calcul.c \
+	insertions.c parse.c dir.c init.c
 OBJ = $(addprefix obj/, $(SRC:.c=.o))
 
 # ################SRCS_Objs_Utils####################
 
-SRC_UTILS = stack.c
+SRC_UTILS = stack.c check_types.c
 OBJ_UTILS = $(addprefix obj/utils/, $(SRC_UTILS:.c=.o))
 
 # ################COLOR##############################
@@ -43,7 +44,14 @@ RE= '\033[0;34m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 
+# #################bar_line##############################
+
 lines=$(shell tput lines)
+cols=$(shell tput cols)
+num=$(shell echo `ls src/*.c src/utils/*.c | wc -l`)
+i_num:=$(shell expr $(cols) / $(num))
+i_num:=$(shell expr $(i_num) / 2)
+x  = -1
 CODE_SAVE_CURSOR='\033[s'
 CODE_RESTORE_CURSOR='\033[u'
 CODE_CURSOR_IN_SCROLL_AREA="\033[1A"
@@ -53,17 +61,18 @@ CODE_CURSOR_IN_SCROLL_AREA="\033[1A"
 NAME = ./Minishell
 LIBFT = libft/library/libft.a
 ILIBFT = libft/include
-x  = -1
 
 # ###################################################
 
 all : $(NAME)
 
 $(NAME): $(OBJ) $(OBJ_UTILS) | library
+	@ printf "\033[$(lines);0f"
+	@ tput el
 	@printf  ${CODE_RESTORE_CURSOR}""
 	@tput el
 	@ printf ${GREEN}"\rMaking is done ✅\n"${NC}
-	@ $(CC) $(CFLAG) $(OBJ) $(OBJ_UTILS) -I $(ILIBFT) $(LIBFT) -o $(NAME)
+	@ $(CC) $(CFLAG) $(OBJ) $(OBJ_UTILS) -I $(ILIBFT) $(LIBFT) -lreadline -o $(NAME)
 	@ tput cvvis
 
 library : 
@@ -77,11 +86,10 @@ obj/%.o : src/%.c  $(HEADERS) $(UHEADERS)
 	 ; fi
 	@ $(CC) $(CFLAG) -c $< -o $@
 	@tput civis
-	$(eval x=$(x)+1)
+	$(eval x=$(shell expr $(x) + $(i_num) ))
 	@ printf $(notdir $@)"\n"
 	@ printf  ${CODE_SAVE_CURSOR}""
 	@ printf "\033[$(lines);0f"
-	@ sleep 0.05
 	@number=$x ; while [[ $$number -ge 0 ]] ; do \
         printf ${YELLOW}"🟩"${NC}  ;\
         ((number = number - 1)) ; \
