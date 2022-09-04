@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 00:22:43 by akharraz          #+#    #+#             */
-/*   Updated: 2022/09/04 04:13:05 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/09/04 20:51:04 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,30 @@ typedef struct s_sub
 #define TRUE 1
 // "|&><()*"
 
-int check_end(char *buff, t_quote *quote, int i)
-{
-    if ((quote->in_quote == TRUE && quote->quote == buff[i]))
-        quote->in_quote = FALSE; 
 
-    if (quote->in_quote == FALSE && (buff[i + 1] == ' ' || !buff[i + 1]))
-        return quote->in_quote = FALSE, 1;
-    if (quote->in_quote == FALSE && (buff[i + 1] == '|' || !buff[i + 1]))
-        return quote->in_quote = FALSE, 1;
+
+// char    *lexer()
+// {
+    
+// }
+
+int quote_handle(t_quote *quote, int i, char *buff)
+{
+    if (!ft_strchr("\"'", buff[i]) && quote->in_quote == FALSE)
+        return  (0);
+    if (!ft_strchr("\"'", buff[i]) && quote->in_quote == TRUE)
+        return (1);
+    if (quote->quote == buff[i] && quote->in_quote == TRUE)
+        return quote->in_quote = FALSE , 1;
+    if (ft_strchr("\"'", buff[i]) && quote->in_quote == FALSE)
+        return quote->in_quote = TRUE, quote->quote =  buff[i] , 1;
     return 0;
 }
 
 int parse(t_vars *vars)
 {
-    int i;
-    t_sub sub;
+    int     i;
+    t_sub   sub;
     t_quote quote;
 
     i = -1;
@@ -44,24 +52,12 @@ int parse(t_vars *vars)
     ft_bzero((void *)&quote, sizeof(t_quote));
     while (vars->buff[++i])
     {
-        if (vars->buff[i] == ' ' && quote.in_quote == FALSE)
+        if (quote_handle(&quote, i, vars->buff))
             continue;
-        if (!sub.end)
-        {
-            sub.end = 1;
-            sub.start = i;
-        }
-        if (ft_strchr("\"'", vars->buff[i]) && quote.in_quote == FALSE)
-        {
-            quote.quote = vars->buff[i];
-            quote.in_quote = TRUE;
-            continue ;
-        }
-        if (check_end(vars->buff, &quote, i))
-        {
-            printf("%s\n", ft_substr(vars->buff, sub.start, i - sub.start + 1));
-            sub.end = 0;
-        }
+        // if (end_token(&token, i, &sub))
+        //     lexer(vars->buff, sub);
+        printf("%c %d\n", vars->buff[i], i);
     }
+    printf("%s\n", ft_substr(vars->buff, sub.start, i - sub.start + 1));
     return 0;
 }
