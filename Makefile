@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+         #
+#    By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/09/04 00:55:40 by akharraz         ###   ########.fr        #
+#    Updated: 2022/09/04 04:32:06 by tel-mouh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,7 @@ ILIBFT = libft/include
 # ###################################################
 
 all : $(NAME)
+
 
 $(NAME): $(OBJ) $(OBJ_UTILS) | library
 	@ printf "\033[$(lines);0f"
