@@ -3,52 +3,65 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/10 19:23:40 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/08/16 04:40:31 by tel-mouh         ###   ########.fr       */
+/*   Created: 2022/09/04 00:22:43 by akharraz          #+#    #+#             */
+/*   Updated: 2022/09/04 04:13:05 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-//                      +
-//                 /        \                         /
-//               *           +
-//              /  \        /  \                      /
-//            8    3       *   1
-//                       /  \                         /
-//                      -4  8
-
-// (8 * 3) + (((-4) * 8) + 1)
-
-
-int order(int token)
+typedef struct s_sub
 {
-	if (token  == subtraction)
-		return 0;
-	else if (token == addition)
-		return 1;
-	else if (token == multiply)
-		return 2;
-	else if (token == division)
-		return 3;
-	else
-		return -1;
+    int start;
+    int end;
+}t_sub;
+#define FALSE 0
+#define TRUE 1
+// "|&><()*"
+
+int check_end(char *buff, t_quote *quote, int i)
+{
+    if ((quote->in_quote == TRUE && quote->quote == buff[i]))
+        quote->in_quote = FALSE; 
+
+    if (quote->in_quote == FALSE && (buff[i + 1] == ' ' || !buff[i + 1]))
+        return quote->in_quote = FALSE, 1;
+    if (quote->in_quote == FALSE && (buff[i + 1] == '|' || !buff[i + 1]))
+        return quote->in_quote = FALSE, 1;
+    return 0;
 }
 
-void parse(char **s, t_node **node)
+int parse(t_vars *vars)
 {
-	int 	i;
+    int i;
+    t_sub sub;
+    t_quote quote;
 
-	i = -1;
-	while (s[++i])
-	{
-			if (i == 0)
-				(*node) = new_node(atoi(s[i++]), NUM);
-			if (i++ != 1 && *node && order(s[i - 1][0]) > order((*node)->data))
-				nested(node, s[i - 1][0], atoi(s[i]));
-			else
-				new_head(node, s[i - 1][0], ft_atoi(s[i]));
-	}
+    i = -1;
+    ft_bzero((void *)&sub, sizeof(t_sub));
+    ft_bzero((void *)&quote, sizeof(t_quote));
+    while (vars->buff[++i])
+    {
+        if (vars->buff[i] == ' ' && quote.in_quote == FALSE)
+            continue;
+        if (!sub.end)
+        {
+            sub.end = 1;
+            sub.start = i;
+        }
+        if (ft_strchr("\"'", vars->buff[i]) && quote.in_quote == FALSE)
+        {
+            quote.quote = vars->buff[i];
+            quote.in_quote = TRUE;
+            continue ;
+        }
+        if (check_end(vars->buff, &quote, i))
+        {
+            printf("%s\n", ft_substr(vars->buff, sub.start, i - sub.start + 1));
+            sub.end = 0;
+        }
+    }
+    return 0;
 }

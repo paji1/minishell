@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+         #
+#    By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/08/16 02:11:05 by tel-mouh         ###   ########.fr        #
+#    Updated: 2022/09/04 00:55:40 by akharraz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SHELL := /bin/bash # Use bash syntax
 HEADERS = minishell.h types.h
 HEADERS := $(addprefix include/, $(HEADERS))
 # #################HEADERS_utils###########################
-UHEADERS = stack.h
+UHEADERS = queue.h types_q.h
 UHEADERS := $(addprefix include/, $(UHEADERS))
 
 # ################COMMANDS###########################
@@ -27,13 +27,12 @@ CFLAG = -g -pthread -Wall -Werror -Wextra -I include
 
 # ################SRCS_Objs##########################
 
-SRC = main.c new_node.c search.c free_tree.c calcul.c \
-	insertions.c parse.c dir.c init.c
+SRC = main.c dir.c init.c free_all.c parse.c
 OBJ = $(addprefix obj/, $(SRC:.c=.o))
 
 # ################SRCS_Objs_Utils####################
 
-SRC_UTILS = stack.c check_types.c
+SRC_UTILS = queue.c free_q.c
 OBJ_UTILS = $(addprefix obj/utils/, $(SRC_UTILS:.c=.o))
 
 # ################COLOR##############################
@@ -48,7 +47,7 @@ YELLOW='\033[0;33m'
 
 lines=$(shell tput lines)
 cols=$(shell tput cols)
-num=$(shell echo `ls src/*.c src/utils/*.c | wc -l`)
+num=$(shell echo `ls src/*.c | wc -l`)
 i_num:=$(shell expr $(cols) / $(num))
 i_num:=$(shell expr $(i_num) / 2)
 x  = -1
@@ -81,7 +80,7 @@ library :
 obj/%.o : src/%.c  $(HEADERS) $(UHEADERS)
 	@ mkdir -p obj
 	@ mkdir -p obj/utils
-	$ nu=$x ; if [[ $$nu -eq -1 ]] ; then \
+	@$ nu=$x ; if [[ $$nu -eq -1 ]] ; then \
 	printf ${RE}"🔷 Making the  --> "${NC} \
 	 ; fi
 	@ $(CC) $(CFLAG) -c $< -o $@

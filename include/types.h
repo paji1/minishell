@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 21:01:38 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/08/16 04:44:05 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/04 01:24:50 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,24 @@ typedef struct s_node
 
 typedef struct s_vars
 {
-	char	*cmd;
+	char	*buff;
 	char	**tab_cmd;
 	t_node	*node;
 	char	*base_name;
 } t_vars;
 
+typedef struct s_token
+{
+	char *cmd;
+	int  quotes_tab[2];
+	t_queue	*options_q;
+	t_queue	*args_q;
+}t_tokens;
+
+typedef struct s_quote
+{
+	char	quote;
+	int		in_quote;
+}t_quote;
 
 #endif

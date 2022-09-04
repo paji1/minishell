@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_node.c                                         :+:      :+:    :+:   */
+/*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/02 21:04:37 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/08/11 14:43:55 by tel-mouh         ###   ########.fr       */
+/*   Created: 2022/09/04 00:13:18 by akharraz          #+#    #+#             */
+/*   Updated: 2022/09/04 00:21:51 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_node *new_node(int data, int type)
+void    free_all(t_vars *vars)
 {
-	t_node *new;
-	new = (t_node *)malloc(sizeof(t_node));
-	new->data = data;	
-	new->type = type;
-	new->left = NULL;
-	new->right = NULL;
-	return (new);
+    free(vars->base_name);
+    free(vars->buff);
 }

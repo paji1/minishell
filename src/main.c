@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/08/16 05:47:56 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/04 00:29:28 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,10 @@ int	main(void)
 	{
 		init(&vars);
 	 	getdir(&vars.base_name);
-		vars.cmd = readline(vars.base_name);
-		if (vars.cmd == NULL)
-		{
-			free_all(&vars);
-			return perror("EOF"), 1;
-		}
-		if (!ft_strcmp(vars.cmd, ""))
-			continue;
-		vars.tab_cmd = ft_split(vars.cmd, ' ');
-		parse(vars.tab_cmd, &vars.node);
-		calculate(vars.node);
-		printf("%d\n", vars.node->data);
+		vars.buff = readline(vars.base_name);
+		if (vars.buff == NULL)
+			return free(vars.base_name), printf("exit\n"), 1;
+		parse(&vars);
 		free_all(&vars);
 	}
 	return 0;
