@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/04 00:53:30 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/09/04 22:53:32 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,14 @@ void    free_all(t_vars *vars);
 
 
 // -----------------utils-----------------------
-
+int		is_space(char c);
 // --------------parsing------------------------
-int parse(t_vars *vars);
+int		parse(t_vars *vars);
+void	start_token(char *buff, int i, t_sub *sub);
+int		end_token(char *buff, int i, t_sub *sub);
+void	handle_last(char *buff, int i, t_sub *sub);
+char    *lexer(char *buff, t_sub *sub);
+int		quote_handle(t_quote *quote, int i, char *buff);
 // ------------------dir------------------------
 char	*getbasename(char *path);
 void	getdir(char **base_name);

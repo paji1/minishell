@@ -6,7 +6,7 @@
 #    By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/09/04 04:32:06 by tel-mouh         ###   ########.fr        #
+#    Updated: 2022/09/04 22:53:01 by tel-mouh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,12 +27,12 @@ CFLAG = -g -pthread -Wall -Werror -Wextra -I include
 
 # ################SRCS_Objs##########################
 
-SRC = main.c dir.c init.c free_all.c parse.c
+SRC = main.c dir.c init.c free_all.c parse.c startend.c quote.c
 OBJ = $(addprefix obj/, $(SRC:.c=.o))
 
 # ################SRCS_Objs_Utils####################
 
-SRC_UTILS = queue.c free_q.c
+SRC_UTILS = queue.c free_q.c is_space.c
 OBJ_UTILS = $(addprefix obj/utils/, $(SRC_UTILS:.c=.o))
 
 # ################COLOR##############################

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 21:01:38 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/04 01:24:50 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/09/04 22:53:59 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # define TOKEN 1
 # define NUM 0
-
-
+# define FALSE 0
+# define TRUE 1
 enum TOKENS
 {
 	division = '/' ,multiply = '*' ,addition = '+',subtraction = '-'
@@ -51,5 +51,11 @@ typedef struct s_quote
 	char	quote;
 	int		in_quote;
 }t_quote;
+
+typedef struct s_sub
+{
+    int start;
+    int end;
+}t_sub;
 
 #endif

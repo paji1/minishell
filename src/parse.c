@@ -6,39 +6,19 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 00:22:43 by akharraz          #+#    #+#             */
-/*   Updated: 2022/09/04 20:51:04 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/04 22:53:49 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-typedef struct s_sub
-{
-    int start;
-    int end;
-}t_sub;
-#define FALSE 0
-#define TRUE 1
+
 // "|&><()*"
 
-
-
-// char    *lexer()
-// {
-    
-// }
-
-int quote_handle(t_quote *quote, int i, char *buff)
+char    *lexer(char *buff, t_sub *sub)
 {
-    if (!ft_strchr("\"'", buff[i]) && quote->in_quote == FALSE)
-        return  (0);
-    if (!ft_strchr("\"'", buff[i]) && quote->in_quote == TRUE)
-        return (1);
-    if (quote->quote == buff[i] && quote->in_quote == TRUE)
-        return quote->in_quote = FALSE , 1;
-    if (ft_strchr("\"'", buff[i]) && quote->in_quote == FALSE)
-        return quote->in_quote = TRUE, quote->quote =  buff[i] , 1;
-    return 0;
+    printf("%s\n", ft_substr(buff, sub->start, sub->end - sub->start));
+    return NULL;
 }
 
 int parse(t_vars *vars)
@@ -54,10 +34,10 @@ int parse(t_vars *vars)
     {
         if (quote_handle(&quote, i, vars->buff))
             continue;
-        // if (end_token(&token, i, &sub))
-        //     lexer(vars->buff, sub);
-        printf("%c %d\n", vars->buff[i], i);
+        if (end_token(vars->buff, i, &sub))
+            lexer(vars->buff, &sub);
+        start_token(vars->buff, i, &sub);
     }
-    printf("%s\n", ft_substr(vars->buff, sub.start, i - sub.start + 1));
+    handle_last(vars->buff, i, &sub);
     return 0;
 }

@@ -5,8 +5,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Sun Sep  4 04:32:07 2022
+# Make data base, printed on Sun Sep  4 22:53:07 2022
 
 # Variables
 
@@ -21,7 +22,7 @@ WSLENV = VSCODE_WSL_EXT_LOCATION/up
 # makefile (from 'Makefile', line 31)
 OBJ = $(addprefix obj/, $(SRC:.c=.o))
 # makefile (from 'Makefile', line 30)
-SRC = main.c dir.c init.c free_all.c parse.c
+SRC = main.c dir.c init.c free_all.c parse.c startend.c quote.c
 # makefile (from 'Makefile', line 17)
 HEADERS := include/minishell.h include/types.h
 # automatic
@@ -40,8 +41,8 @@ RM = rm -rf
 VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # environment
 _ = /home/taha/.vscode-server/bin/e4503b30fc78200f846c62cf8091b76ff5547662/node
-# makefile (from 'Makefile', line 53)
-x = -1
+# makefile (from 'Makefile', line 82)
+x = 4
 # environment
 WALLABY_PRODUCTION = true
 # makefile (from 'Makefile', line 1)
@@ -109,7 +110,7 @@ HOME = /home/taha
 # environment
 LOGNAME = taha
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 COLOR1 = \033[1;\033[1;31m
 # environment
@@ -189,7 +190,7 @@ VSCODE_HANDLES_SIGPIPE = true
 # default
 MAKEFILES := 
 # makefile (from 'Makefile', line 52)
-i_num := 8
+i_num := 5
 # automatic
 <F = $(notdir $<)
 # makefile (from 'Makefile', line 56)
@@ -211,7 +212,7 @@ SUFFIXES :=
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
 # makefile (from 'Makefile', line 35)
-SRC_UTILS = queue.c free_q.c
+SRC_UTILS = queue.c free_q.c is_space.c
 # default
 .RECIPEPREFIX := 
 # makefile (from 'Makefile', line 49)
@@ -225,7 +226,7 @@ WSL_DISTRO_NAME = Ubuntu-18.04
 # environment
 COLOR3 = \033[1;\033[1;31m
 # variable set hash-table stats:
-# Load=107/1024=10%, Rehash=0, Collisions=17/165=10%
+# Load=107/1024=10%, Rehash=0, Collisions=18/190=9%
 
 # Pattern-specific Variable Values
 
@@ -235,10 +236,9 @@ COLOR3 = \033[1;\033[1;31m
 
 # include (device 2064, inode 118331): 4 files, no impossibilities so far.
 # . (device 2064, inode 117325): 13 files, no impossibilities.
-# src/utils (device 2064, inode 118342): 2 files, no impossibilities so far.
-# src (device 2064, inode 118338): 8 files, no impossibilities so far.
+# src (device 2064, inode 118338): 10 files, no impossibilities so far.
 
-# 27 files, no impossibilities in 4 directories.
+# 27 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
@@ -270,14 +270,6 @@ obj/%.o: src/%.c include/minishell.h include/types.h include/queue.h include/typ
 # Files
 
 # Not a target:
-src/utils/queue.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-04 04:31:42.6319906
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
- 
 src/free_all.c:
 #  Implicit rule search has been done.
 #  Last modified 2022-09-04 04:31:42.6319906
@@ -291,12 +283,12 @@ all: Minishell
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/27=0%
 
 # Not a target:
 include/minishell.h:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-04 04:31:42.6219906
+#  Last modified 2022-09-04 22:52:47.1920366
 #  File has been updated.
 #  Successfully updated.
 
@@ -307,17 +299,10 @@ include/types_q.h:
 #  File has been updated.
 #  Successfully updated.
 
-# Not a target:
-src/utils/free_q.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-04 04:31:42.6319906
-#  File has been updated.
-#  Successfully updated.
-
 obj/main.o: src/main.c include/minishell.h include/types.h include/queue.h include/types_q.h
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'main'
-#  Last modified 2022-09-04 04:31:42.6319906
+#  Last modified 2022-09-04 22:53:04.2920366
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 82):
@@ -343,25 +328,19 @@ obj/main.o: src/main.c include/minishell.h include/types.h include/queue.h inclu
 	@tput el
 
 # Not a target:
-.SUFFIXES:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-04 04:32:07.0719906
+#  Last modified 2022-09-04 22:53:02.0020366
 #  File has been updated.
 #  Successfully updated.
 
-Minishell: obj/main.o obj/dir.o obj/init.o obj/free_all.o obj/parse.o obj/utils/queue.o obj/utils/free_q.o | library
+Minishell: obj/main.o obj/dir.o obj/init.o obj/free_all.o obj/parse.o obj/startend.o obj/quote.o obj/utils/queue.o obj/utils/free_q.o obj/utils/is_space.o | library
 #  Implicit rule search has not been done.
-#  Last modified 2022-09-04 04:31:42.6219906
+#  Last modified 2022-09-04 22:50:22.6120366
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/27=0%
 #  recipe to execute (from 'Makefile', line 70):
 	@ printf "\033[$(lines);0f"
 	@ tput el
@@ -370,6 +349,53 @@ Minishell: obj/main.o obj/dir.o obj/init.o obj/free_all.o obj/parse.o obj/utils/
 	@ printf ${GREEN}"\rMaking is done ✅\n"${NC}
 	@ $(CC) $(CFLAG) $(OBJ) $(OBJ_UTILS) -I $(ILIBFT) $(LIBFT) -lreadline -o $(NAME)
 	@ tput cvvis
+
+obj/startend.o: src/startend.c include/minishell.h include/types.h include/queue.h include/types_q.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'startend'
+#  Last modified 2022-09-04 22:44:51.1420366
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := obj/startend.o
+# automatic
+# % := 
+ 
+# automatic
+# * := startend
+# automatic
+# + := src/startend.c include/minishell.h include/types.h include/queue.h include/types_q.h
+# automatic
+# | := 
+# automatic
+# < := src/startend.c
+# automatic
+# ^ := src/startend.c include/minishell.h include/types.h include/queue.h include/types_q.h
+# automatic
+# ? := src/startend.c include/minishell.h
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=9/38=24%
+#  recipe to execute (from 'Makefile', line 82):
+	@ mkdir -p obj
+	@ mkdir -p obj/utils
+	@$ nu=$x ; if [[ $$nu -eq -1 ]] ; then \
+	printf ${RE}"🔷 Making the  --> "${NC} \
+	 ; fi
+	@ $(CC) $(CFLAG) -c $< -o $@
+	@tput civis
+	$(eval x=$(shell expr $(x) + $(i_num) ))
+	@ printf $(notdir $@)"\n"
+	@ printf  ${CODE_SAVE_CURSOR}""
+	@ printf "\033[$(lines);0f"
+	@number=$x ; while [[ $$number -ge 0 ]] ; do \
+        printf ${YELLOW}"🟩"${NC}  ;\
+        ((number = number - 1)) ; \
+    done
+	@printf  ${CODE_RESTORE_CURSOR}""
+	@printf  ${CODE_CURSOR_IN_SCROLL_AREA}""
+	@printf  ${CODE_SAVE_CURSOR}""
+	@printf ${RE}"🔷 Making the  --> "${NC} 
+	@tput el
 
 fclean: clean
 #  Implicit rule search has not been done.
@@ -388,30 +414,16 @@ src/main.c:
 
 library:
 #  Implicit rule search has not been done.
-#  Implicit/static pattern stem: ''
-#  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := library
-# automatic
-# % := 
-# automatic
-# * := 
-# automatic
-# + := 
-# automatic
-# | := 
-# automatic
-# < := 
-# automatic
-# ^ := 
-# automatic
-# ? := 
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/11=9%
+#  Modification time never checked.
+#  File has not been updated.
 #  recipe to execute (from 'Makefile', line 79):
 	@ make -C libft
+
+# Not a target:
+obj/quote.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 .DEFAULT:
@@ -431,7 +443,7 @@ re:
 obj/parse.o: src/parse.c include/minishell.h include/types.h include/queue.h include/types_q.h
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'parse'
-#  Last modified 2022-09-04 04:31:42.6319906
+#  Last modified 2022-09-04 22:53:04.5620366
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 82):
@@ -468,7 +480,7 @@ clean:
 obj/init.o: src/init.c include/minishell.h include/types.h include/queue.h include/types_q.h
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'init'
-#  Last modified 2022-09-04 04:31:42.6319906
+#  Last modified 2022-09-04 22:53:04.4320366
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 82):
@@ -496,7 +508,7 @@ obj/init.o: src/init.c include/minishell.h include/types.h include/queue.h inclu
 obj/dir.o: src/dir.c include/minishell.h include/types.h include/queue.h include/types_q.h
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'dir'
-#  Last modified 2022-09-04 04:31:42.6319906
+#  Last modified 2022-09-04 22:53:04.3520366
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 82):
@@ -521,38 +533,23 @@ obj/dir.o: src/dir.c include/minishell.h include/types.h include/queue.h include
 	@printf ${RE}"🔷 Making the  --> "${NC} 
 	@tput el
 
-obj/utils/queue.o: src/utils/queue.c include/minishell.h include/types.h include/queue.h include/types_q.h
+# Not a target:
+src/startend.c:
 #  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'utils/queue'
-#  Last modified 2022-09-04 04:31:42.6319906
+#  Last modified 2022-09-04 22:50:59.5720366
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 82):
-	@ mkdir -p obj
-	@ mkdir -p obj/utils
-	@$ nu=$x ; if [[ $$nu -eq -1 ]] ; then \
-	printf ${RE}"🔷 Making the  --> "${NC} \
-	 ; fi
-	@ $(CC) $(CFLAG) -c $< -o $@
-	@tput civis
-	$(eval x=$(shell expr $(x) + $(i_num) ))
-	@ printf $(notdir $@)"\n"
-	@ printf  ${CODE_SAVE_CURSOR}""
-	@ printf "\033[$(lines);0f"
-	@number=$x ; while [[ $$number -ge 0 ]] ; do \
-        printf ${YELLOW}"🟩"${NC}  ;\
-        ((number = number - 1)) ; \
-    done
-	@printf  ${CODE_RESTORE_CURSOR}""
-	@printf  ${CODE_CURSOR_IN_SCROLL_AREA}""
-	@printf  ${CODE_SAVE_CURSOR}""
-	@printf ${RE}"🔷 Making the  --> "${NC} 
-	@tput el
+
+# Not a target:
+obj/utils/queue.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 obj/free_all.o: src/free_all.c include/minishell.h include/types.h include/queue.h include/types_q.h
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'free_all'
-#  Last modified 2022-09-04 04:31:42.6319906
+#  Last modified 2022-09-04 22:53:04.5020366
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 82):
@@ -575,7 +572,6 @@ obj/free_all.o: src/free_all.c include/minishell.h include/types.h include/queue
 	@printf  ${CODE_CURSOR_IN_SCROLL_AREA}""
 	@printf  ${CODE_SAVE_CURSOR}""
 	@printf ${RE}"🔷 Making the  --> "${NC} 
- 
 	@tput el
 
 # Not a target:
@@ -585,45 +581,29 @@ include/queue.h:
 #  File has been updated.
 #  Successfully updated.
 
-obj/utils/free_q.o: src/utils/free_q.c include/minishell.h include/types.h include/queue.h include/types_q.h
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'utils/free_q'
-#  Last modified 2022-09-04 04:31:42.6319906
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 82):
-	@ mkdir -p obj
-	@ mkdir -p obj/utils
-	@$ nu=$x ; if [[ $$nu -eq -1 ]] ; then \
-	printf ${RE}"🔷 Making the  --> "${NC} \
-	 ; fi
-	@ $(CC) $(CFLAG) -c $< -o $@
-	@tput civis
-	$(eval x=$(shell expr $(x) + $(i_num) ))
-	@ printf $(notdir $@)"\n"
-	@ printf  ${CODE_SAVE_CURSOR}""
-	@ printf "\033[$(lines);0f"
-	@number=$x ; while [[ $$number -ge 0 ]] ; do \
-        printf ${YELLOW}"🟩"${NC}  ;\
-        ((number = number - 1)) ; \
-    done
-	@printf  ${CODE_RESTORE_CURSOR}""
-	@printf  ${CODE_CURSOR_IN_SCROLL_AREA}""
-	@printf  ${CODE_SAVE_CURSOR}""
-	@printf ${RE}"🔷 Making the  --> "${NC} 
-	@tput el
+# Not a target:
+obj/utils/free_q.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 src/parse.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-04 04:31:42.6319906
+#  Last modified 2022-09-04 22:52:08.0820366
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
+obj/utils/is_space.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 include/types.h:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-04 04:31:42.6219906
+#  Last modified 2022-09-04 22:42:19.6620366
 #  File has been updated.
 #  Successfully updated.
 
@@ -642,19 +622,19 @@ src/dir.c:
 #  Successfully updated.
 
 # files hash-table stats:
-# Load=27/1024=3%, Rehash=0, Collisions=0/128=0%
+# Load=29/1024=3%, Rehash=0, Collisions=0/121=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 62 / storage = 609 B / avg = 9 B
-# current buf: size = 8162 B / used = 609 B / count = 62 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 62 / storage = 611 B / avg = 9 B
+# current buf: size = 8162 B / used = 611 B / count = 62 / avg = 9 B
 
-# strcache performance: lookups = 145 / hit rate = 57%
+# strcache performance: lookups = 135 / hit rate = 54%
 # hash-table stats:
-# Load=62/8192=1%, Rehash=0, Collisions=2/145=1%
-# Finished Make data base on Sun Sep  4 04:32:07 2022
+# Load=62/8192=1%, Rehash=0, Collisions=2/135=1%
+# Finished Make data base on Sun Sep  4 22:53:07 2022
 
  
