@@ -6,12 +6,21 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 22:51:36 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/04 22:52:35 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/05 19:15:47 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+
+/**
+ * @brief hande quote to continue loop in parse function
+ * 
+ * @param quote struct to handel quote
+ * @param i counter inside parse function
+ * @param buff return line of readline
+ * @return int if inside quote or not
+ */
 int quote_handle(t_quote *quote, int i, char *buff)
 {
     if (!ft_strchr("\"'", buff[i]) && quote->in_quote == FALSE)

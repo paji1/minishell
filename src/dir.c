@@ -6,12 +6,19 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 21:00:52 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/08/16 02:02:53 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/05 19:20:31 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+/**
+ * @brief allocate memory for prompt and return address
+ * 
+ * @param str base_name
+ * @param ad post prompt
+ * @return allocated memory for char * base_name
+ */
 char	*dub_add(char *str, char *ad)
 {
 	char	*s;
@@ -32,6 +39,12 @@ char	*dub_add(char *str, char *ad)
 	
 }
 
+/**
+ * @brief get basename for directory
+ * 
+ * @param path of the directory
+ * @return char* addresses when basename is started
+ */
 char	*getbasename(char *path)
 {
 	char *last_slash;
@@ -52,13 +65,20 @@ char	*getbasename(char *path)
 	return last_slash  + 1;
 }
 
-void	getdir(char **base_name)
+/**
+ * @brief get the path and allocated prompt string
+ * with color and optional postfix characters
+ * @param base_name address of pointer base_name
+ * @return size_t size of prompt
+ */
+size_t	getdir(char **base_name)
 {
 	char *buff;
 
 	buff = malloc(1244);	
 	if (!getcwd(buff, -1))
-		return perror("getcwd failed") ;
+		return perror("getcwd failed"), -1;
 	*base_name = dub_add(getbasename(buff), "-> ");
 	free(buff);
+	return (ft_strlen(*base_name));
 }
