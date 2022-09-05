@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/04 22:53:32 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/05 17:40:25 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void    free_all(t_vars *vars);
 
 // -----------------utils-----------------------
 int		is_space(char c);
+int		is_special(char *str);
 // --------------parsing------------------------
 int		parse(t_vars *vars);
 void	start_token(char *buff, int i, t_sub *sub);

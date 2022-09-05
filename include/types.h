@@ -6,34 +6,38 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 21:01:38 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/04 22:53:59 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/05 18:18:13 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPES_H
 # define TYPES_H
 
-# define TOKEN 1
-# define NUM 0
+
 # define FALSE 0
 # define TRUE 1
-enum TOKENS
-{
-	division = '/' ,multiply = '*' ,addition = '+',subtraction = '-'
-};
+
+
+# define OR "||"
+# define AND "&&"
+# define PIP "|"
+# define REDIRECT_SO ">"
+# define REDIRECT_SI "<"
+# define APPEND ">>"
+# define HERDOC "<<"
 
 typedef struct s_node
 {
 	int data;
 	int type;
 	struct s_node *right;
-	struct s_node *left;	
+	struct s_node *left;
 }t_node;
 
 typedef struct s_vars
 {
 	char	*buff;
-	char	**tab_cmd;
+	char	*token;
 	t_node	*node;
 	char	*base_name;
 } t_vars;

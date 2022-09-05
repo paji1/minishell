@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 02:09:50 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/04 00:21:22 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/09/05 18:26:41 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,4 @@ void	init(t_vars *vars)
 	vars->buff = NULL;
 	vars->base_name = NULL;
 	vars->node = NULL;
-	vars->tab_cmd = NULL;
 }
