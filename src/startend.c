@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 22:41:02 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/05 19:13:58 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/06 21:04:47 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@
  */
 int end_token(char *buff, int i, t_sub *sub)
 {
-    if (is_space(buff[i]) && !is_space(buff[i - 1]))
+    if (is_special(&buff[i - 1]) || is_space(buff[i - 1]))
+        return 0;
+    if (is_space(buff[i]))
         return (sub->end = i, 1);
-	else if(is_special(&buff[i]) && !is_special(&buff[i - 1]))
+	else if(is_special(&buff[i]))
 		return (sub->end = i, 1);
     else if (!buff[i + 1])
         return (sub->end = i + 1, 1);
