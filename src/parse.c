@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 00:22:43 by akharraz          #+#    #+#             */
-/*   Updated: 2022/09/05 19:07:29 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/06 22:10:10 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char    *handle_special(char *buff, t_sub *sub, int *i)
     if (is_special(buff) == 1)
     {
         printf("%s\n",ft_substr(buff, 0, 1));
-        sub->start = *i + 1;  
+        sub->start = *i + 1;
     }
     else if (is_special(buff) == 2)
     {
