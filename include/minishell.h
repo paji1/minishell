@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/05 17:40:25 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/06 21:42:11 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char    *lexer(char *buff, t_sub *sub);
 int		quote_handle(t_quote *quote, int i, char *buff);
 // ------------------dir------------------------
 char	*getbasename(char *path);
-void	getdir(char **base_name);
+size_t	getdir(char **base_name);
 char	*dub_add(char *str, char *ad);
 // -----------------init------------------------
 void	init(t_vars *vars);
