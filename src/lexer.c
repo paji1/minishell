@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/08 18:53:29 by tel-mouh         ###   ########.fr       */
+/*   Created: 2022/09/06 23:21:56 by tel-mouh          #+#    #+#             */
+/*   Updated: 2022/09/08 20:21:56 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-
-int get_type(char *token);
-int	main(void) 
+char    *lexer(char *buff, t_sub *sub)
 {
-	t_vars	vars;
+    return (ft_substr(buff, sub->start, sub->end - sub->start));
+}
 
-	while (1)
-	{
-		init(&vars);
-	 	getdir(&vars.base_name);
-		vars.buff = readline(vars.base_name);
-		if (vars.buff == NULL)
-			return free(vars.base_name), printf("exit\n"), 1;
-		parse(&vars);
-		free_all(&vars);
-	}
-	
-	return 0;
+char    *handle_special(char *buff, t_sub *sub, int *i)
+{
+    if (is_special(buff) == 1)
+        return (sub->start = *i + 1, ft_substr(buff, 0, 1));
+    else if (is_special(buff) == 2)
+        return (sub->start = *i + 2, *i += 1, ft_substr(buff, 0, 2));
+    return NULL;
 }

@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print_tree.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/08 18:53:29 by tel-mouh         ###   ########.fr       */
+/*   Created: 2022/09/08 18:10:15 by tel-mouh          #+#    #+#             */
+/*   Updated: 2022/09/08 19:01:00 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 
-int get_type(char *token);
-int	main(void) 
+void print_tree(t_node *root)
 {
-	t_vars	vars;
-
-	while (1)
-	{
-		init(&vars);
-	 	getdir(&vars.base_name);
-		vars.buff = readline(vars.base_name);
-		if (vars.buff == NULL)
-			return free(vars.base_name), printf("exit\n"), 1;
-		parse(&vars);
-		free_all(&vars);
-	}
-	
-	return 0;
+	if (root == NULL)
+		return ;
+	print_tree(root->left);
+	print_tree(root->right);
+	printf("{sds}%s\n", root->token.token);
 }

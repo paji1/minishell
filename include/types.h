@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 21:01:38 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/05 18:18:13 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/08 20:01:49 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,39 +16,46 @@
 
 # define FALSE 0
 # define TRUE 1
+# define ARG 3
+# define OPTIONS 4
+# define FILED 13
+# define BLOCK 14
+# define SPECIAL 5
+# define CMD 2
+# define OP 15
 
+# define AND 12
+# define OR 11
+# define PIP 10
+# define REDIRECT_SO 9
+# define REDIRECT_SI 8
+# define APPEND 7
+# define HERDOC 6
 
-# define OR "||"
-# define AND "&&"
-# define PIP "|"
-# define REDIRECT_SO ">"
-# define REDIRECT_SI "<"
-# define APPEND ">>"
-# define HERDOC "<<"
+typedef struct s_token
+{
+	char	*token;
+	int		type;
+	int	 	exit_status;
+	t_queue	*options_q;
+	t_queue	*args_q;
+}t_token;
 
 typedef struct s_node
 {
-	int data;
-	int type;
-	struct s_node *right;
-	struct s_node *left;
+	t_token 		token;
+	int				node_type;
+	struct s_node	*right;
+	struct s_node	*left;
 }t_node;
 
 typedef struct s_vars
 {
 	char	*buff;
-	char	*token;
-	t_node	*node;
+	t_node	*root;
 	char	*base_name;
 } t_vars;
 
-typedef struct s_token
-{
-	char *cmd;
-	int  quotes_tab[2];
-	t_queue	*options_q;
-	t_queue	*args_q;
-}t_tokens;
 
 typedef struct s_quote
 {

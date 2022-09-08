@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/06 21:42:11 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/08 19:51:49 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@
 
 // --------------free_functions-----------------
 void    free_all(t_vars *vars);
-// --------------depth_first_values-------------
-
 
 // -----------------utils-----------------------
 int		is_space(char c);
@@ -42,16 +40,35 @@ int		is_special(char *str);
 int		parse(t_vars *vars);
 void	start_token(char *buff, int i, t_sub *sub);
 int		end_token(char *buff, int i, t_sub *sub);
-void	handle_last(char *buff, int i, t_sub *sub);
-char    *lexer(char *buff, t_sub *sub);
+void	handle_last(t_vars *vars, int i, t_sub *sub);
 int		quote_handle(t_quote *quote, int i, char *buff);
+// -------------------lexer --------------------
+char    *handle_special(char *buff, t_sub *sub, int *i);
+char    *lexer(char *buff, t_sub *sub);
+
+
 // ------------------dir------------------------
 char	*getbasename(char *path);
 size_t	getdir(char **base_name);
 char	*dub_add(char *str, char *ad);
 // -----------------init------------------------
 void	init(t_vars *vars);
+// -------------------type----------------------
+int		get_type(char *token);
+int		block_op(char *token);
+
+// ---------------node__________________________
+t_node	*new_tnode(void);
+// ----------------handle_tree------------------
+int		handle_token(char *token ,t_vars *vars);
+void	put_block(t_node **root, t_node *new);
+int		handle_OP(t_vars *vars, t_node *node);
+void	above_root(t_node **root, t_node *new);
+void	nested(t_node **root, t_node *new);
+// ================print========================
+void print_tree(t_node *root);
 // ---------------------------------------------
+
 
 
 

@@ -4,7 +4,7 @@
 		"name": "(gdb) Launch",
 		"type": "cppdbg",
 		"request": "launch",
-		"program": "${workspaceFolder}/Minishell",
+		"program": "${workspaceFolder}/minishell",
 		"args": ["8","/","2"],
 		"stopAtEntry": false,
 		"cwd": "${fileDirname}",

@@ -6,7 +6,7 @@
 #    By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/09/05 17:28:30 by tel-mouh         ###   ########.fr        #
+#    Updated: 2022/09/08 18:13:08 by tel-mouh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ CFLAG = -g -pthread -Wall -Werror -Wextra -I include
 
 # ################SRCS_Objs##########################
 
-SRC = main.c dir.c init.c free_all.c parse.c startend.c quote.c
+SRC = main.c dir.c init.c free_all.c parse.c startend.c quote.c lexer.c\
+	type.c handle_tree.c print_tree.c
 OBJ = $(addprefix obj/, $(SRC:.c=.o))
 
 # ################SRCS_Objs_Utils####################
@@ -47,7 +48,7 @@ YELLOW='\033[0;33m'
 
 lines=$(shell tput lines)
 cols=$(shell tput cols)
-num=$(shell echo `ls src/*.c | wc -l`)
+num=$(shell echo `ls src/*.c src/utils/*.c | wc -l`)
 i_num:=$(shell expr $(cols) / $(num))
 i_num:=$(shell expr $(i_num) / 2)
 x  = -1
@@ -57,7 +58,7 @@ CODE_CURSOR_IN_SCROLL_AREA="\033[1A"
 
 # ###############executable##########################
 
-NAME = ./Minishell
+NAME = ./minishell
 LIBFT = libft/library/libft.a
 ILIBFT = libft/include
 
