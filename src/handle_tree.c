@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 04:28:56 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/08 19:55:35 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/10 20:31:12 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,10 @@ int	handle_block(t_vars *vars, t_node *node)
 	return 0;
 }
 
-t_node *create_token(t_node *new, char *token)
-{
-	if (!new)
-		return NULL;
-	new->token.type = get_type(token);
-	new->node_type = block_op(token);
-	new->token.token = token;
-	return new;
-}
 int	handle_token(char *token ,t_vars *vars)
 {
-	t_node *node;
+	t_node 		*node;
+	// t_node 		*last;
 
 	if (token == NULL)
 		return 0;

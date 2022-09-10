@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 02:09:50 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/10 20:26:19 by tel-mouh         ###   ########.fr       */
+/*   Created: 2022/09/10 20:34:46 by tel-mouh          #+#    #+#             */
+/*   Updated: 2022/09/10 20:49:42 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include <stdio.h>
 
-/**
- * @brief initialize vars structure
- * 
- * @param vars struct inside main function
- */
-void	init(t_vars *vars)
+typedef enum e_frut
 {
-	vars->buff = NULL;
-	vars->base_name = NULL;
-	vars->root = NULL;
+	PIP,
+	AND
+}t_fruit;
+
+int	main(void)
+{
+	char *const	stoken[] = {[PIP] = "|", \
+		[AND] = "&&"};
+
+	printf("%s\n", stoken[AND]);
 }

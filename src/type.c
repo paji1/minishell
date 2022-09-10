@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 04:22:26 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/08 17:29:05 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/10 20:32:29 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,13 @@ int block_op(char *token)
 		return BLOCK;
 	else
 		return OP;
+}
+
+typedef enum {
+	PIP,
+}token;
+int accpted(char *token)
+{
+	
+	return 0;
 }
