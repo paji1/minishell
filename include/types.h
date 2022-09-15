@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 21:01:38 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/08 20:01:49 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/15 19:12:50 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,31 @@
 
 # define FALSE 0
 # define TRUE 1
-# define ARG 3
-# define OPTIONS 4
-# define FILED 13
-# define BLOCK 14
+# define FILED 22
+# define BLOCK 21
 # define SPECIAL 5
-# define CMD 2
-# define OP 15
+# define OP 20
 
-# define AND 12
-# define OR 11
-# define PIP 10
-# define REDIRECT_SO 9
-# define REDIRECT_SI 8
-# define APPEND 7
-# define HERDOC 6
+
+typedef enum e_etokens
+{
+	AND = 12,
+	OR,
+	PIP,
+	REDIRECT_SO,
+	REDIRECT_SI,
+	APPEND,
+	HERDOC,
+	CMD,
+	ARG,
+	OPTIONS
+}t_etoken;
 
 typedef struct s_token
 {
 	char	*token;
 	int		type;
 	int	 	exit_status;
-	t_queue	*options_q;
 	t_queue	*args_q;
 }t_token;
 
@@ -54,6 +57,7 @@ typedef struct s_vars
 	char	*buff;
 	t_node	*root;
 	char	*base_name;
+	char	**op_tab;
 } t_vars;
 
 

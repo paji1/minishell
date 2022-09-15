@@ -6,7 +6,7 @@
 #    By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/09/10 20:23:27 by tel-mouh         ###   ########.fr        #
+#    Updated: 2022/09/15 18:48:29 by tel-mouh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,6 +75,7 @@ $(NAME): $(OBJ) $(OBJ_UTILS) | library
 	@ printf ${GREEN}"\rMaking is done ✅\n"${NC}
 	@ $(CC) $(CFLAG) $(OBJ) $(OBJ_UTILS) -I $(ILIBFT) $(LIBFT) -lreadline -o $(NAME)
 	@ tput cvvis
+	@ echo "---------------------------------------------------" >> lastcompiled.log
 
 library : 
 	@ make -C libft
@@ -91,6 +92,7 @@ obj/%.o : src/%.c  $(HEADERS) $(UHEADERS)
 	@ printf $(notdir $@)"\n"
 	@ printf  ${CODE_SAVE_CURSOR}""
 	@ printf "\033[$(lines);0f"
+	@ echo $< >> lastcompiled.log
 	@number=$x ; while [[ $$number -ge 0 ]] ; do \
         printf ${YELLOW}"🟩"${NC}  ;\
         ((number = number - 1)) ; \

@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 00:22:43 by akharraz          #+#    #+#             */
-/*   Updated: 2022/09/08 18:59:26 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/15 03:40:54 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,17 @@ int parse(t_vars *vars)
         if (quote_handle(&quote, i, vars->buff))
             continue;
         if (end_token(vars->buff, i, &sub))
-            handle_token(lexer(vars->buff   , &sub), vars);
-        handle_token(handle_special(&vars->buff[i], &sub, &i), vars);
+            if (!handle_token(lexer(vars->buff   , &sub), vars))
+                return 0;
+        if (!handle_token(handle_special(&vars->buff[i], &sub, &i), vars))
+                return 0;
         start_token(vars->buff, i, &sub);
     }
-    handle_last(vars, i, &sub);
-    print_tree(vars->root);
+    if (!handle_last(vars, i, &sub))
+        return 0;
+    get_type(NULL);
+    if (!accepted(NULL))
+        return printf("parse error\n"), 0;
+    print_tree(vars->root, vars);
     return 0;
 }

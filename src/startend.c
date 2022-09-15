@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 22:41:02 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/08 20:43:11 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/15 03:44:34 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,10 @@ void start_token(char *buff, int i, t_sub *sub)
  * @param i count inside parse function
  * @param sub where is start and end of token
  */
-void handle_last(t_vars *vars, int i, t_sub *sub)
+int handle_last(t_vars *vars, int i, t_sub *sub)
 {
     if (end_token(vars->buff, i, sub) && ft_strchr("\"'", vars->buff[i - 1]))
-        handle_token(lexer(vars->buff, sub), vars);
+        if (!handle_token(lexer(vars->buff, sub), vars))
+            return 0;
+    return 1;
 }

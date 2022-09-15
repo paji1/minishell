@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/10 20:26:04 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/15 03:19:18 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,12 @@ int		is_special(char *str);
 int		parse(t_vars *vars);
 void	start_token(char *buff, int i, t_sub *sub);
 int		end_token(char *buff, int i, t_sub *sub);
-void	handle_last(t_vars *vars, int i, t_sub *sub);
+int		handle_last(t_vars *vars, int i, t_sub *sub);
 int		quote_handle(t_quote *quote, int i, char *buff);
 // -------------------lexer --------------------
 char    *handle_special(char *buff, t_sub *sub, int *i);
 char    *lexer(char *buff, t_sub *sub);
-
-
+int		accepted(t_node *new);
 // ------------------dir------------------------
 char	*getbasename(char *path);
 size_t	getdir(char **base_name);
@@ -68,7 +67,7 @@ void	nested(t_node **root, t_node *new);
 // -------------node ---------------------------
 t_node *create_token(t_node *new, char *token);
 // ================print========================
-void print_tree(t_node *root);
+void print_tree(t_node *root,t_vars *vars);
 // ---------------------------------------------
 
 

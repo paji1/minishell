@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 04:22:26 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/10 20:32:29 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/15 22:58:40 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int get_type(char *token)
 {
 	static int last_token;
 
+	if (token == NULL)
+		return last_token = 0, -1;
 	if (!ft_strcmp(token , "||"))
 		return last_token = OR , OR;
 	else if (!ft_strcmp(token , "&&"))
@@ -55,11 +57,32 @@ int block_op(char *token)
 		return OP;
 }
 
-typedef enum {
-	PIP,
-}token;
-int accpted(char *token)
+
+
+int expected(t_node *new, int type)
 {
-	
+	if (type == BLOCK)
+		return (new->node_type == BLOCK || new->node_type == OP);
+	else if (type == OP)
+		return (\
+		new->node_type == BLOCK || (new->node_type == OP \
+		&& new->token.type != AND  && new->token.type != OR\
+		));
 	return 0;
 }
+
+int accepted(t_node *new)
+{
+	static t_node	*node;
+	int				cond;
+
+	if (new == NULL)
+		return cond = !(node->node_type == OP), node = NULL, cond;
+	if (node == NULL)
+		return node = new, !(node->token.type == AND || node->token.type == OR || node->token.type == PIP);
+	if (!expected(new, node->node_type))
+		return 0;
+	return node = new, 1;
+}
+
+

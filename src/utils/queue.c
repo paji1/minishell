@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   queue.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 05:38:56 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/04 00:59:11 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/09/15 19:32:40 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,3 @@ t_nodeq	*qget(t_queue *queue)
 	queue->tail->next = NULL;
 	return tail;
 }
-

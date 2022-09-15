@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/08 18:53:29 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/15 18:49:02 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int	main(void)
 		vars.buff = readline(vars.base_name);
 		if (vars.buff == NULL)
 			return free(vars.base_name), printf("exit\n"), 1;
-		parse(&vars);
+		if (vars.buff[0])
+			parse(&vars);
 		free_all(&vars);
 	}
-	
 	return 0;
 }
