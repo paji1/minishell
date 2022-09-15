@@ -19,4 +19,5 @@ void	qput(t_queue *queue, t_nodeq *new);
 t_nodeq	*new_node(void *data);
 t_nodeq	*qget(t_queue *queue);
 void	free_queue(t_queue *queue);
+t_nodeq	*qget_front(t_queue *queue);
 #endif /* !QUEEUE_H */

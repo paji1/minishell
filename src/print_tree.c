@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 18:10:15 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/15 19:06:35 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/16 00:37:21 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void print_tree(t_node *root,t_vars *vars)
 {
-	if (root == NULL || root->token.type == REDIRECT_SO)
+	if (root == NULL)
 		return ;
 	print_tree(root->left, vars);
 	print_tree(root->right, vars);

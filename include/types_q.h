@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types_q.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 05:22:52 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/04 00:57:10 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/09/15 23:50:10 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@
  */
 typedef struct s_nodeq
 {
-	void *data;
-	struct s_nodeq *next;
-	struct s_nodeq *prev;
+	void			*data;
+	struct s_nodeq	*next;
+	struct s_nodeq	*prev;
 }t_nodeq;
 
 /**

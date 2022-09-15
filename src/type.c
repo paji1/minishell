@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 04:22:26 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/15 22:58:40 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/16 00:42:08 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,15 @@ int block_op(char *token)
 
 
 
-int expected(t_node *new, int type)
+int expected(t_node *new, t_node *node)
 {
-	if (type == BLOCK)
+	if (node->node_type == BLOCK)
 		return (new->node_type == BLOCK || new->node_type == OP);
-	else if (type == OP)
-		return (\
-		new->node_type == BLOCK || (new->node_type == OP \
-		&& new->token.type != AND  && new->token.type != OR\
-		));
+	else if (node->token.type >= AND && node->token.type <= PIP && \
+		(new->token.type >= REDIRECT_SO && new->token.type <= HERDOC))
+		return (1);
+	else if (node->node_type == OP)
+		return (new->node_type == BLOCK);
 	return 0;
 }
 
@@ -80,7 +80,8 @@ int accepted(t_node *new)
 		return cond = !(node->node_type == OP), node = NULL, cond;
 	if (node == NULL)
 		return node = new, !(node->token.type == AND || node->token.type == OR || node->token.type == PIP);
-	if (!expected(new, node->node_type))
+
+	if (!expected(new, node))
 		return 0;
 	return node = new, 1;
 }
