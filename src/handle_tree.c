@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 04:28:56 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/16 00:38:27 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/16 04:00:18 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int handle_OP(t_vars *vars, t_node *node)
 {
+	if(node->token.type >= REDIRECT_SO && node->token.type <= HERDOC)
+		return put_redir(&vars->root, node), 1;
 	if (vars->root->node_type == BLOCK && node->node_type == OP)
 		return node->left = vars->root,vars->root = node , 1;
 	if (node->token.type == OR || node->token.type == AND)
@@ -43,7 +45,7 @@ int	handle_token(char *token ,t_vars *vars)
 		return -1;
 	if (accepted(node) == 0)
 		return printf("parse error, 	invalid token\n"), 0;
-	if (vars->root == NULL)
+	if (vars->root == NULL && node->node_type != OP)
 		return vars->root = node, 1;
 	if (handle_block(vars, node))
 		return 1;
@@ -84,8 +86,39 @@ void	put_block(t_node **root, t_node *new)
 	}
 	if ((*root)->right == NULL)
 	{
+		if (new->token.type == FILED)
+		{
+			qput((*root)->token.redir, new_node(new));
+			return	;
+		}	
+		if (new->token.type == ARG || new->token.type == OPTIONS)
+		{
+			if ((*root)->token.args_q == NULL)
+				(*root)->token.args_q = new_queue();
+			qput((*root)->token.args_q, new_node(new));
+			return	;
+		}	
 		(*root)->right = new;
 		return ;
 	}
 	put_block(&(*root)->right, new);
+}
+
+void	put_redir(t_node **root, t_node *new)
+{
+	if (*root == NULL)
+	{	
+		*root = create_token(new_tnode(), "");
+		(*root)->token.redir = new_queue();
+		qput((*root)->token.redir, new_node(new));
+		return ;
+	}
+	if ((*root)->right == NULL)
+	{
+		if ((*root)->token.redir == NULL)
+			(*root)->token.redir = new_queue();
+		qput((*root)->token.redir, new_node(new));
+		return ;
+	}
+	put_redir(&(*root)->right, new);
 }

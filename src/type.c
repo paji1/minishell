@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 04:22:26 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/16 00:42:08 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/16 04:08:44 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int get_type(char *token)
 		else
 			return last_token = ARG , ARG;
 	}
-	// return -1;
 }
 
 int block_op(char *token)
@@ -51,13 +50,12 @@ int block_op(char *token)
 	int type;
 
 	type = get_type(token);
-	if (type == CMD || type == FILED || type == ARG|| type == OPTIONS )
+	if (type == CMD || type == FILED || type == ARG|| type == OPTIONS \
+		|| type == -1)
 		return BLOCK;
 	else
 		return OP;
 }
-
-
 
 int expected(t_node *new, t_node *node)
 {
@@ -80,10 +78,7 @@ int accepted(t_node *new)
 		return cond = !(node->node_type == OP), node = NULL, cond;
 	if (node == NULL)
 		return node = new, !(node->token.type == AND || node->token.type == OR || node->token.type == PIP);
-
 	if (!expected(new, node))
 		return 0;
 	return node = new, 1;
 }
-
-

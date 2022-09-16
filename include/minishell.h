@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/15 03:19:18 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/16 01:23:11 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	put_block(t_node **root, t_node *new);
 int		handle_OP(t_vars *vars, t_node *node);
 void	above_root(t_node **root, t_node *new);
 void	nested(t_node **root, t_node *new);
+void	put_redir(t_node **root, t_node *new);
 // -------------node ---------------------------
 t_node *create_token(t_node *new, char *token);
 // ================print========================

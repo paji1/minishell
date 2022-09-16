@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 20:22:43 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/15 18:24:42 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/16 03:43:19 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ t_node *create_token(t_node *new, char *token)
 	new->token.type = get_type(token);
 	new->node_type = block_op(token);
 	new->token.token = token;
+	new->token.redir = NULL;
+	new->token.args_q = NULL;
 	return new;
 }
 
