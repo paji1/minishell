@@ -6,13 +6,13 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 05:22:52 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/15 23:50:10 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/20 07:22:46 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #ifndef TYPES_Q_H
 # define TYPES_Q_H
+typedef struct s_node t_node;
 /**
  * @file types.h
  * @brief Contains the types used in the project.
@@ -27,7 +27,7 @@
  */
 typedef struct s_nodeq
 {
-	void			*data;
+	t_node			*data;
 	struct s_nodeq	*next;
 	struct s_nodeq	*prev;
 }t_nodeq;

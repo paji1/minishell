@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 04:28:56 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/16 04:00:18 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/20 07:13:11 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ int	handle_token(char *token ,t_vars *vars)
 	if (node == NULL)
 		return -1;
 	if (accepted(node) == 0)
-		return printf("parse error, 	invalid token\n"), 0;
+		return printf("Minishell: syntax error near unexpected token '%s'\n",\
+			 node->token.token), 0;
 	if (vars->root == NULL && node->node_type != OP)
 		return vars->root = node, 1;
 	if (handle_block(vars, node))

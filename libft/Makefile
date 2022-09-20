@@ -6,7 +6,7 @@
 #    By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/08/10 20:44:12 by tel-mouh         ###   ########.fr        #
+#    Updated: 2022/09/18 19:33:56 by tel-mouh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ i_num=$(shell echo "($(cols)/$(num))"  | bc)
 CODE_SAVE_CURSOR='\033[s'
 CODE_RESTORE_CURSOR='\033[u'
 CODE_CURSOR_IN_SCROLL_AREA="\033[1A"
+BC=/usr/bin/bc
 
 # ###############executable##########################
 
@@ -72,7 +73,7 @@ x  = -1
 all : $(NAME)
 	
 
-$(NAME): $(OBJ) $(OBJ_UTILS)
+$(NAME): $(OBJ) $(OBJ_UTILS) $(BC)
 	@ mkdir -p library
 	@ printf "\033[$(lines);0f"
 	@ tput el
@@ -83,6 +84,8 @@ $(NAME): $(OBJ) $(OBJ_UTILS)
 	@ tput cvvis
 	@ $(AR) $(NAME) $(OBJ) 
 
+$(BC):
+	@echo "bc not found"
 
 obj/%.o : src/%.c $(HEADERS)
 	@ mkdir -p obj
