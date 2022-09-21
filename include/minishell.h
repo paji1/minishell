@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/16 01:23:11 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/21 23:16:04 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*dub_add(char *str, char *ad);
 void	init(t_vars *vars);
 // -------------------type----------------------
 int		get_type(char *token);
-int		block_op(char *token);
+int		block_op(int type);
 
 // ---------------node__________________________
 t_node	*new_tnode(void);
@@ -65,6 +65,8 @@ int		handle_OP(t_vars *vars, t_node *node);
 void	above_root(t_node **root, t_node *new);
 void	nested(t_node **root, t_node *new);
 void	put_redir(t_node **root, t_node *new);
+// -------------herdoc -------------------------
+int		handle_herdoc(t_node *new);
 // -------------node ---------------------------
 t_node *create_token(t_node *new, char *token);
 // ================print========================

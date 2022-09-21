@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 04:28:56 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/20 07:13:11 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/22 00:12:38 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void	put_block(t_node **root, t_node *new)
 		if (new->token.type == FILED)
 		{
 			qput((*root)->token.redir, new_node(new));
+			handle_herdoc(new);
 			return	;
 		}	
 		if (new->token.type == ARG || new->token.type == OPTIONS)
@@ -97,6 +98,7 @@ void	put_block(t_node **root, t_node *new)
 			if ((*root)->token.args_q == NULL)
 				(*root)->token.args_q = new_queue();
 			qput((*root)->token.args_q, new_node(new));
+			handle_herdoc(new);
 			return	;
 		}	
 		(*root)->right = new;
@@ -109,9 +111,13 @@ void	put_redir(t_node **root, t_node *new)
 {
 	if (*root == NULL)
 	{	
-		*root = create_token(new_tnode(), "");
+		*root = new_tnode();
+		(*root)->node_type = BLOCK;
+		(*root)->token.type = FILED;
+		(*root)->token.token = ft_strdup("");
 		(*root)->token.redir = new_queue();
 		qput((*root)->token.redir, new_node(new));
+		handle_herdoc(new);
 		return ;
 	}
 	if ((*root)->right == NULL)
@@ -119,6 +125,7 @@ void	put_redir(t_node **root, t_node *new)
 		if ((*root)->token.redir == NULL)
 			(*root)->token.redir = new_queue();
 		qput((*root)->token.redir, new_node(new));
+		handle_herdoc(new);
 		return ;
 	}
 	put_redir(&(*root)->right, new);

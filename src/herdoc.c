@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   herdoc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/21 23:40:29 by tel-mouh         ###   ########.fr       */
+/*   Created: 2022/09/21 23:10:31 by tel-mouh          #+#    #+#             */
+/*   Updated: 2022/09/21 23:29:19 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-
-int get_type(char *token);
-int	main(void) 
+int handle_herdoc(t_node *new)
 {
-	t_vars	vars;
+	static t_node *node;
 
-	while (1)
-	{
-		init(&vars);
-	 	getdir(&vars.base_name);
-		vars.buff = readline(vars.base_name);
-		if (vars.buff == NULL)
-			return free(vars.base_name), printf("exit\n"), 1;
-		if (vars.buff[0])
-			parse(&vars);
-		free_all(&vars);
-	}
+	if (new->token.type == HERDOC)
+		return node = new, 0;
+	if (!node)
+		return 1;
+	new->token.type = DELIMITER;
+	char *str = readline(NULL);
+	printf("%s\n", str);
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 04:22:26 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/16 04:08:44 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/22 00:06:08 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int get_type(char *token)
 		return last_token = HERDOC , HERDOC;
 	else
 	{
-		if (!last_token || last_token == PIP || last_token == AND || last_token == OR )
+		if (!last_token || (last_token >= AND && last_token <= PIP))
 			return last_token = CMD, CMD;
-		else if (last_token == REDIRECT_SO || last_token == REDIRECT_SI || last_token == APPEND || last_token == HERDOC)
+		else if (last_token >= REDIRECT_SO && last_token <= HERDOC)
 			return last_token = FILED , FILED;
 		else if (last_token == CMD && token[0] == '-')
 			return last_token = OPTIONS , OPTIONS;
@@ -45,11 +45,8 @@ int get_type(char *token)
 	}
 }
 
-int block_op(char *token)
+int block_op(int type)
 {
-	int type;
-
-	type = get_type(token);
 	if (type == CMD || type == FILED || type == ARG|| type == OPTIONS \
 		|| type == -1)
 		return BLOCK;
@@ -77,7 +74,7 @@ int accepted(t_node *new)
 	if (new == NULL)
 		return cond = !(node->node_type == OP), node = NULL, cond;
 	if (node == NULL)
-		return node = new, !(node->token.type == AND || node->token.type == OR || node->token.type == PIP);
+		return node = new, !(node->token.type >= AND && node->token.type <= PIP);
 	if (!expected(new, node))
 		return 0;
 	return node = new, 1;
