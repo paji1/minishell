@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 21:01:38 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/21 23:39:45 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/22 00:36:08 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_token
 	char	*token;
 	int		type;
 	int	 	exit_status;
+	int		fd_HERDOC;
 	t_queue	*args_q;
 	t_queue	*redir;
 }t_token;
