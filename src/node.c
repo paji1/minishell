@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 20:22:43 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/21 23:03:07 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/22 01:59:48 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_node *create_token(t_node *new, char *token)
 	new->token.type = get_type(token);
 	new->node_type = block_op(new->token.type);
 	new->token.token = token;
+	new->token.fd_HERDOC = -1;
 	new->token.redir = NULL;
 	new->token.args_q = NULL;
 	return new;

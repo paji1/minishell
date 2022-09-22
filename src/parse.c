@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 00:22:43 by akharraz          #+#    #+#             */
-/*   Updated: 2022/09/20 09:08:20 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/22 01:40:57 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int parse(t_vars *vars)
         return printf("Minishell: syntax error near unexpected quote \n"), 0;
     get_type(NULL);
     if (!accepted(NULL))
-        return printf("parse error\n"), 0;
+        return printf("Minishell: syntax error near unexpected token\n"), 0;
     print_tree(vars->root, vars);
     return 0;
 }
