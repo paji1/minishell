@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 23:10:31 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/22 01:04:53 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/22 01:32:50 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	*create_file_name(void)
 	str = ft_itoa(l);
 	if (!str)
 		return NULL;
-	joinstr = ft_strjoin("/tmp/minishell",str);
+	joinstr = ft_strjoin("/tmp/minishell-",str);
 	if (!joinstr)
 		return free(str), NULL;
 	free(str);
@@ -60,7 +60,8 @@ int handle_herdoc(t_node *new)
 		line = readline(NULL);
 		if (line)
 			write(new->token.fd_HERDOC, line, ft_strlen(line));
-		write(new->token.fd_HERDOC, "\n", 1);
+		if (ft_strcmp(line, new->token.token))
+			write(new->token.fd_HERDOC, "\n", 1);
 	}
 	return 0;
 }
