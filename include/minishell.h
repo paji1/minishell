@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/22 00:49:33 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/25 00:14:52 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,19 @@ t_node	*new_tnode(void);
 int		handle_token(char *token ,t_vars *vars);
 void	put_block(t_node **root, t_node *new);
 int		handle_OP(t_vars *vars, t_node *node);
+int		handle_block(t_vars *vars, t_node *node);
 void	above_root(t_node **root, t_node *new);
 void	nested(t_node **root, t_node *new);
 void	put_redir(t_node **root, t_node *new);
 // -------------herdoc -------------------------
 int		handle_herdoc(t_node *new);
 // -------------node ---------------------------
-t_node *create_token(t_node *new, char *token);
+t_node	*create_token(t_node *new, char *token);
 // ================print========================
-void print_tree(t_node *root,t_vars *vars);
+void	print_tree(t_node *root,t_vars *vars);
 // ---------------------------------------------
-
-
+void	exucute(t_node *root,t_vars *vars);
+char	**qto_tab(t_node *node);
 
 
 

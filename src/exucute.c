@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   exucute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/23 21:19:47 by tel-mouh         ###   ########.fr       */
+/*   Created: 2022/09/23 21:17:18 by tel-mouh          #+#    #+#             */
+/*   Updated: 2022/09/25 00:10:07 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 
-int get_type(char *token);
-int	main(void) 
-{
-	t_vars	vars;
 
-	while (1)
-	{
-		init(&vars);
-	 	getdir(&vars.base_name);
-		vars.buff = readline(vars.base_name);
-		if (vars.buff == NULL)
-			return free_all(&vars), printf("exit\n"), 1;
-		if (vars.buff[0])
-			parse(&vars);
-		exucute(vars.root, &vars);
-		free_all(&vars);
-	}
-	return 0;
+
+void exucute(t_node *root,t_vars *vars)
+{
+	if (root == NULL)
+		return ;
+
+
+	exucute(root->left, vars);
+	exucute(root->right, vars);
 }

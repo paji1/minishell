@@ -6,15 +6,11 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 00:13:18 by akharraz          #+#    #+#             */
-/*   Updated: 2022/09/22 02:20:46 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/22 06:11:16 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-
-
-
 
 void free_tree(t_node *root)
 {
