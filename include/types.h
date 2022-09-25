@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 21:01:38 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/22 00:36:08 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/25 00:44:34 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define BLOCK 29
 # define SPECIAL 5
 # define OP 26
+# define PR 30
 
 
 typedef enum e_etokens
@@ -27,6 +28,8 @@ typedef enum e_etokens
 	AND = 12,
 	OR,
 	PIP,
+	LP,
+	RP,
 	REDIRECT_SO,
 	REDIRECT_SI,
 	APPEND,

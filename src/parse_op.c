@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:10:39 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/25 00:14:04 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/25 00:53:37 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 int handle_OP(t_vars *vars, t_node *node)
 {
+	if (node->node_type != OP)
+		return 0;
 	if(node->token.type >= REDIRECT_SO && node->token.type <= HERDOC)
 		return put_redir(&vars->root, node), 1;
 	if (vars->root->node_type == BLOCK && node->node_type == OP)
