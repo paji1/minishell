@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 04:22:26 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/25 01:44:22 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/25 02:26:01 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,6 @@ int accepted(t_node *new)
 		return node = new, \
 			!(node->token.type >= AND && node->token.type <= PIP) && node->token.type != RP;
 	if (!expected(new, node))
-		return  node = NULL, 0;
+		return handle_pranteses(NULL),  node = NULL, 0;
 	return node = new, 1;
 }
