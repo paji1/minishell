@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+         #
+#    By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/09/15 18:48:29 by tel-mouh         ###   ########.fr        #
+#    Updated: 2022/09/20 10:57:31 by akharraz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,12 @@ OBJ = $(addprefix obj/, $(SRC:.c=.o))
 SRC_UTILS = queue.c free_q.c is_space.c is_special.c
 OBJ_UTILS = $(addprefix obj/utils/, $(SRC_UTILS:.c=.o))
 
+# ################ADAM_Work####################
+
+SRC_ADAM = pipe.c
+OBJ_ADAM = $(addprefix obj/adam_work/, $(SRC_ADAM:.c=.o))
+# ####################OBJ##########################
+ALLOBJ := $(OBJ_ADAM) $(OBJ) $(OBJ_UTILS)
 # ################COLOR##############################
 
 COLOR='\033[0;32m'
@@ -67,13 +73,13 @@ ILIBFT = libft/include
 all : $(NAME)
 
 
-$(NAME): $(OBJ) $(OBJ_UTILS) | library
+$(NAME): $(ALLOBJ) | library
 	@ printf "\033[$(lines);0f"
 	@ tput el
 	@printf  ${CODE_RESTORE_CURSOR}""
 	@tput el
 	@ printf ${GREEN}"\rMaking is done ✅\n"${NC}
-	@ $(CC) $(CFLAG) $(OBJ) $(OBJ_UTILS) -I $(ILIBFT) $(LIBFT) -lreadline -o $(NAME)
+	@ $(CC) $(CFLAG) $(ALLOBJ) -I $(ILIBFT) $(LIBFT) -lreadline -o $(NAME)
 	@ tput cvvis
 	@ echo "---------------------------------------------------" >> lastcompiled.log
 
@@ -83,6 +89,7 @@ library :
 obj/%.o : src/%.c  $(HEADERS) $(UHEADERS)
 	@ mkdir -p obj
 	@ mkdir -p obj/utils
+	@ mkdir -p obj/adam_work
 	@$ nu=$x ; if [[ $$nu -eq -1 ]] ; then \
 	printf ${RE}"🔷 Making the  --> "${NC} \
 	 ; fi

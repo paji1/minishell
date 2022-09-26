@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   quote.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 22:51:36 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/06 20:56:31 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/20 10:41:22 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 /**
- * @brief hande quote to continue loop in parse function
+ * @brief handel quote to continue loop in parse function
  * 
  * @param quote struct to handel quote
  * @param i counter inside parse function
