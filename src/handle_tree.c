@@ -44,7 +44,7 @@ int	handle_token(char *token ,t_vars *vars)
 	if (node == NULL)
 		return -1;
 	if (accepted(node) == 0)
-		return printf("Minishell: syntax error near unexpected token '%s'\n",\
+		return printf("minishell: syntax error near unexpected token '%s'\n",\
 			 node->token.token), 0;
 	if (vars->root == NULL && node->node_type != OP)
 		return vars->root = node, 1;

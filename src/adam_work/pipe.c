@@ -3,35 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42->fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 19:12:29 by akharraz          #+#    #+#             */
-/*   Updated: 2022/09/21 13:25:57 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/09/21 13:25:57 by akharraz         ###   ########->fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../../include/minishell.h"
 
-#define RIGHT 69
-#define LEFT 96
-/**
- * @brief duplicate pipe'e end file descriptors
- * 
- * @param side wich end of pipe
- * @param fd 
- * @return int : 0 in success , -1 in failure
- */
-int dup_close(int side, int *fd)
+static int creat_pipe(t_list *node)
 {
-	int	res;
+	if (node->taha == 0)
+	{
+		if (pipe(node->fds->fd) == -1)
+			return (perror("pipe"), -1);
+	}
+	if (node->previous)
+	{
+		node->fds->fd_out = node->previous->fds->fd[0];
+	}
+	return (0);
+}
 
-	res = 0;
-	if (side == LEFT)
-		res = dup2(fd[1], 1);
-	if (side == RIGHT)
-		res = dup2(fd[0], 0);
-	if (res == -1 || close(fd[1]) == -1 || close(fd[0]) == -1)
-		return (-1);
+static int	dup_close(t_list *node, int i)
+{
+	if (i == 0)
+	{
+		dup2(node->fds->fd[1], STDOUT_FILENO);
+		close(node->fds->fd[1]);
+		close(node->fds->fd[0]);
+	}
+	if (i > 0)
+	{
+		dup2(node->fds->fd_out, STDIN_FILENO);
+		dup2(node->fds->fd[1], STDOUT_FILENO);
+		close(node->fds->fd[1]);
+		close(node->fds->fd_out);
+	}
+	if (i == -1)
+	{
+		dup2(node->fds->fd_out, STDIN_FILENO);
+		close(node->fds->fd_out);
+	}
 	return (0);
 }
 
@@ -43,18 +57,22 @@ int dup_close(int side, int *fd)
  * @param side on the left or on the right side of pipe
  * @return int : 0 in success , -1 in failure 
  */
-static int	ft_execute_command(char **cmd, int *fd, int side)
+static int	ft_execute_command(t_list *node)
 {
-	pid_t	pid;
-	int		child_exit_methode;
+	pid_t		pid;
+	int			child_exit_methode;
+	static int	i;
 
+	if (node->taha == 1)
+		i = -1;
+	printf("{{%d}}\n", i);
 	pid = fork();
 	if (pid == -1)
 		return (printf("error fork\n"), -1);
 	if (pid == 0)
 	{
-		dup_close(side, fd);
-		if (execve(cmd[0], cmd, NULL) == -1)
+		dup_close(node, i);
+		if (execve(node->cmd[0], node->cmd, NULL) == -1)
 		{
 			write(2, "error execve\n", 13);
 			exit (1);
@@ -62,40 +80,60 @@ static int	ft_execute_command(char **cmd, int *fd, int side)
 	}
 	if (pid > 0)
 	{
-		if (side == RIGHT)
-			dup_close(0, fd);
+		if (i == 0)
+			close(node->fds->fd[1]);
+		if (i > 0)
+		{
+			close(node->fds->fd_out);
+			close(node->fds->fd[0]);
+			close(node->fds->fd[1]);
+		}
+		if (i == -1)
+			close(node->fds->fd_out);
 		if (waitpid(-1, &child_exit_methode, 0) == -1)
 			return (write(2, "error waitpid\n", 14), -1);
 		if (!WIFEXITED(child_exit_methode))
 			return (write(2, "something went wrong!\n", 22), -1);
+		i++;
 	}
 	return (0);
 }
 
-/**
- * @brief execute two function in which the cmd0 output becomes cmd1 input
- * 
- * @param cmd0 first command to execute
- * @param cmd1 second command to execute
- * @return int : 0 in success , -1 in failure 
- */
-static int	pipe_execution(char **cmd0, char **cmd1)
-{
-	int	fd[2];
 
-	if (pipe(fd) == -1)
-		return (-1);
-	if (ft_execute_command(cmd0, fd, LEFT) == -1 || ft_execute_command(cmd1, fd, RIGHT) == -1)
-		return (-1);
+int	pipe_execution(t_list *node)
+{
+
+	if (node->taha == 1)
+	{
+		creat_pipe(node);
+		ft_execute_command(node);
+	}
+	if (node->taha == 0)
+	{
+		creat_pipe(node);
+		ft_execute_command(node);
+		pipe_execution(node->next);
+	}
 	return (0);
 }
 
-int	main(void)
+ int	main(void)
 {
-	char *cmd0[] = {"/bin/ls", "-l", NULL};
-	char *cmd1[] = {"/usr/bin/wc", "-l", NULL};
+	t_list *list;
+	t_list *list1;
+	t_list *list2;
+	char cmd0[] = {"/bin/ls -l"};
+	char cmd1[] = {"/usr/bin/wc -l"};
 
-	if (pipe_execution(cmd0, cmd1) == -1)
+	list = ft_lstnew(cmd0, 0);
+	list1 = ft_lstnew(cmd1, 0);
+	list2 = ft_lstnew(cmd1, 1);
+
+	ft_lstadd_back(&list, list1);
+	ft_lstadd_back(&list, list2);
+	// ft_lstadd_back(&list, list2);
+	
+	if (pipe_execution(list) == -1)
 		return (write(2, "pipe execution error!!\n", 24), 1);
 	return (0);
 }

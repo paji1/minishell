@@ -1,0 +1,15 @@
+Makefile
+README.md
+a.txt
+adam_messages
+errors.txt
+file1.txt
+file10.txt
+freelist.txt
+include
+lastcompiled.log
+libft
+minishell
+obj
+src
+test_cmdd

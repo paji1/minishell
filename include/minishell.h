@@ -23,6 +23,7 @@
 // -------------includePath---------------------
 # include "queue.h"
 # include "types.h"
+# include "../src/adam_work/pipe.h"
 // --------include readline header--------------
 #include <readline/readline.h>
 #include <readline/history.h>

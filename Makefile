@@ -23,22 +23,22 @@ UHEADERS := $(addprefix include/, $(UHEADERS))
 
 RM = rm -rf
 CC = gcc 
-CFLAG = -g -pthread -Wall -Werror -Wextra -I include 
+# CFLAG = -g -pthread -Wall -Werror -Wextra -I include 
 
 # ################SRCS_Objs##########################
 
-SRC = main.c dir.c init.c free_all.c parse.c startend.c quote.c lexer.c\
+# SRC = main.c dir.c init.c free_all.c parse.c startend.c quote.c lexer.c\
 	type.c handle_tree.c print_tree.c node.c
-OBJ = $(addprefix obj/, $(SRC:.c=.o))
+# OBJ = $(addprefix obj/, $(SRC:.c=.o))
 
 # ################SRCS_Objs_Utils####################
 
-SRC_UTILS = queue.c free_q.c is_space.c is_special.c
-OBJ_UTILS = $(addprefix obj/utils/, $(SRC_UTILS:.c=.o))
+# SRC_UTILS = queue.c free_q.c is_space.c is_special.c
+# OBJ_UTILS = $(addprefix obj/utils/, $(SRC_UTILS:.c=.o))
 
 # ################ADAM_Work####################
 
-SRC_ADAM = pipe.c
+SRC_ADAM = pipe.c t_list_func.c
 OBJ_ADAM = $(addprefix obj/adam_work/, $(SRC_ADAM:.c=.o))
 # ####################OBJ##########################
 ALLOBJ := $(OBJ_ADAM) $(OBJ) $(OBJ_UTILS)
@@ -73,7 +73,7 @@ ILIBFT = libft/include
 all : $(NAME)
 
 
-$(NAME): $(ALLOBJ) | library
+$(NAME): $(OBJ_ADAM) | library
 	@ printf "\033[$(lines);0f"
 	@ tput el
 	@printf  ${CODE_RESTORE_CURSOR}""
