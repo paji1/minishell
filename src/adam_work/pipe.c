@@ -85,7 +85,7 @@ static int	ft_execute_command(t_list *node)
 		if (i > 0)
 		{
 			close(node->fds->fd_out);
-			close(node->fds->fd[0]);
+			// close(node->fds->fd[0]);
 			close(node->fds->fd[1]);
 		}
 		if (i == -1)
@@ -124,10 +124,11 @@ int	pipe_execution(t_list *node)
 	t_list *list2;
 	char cmd0[] = {"/bin/ls -l"};
 	char cmd1[] = {"/usr/bin/wc -l"};
+	char cmd2[] = {"/bin/ps"};
 
 	list = ft_lstnew(cmd0, 0);
 	list1 = ft_lstnew(cmd1, 0);
-	list2 = ft_lstnew(cmd1, 1);
+	list2 = ft_lstnew(cmd2, 1);
 
 	ft_lstadd_back(&list, list1);
 	ft_lstadd_back(&list, list2);
