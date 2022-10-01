@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 04:28:56 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/01 12:39:18 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/02 00:02:33 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ int	sub_shell(t_vars	*vars, t_node *node)
 		vars->root = temp->root;
 		free(temp);
 	}
-	free(node->token.token);
-	free(node);
 	return 1;
 }
 

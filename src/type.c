@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 04:22:26 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/25 02:26:01 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/02 00:08:05 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,21 +102,32 @@ int handle_pranteses(t_node *new)
 		return state--, 0;
 	return 0;
 }
-
+void free_pr(t_node *node)
+{
+	if (!node)
+		return ;
+	if (node->node_type == PR)
+	{
+		free(node->token.token);
+		free(node);
+	}
+}
 int accepted(t_node *new)
 {
 	static t_node	*node;
 	int				cond;
 
 	if (handle_pranteses(new))
-		return  node= NULL, 0;
+		return  free_pr(node), node= NULL, 0;
 	if (new == NULL)
-		return cond = node->node_type != OP, \
+		return cond = node->node_type != OP, free_pr(node), \
 			 node = NULL, cond;
 	if (node == NULL)
 		return node = new, \
-			!(node->token.type >= AND && node->token.type <= PIP) && node->token.type != RP;
+			!(node->token.type >= AND && node->token.type <= PIP) \
+				&& node->token.type != RP;
 	if (!expected(new, node))
-		return handle_pranteses(NULL),  node = NULL, 0;
+		return free_pr(node), handle_pranteses(NULL),  node = NULL, 0;
+	free_pr(node);
 	return node = new, 1;
 }
