@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 04:28:56 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/25 02:30:00 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/30 08:18:13 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,19 @@ static void free_onenode(t_node	*node)
 	free(node->token.token);
 	free(node);
 }
+// void	beside_pr(t_vars *vars,t_node *node)
+// {
+// 	if (vars->roots->size != 0 && node )
+	
+// }
+// void	sub_shell(t_vars	*vars, t_node *node)
+// {
+// 	t_snode *temp;
+
+// 	beside_pr(vars, node);
+// 	if (node->node_type != PR)
+// 		return ;
+// }
 
 int	handle_token(char *token ,t_vars *vars)
 {

@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 21:01:38 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/25 00:44:34 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/30 08:18:01 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ typedef enum e_etokens
 	HERDOC,
 	CMD,
 	ARG,
-	OPTIONS
+	OPTIONS,
+	SUB_SHELL
 }t_etoken;
 
 typedef struct s_token
@@ -64,6 +65,7 @@ typedef struct s_vars
 	t_node	*root;
 	char	*base_name;
 	char	**op_tab;
+	t_stack *roots;
 } t_vars;
 
 

@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/25 00:14:52 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/27 07:06:58 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <fcntl.h>
 // -------------includePath---------------------
 # include "queue.h"
+# include "stack.h"
 # include "types.h"
 // --------include readline header--------------
 #include <readline/readline.h>

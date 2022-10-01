@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 20:22:43 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/22 01:59:48 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/25 04:07:25 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_node *create_token(t_node *new, char *token)
 	new->token.fd_HERDOC = -1;
 	new->token.redir = NULL;
 	new->token.args_q = NULL;
+	new->token.exit_status = -1;
 	return new;
 }
 

@@ -5,30 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/30 07:46:20 by tel-mouh         ###   ########.fr       */
+/*   Created: 2022/09/27 07:08:56 by tel-mouh          #+#    #+#             */
+/*   Updated: 2022/09/27 10:28:07 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include <stdio.h>
 
-
-int get_type(char *token);
-int	main(void) 
+int	main(argc, argv)
 {
-	t_vars	vars;
+	int i = 1;
+	int j = 0;
 
-	while (1)
-	{
-		init(&vars);
-	 	getdir(&vars.base_name);
-		vars.buff = readline(vars.base_name);
-		if (vars.buff == NULL)
-			return free_all(&vars), printf("exit\n"), 0;
-		if (vars.buff[0])
-			parse(&vars);
-		exucute(vars.root, &vars);
-		free_all(&vars);
-	}
+	int *p = &j;
+	
+	printf("sixe %d", argv);
 	return 0;
 }

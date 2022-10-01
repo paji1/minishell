@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 05:22:52 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/24 03:17:41 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/25 02:48:54 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,5 @@ typedef struct s_queue
 	struct s_nodeq	*tail;
 	int				size;
 }t_queue;
+
 #endif /* !TYPES_H */
