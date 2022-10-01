@@ -6,12 +6,19 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:10:39 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/25 00:53:37 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/01 10:25:28 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+int is_sub(t_node *node)
+{
+	if (node->node_type == BLOCK && node->token.type <= PIP \
+		&& node->token.type >= AND)
+		return 1;
+	return 0;
+}
 
 int handle_OP(t_vars *vars, t_node *node)
 {
@@ -39,7 +46,6 @@ void	above_root(t_node **root, t_node *new)
 
 void	nested(t_node **root, t_node *new)
 {
-
 	if ((*root)->node_type == OP && (*root)->token.type > new->token.type)
 	{
 		new->left = (*root);
@@ -63,7 +69,7 @@ void	put_redir(t_node **root, t_node *new)
 		handle_herdoc(new);
 		return ;
 	}
-	if ((*root)->right == NULL)
+	if ((*root)->right == NULL || is_sub(*root))
 	{
 		if ((*root)->token.redir == NULL)
 			(*root)->token.redir = new_queue();

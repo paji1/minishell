@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd.c                                              :+:      :+:    :+:   */
+/*   free_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/25 00:05:03 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/01 05:31:23 by tel-mouh         ###   ########.fr       */
+/*   Created: 2022/10/01 12:41:24 by tel-mouh          #+#    #+#             */
+/*   Updated: 2022/10/01 12:44:50 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char **qto_tab(t_node *node)
+/**
+ * @brief free node recursively
+ * 
+ * @param node head
+ */
+static void	free_nodes(t_snode *node)
 {
-	char **tab;
-	int		size;
-	int		i;
-
-	i = 0;
 	if (!node)
-		return NULL;
-	if (node->token.args_q)
-		size = node->token.args_q->size + 2;
-	else
-		size = 2;
-	tab = malloc(sizeof(tab) * size);
-	if (!tab)
-		return NULL;
-	tab[0] = node->token.token;
-	if (!node->token.args_q)
-		return tab[1] = NULL, tab;
-	while (++i < size - 1)
-	{
-		tab[i] = q_n_get(node->token.args_q)->data->token.token;
-	}
-	return tab[size - 1] = NULL, tab;
+		return ;
+	free_nodes(node->next);
+	free(node);
+}
+
+/**
+ * @brief call free_nodes and free queue
+ * 
+ * @param queue 
+ */
+void	free_stack(t_stack *stack)
+{
+	if (!stack)
+		return ;
+	free_nodes(stack->head);
+	free(stack);
 }

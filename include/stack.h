@@ -41,6 +41,7 @@ t_stack	*new_stack();
 void	push(t_stack *stack, t_snode *new);
 t_snode	*sget(t_stack *stack);
 t_snode	*pop(t_stack *stack);
+void	free_stack(t_stack *stack);
 
 
 #endif

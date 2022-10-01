@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 00:13:18 by akharraz          #+#    #+#             */
-/*   Updated: 2022/09/22 06:11:16 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/01 12:45:18 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ void    free_all(t_vars *vars)
         free(vars->base_name);
     if (vars->buff)
         free(vars->buff);
+    free_stack(vars->roots);
     free_tree(vars->root);
 }
