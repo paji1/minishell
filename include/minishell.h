@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/27 07:06:58 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/01 12:56:13 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 
 // --------------free_functions-----------------
 void    free_all(t_vars *vars);
+void	free_tree(t_node *root);
 
 // -----------------utils-----------------------
 int		is_space(char c);
