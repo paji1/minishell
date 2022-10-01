@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 04:22:26 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/02 00:08:05 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/02 00:09:48 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ int handle_pranteses(t_node *new)
 		return state--, 0;
 	return 0;
 }
+
 void free_pr(t_node *node)
 {
 	if (!node)
@@ -112,6 +113,7 @@ void free_pr(t_node *node)
 		free(node);
 	}
 }
+
 int accepted(t_node *new)
 {
 	static t_node	*node;

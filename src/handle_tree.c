@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 04:28:56 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/02 00:02:33 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/02 00:17:03 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void free_onenode(t_node	*node)
 {
 	free(node->token.token);
 	free(node);
+	accepted(NULL);
 }
 
 int	sub_shell(t_vars	*vars, t_node *node)
