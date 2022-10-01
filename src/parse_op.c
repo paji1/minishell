@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:10:39 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/01 10:25:28 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/01 23:31:05 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	above_root(t_node **root, t_node *new)
 
 void	nested(t_node **root, t_node *new)
 {
-	if ((*root)->node_type == OP && (*root)->token.type > new->token.type)
+	if ((*root)->token.type > new->token.type)
 	{
 		new->left = (*root);
 		new->right = NULL;
