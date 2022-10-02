@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 04:22:26 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/02 00:09:48 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/02 09:11:05 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int expected(t_node *new, t_node *node)
 	else if (node->token.type == LP)
 		return new->node_type != OP && new->token.type != RP;
 	else if (node->token.type == RP)
-		return new->node_type != BLOCK && new->token.type != LP;
+		return new->node_type != BLOCK  && new->token.type != LP;
 	else if (node->token.type >= AND && node->token.type <= PIP && \
 		(new->token.type >= REDIRECT_SO && new->token.type <= HERDOC))
 		return (1);
@@ -103,16 +103,7 @@ int handle_pranteses(t_node *new)
 	return 0;
 }
 
-void free_pr(t_node *node)
-{
-	if (!node)
-		return ;
-	if (node->node_type == PR)
-	{
-		free(node->token.token);
-		free(node);
-	}
-}
+
 
 int accepted(t_node *new)
 {
@@ -120,16 +111,20 @@ int accepted(t_node *new)
 	int				cond;
 
 	if (handle_pranteses(new))
-		return  free_pr(node), node= NULL, 0;
+		return  node= NULL, 0;
 	if (new == NULL)
-		return cond = node->node_type != OP, free_pr(node), \
+		return cond = node->node_type != OP, \
 			 node = NULL, cond;
 	if (node == NULL)
-		return node = new, \
-			!(node->token.type >= AND && node->token.type <= PIP) \
+	{
+		node = new;
+		cond = !(node->token.type >= AND && node->token.type <= PIP) \
 				&& node->token.type != RP;
+		if (!cond)
+			node = NULL;
+		return cond;
+	}
 	if (!expected(new, node))
-		return free_pr(node), handle_pranteses(NULL),  node = NULL, 0;
-	free_pr(node);
+		return handle_pranteses(NULL),  node = NULL, 0;
 	return node = new, 1;
 }

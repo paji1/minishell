@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 22:41:02 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/15 03:44:34 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/02 08:51:41 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,16 @@ void start_token(char *buff, int i, t_sub *sub)
  * @param i count inside parse function
  * @param sub where is start and end of token
  */
-int handle_last(t_vars *vars, int i, t_sub *sub)
+int handle_last(t_vars *vars, int i, t_sub *sub, t_quote *quote)
 {
     if (end_token(vars->buff, i, sub) && ft_strchr("\"'", vars->buff[i - 1]))
         if (!handle_token(lexer(vars->buff, sub), vars))
             return 0;
+    free_pr(NULL);
+    if (quote->in_quote == TRUE)
+        return printf("Minishell: syntax error near unexpected quote \n"), 0;
+    get_type(NULL);
+    if (!accepted(NULL))
+        return printf("Minishell: syntax error near unexpected token\n"), 0;
     return 1;
 }

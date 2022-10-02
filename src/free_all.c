@@ -6,11 +6,25 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 00:13:18 by akharraz          #+#    #+#             */
-/*   Updated: 2022/10/01 12:45:18 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/02 08:45:13 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+
+
+void free_pr(t_node *node)
+{
+	static t_node *pr;
+
+	if (pr && pr->node_type == PR)
+	{
+		free(pr->token.token);
+		free(pr);
+	}
+	pr = node;
+}
 
 void free_tree(t_node *root)
 {
