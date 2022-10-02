@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 23:10:31 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/22 02:19:32 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/02 12:11:07 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,15 @@ int handle_herdoc(t_node *new)
 	new->token.fd_HERDOC = create_file();
 	while (!line || ft_strcmp(line, new->token.token))
 	{
+		if (line)
+			free(line);
 		line = readline(NULL);
 		if (line)
 			write(new->token.fd_HERDOC, line, ft_strlen(line));
-		free(line);
 		if (ft_strcmp(line, new->token.token))
 			write(new->token.fd_HERDOC, "\n", 1);
 	}
+	if (line)
+		free(line);
 	return 0;
 }

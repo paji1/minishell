@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:12:21 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/01 05:40:34 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/02 11:59:03 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	put_block(t_node **root, t_node *new)
 		*root = new; 
 		return ;
 	}
-	if ((*root)->right == NULL)
+	if ((*root)->right == NULL || is_sub(*root))
 	{
 		if (new->token.type == FILED)
 		{
@@ -41,7 +41,7 @@ void	put_block(t_node **root, t_node *new)
 			qput((*root)->token.args_q, new_node(new));
 			handle_herdoc(new);
 			return	;
-		}	
+		}
 		(*root)->right = new;
 		return ;
 	}
