@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 21:01:38 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/30 08:18:01 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/03 13:53:32 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ typedef struct s_node
 {
 	t_token 		token;
 	int				node_type;
+	int	 		 	file_out;
+	int	 		 	file_in;
 	struct s_node	*right;
 	struct s_node	*left;
 }t_node;

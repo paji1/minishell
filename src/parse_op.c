@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:10:39 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/01 23:31:05 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/03 15:35:48 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@ void	put_redir(t_node **root, t_node *new)
 		(*root)->token.type = FILED;
 		(*root)->token.token = ft_strdup("");
 		(*root)->token.redir = new_queue();
+		(*root)->token.fd_HERDOC = -1;
+		(*root)->token.args_q = NULL;
+		(*root)->token.exit_status = -1;
 		qput((*root)->token.redir, new_node(new));
 		handle_herdoc(new);
 		return ;
