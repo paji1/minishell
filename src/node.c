@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 20:22:43 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/25 04:07:25 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/04 01:28:01 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ t_node *new_tnode(void)
 	t_node *new = (t_node *)malloc(sizeof(t_node));
 	if (new == NULL)
 		return NULL;
+	new->file_in = 0;
+	new->file_out = 1;
 	new->left = NULL;
 	new->right = NULL;
 	return new;

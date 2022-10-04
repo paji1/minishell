@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/02 07:33:47 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/04 05:08:56 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 
 int get_type(char *token);
-int	main(void) 
+int	main(int ac, char **av, char**env) 
 {
 	t_vars	vars;
 
+	(void)ac;
+	(void)av;
 	while (1)
 	{
-		init(&vars);
+		init(&vars, env);
 	 	getdir(&vars.base_name);
 		vars.buff = readline(vars.base_name);
 		if (vars.buff == NULL)
@@ -28,6 +30,7 @@ int	main(void)
 		if (vars.buff[0])
 			parse(&vars);
 		exucute(vars.root, &vars);
+		wait();
 		free_all(&vars);
 	}
 	return 0;

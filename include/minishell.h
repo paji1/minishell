@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/02 09:07:39 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/04 00:19:18 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*getbasename(char *path);
 size_t	getdir(char **base_name);
 char	*dub_add(char *str, char *ad);
 // -----------------init------------------------
-void	init(t_vars *vars);
+void	init(t_vars *vars, char **env);
 // -------------------type----------------------
 int		get_type(char *token);
 int		block_op(int type);

@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:05:03 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/01 05:31:23 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/03 23:49:30 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char **qto_tab(t_node *node)
 {
-	char **tab;
+	char	**tab;
 	int		size;
 	int		i;
 
