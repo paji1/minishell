@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:10:39 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/03 15:35:48 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/05 16:10:46 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,18 +56,26 @@ void	nested(t_node **root, t_node *new)
 	nested(&(*root)->right, new);
 }
 
+static void *create_empty_node(t_node **root)
+{
+	*root = new_tnode();
+	(*root)->node_type = BLOCK;
+	(*root)->token.type = FILED;
+	(*root)->token.token = ft_strdup("");
+	if (!(*root)->token.token)
+		return (NULL);
+	(*root)->token.redir = new_queue();
+	(*root)->token.fd_HERDOC = -1;
+	(*root)->token.args_q = NULL;
+	(*root)->token.exit_status = -1;
+}
+
 void	put_redir(t_node **root, t_node *new)
 {
 	if (*root == NULL)
 	{	
-		*root = new_tnode();
-		(*root)->node_type = BLOCK;
-		(*root)->token.type = FILED;
-		(*root)->token.token = ft_strdup("");
-		(*root)->token.redir = new_queue();
-		(*root)->token.fd_HERDOC = -1;
-		(*root)->token.args_q = NULL;
-		(*root)->token.exit_status = -1;
+		if (!create_empty_node(root))
+			return ;
 		qput((*root)->token.redir, new_node(new));
 		handle_herdoc(new);
 		return ;
