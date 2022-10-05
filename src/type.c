@@ -6,12 +6,23 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 04:22:26 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/02 09:11:05 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/05 16:17:19 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+static int block_type(int *last_token, char *token)
+{
+	if (!(*last_token) || ((*last_token) >= AND && (*last_token) <= LP))
+		return (*last_token) = CMD, CMD;
+	else if ((*last_token) >= REDIRECT_SO && (*last_token) <= HERDOC)
+		return (*last_token) = FILED , FILED;
+	else if ((*last_token) == CMD && token[0] == '-')
+		return (*last_token) = OPTIONS , OPTIONS;
+	else
+		return (*last_token) = ARG , ARG;
+}
 int get_type(char *token)
 {
 	static int last_token;
@@ -38,17 +49,9 @@ int get_type(char *token)
 	else if (!ft_strcmp(token , "("))
 		return last_token = LP , LP;
 	else
-	{
-		if (!last_token || (last_token >= AND && last_token <= LP))
-			return last_token = CMD, CMD;
-		else if (last_token >= REDIRECT_SO && last_token <= HERDOC)
-			return last_token = FILED , FILED;
-		else if (last_token == CMD && token[0] == '-')
-			return last_token = OPTIONS , OPTIONS;
-		else
-			return last_token = ARG , ARG;
-	}
+		return block_type(&last_token, token);
 }
+
 
 int block_op(int type)
 {
