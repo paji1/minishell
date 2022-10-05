@@ -1,4 +1,22 @@
 #include "../../include/minishell.h"
+/**
+ * @brief  get the PATH variable 
+ * 
+ * @param env environment variables
+ * @return index of the PATH variable
+ */ 
+int	get_path(char **env)
+{
+	int	i;
+
+	i = -1;
+	while(env[++i])
+	{
+		if (ft_strncmp(env[i], "PATH=", 5) == 0)
+			return (i);
+	}
+	return (-1);
+}
 
 /**
  * @brief  check if the command has an executing file
