@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:17:18 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/04 05:09:29 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/04 15:27:37 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@ void close_before(int fd)
 		fd--;
 	}
 }
+
 int close_in_parent(int pid, t_node *node)
 {
 	int fd;
+	static int i;
 	
 	fd = 0;
 	if (!pid)
@@ -37,14 +39,17 @@ int close_in_parent(int pid, t_node *node)
 	if (node->file_in == 0 && node->file_out == 1)
 		return 0;
 	if (is_first(node) && node->file_out != 1)
+	{	
 		close(node->file_out);
+	}
 	else
 	{
-		if (node->file_in != 0)
-		close(node->file_in);
-		if (node->file_out != 1)
+		// if (node->file_in != 0 && !(i % 2))
+		// 	close(node->file_in);
+		if (node->file_out != 1 )
 			close(node->file_out);
 	}
+	i++;
 	return 0;
 	
 }
@@ -57,9 +62,7 @@ int exucute_cmd(t_node *node, char **env)
 	if (pid == -1)
 		return -1;
 	if (pid)
-		close_in_parent(pid, node);
-	if (pid)
-		return 0;
+		return pid;
 	if (is_first(node))
 	{
 		dup2(node->file_out, 1);
@@ -81,7 +84,7 @@ static int handle_exblock(t_node *node, char **env)
 {
 	if (is_sub(node) || node->node_type != BLOCK)
 		return 0;
-	exucute_cmd(node, env);
+	close_in_parent(exucute_cmd(node, env), node);
 	return 0;
 }
 
