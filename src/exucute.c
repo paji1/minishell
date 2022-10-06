@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:17:18 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/06 19:10:56 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/06 19:14:14 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,7 @@ void exucute(t_node *root, t_vars *vars)
 		vars->pid_num++;
 	handle_exop(root, vars->env);
 	exucute(root->left, vars);
-	// if (root->token.type == AND)
-	// 	wait();
+	if (root->token.type == AND)
+		wait();
 	exucute(root->right, vars);
 }
