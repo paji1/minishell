@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 00:22:43 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/05 16:19:55 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/05 16:29:15 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,5 @@ int parse(t_vars *vars)
     }
     if (!handle_last(vars, i, &sub, &quote))
         return 0;
-    // print_tree(vars->root, vars);
     return 1;
 }

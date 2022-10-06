@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/05 16:22:15 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/06 18:23:35 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ int	main(int ac, char **av, char**env)
 			continue;
 		}
 		exucute(vars.root, &vars);
-		wait();
+		while (vars.pid_num-- >= 0)
+		{
+			wait();
+		}		
 		free_all(&vars);
 	}
 	return 0;

@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 21:01:38 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/04 00:18:00 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/06 18:09:29 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct s_vars
 	char	**op_tab;
 	t_stack *roots;
 	char **env;
+	int		pid_num;
 } t_vars;
 
 

@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 02:09:50 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/04 00:18:57 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/06 18:11:38 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,5 @@ void	init(t_vars *vars, char **env)
 	vars->op_tab = op_tab;
 	vars->roots = new_stack();
 	vars->env = env;
+	vars->pid_num = 0;
 }
