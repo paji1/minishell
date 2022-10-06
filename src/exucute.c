@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:17:18 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/06 18:33:25 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/06 19:10:56 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int close_in_parent(t_node *node)
 	fd = 0;
 	if (node->file_in == 0 && node->file_out == 1)
 		return 0;
-	if (is_first(node) && node->file_out != 1)
+	if (is_first(node))
 	{	
 		if (node->file_out != STDOUT_FILENO)
 			close(node->file_out);
@@ -84,7 +84,7 @@ int exucute_cmd(t_node *node, char **env)
 		return pid;
 	if (is_first(node))
 	{
-		close_before(node->file_in - 1);
+		close_before(node->file_in);
 		dup2(node->file_out, 1);
 		if (node->file_out != STDOUT_FILENO)
 			close(node->file_out);
@@ -92,14 +92,12 @@ int exucute_cmd(t_node *node, char **env)
 	if (!is_first(node))
 	{
 		dup2(node->file_in, 0);
-		if (node->file_in != STDIN_FILENO)
-			close(node->file_in);
+		
 		dup2(node->file_out, 1);
-		close_before(node->file_in - 1);
+		close_before(node->file_out);
 	}
-		if (execute_cmd(node, env) < 0)
-			return -1;
-			
+	if (execute_cmd(node, env) < 0)
+		return -1;
 	return 0;
 }
 
