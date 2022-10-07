@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:17:18 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/06 19:14:14 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/07 16:31:34 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,10 +132,38 @@ int handle_bin(t_node *node)
 {
 	if (node->token.type != AND && node->token.type != OR)
 		return 0;
-	node->left->file_in =  node->file_in;
-	node->right->file_out = node->file_out;
-	node->left->file_out = node->file_out;
+	// node->left->file_in =  node->file_in;
+	// node->right->file_out = node->file_out;
+	// node->left->file_out = node->file_out;
 	
+}
+
+int handle_sub(t_node *node, t_vars *vars)
+{
+	int pid;
+
+	if (!is_sub(node))
+		return 0;
+	node->node_type = OP;
+	pid = fork();
+	if (!pid)
+	{
+		if (!node)
+			return 0;
+		dup2(node->file_in , 0);
+		dup2(node->file_out, 1);
+		vars->pid_num = 0;
+		exucute(node, vars);
+		while (vars->pid_num > 0)
+		{
+			wait();
+			vars->pid_num--;
+		}
+		exit(vars->pid_num - 1);
+	}
+	close_in_parent(node);
+	vars->pid_num += 1;
+	return 1;
 }
 
 static int handle_exop(t_node *node, char **env)
@@ -153,6 +181,8 @@ void exucute(t_node *root, t_vars *vars)
 		return ;
 	if (handle_exblock(root, vars->env))
 		vars->pid_num++;
+	if (handle_sub(root, vars))
+		return ;
 	handle_exop(root, vars->env);
 	exucute(root->left, vars);
 	if (root->token.type == AND)
