@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/05 17:06:34 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/09 16:38:31 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@
 # include <string.h>
 # include <stdlib.h>
 # include <signal.h>
+# include <sys/wait.h>
 # include <fcntl.h>
 // -------------includePath---------------------
 # include "queue.h"
 # include "stack.h"
 # include "types.h"
+# include "execute.h"
 // --------include readline header--------------
 #include <readline/readline.h>
 #include <readline/history.h>

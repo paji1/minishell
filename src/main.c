@@ -6,20 +6,17 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/07 16:21:13 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/09 22:16:36 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-
-int get_type(char *token);
-int	main(int ac, char **av, char**env) 
+int	main(int ac, char **av, char **env) 
 {
 	t_vars	vars;
 
-	(void)ac;
-	(void)av;
+	(void)ac, (void)av;
 	while (1)
 	{
 		init(&vars, env);
@@ -33,11 +30,9 @@ int	main(int ac, char **av, char**env)
 			continue;
 		}
 		exucute(vars.root, &vars);
-		while (vars.pid_num >= 0)
-		{
-			wait();
-			vars.pid_num--;
-		}
+		while (vars.pid_num-- >= 0)
+					wait(0);
+		// printf("%d", WEXITSTATUS(vars.root->token.exit_status));
 		free_all(&vars);
 	}
 	return 0;

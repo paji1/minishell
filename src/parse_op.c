@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:10:39 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/05 16:10:46 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/09 20:59:42 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,14 @@ static void *create_empty_node(t_node **root)
 {
 	*root = new_tnode();
 	(*root)->node_type = BLOCK;
-	(*root)->token.type = FILED;
+	(*root)->token.type = CMD;
 	(*root)->token.token = ft_strdup("");
 	if (!(*root)->token.token)
 		return (NULL);
 	(*root)->token.redir = new_queue();
 	(*root)->token.fd_HERDOC = -1;
+	(*root)->file_in = 0;
+	(*root)->file_in = 1;
 	(*root)->token.args_q = NULL;
 	(*root)->token.exit_status = -1;
 }
@@ -82,6 +84,8 @@ void	put_redir(t_node **root, t_node *new)
 	}
 	if ((*root)->right == NULL || is_sub(*root))
 	{
+		if ((*root)->node_type == OP && !is_sub(*root))
+			create_empty_node(root);
 		if ((*root)->token.redir == NULL)
 			(*root)->token.redir = new_queue();
 		qput((*root)->token.redir, new_node(new));

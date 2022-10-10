@@ -6,7 +6,7 @@
 #    By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/10/04 01:19:28 by tel-mouh         ###   ########.fr        #
+#    Updated: 2022/10/09 16:39:31 by tel-mouh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,10 @@ CFLAG = -g -pthread -I include
 # ################SRCS_Objs##########################
 
 SRC = main.c dir.c init.c free_all.c parse.c startend.c quote.c lexer.c\
-	type.c handle_tree.c print_tree.c node.c herdoc.c exucute.c cmd.c\
-	parse_op.c parse_block.c
+	type.c handle_tree.c print_tree.c node.c herdoc.c  cmd.c\
+	parse_op.c parse_block.c \
+	execute_bin.c  execute.c  execute_close.c\
+	execute_cmd.c  execute_sub_shell.c  execute_utils.c
 OBJ = $(addprefix obj/, $(SRC:.c=.o))
 
 # ################SRCS_Objs_Utils####################
