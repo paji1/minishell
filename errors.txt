@@ -1,1 +1,6 @@
-pipes
+
+|||||||
+f || D && f| ff | fv | d| d| 3
+
+> a echo r
+Minishell: syntax error near unexpected token 'r'

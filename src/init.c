@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 02:09:50 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/15 06:08:49 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/08 17:23:24 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
  * 
  * @param vars struct inside main function
  */
-void	init(t_vars *vars)
+void	init(t_vars *vars, char **env)
 {
 	static char	*op_tab[] = {
 	[AND] = "&&",
@@ -36,4 +36,7 @@ void	init(t_vars *vars)
 	vars->base_name = NULL;
 	vars->root = NULL;
 	vars->op_tab = op_tab;
+	vars->roots = new_stack();
+	vars->env = env;
+	vars->pid_num = 0;
 }

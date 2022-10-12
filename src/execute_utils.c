@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipe.h                                             :+:      :+:    :+:   */
+/*   execute_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 17:48:47 by akharraz          #+#    #+#             */
-/*   Updated: 2022/09/28 17:48:48 by akharraz         ###   ########.fr       */
+/*   Created: 2022/10/09 16:16:01 by tel-mouh          #+#    #+#             */
+/*   Updated: 2022/10/09 16:17:25 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPE_H
-# define PIPE_H
+#include "minishell.h"
 
-# include "types_pipe.h"
-
-t_list	*ft_lstnew(char *cmd, int taha);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-
-#endif
+int is_first(t_node *node)
+{
+	return (node->file_in == node->file_out - 1);
+}

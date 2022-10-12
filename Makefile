@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+         #
+#    By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/09/20 10:57:31 by akharraz         ###   ########.fr        #
+#    Updated: 2022/10/09 16:39:31 by tel-mouh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,25 +23,23 @@ UHEADERS := $(addprefix include/, $(UHEADERS))
 
 RM = rm -rf
 CC = gcc 
-# CFLAG = -g -pthread -Wall -Werror -Wextra -I include 
+CFLAG = -g  -pthread -I include 
 
 # ################SRCS_Objs##########################
 
-# SRC = main.c dir.c init.c free_all.c parse.c startend.c quote.c lexer.c\
-	type.c handle_tree.c print_tree.c node.c
-# OBJ = $(addprefix obj/, $(SRC:.c=.o))
+SRC = main.c dir.c init.c free_all.c parse.c startend.c quote.c lexer.c\
+	type.c handle_tree.c print_tree.c node.c herdoc.c  cmd.c\
+	parse_op.c parse_block.c \
+	execute_bin.c  execute.c  execute_close.c\
+	execute_cmd.c  execute_sub_shell.c  execute_utils.c redirection.c check_cmd.c
+OBJ = $(addprefix obj/, $(SRC:.c=.o))
 
 # ################SRCS_Objs_Utils####################
 
-# SRC_UTILS = queue.c free_q.c is_space.c is_special.c
-# OBJ_UTILS = $(addprefix obj/utils/, $(SRC_UTILS:.c=.o))
+SRC_UTILS = queue.c free_q.c is_space.c is_special.c stack.c\
+	free_stack.c
+OBJ_UTILS = $(addprefix obj/utils/, $(SRC_UTILS:.c=.o))
 
-# ################ADAM_Work####################
-
-SRC_ADAM = pipe.c t_list_func.c
-OBJ_ADAM = $(addprefix obj/adam_work/, $(SRC_ADAM:.c=.o))
-# ####################OBJ##########################
-ALLOBJ := $(OBJ_ADAM) $(OBJ) $(OBJ_UTILS)
 # ################COLOR##############################
 
 COLOR='\033[0;32m'
@@ -73,13 +71,13 @@ ILIBFT = libft/include
 all : $(NAME)
 
 
-$(NAME): $(OBJ_ADAM) | library
+$(NAME): $(OBJ) $(OBJ_UTILS) | library
 	@ printf "\033[$(lines);0f"
 	@ tput el
 	@printf  ${CODE_RESTORE_CURSOR}""
 	@tput el
 	@ printf ${GREEN}"\rMaking is done ✅\n"${NC}
-	@ $(CC) $(CFLAG) $(ALLOBJ) -I $(ILIBFT) $(LIBFT) -lreadline -o $(NAME)
+	@ $(CC) $(CFLAG) $(OBJ) $(OBJ_UTILS) -I $(ILIBFT) $(LIBFT) -lreadline -o $(NAME)
 	@ tput cvvis
 	@ echo "---------------------------------------------------" >> lastcompiled.log
 
@@ -89,7 +87,6 @@ library :
 obj/%.o : src/%.c  $(HEADERS) $(UHEADERS)
 	@ mkdir -p obj
 	@ mkdir -p obj/utils
-	@ mkdir -p obj/adam_work
 	@$ nu=$x ; if [[ $$nu -eq -1 ]] ; then \
 	printf ${RE}"🔷 Making the  --> "${NC} \
 	 ; fi

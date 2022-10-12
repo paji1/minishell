@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 20:22:43 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/16 03:43:19 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/09 14:07:52 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,13 @@ t_node *create_token(t_node *new, char *token)
 	if (!new)
 		return NULL;
 	new->token.type = get_type(token);
-	new->node_type = block_op(token);
+	new->node_type = block_op(new->token.type);
 	new->token.token = token;
+	new->token.fd_HERDOC = -1;
+	new->token.pid_child = -1;
 	new->token.redir = NULL;
 	new->token.args_q = NULL;
+	new->token.exit_status = -1;
 	return new;
 }
 
@@ -34,6 +37,8 @@ t_node *new_tnode(void)
 	t_node *new = (t_node *)malloc(sizeof(t_node));
 	if (new == NULL)
 		return NULL;
+	new->file_in = 0;
+	new->file_out = 1;
 	new->left = NULL;
 	new->right = NULL;
 	return new;

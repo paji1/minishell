@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 21:01:38 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/20 07:40:23 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/09 14:07:25 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@
 
 # define FALSE 0
 # define TRUE 1
-# define FILED 22
-# define BLOCK 21
+# define FILED 27
+# define BLOCK 29
 # define SPECIAL 5
 # define OP 26
+# define PR 30
 
 
 typedef enum e_etokens
@@ -27,13 +28,17 @@ typedef enum e_etokens
 	AND = 12,
 	OR,
 	PIP,
+	LP,
+	RP,
 	REDIRECT_SO,
 	REDIRECT_SI,
 	APPEND,
+	DELIMITER,
 	HERDOC,
 	CMD,
 	ARG,
-	OPTIONS
+	OPTIONS,
+	SUB_SHELL
 }t_etoken;
 
 typedef struct s_token
@@ -41,6 +46,8 @@ typedef struct s_token
 	char	*token;
 	int		type;
 	int	 	exit_status;
+	int	 	pid_child;
+	int		fd_HERDOC;
 	t_queue	*args_q;
 	t_queue	*redir;
 }t_token;
@@ -49,6 +56,8 @@ typedef struct s_node
 {
 	t_token 		token;
 	int				node_type;
+	int	 		 	file_out;
+	int	 		 	file_in;
 	struct s_node	*right;
 	struct s_node	*left;
 }t_node;
@@ -59,6 +68,9 @@ typedef struct s_vars
 	t_node	*root;
 	char	*base_name;
 	char	**op_tab;
+	t_stack *roots;
+	char **env;
+	int		pid_num;
 } t_vars;
 
 

@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   free_q.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 00:55:06 by akharraz          #+#    #+#             */
-/*   Updated: 2022/09/04 01:00:58 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/09/22 02:16:09 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minishell.h"
 #include "queue.h"
 /**
  * @brief free node recursively
@@ -18,9 +19,16 @@
  */
 static void	free_nodes(t_nodeq *node)
 {
+	t_token *temp;
+
 	if (!node)
 		return ;
 	free_nodes(node->next);
+	temp = &node->data->token;
+	if (temp->type == DELIMITER && temp->fd_HERDOC != -1)
+		close(temp->fd_HERDOC);
+	free(temp->token);
+	free(node->data);
 	free(node);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 23:21:56 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/08 20:21:56 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/02 09:44:29 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 char    *lexer(char *buff, t_sub *sub)
 {
+    if (!(sub->end - sub->start))
+        return NULL;
     return (ft_substr(buff, sub->start, sub->end - sub->start));
 }
 

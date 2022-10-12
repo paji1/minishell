@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 05:38:56 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/15 23:47:05 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/09/24 03:24:50 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,4 +107,16 @@ t_nodeq	*qget_front(t_queue *queue)
 	front = queue->head;
 	queue->head = queue->head->next;
 	return front;
+}
+
+t_nodeq *q_n_get(t_queue *queue)
+{
+	static t_nodeq	*tail;
+	t_nodeq			*temp;
+
+	if (tail == NULL)
+		tail = queue->tail;
+	temp = tail;
+	tail = tail->prev;
+	return temp;
 }
