@@ -23,7 +23,7 @@ UHEADERS := $(addprefix include/, $(UHEADERS))
 
 RM = rm -rf
 CC = gcc 
-CFLAG = -g -pthread -I include 
+CFLAG = -g  -pthread -I include 
 
 # ################SRCS_Objs##########################
 

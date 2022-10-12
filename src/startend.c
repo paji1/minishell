@@ -15,6 +15,7 @@
 
 static int is_spacial_space(char *buff, int i)
 {
+    if (i >= 0)
     return (is_special(&buff[i]) || is_space(buff[i]));
 }
 /**

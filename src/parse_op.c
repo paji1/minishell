@@ -67,10 +67,20 @@ static void *create_empty_node(t_node **root)
 	(*root)->token.redir = new_queue();
 	(*root)->token.fd_HERDOC = -1;
 	(*root)->file_in = 0;
-	(*root)->file_in = 1;
-	(*root)->token.args_q = NULL;
+	(*root)->file_out = 1;
+	(*root)->token.args_q =NULL;
 	(*root)->token.exit_status = -1;
 }
+
+
+static void	put_redir_to_queue(t_node *node, t_node *new)
+{
+	if (node->token.redir == NULL)
+		node->token.redir = new_queue();
+	qput(node->token.redir, new_node(new));
+	handle_herdoc(new);
+}
+
 
 void	put_redir(t_node **root, t_node *new)
 {
@@ -85,11 +95,12 @@ void	put_redir(t_node **root, t_node *new)
 	if ((*root)->right == NULL || is_sub(*root))
 	{
 		if ((*root)->node_type == OP && !is_sub(*root))
-			create_empty_node(root);
-		if ((*root)->token.redir == NULL)
-			(*root)->token.redir = new_queue();
-		qput((*root)->token.redir, new_node(new));
-		handle_herdoc(new);
+		{
+			create_empty_node(&(*root)->right);
+			put_redir_to_queue((*root)->right, new);
+			return ;
+		}
+		put_redir_to_queue((*root), new);
 		return ;
 	}
 	put_redir(&(*root)->right, new);
