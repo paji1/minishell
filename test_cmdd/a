@@ -1,1 +1,36 @@
+Process:         minishell [4737]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x107ec4000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  minishell [4712]
+
+Date/Time:       2022-10-13 20:35:32.574 +0100
+Launch Time:     2022-10-13 20:35:31.226 +0100
+OS Version:      Mac OS X 10.14.6 (18G9323)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 11.3.1 (11C505)
+----
+
+leaks Report Version: 4.0
+Process 4737: 328 nodes malloced for 221 KB
+Process 4737: 4 leaks for 4128 total leaked bytes.
+
+    4 (4.03K) << TOTAL >>
+
+      2 (2.02K) ROOT LEAK: 0x7f8b3bd00080 [16]
+         1 (2.00K) 0x7f8b3c800e00 [2048]
+
+      2 (2.02K) ROOT LEAK: 0x7f8b3bd00090 [16]
+         1 (2.00K) 0x7f8b3c801600 [2048]
+
 a
+b
+c
+do.sh
+file1
+k
+p
+z

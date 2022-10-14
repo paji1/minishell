@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+         #
+#    By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/10/09 16:39:31 by tel-mouh         ###   ########.fr        #
+#    Updated: 2022/10/14 01:41:41 by akharraz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SHELL := /bin/bash # Use bash syntax
 
 # #################HEADERS###########################
-HEADERS = minishell.h types.h
+HEADERS = minishell.h types.h builtins.h
 HEADERS := $(addprefix include/, $(HEADERS))
 # #################HEADERS_utils###########################
 UHEADERS = queue.h types_q.h
@@ -31,7 +31,7 @@ SRC = main.c dir.c init.c free_all.c parse.c startend.c quote.c lexer.c\
 	type.c handle_tree.c print_tree.c node.c herdoc.c  cmd.c\
 	parse_op.c parse_block.c \
 	execute_bin.c  execute.c  execute_close.c\
-	execute_cmd.c  execute_sub_shell.c  execute_utils.c redirection.c check_cmd.c
+	execute_cmd.c  execute_sub_shell.c  execute_utils.c execute_redirection.c execute_check_cmd.c
 OBJ = $(addprefix obj/, $(SRC:.c=.o))
 
 # ################SRCS_Objs_Utils####################
@@ -39,6 +39,11 @@ OBJ = $(addprefix obj/, $(SRC:.c=.o))
 SRC_UTILS = queue.c free_q.c is_space.c is_special.c stack.c\
 	free_stack.c
 OBJ_UTILS = $(addprefix obj/utils/, $(SRC_UTILS:.c=.o))
+
+# ################SRCS_Objs_Builtins####################
+
+SRC_BUILTINS = ft_isbuiltin.c ft_echo.c
+OBJ_BUILTINS = $(addprefix obj/builtins/, $(SRC_BUILTINS:.c=.o))
 
 # ################COLOR##############################
 
@@ -71,13 +76,13 @@ ILIBFT = libft/include
 all : $(NAME)
 
 
-$(NAME): $(OBJ) $(OBJ_UTILS) | library
+$(NAME): $(OBJ) $(OBJ_UTILS) $(OBJ_BUILTINS) | library
 	@ printf "\033[$(lines);0f"
 	@ tput el
 	@printf  ${CODE_RESTORE_CURSOR}""
 	@tput el
 	@ printf ${GREEN}"\rMaking is done ✅\n"${NC}
-	@ $(CC) $(CFLAG) $(OBJ) $(OBJ_UTILS) -I $(ILIBFT) $(LIBFT) -lreadline -o $(NAME)
+	@ $(CC) $(CFLAG) $(OBJ) $(OBJ_UTILS) $(OBJ_BUILTINS) -I $(ILIBFT) $(LIBFT) -lreadline -o $(NAME)
 	@ tput cvvis
 	@ echo "---------------------------------------------------" >> lastcompiled.log
 
@@ -110,6 +115,7 @@ obj/%.o : src/%.c  $(HEADERS) $(UHEADERS)
 clean :
 	@ $(RM) $(OBJ)
 	@ $(RM) $(OBJ_UTILS)
+	@ $(RM) $(OBJ_BUILTINS)
 	@ make clean -C libft
 
 fclean : clean

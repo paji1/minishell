@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   execute_check_cmd.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akharraz <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/13 23:29:09 by akharraz          #+#    #+#             */
+/*   Updated: 2022/10/13 23:29:12 by akharraz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 static int search_path(char **env)
@@ -7,7 +19,7 @@ static int search_path(char **env)
 	i = -1;
 	while(env[++i])
 	{
-		if(strncmp(env[i], "PATH=", 5) == 0)
+		if(ft_strncmp(env[i], "PATH=", 5) == 0)
 			return i;
 	}
 	return -1;
@@ -26,11 +38,11 @@ static int check_if_path(char *cmd)
 	return (0);
 }
 
-static int  check_permission(char *cmd)
+int  check_permission(char *cmd)
 {
 	if (access(cmd, F_OK) == -1)
 		return (ft_putstr_fd("No such file or directory\n", 2), -1);
-	if (access(cmd, R_OK | W_OK) == -1)
+	if (access(cmd, R_OK) == -1)
 		return (ft_putstr_fd("Permission denied\n", 2), -2);
 	if (access(cmd, X_OK) == -1)
 		return (ft_putstr_fd("Permission denied\n", 2), -3);
@@ -58,13 +70,12 @@ static int search_cmd(char *cmd, char *env, char **path)
 			if (!jointr)
 				return free(subtr), ft_putstr_fd("allocation failed\n", 2), -1;
 			if(access(jointr, F_OK) != -1)
-				return(free(subtr), *path = jointr , 1);
-			free(subtr);
+				return(free(subtr), *path = jointr, free(jointr), 1);
 			free(jointr);
-			ft_putstr_fd(jointr, 2);
+			free(subtr);
 		}
 		sub.end++;
-	}	
+	}
 	return (0);
 }
 
@@ -74,8 +85,9 @@ int check_cmd(t_node *node, char **env, char **path)
 
 	if (check_if_path(node->token.token))
 	{
+		
 		(*path) = node->token.token;
-		return (check_permission(node->token.token));
+		return (check_permission(*path));
 	}
 	i = search_path(env);
 	if (i == -1 || search_cmd(node->token.token, env[i], path) ==  -1)

@@ -23,8 +23,7 @@ int execute_cmd(t_node *node, char **env)
 	cmd = qto_tab(node);
 	if(!cmd)
 		return -1;
-	check_cmd(node, env, &path);
-	if (execve(path, cmd, env) == -1)
+	if (check_cmd(node, env, &path) < 0 || execve(path, cmd, env) == -1)
 		return exit(1), -3;
 	return 0;
 }
@@ -49,7 +48,6 @@ int fork_cmd(t_node *node, char **env)
 	if (!is_first(node))
 	{
 		dup2(node->file_in, 0);
-		
 		dup2(node->file_out, 1);
 		close_before(node->file_out);
 	}

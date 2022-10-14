@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/09 22:16:36 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/14 05:37:27 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int ac, char **av, char **env)
 		}
 		exucute(vars.root, &vars);
 		while (vars.pid_num-- >= 0)
-					wait(0);
+			wait(0);
 		// printf("%d", WEXITSTATUS(vars.root->token.exit_status));
 		free_all(&vars);
 	}
