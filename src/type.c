@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 04:22:26 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/14 01:49:38 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/14 01:53:54 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int get_type(char *token)
 		return block_type(&last_token, token);
 }
 
-
 int block_op(int type)
 {
 	if (type == CMD || type == FILED || type == ARG || type == OPTIONS \
@@ -81,9 +80,6 @@ int expected(t_node *new, t_node *node)
 	return 0;
 }
 
-
-
-
 int handle_pranteses(t_node *new)
 {
 	static int state;
@@ -106,7 +102,6 @@ int handle_pranteses(t_node *new)
 	return 0;
 }
 
-
 int	handle_empty_cmd(t_node *new)
 {
 	static char flag;
@@ -124,7 +119,6 @@ int	handle_empty_cmd(t_node *new)
 		return flag = 0, 0;
 	return  0;
 }
-
 
 int accepted(t_node *new)
 {

@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/09 16:38:31 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/16 23:44:59 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 void    free_all(t_vars *vars);
 void	free_tree(t_node *root);
 void	free_pr(t_node *node);
+void	free_tab(char **tab);
 // -----------------utils-----------------------
 int		is_space(char c);
 int		is_special(char *str);
@@ -56,7 +57,7 @@ char	*getbasename(char *path);
 size_t	getdir(char **base_name);
 char	*dub_add(char *str, char *ad);
 // -----------------init------------------------
-void	init(t_vars *vars, char **env);
+int		init(t_vars *vars, char **env);
 // -------------------type----------------------
 int		get_type(char *token);
 int		block_op(int type);
@@ -81,8 +82,20 @@ void	print_tree(t_node *root,t_vars *vars);
 // ---------------------------------------------
 void	exucute(t_node *root,t_vars *vars);
 char	**qto_tab(t_node *node);
-int	check_cmd(t_node *node, char **env, char **path);
+int		check_cmd(t_node *node, char **env, char **path);
+
+// =============================================
+int			init_env(t_vars *vars, char **env_tab);
+void		remove_env_node(t_env *env, char *key);
+void		add_to_env_tail(t_env *env, t_env_node *new);
+t_env_node	*new_env_node(void);
+void		free_node_env(t_env_node *node);
+void		free_env(t_env *env);
+// =============================================
+int			split_with_equal(t_env_node *node, char *str);
+int			size_env(char **tab);
 
 
-
+// =============================================
+void print_env_tab(char **tab);
 #endif

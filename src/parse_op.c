@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:10:39 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/13 22:14:31 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/14 02:19:59 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,8 @@ static void *create_empty_node(t_node **root)
 	(*root)->file_out = 1;
 	(*root)->token.args_q = NULL;
 	(*root)->token.exit_status = -1;
-	ft_putstr_fd("hihi---\n", 2);
 	accepted((*root));
 }
-
 
 static void	put_redir_to_queue(t_node *node, t_node *new)
 {
@@ -82,7 +80,6 @@ static void	put_redir_to_queue(t_node *node, t_node *new)
 	qput(node->token.redir, new_node(new));
 	handle_herdoc(new);
 }
-
 
 void	put_redir(t_node **root, t_node *new)
 {

@@ -6,13 +6,31 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 00:13:18 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/07 15:59:08 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/16 23:46:33 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 
+void free_node_env(t_env_node *node)
+{
+	if (!node)
+		return ;
+	free_node_env(node->next);
+	free(node->key);
+	free(node->value);
+	free(node);
+}
+
+
+void free_env(t_env *env)
+{
+    if (!env || !env->head)
+        return ;
+	free_node_env(env->head);
+	free(env);
+}
 
 void free_pr(t_node *node)
 {
@@ -47,5 +65,6 @@ void    free_all(t_vars *vars)
     if (vars->buff)
         free(vars->buff);
     free_stack(vars->roots);
-    free_tree(vars->root);
+    if (vars->root)
+        free_tree(vars->root);
 }

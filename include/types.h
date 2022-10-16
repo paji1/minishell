@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 21:01:38 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/09 14:07:25 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/14 19:34:52 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,21 @@ typedef struct s_token
 	t_queue	*redir;
 }t_token;
 
+typedef struct s_env_node
+{
+	char				*key;
+	char				*value;
+	struct s_env_node	*next;
+}t_env_node;
+
+typedef struct s_env
+{
+	t_env_node	*head;
+	t_env_node	*tail;
+	char		**env_tab;
+	int			size;
+}t_env;
+
 typedef struct s_node
 {
 	t_token 		token;
@@ -69,10 +84,9 @@ typedef struct s_vars
 	char	*base_name;
 	char	**op_tab;
 	t_stack *roots;
-	char **env;
-	int		pid_num;
+	t_env	*env;
+	int		pid_num; 
 } t_vars;
-
 
 typedef struct s_quote
 {
@@ -85,5 +99,6 @@ typedef struct s_sub
     int start;
     int end;
 }t_sub;
+
 
 #endif

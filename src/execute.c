@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:17:18 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/09 22:15:59 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/16 02:36:47 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,11 @@ void exucute(t_node *root, t_vars *vars)
 {
 	if (root == NULL)
 		return ;
-	if (handle_exblock(root, vars->env))
+	if (handle_exblock(root, vars->env->env_tab))
 		vars->pid_num++;
 	if (handle_sub(root, vars))
 		return ;
-	handle_exop(root, vars->env);
+	handle_exop(root, vars->env->env_tab);
 	exucute(root->left, vars);
 	if (bin_status(root, vars))
 		exucute(root->right, vars);

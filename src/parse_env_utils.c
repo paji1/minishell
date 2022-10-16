@@ -1,33 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_special.c                                       :+:      :+:    :+:   */
+/*   parse_env_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/05 17:28:35 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/16 01:34:59 by tel-mouh         ###   ########.fr       */
+/*   Created: 2022/10/16 04:09:04 by tel-mouh          #+#    #+#             */
+/*   Updated: 2022/10/16 23:41:05 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-
-// enum SPEACIAL {
-// 	OR,AND,PIP,REDIRECT_SO,REDIRECT_Si,APPEND,HEREDOC
-// };
-int is_special(char *str)
+int	split_with_equal(t_env_node *node, char *str)
 {
-	char *twochar; 
+	int i;
 	
-	twochar = ft_substr(str, 0, 2);
-	if (!twochar)
+	i = -1;
+	while (str[++i] != '=')
+		;
+	node->key = ft_substr(str, 0, i);
+	if (!node->key)
+		return 1;
+	node->value = ft_strdup(&str[i + 1]);
+	if (!node->value)
+		return 1;
+	return 0;
+}
+
+int	size_env(char **tab)
+{
+	int	i;
+
+	i = 0;
+	if (!tab)
 		return -1;
-	if (!ft_strcmp("||", twochar) || !ft_strcmp("&&", twochar))
-		return free(twochar), 2;
-	else if (!ft_strcmp(">>", twochar) || !ft_strcmp("<<", twochar))
-		return free(twochar), 2;
-	if (ft_strchr("|<>()", twochar[0]))
-		return (free(twochar), 1);
-	return (free(twochar), 0);
+	while (tab[i])
+		i++;
+	return i;
+}
+
+void print_env_tab(char **tab)
+{
+	int	i;
+
+	i = -1;
+	while (tab[++i])
+		printf("%s\n", tab[i]);
 }
