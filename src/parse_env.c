@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 19:19:50 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/16 23:54:00 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/17 03:59:00 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,35 @@ char	**alloc_to_env(char **tab, t_env *env)
 	}
 	env_tab[i] = NULL;
 	return env_tab;
+}
+
+char	**env_lst_to_tab(t_env *env)
+{
+	char		**tab;
+	char		*equal;
+	t_env_node	*tmp;
+	int			i;
+
+	i = 0;
+	tmp = env->head;
+	if (!tmp)
+		return NULL;
+	tab = malloc((env->size + 1) * sizeof(char *));
+	if (!tab)
+		return NULL;
+	while (tmp)
+	{
+		equal = ft_strjoin(tmp->key, "=");
+		if (!equal)
+			return free_tab(tab), NULL;
+		tab[i] = ft_strjoin(equal, tmp->value);
+		if (!tab[i])
+			return free_tab(tab), free(equal), NULL;
+		free(equal);
+		i++;
+		tmp = tmp->next;
+	}
+	return tab[i] = NULL, tab;
 }
 
 int	init_env(t_vars *vars, char **env_tab)

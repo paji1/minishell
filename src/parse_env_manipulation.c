@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 23:10:26 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/16 23:11:23 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/17 03:44:26 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ t_env_node	*new_env_node(void)
 
 void	add_to_env_tail(t_env *env, t_env_node *new)
 {
+	if (!new)
+		return ;
 	if (!env->tail)
 	{
 		env->head =	 new;
@@ -93,4 +95,48 @@ void	remove_env_node(t_env *env, char *key)
 	if (remove_first(env, key))
 		return ;
 	remove_rest(env, key);
+}
+
+static int	is_in_env_change(t_env_node *head, char *key, char *value)
+{
+	while (head)
+	{
+		if (!ft_strcmp(head->key, key))
+		{
+			free(head->value);
+			head->value = value;
+			return 1;
+		}
+		head = head->next;
+	}
+	return 0;
+}
+
+int free_and_allocate(t_env *env, char **tab)
+{
+	env->env_tab = alloc_to_env(tab, env);
+	free_tab(tab);
+	if (!env->env_tab)
+		return 1;
+	return 0;
+}
+
+int	add_or_change_value(t_env *env, char *key, char *value)
+{
+	t_env_node *new;
+
+	if (!key && !value)
+		return -1;
+	if (!value)
+		return free(key), 1;
+	if (!key)
+		return free(value), 1;
+	if (!is_in_env_change(env->head, key, value))
+	{
+		new = new_env_node();
+		new->key = key;
+		new->value = value;
+		add_to_env_tail(env , new);
+	}
+	return 0;
 }
