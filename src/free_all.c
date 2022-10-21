@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 00:13:18 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/16 23:46:33 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/21 02:42:13 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void free_env(t_env *env)
 {
     if (!env || !env->head)
         return ;
+    free_tab(env->env_tab);
 	free_node_env(env->head);
 	free(env);
 }

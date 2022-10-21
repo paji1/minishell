@@ -6,7 +6,7 @@
 #    By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/10/17 03:15:29 by tel-mouh         ###   ########.fr        #
+#    Updated: 2022/10/19 06:08:33 by tel-mouh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ SRC = main.c dir.c init.c free_all.c free_all2.c parse.c startend.c quote.c lexe
 	parse_op.c parse_block.c \
 	execute_bin.c  execute.c  execute_close.c\
 	execute_cmd.c  execute_sub_shell.c  execute_utils.c\
-	parse_env.c parse_env_utils.c parse_env_manipulation.c
+	parse_env.c parse_env_utils.c parse_env_manipulation.c\
+	expander.c expander_utils.c
 OBJ = $(addprefix obj/, $(SRC:.c=.o))
 
 # ################SRCS_Objs_Utils####################

@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/17 03:56:12 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/21 07:02:39 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ t_node	*create_token(t_node *new, char *token);
 void	print_tree(t_node *root,t_vars *vars);
 // ---------------------------------------------
 void	exucute(t_node *root,t_vars *vars);
-char	**qto_tab(t_node *node);
-int		check_cmd(t_node *node, char **env, char **path);
+char	**qto_tab(t_node *node, t_env *env);
+int		check_cmd(t_node *node, t_env *env, char **path);
 
 // =============================================
 int			init_env(t_vars *vars, char **env_tab);
@@ -91,6 +91,7 @@ void		add_to_env_tail(t_env *env, t_env_node *new);
 t_env_node	*new_env_node(void);
 void		free_node_env(t_env_node *node);
 void		free_env(t_env *env);
+char		*get_value(t_env *env, char *key);
 // =============================================
 int			split_with_equal(t_env_node *node, char *str);
 int			size_env(char **tab);
@@ -98,6 +99,10 @@ int			size_env(char **tab);
 // =============================================
 char		**alloc_to_env(char **tab, t_env *env);
 char		**env_lst_to_tab(t_env *env);
+// =================expader=====================
+
+void		expand_str(char **str, t_env *env);
 // =============================================
-void print_env_tab(char **tab);
+
+void	print_env_tab(char **tab);
 #endif

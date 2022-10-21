@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 23:10:26 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/17 03:44:26 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/19 06:18:40 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,4 +139,19 @@ int	add_or_change_value(t_env *env, char *key, char *value)
 		add_to_env_tail(env , new);
 	}
 	return 0;
+}
+
+
+char	*get_value(t_env *env, char *key)
+{
+	t_env_node *tmp;
+
+	tmp = env->head;
+	while (tmp)
+	{
+		if (!ft_strcmp(key, tmp->key))
+			return tmp->value;
+		tmp = tmp->next;
+	}
+	return NULL;
 }

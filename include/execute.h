@@ -17,8 +17,8 @@ int close_in_parent(t_node *node);
 // #####################################################
 // ###                  cmd                          ###
 // #####################################################
-int execute_cmd(t_node *node, char **env);
-int fork_cmd(t_node *node, char **env);
+int execute_cmd(t_node *node, t_env *env);
+int fork_cmd(t_node *node, t_env *env);
 
 // #####################################################
 // ###                  subshell                     ###
@@ -33,6 +33,6 @@ int is_first(t_node *node);
 // ###                  execute                      ###
 // #####################################################
 int handle_exop(t_node *node, char **env);
-int handle_exblock(t_node *node, char **env);
+int handle_exblock(t_node *node, t_env *env);
 int	handle_expipe(t_node *node);
 #endif // EXECUTE_H

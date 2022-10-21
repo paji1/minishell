@@ -6,7 +6,7 @@
 #    By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/09/18 19:33:56 by tel-mouh         ###   ########.fr        #
+#    Updated: 2022/10/18 13:11:57 by tel-mouh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ SRC = ft_abs.c      ft_memcpy.c      ft_strlcat.c \
 	ft_isdigit.c  ft_strchr.c      ft_substr.c \
 	ft_isprint.c  ft_strcmp.c      ft_tolower.c \
 	ft_itoa.c     ft_strdup.c      ft_toupper.c \
-	ft_memchr.c   ft_striteri.c \
+	ft_memchr.c   ft_striteri.c    ft_strstr.c\
 	ft_memcmp.c   ft_strjoin.c
 OBJ = $(addprefix obj/, $(SRC:.c=.o))
 

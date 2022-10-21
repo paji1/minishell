@@ -6,13 +6,13 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 16:18:50 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/09 16:40:01 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/21 07:02:56 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int execute_cmd(t_node *node, char **env)
+int execute_cmd(t_node *node, t_env *env)
 {
 	char **cmd;
 	char *path;
@@ -20,7 +20,7 @@ int execute_cmd(t_node *node, char **env)
 
 	if (node->token.type != CMD)
 		return 0;
-	cmd = qto_tab(node);
+	cmd = qto_tab(node, env);
 	if(!cmd)
 		return -1;
 	error = check_cmd(node, env, &path);
@@ -28,14 +28,12 @@ int execute_cmd(t_node *node, char **env)
 		return perror("function Not found"), -2;
 	if (error == 0)
 		return perror("permission dnied"), -4;
-	// ft_putstr_fd(node->token.token, 2);
-	// ft_putstr_fd("\n", 2);
-	if (execve(path, cmd, env) == -1)
+	if (execve(path, cmd, env->env_tab) == -1)
 		return -3;
 	return 0;
 }
 
-int fork_cmd(t_node *node, char **env)
+int fork_cmd(t_node *node, t_env *env)
 {
 	int pid;
 

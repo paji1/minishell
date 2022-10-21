@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:05:03 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/05 17:24:16 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/21 07:01:54 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	get_path(char **env)
  * @param env environment variables
  * @return the path to the command example : "\bin\ls"
  */ 
-int	check_cmd(t_node *node, char **env, char **path)
+int	check_cmd(t_node *node, t_env *env, char **path)
 {
 	int		i; // just an index
 	int		j; // just an index
@@ -50,17 +50,17 @@ int	check_cmd(t_node *node, char **env, char **path)
 	int		found;
 
 	sub.start = 5;
-	i = get_path(env);
+	i = get_path(env->env_tab);
 	if (i == -1)
 		return -1;
 	j = 0;
-	while (env[i][j])
+	while (env->env_tab[i][j])
 	{
-		if(env[i][j] == ':')
+		if(env->env_tab[i][j] == ':')
 		{
 			// found = 3;
 			sub.end = j;
-			subtr = ft_substr(env[i], sub.start, sub.end - sub.start + 1);
+			subtr = ft_substr(env->env_tab[i], sub.start, sub.end - sub.start + 1);
 			if (!subtr)
 				return -1;
 			subtr[sub.end - sub.start] = '/';
@@ -68,6 +68,7 @@ int	check_cmd(t_node *node, char **env, char **path)
 			jointr = ft_strjoin(subtr, node->token.token);
 			if (!jointr)
 				return free(subtr), -1;
+			expand_str(&jointr, env);
 			if(access(jointr, X_OK) != -1)
 				return(free(subtr), *path = jointr ,1);
 			// if(access(jointr, F_OK) != -1)
@@ -80,7 +81,7 @@ int	check_cmd(t_node *node, char **env, char **path)
 	return found;
 }
 
-char **qto_tab(t_node *node)
+char **qto_tab(t_node *node, t_env *env)
 {
 	char	**tab;
 	int		size;
@@ -102,6 +103,7 @@ char **qto_tab(t_node *node)
 	while (++i < size - 1)
 	{
 		tab[i] = q_n_get(node->token.args_q)->data->token.token;
+		expand_str(&tab[i], env);
 	}
 	return tab[size - 1] = NULL, tab;
 }

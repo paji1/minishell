@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:17:18 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/16 02:36:47 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/21 06:56:34 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	handle_expipe(t_node *node)
 	return 0;
 }
 
-int handle_exblock(t_node *node, char **env)
+int handle_exblock(t_node *node, t_env *env)
 {
 	int pid;
 	if (is_sub(node) || node->node_type != BLOCK)
@@ -75,7 +75,7 @@ void exucute(t_node *root, t_vars *vars)
 {
 	if (root == NULL)
 		return ;
-	if (handle_exblock(root, vars->env->env_tab))
+	if (handle_exblock(root, vars->env))
 		vars->pid_num++;
 	if (handle_sub(root, vars))
 		return ;
