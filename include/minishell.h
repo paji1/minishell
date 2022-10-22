@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/21 07:02:39 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/22 01:52:01 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ void	print_tree(t_node *root,t_vars *vars);
 // ---------------------------------------------
 void	exucute(t_node *root,t_vars *vars);
 char	**qto_tab(t_node *node, t_env *env);
-int		check_cmd(t_node *node, t_env *env, char **path);
 
 // =============================================
 int			init_env(t_vars *vars, char **env_tab);

@@ -17,8 +17,10 @@ int close_in_parent(t_node *node);
 // #####################################################
 // ###                  cmd                          ###
 // #####################################################
-int execute_cmd(t_node *node, t_env *env);
-int fork_cmd(t_node *node, t_env *env);
+int		execute_cmd(t_node *node, t_env *env);
+int		fork_cmd(t_node *node, t_env *env);
+int		check_cmd(t_node *node, t_env *env, char **path);
+int		check_permission(char *cmd);
 
 // #####################################################
 // ###                  subshell                     ###
@@ -35,4 +37,11 @@ int is_first(t_node *node);
 int handle_exop(t_node *node, char **env);
 int handle_exblock(t_node *node, t_env *env);
 int	handle_expipe(t_node *node);
+
+// #####################################################
+// ###                  resdirection                 ###
+// #####################################################
+
+int		handle_redirection(t_node *node);
+
 #endif // EXECUTE_H

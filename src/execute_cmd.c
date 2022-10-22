@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/09 16:18:50 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/21 07:02:56 by tel-mouh         ###   ########.fr       */
+/*   Created: 2022/10/22 01:56:34 by tel-mouh          #+#    #+#             */
+/*   Updated: 2022/10/22 02:30:42 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,18 @@
 
 int execute_cmd(t_node *node, t_env *env)
 {
-	char **cmd;
-	char *path;
+	char	 **cmd;
+	char	 *path;
 	int		error;
 
 	if (node->token.type != CMD)
 		return 0;
 	cmd = qto_tab(node, env);
+	expand_str(&node->token.token, env);
 	if(!cmd)
 		return -1;
-	error = check_cmd(node, env, &path);
-	if (error == 3)
-		return perror("function Not found"), -2;
-	if (error == 0)
-		return perror("permission dnied"), -4;
-	if (execve(path, cmd, env->env_tab) == -1)
-		return -3;
+	if (check_cmd(node, env, &path) < 0 || execve(path, cmd, env->env_tab) == -1)
+		return free(path), exit(1), -3;
 	return 0;
 }
 
@@ -42,6 +38,7 @@ int fork_cmd(t_node *node, t_env *env)
 		return -1;
 	if (pid)
 		return node->token.pid_child = pid , pid;
+	handle_redirection(node);
 	if (is_first(node))
 	{
 		close_before(node->file_in);
@@ -52,7 +49,6 @@ int fork_cmd(t_node *node, t_env *env)
 	if (!is_first(node))
 	{
 		dup2(node->file_in, 0);
-		
 		dup2(node->file_out, 1);
 		close_before(node->file_out);
 	}
