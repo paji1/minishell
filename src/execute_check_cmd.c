@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 23:29:09 by akharraz          #+#    #+#             */
-/*   Updated: 2022/10/22 02:26:43 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/22 02:38:16 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int  check_permission(char *cmd)
 	if (access(cmd, F_OK) == -1)
 		return (ft_putstr_fd("No such file or directory\n", 2), -1);
 	if (access(cmd, R_OK) == -1)
-		return (ft_putstr_fd("Permission denied\n", 2), -2);
+		return (ft_putstr_fd("Minishell :Permission denied\n", 2), -2);
 	if (access(cmd, X_OK) == -1)
-		return (ft_putstr_fd("Permission denied\n", 2), -3);
+		return (ft_putstr_fd("Minishell :Permission denied\n", 2), -3);
 	return (1);
 }
 
@@ -76,7 +76,7 @@ static int search_cmd(char *cmd, char *env, char **path)
 		}
 		sub.end++;
 	}
-	return (0);
+	return (-1);
 }
 
 int check_cmd(t_node *node, t_env *env, char **path)

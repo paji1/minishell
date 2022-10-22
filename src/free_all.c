@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 00:13:18 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/21 02:42:13 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/22 02:46:35 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void    free_all(t_vars *vars)
 {
     if (vars->base_name)
         free(vars->base_name);
+    if (vars->env)
+        free_env(vars->env);
     if (vars->buff)
         free(vars->buff);
     free_stack(vars->roots);
