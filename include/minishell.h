@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/22 01:52:01 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/22 03:05:41 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 # include <signal.h>
 # include <sys/wait.h>
 # include <fcntl.h>
+// --------include libft header-----------------
+# include "../libft/include/libft.h"
+# include "get_next_line.h"
 // -------------includePath---------------------
 # include "queue.h"
 # include "stack.h"
@@ -30,8 +33,6 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
-// --------include libft header-----------------
-# include "../libft/include/libft.h"
 // ---------------------------------------------
 
 // --------------free_functions-----------------

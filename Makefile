@@ -6,7 +6,7 @@
 #    By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/10/22 01:58:09 by tel-mouh         ###   ########.fr        #
+#    Updated: 2022/10/22 03:06:38 by tel-mouh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ OBJ = $(addprefix obj/, $(SRC:.c=.o))
 # ################SRCS_Objs_Utils####################
 
 SRC_UTILS = queue.c free_q.c is_space.c is_special.c stack.c\
-	free_stack.c
+	free_stack.c get_nextline.c
 OBJ_UTILS = $(addprefix obj/utils/, $(SRC_UTILS:.c=.o))
 
 # ################COLOR##############################

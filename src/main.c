@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/22 02:52:34 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/22 03:21:49 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ int	main(int ac, char **av, char **env)
 	while (1)
 	{
 		if (init(&vars, env))
-			return 1;
+			return free_env(vars.env), 1;
 	 	getdir(&vars.base_name);
 		vars.buff = readline(vars.base_name);
 		if (vars.buff == NULL)
-			return free_all(&vars), printf("exit\n"), 0;
+			return free_env(vars.env), free_all(&vars), printf("exit\n"), 0;
 		if (vars.buff[0] && !parse(&vars))
 		{
 			free_all(&vars);
