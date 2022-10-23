@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:10:39 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/09 20:59:42 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/14 02:19:59 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ static void *create_empty_node(t_node **root)
 	(*root)->token.fd_HERDOC = -1;
 	(*root)->file_in = 0;
 	(*root)->file_out = 1;
-	(*root)->token.args_q =NULL;
+	(*root)->token.args_q = NULL;
 	(*root)->token.exit_status = -1;
+	accepted((*root));
 }
-
 
 static void	put_redir_to_queue(t_node *node, t_node *new)
 {
@@ -80,7 +80,6 @@ static void	put_redir_to_queue(t_node *node, t_node *new)
 	qput(node->token.redir, new_node(new));
 	handle_herdoc(new);
 }
-
 
 void	put_redir(t_node **root, t_node *new)
 {

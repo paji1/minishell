@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 01:30:00 by akharraz          #+#    #+#             */
-/*   Updated: 2022/10/14 05:37:18 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/10/23 12:25:14 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,18 @@ static int check_option(char *arg)
 void ft_echo(char **cmd)
 {
 	int i;
-	int	lock;
+	int lock;
 
 	lock = 0;
 	i = 0;
 	while (cmd[++i])
 	{
-		if (lock != -1 && cmd[i][0] == '-')
+		if (lock >= 0 && cmd[i][0] == '-' && check_option(cmd[i]) == TRUE)
 		{
-			if (lock != 2 && check_option(cmd[i]) == TRUE)
-			{
-				lock = 1;
-				continue ;
-			}
+			lock = 1;
+			continue;
 		}
-		if (lock == 1 || lock == 0)
+		if (lock == 1)
 			lock = -1;
 		ft_putstr_fd(cmd[i], STDOUT_FILENO);
 		if (cmd[i + 1])

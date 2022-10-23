@@ -6,14 +6,14 @@
 #    By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/10/14 01:41:41 by akharraz         ###   ########.fr        #
+#    Updated: 2022/10/23 08:24:03 by akharraz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SHELL := /bin/bash # Use bash syntax
 
 # #################HEADERS###########################
-HEADERS = minishell.h types.h builtins.h
+HEADERS = minishell.h types.h
 HEADERS := $(addprefix include/, $(HEADERS))
 # #################HEADERS_utils###########################
 UHEADERS = queue.h types_q.h
@@ -23,26 +23,29 @@ UHEADERS := $(addprefix include/, $(UHEADERS))
 
 RM = rm -rf
 CC = gcc 
-CFLAG = -g  -pthread -I include 
+CFLAG = -g  -pthread -I include  
+# -fsanitize=address 
 
 # ################SRCS_Objs##########################
 
-SRC = main.c dir.c init.c free_all.c parse.c startend.c quote.c lexer.c\
+SRC = main.c dir.c init.c free_all.c free_all2.c parse.c startend.c quote.c lexer.c\
 	type.c handle_tree.c print_tree.c node.c herdoc.c  cmd.c\
 	parse_op.c parse_block.c \
-	execute_bin.c  execute.c  execute_close.c\
-	execute_cmd.c  execute_sub_shell.c  execute_utils.c execute_redirection.c execute_check_cmd.c
+	execute_bin.c  execute.c  execute_close.c execute_redirection.c\
+	execute_cmd.c  execute_sub_shell.c  execute_utils.c execute_check_cmd.c\
+	parse_env.c parse_env_utils.c parse_env_manipulation.c\
+	expander.c expander_utils.c execute_builtins.c
 OBJ = $(addprefix obj/, $(SRC:.c=.o))
 
 # ################SRCS_Objs_Utils####################
 
 SRC_UTILS = queue.c free_q.c is_space.c is_special.c stack.c\
-	free_stack.c
+	free_stack.c get_nextline.c
 OBJ_UTILS = $(addprefix obj/utils/, $(SRC_UTILS:.c=.o))
 
 # ################SRCS_Objs_Builtins####################
 
-SRC_BUILTINS = ft_isbuiltin.c ft_echo.c
+SRC_BUILTINS = ft_echo.c ft_isbuiltin.c ft_pwd.c ft_env.c ft_cd.c
 OBJ_BUILTINS = $(addprefix obj/builtins/, $(SRC_BUILTINS:.c=.o))
 
 # ################COLOR##############################
@@ -73,7 +76,7 @@ ILIBFT = libft/include
 
 # ###################################################
 
-all : $(NAME)
+all : $(NAME) 
 
 
 $(NAME): $(OBJ) $(OBJ_UTILS) $(OBJ_BUILTINS) | library
@@ -114,8 +117,7 @@ obj/%.o : src/%.c  $(HEADERS) $(UHEADERS)
 
 clean :
 	@ $(RM) $(OBJ)
-	@ $(RM) $(OBJ_UTILS)
-	@ $(RM) $(OBJ_BUILTINS)
+	@ $(RM) $(OBJ_UTILS) $(OBJ_BUILTINS)
 	@ make clean -C libft
 
 fclean : clean

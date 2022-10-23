@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 04:22:26 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/05 16:17:19 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/14 01:53:54 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ static int block_type(int *last_token, char *token)
 	else
 		return (*last_token) = ARG , ARG;
 }
+
 int get_type(char *token)
 {
 	static int last_token;
 
 	if (token == NULL)
 		return last_token = 0, -1;
-		
 	if (!ft_strcmp(token , "||"))
 		return last_token = OR , OR;
 	else if (!ft_strcmp(token , "&&"))
@@ -51,7 +51,6 @@ int get_type(char *token)
 	else
 		return block_type(&last_token, token);
 }
-
 
 int block_op(int type)
 {
@@ -81,9 +80,6 @@ int expected(t_node *new, t_node *node)
 	return 0;
 }
 
-
-
-
 int handle_pranteses(t_node *new)
 {
 	static int state;
@@ -106,7 +102,23 @@ int handle_pranteses(t_node *new)
 	return 0;
 }
 
+int	handle_empty_cmd(t_node *new)
+{
+	static char flag;
 
+	if (!(*new->token.token))
+		return flag = 1, 1;
+	if (flag == 0)
+		return 0;
+	if (new->token.type == ARG)
+		return flag = 0, 1;
+	if (\
+		new->token.type != FILED && \
+		!(new->token.type >= REDIRECT_SO && new->token.type <= HERDOC)\
+		)
+		return flag = 0, 0;
+	return  0;
+}
 
 int accepted(t_node *new)
 {
@@ -129,5 +141,7 @@ int accepted(t_node *new)
 	}
 	if (!expected(new, node))
 		return handle_pranteses(NULL),  node = NULL, 0;
+	if (handle_empty_cmd(new))
+		return  1;
 	return node = new, 1;
 }

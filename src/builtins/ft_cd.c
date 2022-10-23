@@ -5,25 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/14 05:45:39 by akharraz          #+#    #+#             */
-/*   Updated: 2022/10/15 23:02:33 by akharraz         ###   ########.fr       */
+/*   Created: 2022/10/23 05:17:34 by akharraz          #+#    #+#             */
+/*   Updated: 2022/10/23 06:30:55 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "minishell.h"
-#include <unistd.h>
-#include <stdio.h>
+#include "minishell.h"
 
-int ft_cd(char *path)
+void    ft_cd(char  **cmd)
 {
-	return 0;
-}
-
-int main(void)
-{
-	int i;
-	
-	i = chdir("..");
-	printf("%d\n", i);
-	return 0;
+    if (cmd[1])
+    {
+        if (!chdir(cmd[1]))
+            ft_putendl_fd("salam", STDOUT_FILENO);
+        else
+            ft_putendl_fd("not salam", STDOUT_FILENO);
+    }
 }

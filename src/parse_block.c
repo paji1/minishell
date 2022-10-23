@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:12:21 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/02 11:59:03 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/13 22:13:56 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ static int	put_arg_as_cmd(t_node **root, t_node *new)
 		free((*root)->token.token);
 		(*root)->token.token = new->token.token;
 		free(new);
-		get_type(NULL);
-		get_type((*root)->token.token);
 		return (1);
 	}
 	return (0);
@@ -61,12 +59,12 @@ void	put_block(t_node **root, t_node *new)
 {
 	if (*root == NULL)
 	{
-		*root = new; 
+		*root = new;
 		return ;
 	}
 	if ((*root)->right == NULL || is_sub(*root))
 	{
-		
+
 		if (put_file(root, new))
 			return ;
 		if (put_arg_as_cmd(root, new))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_check_cmd.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 23:29:09 by akharraz          #+#    #+#             */
-/*   Updated: 2022/10/13 23:29:12 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/10/22 02:38:16 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int  check_permission(char *cmd)
 	if (access(cmd, F_OK) == -1)
 		return (ft_putstr_fd("No such file or directory\n", 2), -1);
 	if (access(cmd, R_OK) == -1)
-		return (ft_putstr_fd("Permission denied\n", 2), -2);
+		return (ft_putstr_fd("Minishell :Permission denied\n", 2), -2);
 	if (access(cmd, X_OK) == -1)
-		return (ft_putstr_fd("Permission denied\n", 2), -3);
+		return (ft_putstr_fd("Minishell :Permission denied\n", 2), -3);
 	return (1);
 }
 
@@ -70,27 +70,26 @@ static int search_cmd(char *cmd, char *env, char **path)
 			if (!jointr)
 				return free(subtr), ft_putstr_fd("allocation failed\n", 2), -1;
 			if(access(jointr, F_OK) != -1)
-				return(free(subtr), *path = jointr, free(jointr), 1);
+				return(free(subtr), *path = jointr, 1);
 			free(jointr);
 			free(subtr);
 		}
 		sub.end++;
 	}
-	return (0);
+	return (-1);
 }
 
-int check_cmd(t_node *node, char **env, char **path)
+int check_cmd(t_node *node, t_env *env, char **path)
 {
 	int i;
 
 	if (check_if_path(node->token.token))
 	{
-		
 		(*path) = node->token.token;
 		return (check_permission(*path));
 	}
-	i = search_path(env);
-	if (i == -1 || search_cmd(node->token.token, env[i], path) ==  -1)
+	i = search_path(env->env_tab);
+	if (i == -1 || search_cmd(node->token.token, env->env_tab[i], path) ==  -1)
 		return ft_putstr_fd("command not found\n", 2), -4;
 	return (check_permission(*path));
 }

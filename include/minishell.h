@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/13 23:35:25 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/10/23 04:38:23 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,27 @@
 # include <signal.h>
 # include <sys/wait.h>
 # include <fcntl.h>
+# include<limits.h>
+// --------include libft header-----------------
+# include "../libft/include/libft.h"
+# include "get_next_line.h"
 // -------------includePath---------------------
-# include "builtins.h"
 # include "queue.h"
 # include "stack.h"
 # include "types.h"
 # include "execute.h"
-
+# include "builtins.h"
 // --------include readline header--------------
 #include <readline/readline.h>
 #include <readline/history.h>
 
-// --------include libft header-----------------
-# include "../libft/include/libft.h"
 // ---------------------------------------------
 
 // --------------free_functions-----------------
 void    free_all(t_vars *vars);
 void	free_tree(t_node *root);
 void	free_pr(t_node *node);
+void	free_tab(char **tab);
 // -----------------utils-----------------------
 int		is_space(char c);
 int		is_special(char *str);
@@ -58,7 +60,7 @@ char	*getbasename(char *path);
 size_t	getdir(char **base_name);
 char	*dub_add(char *str, char *ad);
 // -----------------init------------------------
-void	init(t_vars *vars, char **env);
+int		init(t_vars *vars, char **env);
 // -------------------type----------------------
 int		get_type(char *token);
 int		block_op(int type);
@@ -82,9 +84,27 @@ t_node	*create_token(t_node *new, char *token);
 void	print_tree(t_node *root,t_vars *vars);
 // ---------------------------------------------
 void	exucute(t_node *root,t_vars *vars);
-char	**qto_tab(t_node *node);
-// int	check_cmd(t_node *node, char **env, char **path);
+char	**qto_tab(t_node *node, t_env *env);
 
+// =============================================
+int			init_env(t_vars *vars, char **env_tab);
+void		remove_env_node(t_env *env, char *key);
+void		add_to_env_tail(t_env *env, t_env_node *new);
+t_env_node	*new_env_node(void);
+void		free_node_env(t_env_node *node);
+void		free_env(t_env *env);
+char		*get_value(t_env *env, char *key);
+// =============================================
+int			split_with_equal(t_env_node *node, char *str);
+int			size_env(char **tab);
 
+// =============================================
+char		**alloc_to_env(char **tab, t_env *env);
+char		**env_lst_to_tab(t_env *env);
+// =================expader=====================
 
+void		expand_str(char **str, t_env *env);
+// =============================================
+
+void	print_env_tab(char **tab);
 #endif

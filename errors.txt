@@ -1,6 +1,6 @@
 
 |||||||
 f || D && f| ff | fv | d| d| 3
+(> file1 < a)
 
-> file1 < a ls | echo a
-    Minishell: syntax error near unexpected token '|'
+signalhandler herdoc

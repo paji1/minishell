@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:17:18 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/09 22:15:59 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/23 07:28:54 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@ int	handle_expipe(t_node *node)
 	return 0;
 }
 
-int handle_exblock(t_node *node, char **env)
+int handle_exblock(t_node *node, t_env *env)
 {
 	int pid;
 	if (is_sub(node) || node->node_type != BLOCK)
 		return 0;
+	if (is_first(node) && node->file_out == 1 && ft_isbuiltin(node->token.token))
+		return (execute_builtins(node, env));
 	if (fork_cmd(node, env)  < 0)
 		return 0;
 	close_in_parent(node);
@@ -79,7 +81,7 @@ void exucute(t_node *root, t_vars *vars)
 		vars->pid_num++;
 	if (handle_sub(root, vars))
 		return ;
-	handle_exop(root, vars->env);
+	handle_exop(root, vars->env->env_tab);
 	exucute(root->left, vars);
 	if (bin_status(root, vars))
 		exucute(root->right, vars);

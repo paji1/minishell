@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 22:51:36 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/06 20:56:31 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/21 05:45:27 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int quote_handle(t_quote *quote, int i, char *buff)
     if (!ft_strchr("\"'", buff[i]) && quote->in_quote == TRUE)
         return (1);
     if (quote->quote == buff[i] && quote->in_quote == TRUE)
-        return quote->in_quote = FALSE , 1;
+        return quote->in_quote = FALSE , quote->quote = '\0', 2;
     if (ft_strchr("\"'", buff[i]) && quote->in_quote == FALSE)
         return quote->in_quote = TRUE, quote->quote =  buff[i] , 1;
     return 0;

@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/14 05:37:27 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/10/23 07:10:24 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,24 @@ int	main(int ac, char **av, char **env)
 	t_vars	vars;
 
 	(void)ac, (void)av;
+	if (init_env(&vars, env))
+		return  (2);
 	while (1)
 	{
-		init(&vars, env);
+		if (init(&vars, env))
+			return free_env(vars.env), 1;
 	 	getdir(&vars.base_name);
 		vars.buff = readline(vars.base_name);
 		if (vars.buff == NULL)
-			return free_all(&vars), printf("exit\n"), 0;
-		add_history(vars.buff);
+			return free_env(vars.env), free_all(&vars), printf("exit\n"), 0;
 		if (vars.buff[0] && !parse(&vars))
 		{
 			free_all(&vars);
-			continue;
+			continue ;
 		}
 		exucute(vars.root, &vars);
 		while (vars.pid_num-- >= 0)
 			wait(0);
-		// printf("%d", WEXITSTATUS(vars.root->token.exit_status));
 		free_all(&vars);
 	}
 	return 0;
