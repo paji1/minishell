@@ -6,7 +6,7 @@
 #    By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/10/22 03:06:38 by tel-mouh         ###   ########.fr        #
+#    Updated: 2022/10/22 05:56:00 by tel-mouh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,15 @@ OBJ = $(addprefix obj/, $(SRC:.c=.o))
 SRC_UTILS = queue.c free_q.c is_space.c is_special.c stack.c\
 	free_stack.c get_nextline.c
 OBJ_UTILS = $(addprefix obj/utils/, $(SRC_UTILS:.c=.o))
+# ################SRCS_Objs_builtin####################
+
+SRC_BUILTIN =
+
+OBJ_BUILTIN = $(addprefix obj/builtin/, $(SRC_BUILTIN:.c=.o))
+
+# ################ALL_OBJS####################
+
+ALL_OBJS = $(OBJ) $(OBJ_UTILS) $(OBJ_BUILTIN)
 
 # ################COLOR##############################
 
@@ -74,13 +83,13 @@ ILIBFT = libft/include
 all : $(NAME) 
 
 
-$(NAME): $(OBJ) $(OBJ_UTILS) | library
+$(NAME): $(ALL_OBJS)  | library
 	@ printf "\033[$(lines);0f"
 	@ tput el
 	@printf  ${CODE_RESTORE_CURSOR}""
 	@tput el
 	@ printf ${GREEN}"\rMaking is done ✅\n"${NC}
-	@ $(CC) $(CFLAG) $(OBJ) $(OBJ_UTILS) -I $(ILIBFT) $(LIBFT) -lreadline -o $(NAME)
+	@ $(CC) $(CFLAG) $(ALL_OBJS) -I $(ILIBFT) $(LIBFT) -lreadline -o $(NAME)
 	@ tput cvvis
 	@ echo "---------------------------------------------------" >> lastcompiled.log
 
@@ -91,7 +100,7 @@ obj/%.o : src/%.c  $(HEADERS) $(UHEADERS)
 	@ mkdir -p obj
 	@ mkdir -p obj/utils
 	@$ nu=$x ; if [[ $$nu -eq -1 ]] ; then \
-	printf ${RE}"🔷 Making the  --> "${NC} \
+	printf ${RE}"🔷 Making the--> "${NC} \
 	 ; fi
 	@ $(CC) $(CFLAG) -c $< -o $@
 	@tput civis
@@ -111,8 +120,7 @@ obj/%.o : src/%.c  $(HEADERS) $(UHEADERS)
 	@tput el
 
 clean :
-	@ $(RM) $(OBJ)
-	@ $(RM) $(OBJ_UTILS)
+	@ $(RM) $(ALL_OBJS)
 	@ make clean -C libft
 
 fclean : clean

@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 01:56:34 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/22 02:41:34 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/23 01:36:17 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,24 @@ int execute_cmd(t_node *node, t_env *env)
 
 	if (node->token.type != CMD)
 		return 0;
+	path = NULL;
 	cmd = qto_tab(node, env);
-	expand_str(&node->token.token, env);
 	if(!cmd)
 		return -1;
+	expand_str(&node->token.token, env);
 	if (check_cmd(node, env, &path) < 0 || execve(path, cmd, env->env_tab) == -1)
-		return free_tab(cmd), free(path), exit(1), -3;
+		return free(cmd), free(path), exit(1), -3;
+	if (path)
+		free(path);
+	if (cmd)
+		free(cmd);
 	return 0;
 }
 
 int fork_cmd(t_node *node, t_env *env)
 {
 	int pid;
+
 
 	pid = fork();
 	if (pid == -1)
