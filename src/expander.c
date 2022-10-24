@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 02:20:25 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/23 04:02:09 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/24 08:19:01 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,28 +109,17 @@ int count_sub(int	i, int quote, t_sub *sub)
 	return 0;
 }
 
-void	expand_str(char **str, t_env *env)
+
+void expand_string_toquote(char **str, t_env *env)
 {
-	char	*temp;
 	t_sub	sub;
 	t_quote quote;
-	int		i;
-	
+	char	*temp;
+	int	i;
 
 	i = -1;
 	temp = *str;
-	ft_bzero(&quote, sizeof(t_quote));
 	ft_bzero(&sub, sizeof(t_sub));
-	while (temp[++i])
-	{
-		quote_handle(&quote, i, temp);
-		if (temp[i] == '$' && quote.quote != '\'' )
-		{
-			expand_key(str, i--, count_lent(&temp[i]) + i + 1, env);
-			temp = *str;
-		}
-	}
-	i = -1;
 	ft_bzero(&quote, sizeof(t_quote));
 	while (temp[++i])
 	{
@@ -142,6 +131,27 @@ void	expand_str(char **str, t_env *env)
 			i -= 2;
 		}
 	}
+}
+
+void	expand_str(char **str, t_env *env)
+{
+	char	*temp;
+	t_quote quote;
+	int		i;
+
+	i = -1;
+	temp = *str;
+	ft_bzero(&quote, sizeof(t_quote));
+	while (temp[++i])
+	{
+		quote_handle(&quote, i, temp);
+		if (temp[i] == '$' && quote.quote != '\'' )
+		{
+			expand_key(str, i--, count_lent(&temp[i]) + i + 1, env);
+			temp = *str;
+		}
+	}
+	expand_string_toquote(str, env);
 }
 
 
