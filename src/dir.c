@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 21:00:52 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/05 19:20:31 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/24 08:37:49 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*dub_add(char *str, char *ad)
 	ad_len = ft_strlen(ad);
 	s = malloc(11 + 1 + len + ad_len);
 	*s = '\0';
-	ft_strlcat(s, "\033[0;34m", 8);
+	ft_strlcat(s, "\033[0;91m", 8);
 	ft_strlcat(s, str, 8 + len);
 	ft_strlcat(s, ad, 8 + len + ad_len);
 	ft_strlcat(s, "\033[0m", 12 + len + ad_len);
