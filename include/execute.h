@@ -49,4 +49,9 @@ int		handle_redirection(t_node *node);
 // #####################################################
 int     execute_builtins(t_node *node, t_env *env);
 
+// #####################################################
+// ###                  env                          ###
+// #####################################################
+int     add_or_change_value(t_env *env, char *key, char *value);
+
 #endif // EXECUTE_H

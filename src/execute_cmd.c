@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 01:56:34 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/23 07:28:42 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/10/24 04:54:57 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ int execute_cmd(t_node *node, t_env *env)
 	expand_str(&node->token.token, env);
 	if(!cmd)
 		return -1;
+	if (ft_isbuiltin(cmd[0]))
+	{
+		return (execute_builtins(node, env), exit(0), 0);
+	}
 	if (check_cmd(node, env, &path) < 0 || execve(path, cmd, env->env_tab) == -1)
 		return free_tab(cmd), free(path), exit(1), -3;
 	return 0;

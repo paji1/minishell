@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_bin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 16:20:56 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/09 21:49:05 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/24 09:06:41 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ int bin_status(t_node *node, t_vars *vars)
 
 	status == 0;
 	if (node->token.type == AND || node->token.type == OR)
+	{
 		status  = wait_for_bin(node);
+	}
 	if (node->token.type == AND)
 	{
 		if (WEXITSTATUS(status) != 0)

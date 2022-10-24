@@ -6,19 +6,34 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 05:17:34 by akharraz          #+#    #+#             */
-/*   Updated: 2022/10/23 06:30:55 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/10/24 10:23:50 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include <dirent.h>
 
-void    ft_cd(char  **cmd)
+int	ft_cd(char  **cmd, t_env *env)
 {
-    if (cmd[1])
-    {
-        if (!chdir(cmd[1]))
-            ft_putendl_fd("salam", STDOUT_FILENO);
-        else
-            ft_putendl_fd("not salam", STDOUT_FILENO);
-    }
+	char newpath[PATH_MAX];
+	char oldpath[PATH_MAX];
+	DIR *dir;
+
+	if (cmd[1])
+	{
+		// dir = opendir(cmd[1]);
+		// if (dir == NULL)
+		// 	return (0);
+		if (getcwd(oldpath, PATH_MAX) == -1)
+			return -4;
+		add_or_change_value(env, "OLDPWD", ft_strdup(oldpath));
+		if (chdir(cmd[1]) == -1)
+			return -2;
+		if (getcwd(newpath, PATH_MAX) == -1)
+			return -4;
+		add_or_change_value(env, "PWD", ft_strdup(newpath));
+		// if (closedir(dir) == -1)
+		// 	return printf("closedir faild\n"), -3;
+	}
+	return (0);
 }
