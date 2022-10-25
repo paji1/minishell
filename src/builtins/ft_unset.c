@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute_builtins.c                                 :+:      :+:    :+:   */
+/*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 06:57:18 by akharraz          #+#    #+#             */
-/*   Updated: 2022/10/24 14:08:19 by akharraz         ###   ########.fr       */
+/*   Created: 2022/10/24 13:22:47 by akharraz          #+#    #+#             */
+/*   Updated: 2022/10/24 14:31:15 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int execute_builtins(t_node *node, t_env *env)
+void	ft_unset(char **cmd ,t_env *env)
 {
-	char    **cmd;
+	int	i;
 
-	cmd = qto_tab(node, env);
-	if (!ft_strcmp(node->token.token, "cd"))
-		ft_cd(cmd, env);
-	if (!ft_strcmp(node->token.token, "echo"))
-		ft_echo(cmd);
-	if (!ft_strcmp(node->token.token, "env"))
-		ft_env(env);
-	if (!ft_strcmp(node->token.token, "pwd"))
-		ft_pwd(env);
-	if (!ft_strcmp(node->token.token, "unset"))
-		ft_unset(cmd, env);
-	free(cmd);
-	return (0);
+	i = 0;
+	printf("welcome to unset:\n");
+	while (cmd[++i])
+	{
+		remove_env_node(env, cmd[i]);
+		printf("%s is removed\n", cmd[i]);
+	}
 }

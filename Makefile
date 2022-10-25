@@ -6,7 +6,7 @@
 #    By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/10/23 08:24:03 by akharraz         ###   ########.fr        #
+#    Updated: 2022/10/24 14:03:49 by akharraz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ OBJ_UTILS = $(addprefix obj/utils/, $(SRC_UTILS:.c=.o))
 
 # ################SRCS_Objs_Builtins####################
 
-SRC_BUILTINS = ft_echo.c ft_isbuiltin.c ft_pwd.c ft_env.c ft_cd.c
+SRC_BUILTINS = ft_echo.c ft_isbuiltin.c ft_pwd.c ft_env.c ft_cd.c ft_unset.c
 OBJ_BUILTINS = $(addprefix obj/builtins/, $(SRC_BUILTINS:.c=.o))
 
 # ################COLOR##############################

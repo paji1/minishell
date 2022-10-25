@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dir.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 21:00:52 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/05 19:20:31 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/24 12:15:36 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,11 @@ char	*getbasename(char *path)
  * @param base_name address of pointer base_name
  * @return size_t size of prompt
  */
-size_t	getdir(char **base_name)
+int	getdir(char **base_name)
 {
 	char *buff;
 
-	buff = malloc(1244);	
+	buff = malloc(1244);
 	if (!getcwd(buff, -1))
 		return perror("getcwd failed"), -1;
 	*base_name = dub_add(getbasename(buff), "-> ");
