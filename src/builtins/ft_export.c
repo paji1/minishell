@@ -1,23 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/02 13:45:46 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/28 08:45:09 by akharraz         ###   ########.fr       */
+/*   Created: 2022/10/25 23:30:16 by akharraz          #+#    #+#             */
+/*   Updated: 2022/10/28 11:50:01 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
-int	ft_strcmp(const char *s1, const char *s2)
+static int	export_isvalid(char *cmd)
 {
-	while (*s1 && *s2 && *s1 == *s2)
+	int	i;
+
+	i = 0;
+	while (cmd[i])
 	{
-		s1++;
-		s2++;
+		if (!ft_isalnum(cmd[i]) && cmd[i] != '=')
+			printf("minishell: export: `%s': not a valid identifier\n", cmd);
+		if (cmd[i] == '=')
+			break;
+		i++;
 	}
-	return ((unsigned char)*s1 - (unsigned char)*s2);
+	return (0);
+}
+
+void    ft_export(char **cmd, t_env *env)
+{
+	int i;
+
+	i = 1;
+	if (!cmd[i])
+		export_print(env);
+	while (cmd[i])
+	{
+		export_isvalid(cmd[i]);
+		i++;
+	}
 }

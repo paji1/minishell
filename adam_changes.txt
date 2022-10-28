@@ -1,0 +1,5 @@
+# struct "s_env_node" : 
+    i added an element 'int index'
+
+# struct "s_env_node" : 
+    i added an element 'int is_export'

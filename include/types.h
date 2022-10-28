@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 21:01:38 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/14 19:34:52 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/28 11:25:08 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ typedef struct s_env_node
 	char				*key;
 	char				*value;
 	struct s_env_node	*next;
+	int					index;
+	int					is_export;
 }t_env_node;
 
 typedef struct s_env
