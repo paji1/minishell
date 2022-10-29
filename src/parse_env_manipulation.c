@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 23:10:26 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/28 11:25:56 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/10/29 05:32:43 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_env_node	*new_env_node(void)
 	t_env_node *node = malloc(sizeof(t_env_node));
 	if (!node)
 		return NULL;
-	node->is_export = 1;
+	node->is_env = 1;
 	node->key = NULL;
 	node->value = NULL;
 	node->next = NULL;

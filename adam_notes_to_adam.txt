@@ -1,0 +1,10 @@
+#echo adds a space
+    echo -m -n
+
+#cd 
+    you didn't handle "go back ffrom nested parent dir"
+    leaks !!
+
+#export 
+
+#redirection

@@ -2,4 +2,7 @@
     i added an element 'int index'
 
 # struct "s_env_node" : 
-    i added an element 'int is_export'
+    i added an element 'int is_envt'
+
+# add intializer to is_env 
+    to function "t_env_node	*new_env_node(void)" in  src/parse_env_manipulation.c

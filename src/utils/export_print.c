@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 10:33:49 by akharraz          #+#    #+#             */
-/*   Updated: 2022/10/28 11:27:01 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/10/29 05:04:21 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	print_export(t_env *env)
 	{
 		if (node->index == i)
 		{
-			printf("declare -x %s=\"%s\"\n",node->is_export ,node->key, node->value);
+			printf("declare -x %s=\"%s\"\n", node->key, node->value);
 			i++;
 			node = env->head;
 		}
