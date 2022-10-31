@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 21:01:38 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/29 05:33:02 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/10/29 09:01:34 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,5 @@ typedef struct s_sub
     int start;
     int end;
 }t_sub;
-
 
 #endif

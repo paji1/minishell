@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/26 00:04:27 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/10/29 17:26:23 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(int ac, char **av, char **env)
 			return free_env(vars.env), 1;
 	 	getdir(&vars.base_name);
 		vars.buff = readline(vars.base_name);
+		add_history (vars.buff);
 		if (vars.buff == NULL)
 			return free_env(vars.env), free_all(&vars), printf("exit\n"), 0;
 		if (vars.buff[0] && !parse(&vars))
