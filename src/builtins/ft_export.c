@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 23:30:16 by akharraz          #+#    #+#             */
-/*   Updated: 2022/10/31 06:58:48 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/01 02:24:29 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static t_env_node	*search_env_node(t_env *env, char *key)
 	return (NULL);
 }
 
+
 void	ft_export(char **cmd, t_env *env)
 {
 	int			i;
@@ -36,6 +37,7 @@ void	ft_export(char **cmd, t_env *env)
 	t_env_node	*node;
 	
 	i = 1;
+	node = NULL;
 	ft_bzero((void *)&sub, sizeof(t_sub));
 	if (!cmd[i])
 	{
@@ -46,7 +48,8 @@ void	ft_export(char **cmd, t_env *env)
 	{
 		mode = export_isvalid(cmd[i], &sub);
 		key = ft_substr(cmd[i], sub.start, sub.end);
-		if (mode == 3 || mode == 1)
+		node = search_env_node(env, key);
+		if (mode == 1)
 		{
 			value = ft_substr(cmd[i], sub.end + 1, ft_strlen(cmd[i]) - sub.end);
 			add_or_change_value(env, key, value);
@@ -56,6 +59,13 @@ void	ft_export(char **cmd, t_env *env)
 			value = ft_substr(cmd[i], sub.end + 2, ft_strlen(cmd[i]) - sub.end);
 			add_or_change_value(env, key, export_strjoin(get_value(env, key), value));
 			free(value);
+		}
+		if (mode == 3 && !node)
+		{
+			value = ft_substr(cmd[i], sub.end + 1, ft_strlen(cmd[i]) - sub.end);
+			add_or_change_value(env, key, value);
+			node = search_env_node(env, key);
+			node->is_env = 0;
 		}
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 06:45:36 by akharraz          #+#    #+#             */
-/*   Updated: 2022/10/31 06:46:58 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/10/31 18:28:41 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	export_isvalid(char *cmd, t_sub *sub)
 		if (export_is_append(cmd, i))
 			return (2);
 		if (!ft_isalnum(cmd[i]) && cmd[i] != '=' && cmd[i] != '_')
-			return (printf("minishell: export: `%s': not a valid identifier\n", cmd), 1);
+			return (printf("minishell: export: `%s': not a valid identifier\n", cmd), -1);
 		if (cmd[i] == '=')
 			return (1);
 		sub->end++;

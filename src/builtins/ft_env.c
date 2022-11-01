@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 04:37:50 by akharraz          #+#    #+#             */
-/*   Updated: 2022/10/24 05:35:13 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/10/31 19:12:06 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 void    ft_env(t_env *env)
 {
-    char    **env_tab;
-    int     i;
-
-    i = -1;
-    env_tab = env_lst_to_tab(env);
-    while (env_tab[++i])
-       ft_putendl_fd(env_tab[i], STDOUT_FILENO);
+	t_env_node *node;
+	
+	node = env->head;
+	while (node)
+	{
+		if (node->is_env)
+			printf("%s=%s\n", node->key, node->value);
+		node = node->next;
+	}
 }

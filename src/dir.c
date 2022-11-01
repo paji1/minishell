@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dir.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 21:00:52 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/24 12:15:36 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/10/24 08:37:49 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*dub_add(char *str, char *ad)
 	ad_len = ft_strlen(ad);
 	s = malloc(11 + 1 + len + ad_len);
 	*s = '\0';
-	ft_strlcat(s, "\033[0;34m", 8);
+	ft_strlcat(s, "\033[0;91m", 8);
 	ft_strlcat(s, str, 8 + len);
 	ft_strlcat(s, ad, 8 + len + ad_len);
 	ft_strlcat(s, "\033[0m", 12 + len + ad_len);
@@ -71,11 +71,11 @@ char	*getbasename(char *path)
  * @param base_name address of pointer base_name
  * @return size_t size of prompt
  */
-int	getdir(char **base_name)
+size_t	getdir(char **base_name)
 {
 	char *buff;
 
-	buff = malloc(1244);
+	buff = malloc(1244);	
 	if (!getcwd(buff, -1))
 		return perror("getcwd failed"), -1;
 	*base_name = dub_add(getbasename(buff), "-> ");

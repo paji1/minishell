@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 23:10:26 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/31 06:59:44 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/01 03:41:10 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,7 @@ int	add_or_change_value(t_env *env, char *key, char *value)
 	}
 	return 0;
 }
+
 
 char	*get_value(t_env *env, char *key)
 {

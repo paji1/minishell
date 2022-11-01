@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:17:18 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/24 10:28:09 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/01 03:54:14 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static void  wait_for_right_cmd(t_node *node)
 
 void right_status(t_node *node)
 {
+	
 	if (!node->right)
 		return ;
 	if (node->token.type == PIP && node->right->file_out == 1)

@@ -6,7 +6,7 @@
 #    By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/10/31 06:47:27 by akharraz         ###   ########.fr        #
+#    Updated: 2022/11/01 03:50:50 by akharraz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,11 +42,14 @@ OBJ = $(addprefix obj/, $(SRC:.c=.o))
 SRC_UTILS = queue.c free_q.c is_space.c is_special.c stack.c\
 	free_stack.c get_nextline.c export_print.c export_exec.c
 OBJ_UTILS = $(addprefix obj/utils/, $(SRC_UTILS:.c=.o))
-
 # ################SRCS_Objs_Builtins####################
 
 SRC_BUILTINS = ft_echo.c ft_isbuiltin.c ft_pwd.c ft_env.c ft_cd.c ft_unset.c ft_export.c
 OBJ_BUILTINS = $(addprefix obj/builtins/, $(SRC_BUILTINS:.c=.o))
+
+# ################ALL_OBJS####################
+
+ALL_OBJS = $(OBJ) $(OBJ_UTILS) $(OBJ_BUILTINS)
 
 # ################COLOR##############################
 
@@ -79,13 +82,13 @@ ILIBFT = libft/include
 all : $(NAME) 
 
 
-$(NAME): $(OBJ) $(OBJ_UTILS) $(OBJ_BUILTINS) | library
+$(NAME): $(ALL_OBJS)  | library
 	@ printf "\033[$(lines);0f"
 	@ tput el
 	@printf  ${CODE_RESTORE_CURSOR}""
 	@tput el
 	@ printf ${GREEN}"\rMaking is done ✅\n"${NC}
-	@ $(CC) $(CFLAG) $(OBJ) $(OBJ_UTILS) $(OBJ_BUILTINS) -I $(ILIBFT) $(LIBFT) -lreadline -o $(NAME)
+	@ $(CC) $(CFLAG) $(ALL_OBJS) -I $(ILIBFT) $(LIBFT) -lreadline -o $(NAME)
 	@ tput cvvis
 	@ echo "---------------------------------------------------" >> lastcompiled.log
 
@@ -96,7 +99,7 @@ obj/%.o : src/%.c  $(HEADERS) $(UHEADERS)
 	@ mkdir -p obj
 	@ mkdir -p obj/utils
 	@$ nu=$x ; if [[ $$nu -eq -1 ]] ; then \
-	printf ${RE}"🔷 Making the  --> "${NC} \
+	printf ${RE}"🔷 Making the--> "${NC} \
 	 ; fi
 	@ $(CC) $(CFLAG) -c $< -o $@
 	@tput civis
@@ -116,8 +119,7 @@ obj/%.o : src/%.c  $(HEADERS) $(UHEADERS)
 	@tput el
 
 clean :
-	@ $(RM) $(OBJ)
-	@ $(RM) $(OBJ_UTILS) $(OBJ_BUILTINS)
+	@ $(RM) $(ALL_OBJS)
 	@ make clean -C libft
 
 fclean : clean

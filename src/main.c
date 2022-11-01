@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/29 17:26:23 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/10/23 01:04:02 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	main(int ac, char **av, char **env)
 			return free_env(vars.env), 1;
 	 	getdir(&vars.base_name);
 		vars.buff = readline(vars.base_name);
-		add_history (vars.buff);
 		if (vars.buff == NULL)
 			return free_env(vars.env), free_all(&vars), printf("exit\n"), 0;
 		if (vars.buff[0] && !parse(&vars))
@@ -35,7 +34,7 @@ int	main(int ac, char **av, char **env)
 		}
 		exucute(vars.root, &vars);
 		while (vars.pid_num-- >= 0)
-			wait(0);
+					wait(0);
 		free_all(&vars);
 	}
 	return 0;

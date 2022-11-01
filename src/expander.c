@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 02:20:25 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/21 06:48:48 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/24 08:19:01 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,15 @@ void expand_quote(char **str, size_t start, size_t end)
 	first = ft_substr(*str, 0, start);
 	temp = ft_substr(*str, start + 1, end -start-1);
 	value = ft_strjoin(first, temp);
+	if (!value)
+		ft_putstr_fd("hi\n", 2);
 	free(first);
 	free(temp);
 	second = ft_strdup(*str + end + 1);
 	first = ft_strjoin(value, second);
-	free(second);
+	if (second)
+		free(second);
+	if (value)
 	free(value);
 	free(*str);
 	*str = first;
@@ -105,28 +109,17 @@ int count_sub(int	i, int quote, t_sub *sub)
 	return 0;
 }
 
-void	expand_str(char **str, t_env *env)
+
+void expand_string_toquote(char **str, t_env *env)
 {
-	char	*temp;
 	t_sub	sub;
 	t_quote quote;
-	int		i;
-	
+	char	*temp;
+	int	i;
 
 	i = -1;
 	temp = *str;
-	ft_bzero(&quote, sizeof(t_quote));
 	ft_bzero(&sub, sizeof(t_sub));
-	while (temp[++i])
-	{
-		quote_handle(&quote, i, temp);
-		if (temp[i] == '$' && quote.quote != '\'')
-		{
-			expand_key(str, i, count_lent(&temp[i]) + i + 1, env);
-			temp = *str;
-		}
-	}
-	i = -1;
 	ft_bzero(&quote, sizeof(t_quote));
 	while (temp[++i])
 	{
@@ -135,8 +128,30 @@ void	expand_str(char **str, t_env *env)
 			expand_quote(str, sub.start, sub.end);
 			temp = *str;
 			ft_bzero(&sub, sizeof(t_sub));
+			i -= 2;
 		}
 	}
+}
+
+void	expand_str(char **str, t_env *env)
+{
+	char	*temp;
+	t_quote quote;
+	int		i;
+
+	i = -1;
+	temp = *str;
+	ft_bzero(&quote, sizeof(t_quote));
+	while (temp[++i])
+	{
+		quote_handle(&quote, i, temp);
+		if (temp[i] == '$' && quote.quote != '\'' )
+		{
+			expand_key(str, i--, count_lent(&temp[i]) + i + 1, env);
+			temp = *str;
+		}
+	}
+	expand_string_toquote(str, env);
 }
 
 
