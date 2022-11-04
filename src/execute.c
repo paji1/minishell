@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:17:18 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/04 07:36:41 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/04 07:38:57 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int handle_exblock(t_node *node, t_env *env)
 	if (is_sub(node) || node->node_type != BLOCK)
 		return 0;
 	if (ft_isbuiltin(node->token.token) && !node->file_in && node->file_out == 1)
-		return execute_builtins(node, env), node->token.exit_status = 0, 0;
+		return execute_builtins(node, env), node->token.exit_status = 0, 0; // ???
 	if (fork_cmd(node, env) < 0)
 		return 0;
 	

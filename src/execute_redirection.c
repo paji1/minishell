@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 01:46:25 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/02 06:48:49 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/04 08:54:28 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ int	handle_redirection(t_node *node)
 	{
 		q = q_n_get(node->token.redir);
 		case_so(node, q);
-		// case_si(node, q);
 	}
 	return (0);
 }
