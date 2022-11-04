@@ -6,7 +6,7 @@
 #    By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/11/01 03:50:50 by akharraz         ###   ########.fr        #
+#    Updated: 2022/11/04 03:17:02 by akharraz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,9 +109,9 @@ obj/%.o : src/%.c  $(HEADERS) $(UHEADERS)
 	@ printf "\033[$(lines);0f"
 	@ echo $< >> lastcompiled.log
 	@number=$x ; while [[ $$number -ge 0 ]] ; do \
-        printf ${YELLOW}"🟩"${NC}  ;\
-        ((number = number - 1)) ; \
-    done
+		printf ${YELLOW}"🟩"${NC}  ;\
+		((number = number - 1)) ; \
+		done
 	@printf  ${CODE_RESTORE_CURSOR}""
 	@printf  ${CODE_CURSOR_IN_SCROLL_AREA}""
 	@printf  ${CODE_SAVE_CURSOR}""
@@ -126,7 +126,7 @@ fclean : clean
 	@ $(RM) $(NAME)
 	@ make fclean -C libft
 
-re : 
+re :
 	@make fclean
 	@make -C libft
 	@make all

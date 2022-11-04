@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:17:18 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/01 03:54:14 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/04 07:36:41 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,15 @@ int	handle_expipe(t_node *node)
 
 int handle_exblock(t_node *node, t_env *env)
 {
-	int pid;
+	int	pid;
+
 	if (is_sub(node) || node->node_type != BLOCK)
 		return 0;
-	if (is_first(node) && node->file_out == 1 && ft_isbuiltin(node->token.token))
-		return (execute_builtins(node, env), 0);
-	if (fork_cmd(node, env)  < 0)
+	if (ft_isbuiltin(node->token.token) && !node->file_in && node->file_out == 1)
+		return execute_builtins(node, env), node->token.exit_status = 0, 0;
+	if (fork_cmd(node, env) < 0)
 		return 0;
+	
 	close_in_parent(node);
 	return 1;
 }
@@ -48,7 +50,7 @@ int handle_exop(t_node *node, char **env)
 	handle_bin(node);
 }
 
-static void  wait_for_right_cmd(t_node *node)
+static void	wait_for_right_cmd(t_node *node)
 {
 	if (node->right->node_type == BLOCK)
 		waitpid(node->right->token.pid_child, &node->token.exit_status, 0);
@@ -58,7 +60,6 @@ static void  wait_for_right_cmd(t_node *node)
 
 void right_status(t_node *node)
 {
-	
 	if (!node->right)
 		return ;
 	if (node->token.type == PIP && node->right->file_out == 1)
