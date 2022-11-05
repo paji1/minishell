@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/22 03:05:41 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/10/24 10:57:04 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char    *lexer(char *buff, t_sub *sub);
 int		accepted(t_node *new);
 // ------------------dir------------------------
 char	*getbasename(char *path);
-size_t	getdir(char **base_name);
+int		getdir(char **base_name);
 char	*dub_add(char *str, char *ad);
 // -----------------init------------------------
 int		init(t_vars *vars, char **env);
