@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 23:30:16 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/01 02:24:29 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/09 00:08:06 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,17 @@ void	ft_export(char **cmd, t_env *env)
 	node = NULL;
 	ft_bzero((void *)&sub, sizeof(t_sub));
 	if (!cmd[i])
-	{
-		export_print(env);
-		return ;
-	}
+		return export_print(env);
 	while (cmd[i])
 	{
 		mode = export_isvalid(cmd[i], &sub);
 		key = ft_substr(cmd[i], sub.start, sub.end);
 		node = search_env_node(env, key);
+		if (node)
+		{
+			free (key);
+			key = node->key;
+		}
 		if (mode == 1)
 		{
 			value = ft_substr(cmd[i], sub.end + 1, ft_strlen(cmd[i]) - sub.end);

@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 05:17:34 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/01 04:14:08 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/09 09:28:54 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,16 @@ int	ft_cd(char  **cmd, t_env *env)
 	char oldpath[PATH_MAX];
 	DIR *dir;
 
+	ft_bzero(newpath, PATH_MAX);
+	ft_bzero(oldpath, PATH_MAX);
 	if (cmd[1])
 	{
 		dir = opendir(cmd[1]);
 		if (dir == NULL)
 			return (0);
-		if (!getcwd(oldpath, PATH_MAX))
-			return -4;
-		add_or_change_value(env, "OLDPWD", ft_strdup(oldpath));
+		getcwd(oldpath, PATH_MAX);
+		if (!ft_strcmp(oldpath, ""))
+			add_or_change_value(env, "OLDPWD", ft_strdup(oldpath));
 		if (chdir(cmd[1]) == -1)
 			return -2;
 		if (!getcwd(newpath, PATH_MAX))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dir.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 21:00:52 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/24 08:37:49 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/09 09:23:44 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ char	*dub_add(char *str, char *ad)
 	ft_strlcat(s, ad, 8 + len + ad_len);
 	ft_strlcat(s, "\033[0m", 12 + len + ad_len);
 	return s;
-	
 }
 
 /**
@@ -73,12 +72,17 @@ char	*getbasename(char *path)
  */
 size_t	getdir(char **base_name)
 {
-	char *buff;
+	char			*buff;
+	static char		reser[1024];
 
-	buff = malloc(1244);	
+	buff = malloc(1244);
 	if (!getcwd(buff, -1))
-		return perror("getcwd failed"), -1;
-	*base_name = dub_add(getbasename(buff), "-> ");
+		*base_name = dub_add(reser, "-> ");
+	else
+	{
+		*base_name = dub_add(getbasename(buff), "-> ");
+		ft_strlcpy(reser, *base_name, ft_strlen(*base_name));
+	}
 	free(buff);
 	return (ft_strlen(*base_name));
 }
