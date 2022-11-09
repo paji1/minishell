@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/24 10:57:04 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/09 12:26:52 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <signal.h>
 # include <sys/wait.h>
 # include <fcntl.h>
+# include<limits.h>
+
 // --------include libft header-----------------
 # include "../libft/include/libft.h"
 # include "get_next_line.h"
@@ -29,6 +31,7 @@
 # include "stack.h"
 # include "types.h"
 # include "execute.h"
+# include "builtins.h"
 // --------include readline header--------------
 #include <readline/readline.h>
 #include <readline/history.h>
@@ -55,7 +58,7 @@ char    *lexer(char *buff, t_sub *sub);
 int		accepted(t_node *new);
 // ------------------dir------------------------
 char	*getbasename(char *path);
-int		getdir(char **base_name);
+size_t	getdir(char **base_name);
 char	*dub_add(char *str, char *ad);
 // -----------------init------------------------
 int		init(t_vars *vars, char **env);

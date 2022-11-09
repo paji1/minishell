@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+         #
+#    By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/10/24 08:23:13 by tel-mouh         ###   ########.fr        #
+#    Updated: 2022/11/09 12:32:06 by akharraz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ UHEADERS := $(addprefix include/, $(UHEADERS))
 
 RM = rm -rf
 CC = gcc 
-CFLAG = -g  -pthread -I include  
+CFLAG = -g -fsanitize=address -pthread -I include  
 # -fsanitize=address 
 
 # ################SRCS_Objs##########################
@@ -34,23 +34,22 @@ SRC = main.c dir.c init.c free_all.c free_all2.c parse.c startend.c quote.c lexe
 	execute_bin.c  execute.c  execute_close.c execute_redirection.c\
 	execute_cmd.c  execute_sub_shell.c  execute_utils.c execute_check_cmd.c\
 	parse_env.c parse_env_utils.c parse_env_manipulation.c\
-	expander.c expander_utils.c
+	expander.c expander_utils.c execute_builtins.c
 OBJ = $(addprefix obj/, $(SRC:.c=.o))
 
 # ################SRCS_Objs_Utils####################
 
 SRC_UTILS = queue.c free_q.c is_space.c is_special.c stack.c\
-	free_stack.c get_nextline.c
+	free_stack.c get_nextline.c export_print.c export_exec.c
 OBJ_UTILS = $(addprefix obj/utils/, $(SRC_UTILS:.c=.o))
-# ################SRCS_Objs_builtin####################
+# ################SRCS_Objs_Builtins####################
 
-SRC_BUILTIN =
-
-OBJ_BUILTIN = $(addprefix obj/builtin/, $(SRC_BUILTIN:.c=.o))
+SRC_BUILTINS = ft_echo.c ft_isbuiltin.c ft_pwd.c ft_env.c ft_cd.c ft_unset.c ft_export.c
+OBJ_BUILTINS = $(addprefix obj/builtins/, $(SRC_BUILTINS:.c=.o))
 
 # ################ALL_OBJS####################
 
-ALL_OBJS = $(OBJ) $(OBJ_UTILS) $(OBJ_BUILTIN)
+ALL_OBJS = $(OBJ) $(OBJ_UTILS) $(OBJ_BUILTINS)
 
 # ################COLOR##############################
 
@@ -110,9 +109,9 @@ obj/%.o : src/%.c  $(HEADERS) $(UHEADERS)
 	@ printf "\033[$(lines);0f"
 	@ echo $< >> lastcompiled.log
 	@number=$x ; while [[ $$number -ge 0 ]] ; do \
-        printf ${YELLOW}"🟩"${NC}  ;\
-        ((number = number - 1)) ; \
-    done
+		printf ${YELLOW}"🟩"${NC}  ;\
+		((number = number - 1)) ; \
+		done
 	@printf  ${CODE_RESTORE_CURSOR}""
 	@printf  ${CODE_CURSOR_IN_SCROLL_AREA}""
 	@printf  ${CODE_SAVE_CURSOR}""
@@ -127,7 +126,7 @@ fclean : clean
 	@ $(RM) $(NAME)
 	@ make fclean -C libft
 
-re : 
+re :
 	@make fclean
 	@make -C libft
 	@make all

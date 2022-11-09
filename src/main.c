@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/23 01:04:02 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/09 11:38:10 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,12 @@ int	main(int ac, char **av, char **env)
 			free_all(&vars);
 			continue ;
 		}
+		// print_tree(vars.root, &vars);
 		exucute(vars.root, &vars);
 		while (vars.pid_num-- >= 0)
 					wait(0);
 		free_all(&vars);
+		// system("leaks minishell");
 	}
 	return 0;
 }

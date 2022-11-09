@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_redirection.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 01:46:25 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/22 01:46:26 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/04 10:49:05 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,14 @@ static int	case_si(t_node *node, t_nodeq *q)
 		return ft_putstr_fd(q->data->token.token, 2), check_permission(q->data->token.token);
 	if (q->next->data->token.type == REDIRECT_SI)
 		node->file_in = open(q->data->token.token, 0);
-	return (3); // edited from vim, thus updated status changed in 42 header!!
+	return (3);
 }
 
 int	handle_redirection(t_node *node)
 {
 	t_nodeq	*q;
 	int		i;
+	int		out;
 
 	if (!node->token.redir)
 		return 0;
@@ -58,7 +59,7 @@ int	handle_redirection(t_node *node)
 	{
 		q = q_n_get(node->token.redir);
 		case_so(node, q);
-       	case_si(node, q);
+		case_si(node, q);
 	}
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_env_manipulation.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 23:10:26 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/19 06:18:40 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/01 03:41:10 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_env_node	*new_env_node(void)
 	t_env_node *node = malloc(sizeof(t_env_node));
 	if (!node)
 		return NULL;
+	node->is_env = 1;
 	node->key = NULL;
 	node->value = NULL;
 	node->next = NULL;

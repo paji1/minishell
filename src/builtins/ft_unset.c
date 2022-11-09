@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 03:59:02 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/04 03:12:25 by akharraz         ###   ########.fr       */
+/*   Created: 2022/10/24 13:22:47 by akharraz          #+#    #+#             */
+/*   Updated: 2022/10/24 14:31:15 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_unset(char **cmd ,t_env *env)
 {
-	if (n == -2147483648)
+	int	i;
+
+	i = 0;
+	printf("welcome to unset:\n");
+	while (cmd[++i])
 	{
-		write(fd, "-2147483648", 11);
-		return ;
-	}
-	if (n < 0)
-	{
-		n *= -1;
-		ft_putchar_fd ('-', fd);
-	}
-	if (n < 10)
-		ft_putchar_fd(n + 48, fd);
-	else
-	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putnbr_fd(n % 10, fd);
+		remove_env_node(env, cmd[i]);
+		printf("%s is removed\n", cmd[i]);
 	}
 }
