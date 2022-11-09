@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 23:29:09 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/09 13:34:46 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/09 19:47:16 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ int	print_to_error(char *str, char *error, int re)
 	ft_putendl_fd(error, 2);
 	return re;
 }
-
 static int check_if_dir(char *path)
 {
 	DIR *dir;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 07:08:56 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/09/27 10:28:07 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/09 20:20:10 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(argc, argv)
 	int j = 0;
 
 	int *p = &j;
-	
+
 	printf("sixe %d", argv);
 	return 0;
 }
