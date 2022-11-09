@@ -6,13 +6,13 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 05:17:34 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/09 09:28:54 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/09 11:52:42 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <dirent.h>
-
+#include <sys/errno.h>
 int	ft_cd(char  **cmd, t_env *env)
 {
 	char newpath[PATH_MAX];
@@ -25,14 +25,15 @@ int	ft_cd(char  **cmd, t_env *env)
 	{
 		dir = opendir(cmd[1]);
 		if (dir == NULL)
-			return (0);
-		getcwd(oldpath, PATH_MAX);
+			return (printf("Minishell: cd: %s: No such file or directory\n", cmd[1]), 0);
+		if (!getcwd(oldpath, PATH_MAX))
+			printf("%d\n", errno);
 		if (!ft_strcmp(oldpath, ""))
 			add_or_change_value(env, "OLDPWD", ft_strdup(oldpath));
 		if (chdir(cmd[1]) == -1)
-			return -2;
+			return closedir(dir), -2;
 		if (!getcwd(newpath, PATH_MAX))
-			return -4;
+			return closedir(dir), -4;
 		add_or_change_value(env, "PWD", ft_strdup(newpath));
 		if (closedir(dir) == -1)
 			return printf("closedir faild\n"), -3;

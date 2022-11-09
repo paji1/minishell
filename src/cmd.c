@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:05:03 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/22 02:28:32 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/09 12:45:19 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 char **qto_tab(t_node *node, t_env *env)
 {
 	char	**tab;
+	t_nodeq *temp;
 	int		size;
 	int		i;
 
@@ -34,8 +35,9 @@ char **qto_tab(t_node *node, t_env *env)
 		return tab[1] = NULL, tab;
 	while (++i < size - 1)
 	{
-		tab[i] = q_n_get(node->token.args_q)->data->token.token;
-		expand_str(&tab[i], env);
+		temp = q_n_get(node->token.args_q);
+		expand_str(&temp->data->token.token, env);
+		tab[i] = temp->data->token.token;
 	}
 	return tab[size - 1] = NULL, tab;
 }

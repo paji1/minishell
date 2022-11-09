@@ -6,7 +6,7 @@
 #    By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/11/04 03:17:02 by akharraz         ###   ########.fr        #
+#    Updated: 2022/11/09 12:32:06 by akharraz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ UHEADERS := $(addprefix include/, $(UHEADERS))
 
 RM = rm -rf
 CC = gcc 
-CFLAG = -g  -pthread -I include  
+CFLAG = -g -fsanitize=address -pthread -I include  
 # -fsanitize=address 
 
 # ################SRCS_Objs##########################
