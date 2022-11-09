@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/09 12:26:52 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/09 13:11:24 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <sys/wait.h>
 # include <fcntl.h>
 # include<limits.h>
+# include <dirent.h>
 
 // --------include libft header-----------------
 # include "../libft/include/libft.h"

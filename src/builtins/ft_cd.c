@@ -6,12 +6,11 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 05:17:34 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/09 11:52:42 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/09 13:11:10 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <dirent.h>
 #include <sys/errno.h>
 int	ft_cd(char  **cmd, t_env *env)
 {

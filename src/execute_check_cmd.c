@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_check_cmd.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 23:29:09 by akharraz          #+#    #+#             */
-/*   Updated: 2022/10/23 01:22:06 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/09 13:34:46 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,36 @@ static int search_cmd(char *cmd, char *env, char **path)
 	return (-1);
 }
 
+int	print_to_error(char *str, char *error, int re)
+{
+	ft_putstr_fd("minishell: ", 2);
+	if (str)
+		ft_putstr_fd(str, 2);
+	ft_putendl_fd(error, 2);
+	return re;
+}
+
+static int check_if_dir(char *path)
+{
+	DIR *dir;
+
+	dir = opendir(path);
+	if (dir)
+		return  print_to_error(path, ": is a directory", -1);
+	return 1;
+}
+
 int check_cmd(t_node *node, t_env *env, char **path)
 {
 	int i;
 
 	if (check_if_path(node->token.token))
 	{
+		
 		(*path) = node->token.token;
-		return (check_permission(*path));
+		if (check_permission(*path) < 0)
+			return -1;
+		return check_if_dir(*path);
 	}
 	i = search_path(env->env_tab);
 	if (i == -1 || search_cmd(node->token.token, env->env_tab[i], path) ==  -1)
