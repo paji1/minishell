@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+         #
+#    By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/11/09 13:44:02 by akharraz         ###   ########.fr        #
+#    Updated: 2022/11/11 13:40:01 by tel-mouh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,6 +98,7 @@ library :
 obj/%.o : src/%.c  $(HEADERS) $(UHEADERS)
 	@ mkdir -p obj
 	@ mkdir -p obj/utils
+	@ mkdir -p obj/builtins
 	@$ nu=$x ; if [[ $$nu -eq -1 ]] ; then \
 	printf ${RE}"🔷 Making the--> "${NC} \
 	 ; fi

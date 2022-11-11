@@ -3,21 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 05:17:34 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/11 05:48:44 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/11 13:39:02 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <sys/errno.h>
 
-static int	ft_check_permission(char **path, t_env *env)
-{
-	
-	return (0);
-}
+
 int	ft_cd(char  **cmd, t_env *env)
 {
 	char newpath[PATH_MAX];
