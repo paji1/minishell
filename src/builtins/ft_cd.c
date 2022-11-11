@@ -6,34 +6,18 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 05:17:34 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/11 04:52:38 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/11 05:48:44 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <sys/errno.h>
-static	int	ft_send_home(t_env *env)
+
+static int	ft_check_permission(char **path, t_env *env)
 {
-	char	**home;
-	int		i;
-
-	i = 0;
-	home = malloc(sizeof(char *) * 3);
-		if (!home)
-			return (perror("minishell"), -1);
-	home[0] = ft_strdup("cd");
-	home[1] = ft_strdup("/Users/akharraz/Desktop/..");
-	home[2] = NULL;
-	ft_cd(home, env);
-	while (i < 3)
-	{
-		free(home[i]);
-		i++;
-	}
-	return (free(home), 0);
+	
+	return (0);
 }
-
-// static int	ft_check_permission(char **)
 int	ft_cd(char  **cmd, t_env *env)
 {
 	char newpath[PATH_MAX];
@@ -42,9 +26,6 @@ int	ft_cd(char  **cmd, t_env *env)
 
 	ft_bzero(newpath, PATH_MAX);
 	ft_bzero(oldpath, PATH_MAX);
-	
-	if (!cmd[1])
-		return ft_send_home(env);
 	
 	if (cmd[1])
 	{
