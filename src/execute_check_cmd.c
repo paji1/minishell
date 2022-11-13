@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 23:29:09 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/13 08:06:13 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/13 12:30:44 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,15 +78,6 @@ static int search_cmd(char *cmd, char *env, char **path)
 		sub.end++;
 	}
 	return (-1);
-}
-
-int	print_to_error(char *str, char *error, int re)
-{
-	ft_putstr_fd("minishell: ", 2);
-	if (str)
-		ft_putstr_fd(str, 2);
-	ft_putendl_fd(error, 2);
-	return re;
 }
 
 static int check_if_dir(char *path)

@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 23:29:53 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/01 18:59:05 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/13 12:20:33 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void    ft_pwd(t_env *env);
 void	ft_env(t_env *env);
 void	ft_unset(char **cmd ,t_env *env);
 void	ft_export(char **cmd ,t_env *env);
+void    ft_exit(char **cmd);
 
 // #####################################################
 // ###               export_funcs                    ###

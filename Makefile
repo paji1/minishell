@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+         #
+#    By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/11/11 13:40:01 by tel-mouh         ###   ########.fr        #
+#    Updated: 2022/11/13 12:44:23 by akharraz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,11 +40,11 @@ OBJ = $(addprefix obj/, $(SRC:.c=.o))
 # ################SRCS_Objs_Utils####################
 
 SRC_UTILS = queue.c free_q.c is_space.c is_special.c stack.c\
-	free_stack.c get_nextline.c export_print.c export_exec.c
+	free_stack.c get_nextline.c export_print.c export_exec.c print_to_error.c
 OBJ_UTILS = $(addprefix obj/utils/, $(SRC_UTILS:.c=.o))
 # ################SRCS_Objs_Builtins####################
 
-SRC_BUILTINS = ft_echo.c ft_isbuiltin.c ft_pwd.c ft_env.c ft_cd.c ft_unset.c ft_export.c
+SRC_BUILTINS = ft_echo.c ft_isbuiltin.c ft_pwd.c ft_env.c ft_cd.c ft_unset.c ft_export.c ft_exit.c
 OBJ_BUILTINS = $(addprefix obj/builtins/, $(SRC_BUILTINS:.c=.o))
 
 # ################ALL_OBJS####################

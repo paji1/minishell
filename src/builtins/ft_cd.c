@@ -6,12 +6,12 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 05:17:34 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/13 08:16:44 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/13 09:43:51 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <sys/errno.h>
+
 static int	go_to_home(t_env *env, char **cmd)
 {
 	int			i;
@@ -38,6 +38,7 @@ static int	go_to_home(t_env *env, char **cmd)
 	}
 	return (ft_putendl_fd("minishell: cd: HOME not set", 2), -1);
 }
+
 int	ft_cd(char  **cmd, t_env *env)
 {
 	char newpath[PATH_MAX];
