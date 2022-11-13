@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 06:57:18 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/04 10:48:30 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/13 12:17:19 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int execute_builtins(t_node *node, t_env *env)
 		ft_unset(cmd, env);
 	else if (!ft_strcmp(node->token.token, "export"))
 		ft_export(cmd, env);
+	else if (!ft_strcmp(node->token.token, "exit"))
+		ft_exit(cmd);
 	close(node->file_out);
 	node->file_out = dup(out);
 	node->file_in = dup(in);

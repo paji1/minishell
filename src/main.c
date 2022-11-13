@@ -6,7 +6,11 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/11/11 13:46:07 by tel-mouh         ###   ########.fr       */
+=======
+/*   Updated: 2022/11/13 08:12:28 by akharraz         ###   ########.fr       */
+>>>>>>> 8ab15bcaf99002a242ea1c83db03225c31ccfc5a
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +30,17 @@ int	main(int ac, char **av, char **env)
 	 	getdir(&vars.base_name);
 		vars.buff = readline(vars.base_name);
 		if (vars.buff == NULL)
-			return free_env(vars.env), free_all(&vars), printf("exit\n"), 0;
+			return free_env(vars.env), free_all(&vars), ft_putendl_fd("exit", 2), 0;
 		if (vars.buff[0] && !parse(&vars))
 		{
 			free_all(&vars);
 			continue ;
 		}
-		// print_tree(vars.root, &vars);
 		exucute(vars.root, &vars);
 		while (vars.pid_num-- >= 0)
 					wait(0);
 		free_all(&vars);
-		// system("leaks minishell");
+		// system ("leaks minishell");
 	}
 	return 0;
 }

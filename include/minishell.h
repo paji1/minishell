@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/11/13 21:49:09 by tel-mouh         ###   ########.fr       */
+=======
+/*   Updated: 2022/11/13 09:44:07 by akharraz         ###   ########.fr       */
+>>>>>>> 8ab15bcaf99002a242ea1c83db03225c31ccfc5a
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +25,7 @@
 # include <signal.h>
 # include <limits.h>
 # include <sys/wait.h>
+# include <sys/errno.h>
 # include <fcntl.h>
 # include<limits.h>
 # include <dirent.h>

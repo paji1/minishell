@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_unset.c                                         :+:      :+:    :+:   */
+/*   print_to_error.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 13:22:47 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/13 06:46:23 by akharraz         ###   ########.fr       */
+/*   Created: 2022/11/13 12:43:52 by akharraz          #+#    #+#             */
+/*   Updated: 2022/11/13 12:44:42 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_unset(char **cmd ,t_env *env)
+int	print_to_error(char *str, char *error, int re)
 {
-	int	i;
-
-	i = 0;
-	while (cmd[++i])
-	{
-		remove_env_node(env, cmd[i]);
-	}
+	ft_putstr_fd("minishell: ", 2);
+	if (str)
+		ft_putstr_fd(str, 2);
+	ft_putendl_fd(error, 2);
+	return re;
 }
