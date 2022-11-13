@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 01:46:25 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/04 10:49:05 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/13 23:38:21 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ static int	case_si(t_node *node, t_nodeq *q)
 		return (0);
 	close(node->file_in); 
 	if (access(q->data->token.token, F_OK) == -1)
-		return ft_putstr_fd(q->data->token.token, 2), check_permission(q->data->token.token);
+		return check_permission(q->data->token.token);
 	if (access(q->data->token.token, R_OK) == -1)
-		return ft_putstr_fd(q->data->token.token, 2), check_permission(q->data->token.token);
+		return check_permission(q->data->token.token);
 	if (q->next->data->token.type == REDIRECT_SI)
 		node->file_in = open(q->data->token.token, 0);
 	return (3);
@@ -59,7 +59,8 @@ int	handle_redirection(t_node *node)
 	{
 		q = q_n_get(node->token.redir);
 		case_so(node, q);
-		case_si(node, q);
+		if (case_si(node, q) == -1)
+			return -1;
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 01:56:34 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/13 06:49:39 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/13 23:30:17 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ int fork_cmd(t_node *node, t_env *env)
 		return -1;
 	if (pid)
 		return node->token.pid_child = pid , pid;
-	handle_redirection(node);
+	if (handle_redirection(node) == -1)
+		exit(1);
 	if (is_first(node))
 	{
 		close_before(node->file_in);

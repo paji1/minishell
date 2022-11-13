@@ -6,13 +6,20 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 06:57:18 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/13 12:17:19 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/13 23:33:30 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-
+static void ft_get_backfd(t_node *node, int in, int out)
+{
+	close(node->file_out);
+	node->file_out = dup(out);
+	node->file_in = dup(in);
+	close(out);
+	close(in);
+}
 int execute_builtins(t_node *node, t_env *env)
 {
 	char			**cmd;
@@ -22,7 +29,8 @@ int execute_builtins(t_node *node, t_env *env)
 	cmd = qto_tab(node, env);
 	out = dup(node->file_out);
 	in = dup(node->file_in);
-	handle_redirection(node);
+	if (handle_redirection(node))
+		return free(cmd), ft_get_backfd(node, in, out), -1;
 	if (!ft_strcmp(node->token.token, "cd"))
 		ft_cd(cmd, env);
 	else if (!ft_strcmp(node->token.token, "echo"))
@@ -37,11 +45,7 @@ int execute_builtins(t_node *node, t_env *env)
 		ft_export(cmd, env);
 	else if (!ft_strcmp(node->token.token, "exit"))
 		ft_exit(cmd);
-	close(node->file_out);
-	node->file_out = dup(out);
-	node->file_in = dup(in);
-	close(out);
-	close(in);
+	ft_get_backfd(node, in, out);
 	free(cmd);
 	return (0);
 }
