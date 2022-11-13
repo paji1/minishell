@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 23:29:09 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/13 07:19:44 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/13 08:06:13 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ int  check_permission(char *cmd)
 	if (access(cmd, F_OK) == -1)
 		return (ft_putstr_fd("No such file or directory\n", 2), -1);
 	if (access(cmd, R_OK) == -1)
-		return (ft_putstr_fd("Minishell :Permission denied\n", 2), -2);
+		return (ft_putstr_fd("minishell :Permission denied\n", 2), -2);
 	if (access(cmd, X_OK) == -1)
-		return (ft_putstr_fd("Minishell :Permission denied\n", 2), -3);
+		return (ft_putstr_fd("minishell :Permission denied\n", 2), -3);
 	return (1);
 }
 

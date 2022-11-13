@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 22:41:02 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/09 20:19:16 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/13 08:06:29 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ int handle_last(t_vars *vars, int i, t_sub *sub, t_quote *quote)
             return 0;
     free_pr(NULL);
     if (quote->in_quote == TRUE)
-        return ft_putendl_fd("Minishell: syntax error near unexpected quote", 2), 0;
+        return ft_putendl_fd("minishell: syntax error near unexpected quote", 2), 0;
     get_type(NULL);
     if (!accepted(NULL))
-        return ft_putendl_fd("Minishell: syntax error near unexpected token", 2), 0;
+        return ft_putendl_fd("minishell: syntax error near unexpected token", 2), 0;
     return 1;
 }

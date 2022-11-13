@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_env_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 04:09:04 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/16 23:41:05 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/13 08:07:53 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,5 @@ void print_env_tab(char **tab)
 
 	i = -1;
 	while (tab[++i])
-		printf("%s\n", tab[i]);
+		ft_putendl_fd(tab[i], 2);
 }
