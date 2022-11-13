@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 05:17:34 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/11 13:39:02 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/13 00:12:17 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <sys/errno.h>
-
 
 int	ft_cd(char  **cmd, t_env *env)
 {
@@ -28,16 +27,18 @@ int	ft_cd(char  **cmd, t_env *env)
 		dir = opendir(cmd[1]);
 		if (dir == NULL)
 			return (perror("mnishell"), -1);
+		if (readdir(dir) == NULL)
+			return (perror("reddir"), -1);
 		getcwd(oldpath, PATH_MAX);
 		if (!ft_strcmp(oldpath, ""))
 			add_or_change_value(env, "OLDPWD", ft_strdup(oldpath));
 		if (chdir(cmd[1]) == -1)
-			return closedir(dir), perror("mnishell"), -2;
+			return closedir(dir), perror("mnishell chdir"), -2;
 		if (!getcwd(newpath, PATH_MAX))
 			return closedir(dir), -4;
 		add_or_change_value(env, "PWD", ft_strdup(newpath));
 		if (closedir(dir) == -1)
-			return perror("mnishell"), -3;
+			return perror("mnishell closeder"), -3;
 	}
 	return (0);
 }

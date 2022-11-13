@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/11 03:01:35 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/13 06:47:30 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,10 @@ int	main(int ac, char **av, char **env)
 			free_all(&vars);
 			continue ;
 		}
-		// print_tree(vars.root, &vars);
 		exucute(vars.root, &vars);
 		while (vars.pid_num-- >= 0)
 					wait(0);
 		free_all(&vars);
-		// system("leaks minishell");
 	}
 	return 0;
 }

@@ -6,23 +6,24 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 23:29:09 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/09 19:47:16 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/13 07:19:44 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int search_path(char **env)
+static char *search_path(t_env *env)
 {
-	int i;
+	t_env_node *node;
 
-	i = -1;
-	while(env[++i])
+	node = env->head;
+	while(node)
 	{
-		if(ft_strncmp(env[i], "PATH=", 5) == 0)
-			return i;
+		if(ft_strncmp(node->key, "PATH", 4) == 0)
+			return (node->value);
+		node = node->next;
 	}
-	return -1;
+	return NULL;
 }
 
 static int check_if_path(char *cmd)
@@ -55,8 +56,8 @@ static int search_cmd(char *cmd, char *env, char **path)
 	char	*subtr;
 	char	*jointr;
 
-	sub.start = 5;
-	sub.end = 5;
+	sub.start = 0;
+	sub.end = 0;
 	while (env[sub.end])
 	{
 		if (env[sub.end] == ':')
@@ -87,6 +88,7 @@ int	print_to_error(char *str, char *error, int re)
 	ft_putendl_fd(error, 2);
 	return re;
 }
+
 static int check_if_dir(char *path)
 {
 	DIR *dir;
@@ -99,18 +101,19 @@ static int check_if_dir(char *path)
 
 int check_cmd(t_node *node, t_env *env, char **path)
 {
-	int i;
+	char *key;
 
 	if (check_if_path(node->token.token))
 	{
-		
 		(*path) = node->token.token;
 		if (check_permission(*path) < 0)
 			return -1;
 		return check_if_dir(*path);
 	}
-	i = search_path(env->env_tab);
-	if (i == -1 || search_cmd(node->token.token, env->env_tab[i], path) ==  -1)
+	key = search_path(env);
+	if (!key)
+		return ft_putstr_fd("command not found\n", 2), -4;
+	if (search_cmd(node->token.token, key, path) ==  -1)
 		return ft_putstr_fd("command not found\n", 2), -4;
 	return (check_permission(*path));
 }
