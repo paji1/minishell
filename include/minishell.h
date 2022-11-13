@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/11 13:39:34 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/13 21:49:09 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,10 @@ int			size_env(char **tab);
 char		**alloc_to_env(char **tab, t_env *env);
 char		**env_lst_to_tab(t_env *env);
 // =================expader=====================
-
+void		expand_string_toquote(char **str, t_env *env);
 void		expand_str(char **str, t_env *env);
+char 		*allocate_to_value(char **str, size_t start, size_t end, t_env *env);
+int			count_lent(char *key);
 // =============================================
 
 void	print_env_tab(char **tab);
