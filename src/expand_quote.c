@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 21:45:02 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/13 21:46:14 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/14 19:44:38 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ static void expand_quote(char **str, size_t start, size_t end)
 	first = ft_substr(*str, 0, start);
 	temp = ft_substr(*str, start + 1, end -start-1);
 	value = ft_strjoin(first, temp);
-	if (!value)
-		ft_putstr_fd("hi\n", 2);
 	free(first);
 	free(temp);
 	second = ft_strdup(*str + end + 1);
