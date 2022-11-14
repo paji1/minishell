@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/14 22:38:21 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/14 22:58:43 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ void		add_history_write(t_vars *vars);
 // =============================================
 void		ignore_signal(void);
 void		handle_signal(void);
+void		remove_signal(void);
 // =============================================
 
 void	print_env_tab(char **tab);

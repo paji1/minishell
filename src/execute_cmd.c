@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 01:56:34 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/14 07:15:24 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/14 23:05:33 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int execute_cmd(t_node *node, t_env *env)
 		return 0;
 	path = NULL;
 	free_and_allocate(env);
-	restore_ctrl_c();
+	hide_ctrl_c();
 	cmd = qto_tab(node, env);
 	if(!cmd)
 		return -1;
@@ -42,7 +42,7 @@ int fork_cmd(t_node *node, t_env *env)
 {
 	int pid;
 
-
+	ignore_signal();
 	pid = fork();
 	if (pid == -1)
 		return -1;
@@ -65,5 +65,6 @@ int fork_cmd(t_node *node, t_env *env)
 	}
 	if (execute_cmd(node, env) < 0)
 		return -1;
+	handle_signal();
 	return 0;
 }
