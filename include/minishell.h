@@ -6,25 +6,29 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/14 02:27:18 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/14 07:10:15 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+#define __USE_GNU 
+#define _GNU_SOURCE
 
 # include <unistd.h>
 # include <stdio.h>
 # include <string.h>
 # include <stdlib.h>
-# include <signal.h>
 # include <limits.h>
 # include <sys/wait.h>
 # include <sys/errno.h>
 # include <fcntl.h>
-# include<limits.h>
+# include <limits.h>
 # include <dirent.h>
+# include <features.h>
+# include <signal.h>
+# include <termios.h>
 
 // --------include libft header-----------------
 # include "../libft/include/libft.h"
@@ -112,6 +116,11 @@ void		expand_string_toquote(char **str, t_env *env);
 void		expand_str(char **str, t_env *env);
 char 		*allocate_to_value(char **str, size_t start, size_t end, t_env *env);
 int			count_lent(char *key);
+// =============================================
+
+void		hide_ctrl_c(void);
+void		restore_ctrl_c(void);
+
 // =============================================
 
 void	print_env_tab(char **tab);

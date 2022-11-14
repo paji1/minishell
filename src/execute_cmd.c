@@ -6,6 +6,15 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 01:56:34 by tel-mouh          #+#    #+#             */
+/*   Updated: 2022/11/14 07:15:24 by tel-mouh         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
+
+int execute_cmd(t_node *node, t_env *env)
+{
+	char	 **cmd;
 	char	 *path;
 	int		error;
 
@@ -13,6 +22,7 @@
 		return 0;
 	path = NULL;
 	free_and_allocate(env);
+	restore_ctrl_c();
 	cmd = qto_tab(node, env);
 	if(!cmd)
 		return -1;

@@ -3,7 +3,6 @@
 		"minishell.h": "c",
 		"errno.h": "c",
 		"limits.h": "c",
-		"signal.h": "c",
 		"unistd.h": "c"
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 23:30:16 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/09 00:08:06 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/14 03:33:59 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	ft_export(char **cmd, t_env *env)
 		if (mode == 1)
 		{
 			value = ft_substr(cmd[i], sub.end + 1, ft_strlen(cmd[i]) - sub.end);
+			// free(value);
 			add_or_change_value(env, key, value);
 		}
 		if (mode == 2)

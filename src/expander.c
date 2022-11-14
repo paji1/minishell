@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 02:20:25 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/13 21:48:14 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/14 04:38:17 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void expand_key(char **str, size_t start, size_t end, t_env *env)
 	second = ft_strdup(*str + end);
 	value = allocate_to_value(str, start, end - start ,env);
 	temp = ft_strjoin(first, value);
-	if (!value[0])
+	// if (!value[0])
 		free(value);
 	free(first);
 	first = ft_strjoin(temp, second);

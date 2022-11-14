@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 23:10:26 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/13 22:17:44 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/14 04:37:48 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,7 @@ char	*get_value(t_env *env, char *key)
 	while (tmp)
 	{
 		if (!ft_strcmp(key, tmp->key))
-			return tmp->value;
+			return ft_strdup(tmp->value);
 		tmp = tmp->next;
 	}
 	return NULL;

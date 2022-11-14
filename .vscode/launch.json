@@ -8,7 +8,7 @@
 		"args": ["8","/","2"],
 		"stopAtEntry": false,
 		"cwd": "${fileDirname}",
-		"environment": [],
+		"environment": [{"name":"value", "name2":"value2"}],
 		"externalConsole": false,
 		"MIMode": "gdb",
 		"setupCommands": [
@@ -19,6 +19,11 @@
 			},
 			{
 				"description":  "Set Disassembly Flavor to Intel",
+				"text": "-gdb-set disassembly-flavor intel",
+				"ignoreFailures": true
+			},
+			{
+				"description":  "unset environment",
 				"text": "-gdb-set disassembly-flavor intel",
 				"ignoreFailures": true
 			}

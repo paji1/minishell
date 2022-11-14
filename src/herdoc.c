@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 23:10:31 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/24 08:29:53 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/14 05:20:38 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	*create_file_name(void)
 {
-	static char	l;
+	static int	l;
 	char		*str;
 	char		*joinstr;
 
@@ -36,7 +36,9 @@ static int	create_file(void)
 	name = create_file_name();
 	if (!name)
 		return -1;
-	fd = open(name, O_RDWR | O_CREAT, 0600);
+	fd = open(name, O_RDWR | O_EXCL | O_CREAT, 0600);
+	if (errno == EEXIST)
+		return errno = 0, free(name), create_file();
 	if (fd == -1)
 		return free(name), -1;
 	free(name);
