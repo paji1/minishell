@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 21:01:38 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/14 20:18:07 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/14 22:34:13 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ typedef struct s_vars
 	t_env	*env;
 	int		pid_num; 
 	int		fd_history;
-	struct sigaction act;
 } t_vars;
 
 typedef struct s_quote

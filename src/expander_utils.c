@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 06:03:23 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/14 21:42:05 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/14 21:44:50 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ int	count_lent(char *key)
 		i++;
 	return i -1;
 }
-
-
 
 char *allocate_to_value(char **str, size_t start, size_t end, t_env *env)
 {
