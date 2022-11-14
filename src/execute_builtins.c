@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_builtins.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 06:57:18 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/13 23:33:30 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/14 21:37:51 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void ft_get_backfd(t_node *node, int in, int out)
 	close(out);
 	close(in);
 }
+
 int execute_builtins(t_node *node, t_env *env)
 {
 	char			**cmd;
