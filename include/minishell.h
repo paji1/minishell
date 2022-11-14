@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/11/13 21:49:09 by tel-mouh         ###   ########.fr       */
-=======
-/*   Updated: 2022/11/13 09:44:07 by akharraz         ###   ########.fr       */
->>>>>>> 8ab15bcaf99002a242ea1c83db03225c31ccfc5a
+/*   Updated: 2022/11/13 22:10:30 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +105,8 @@ int			size_env(char **tab);
 // =============================================
 char		**alloc_to_env(char **tab, t_env *env);
 char		**env_lst_to_tab(t_env *env);
+int			free_and_allocate(t_env *env);
+
 // =================expader=====================
 void		expand_string_toquote(char **str, t_env *env);
 void		expand_str(char **str, t_env *env);

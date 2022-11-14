@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 19:19:50 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/17 03:59:00 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/13 22:14:01 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	init_env(t_vars *vars, char **env_tab)
 	vars->env->head = NULL;
 	vars->env->tail = NULL;
 	vars->env->size = 0;
+	vars->env->is_change = 0;
 	vars->env->env_tab = alloc_to_env(env_tab, vars->env);
 	if (!vars->env->env_tab)
 		return (1);

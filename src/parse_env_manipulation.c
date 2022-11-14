@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_env_manipulation.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 23:10:26 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/01 03:41:10 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/13 22:17:44 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void	remove_env_node(t_env *env, char *key)
 	if (!env || !env->head || !key)
 		return ;	
 	env->size -= 1;
+	env->is_change = 1;
 	if (remove_first(env, key))
 		return ;
 	remove_rest(env, key);
@@ -113,12 +114,15 @@ static int	is_in_env_change(t_env_node *head, char *key, char *value)
 	return 0;
 }
 
-int free_and_allocate(t_env *env, char **tab)
+int free_and_allocate(t_env *env)
 {
-	env->env_tab = alloc_to_env(tab, env);
-	free_tab(tab);
-	if (!env->env_tab)
+	if (env->is_change == 0)
 		return 1;
+	free_tab(env->env_tab);
+	env->env_tab = env_lst_to_tab(env);
+	if (!env->env_tab)
+		return -1;
+	env->is_change = 0;
 	return 0;
 }
 
@@ -139,6 +143,7 @@ int	add_or_change_value(t_env *env, char *key, char *value)
 		new->value = value;
 		add_to_env_tail(env , new);
 	}
+	env->is_change = 1;
 	return 0;
 }
 
