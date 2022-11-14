@@ -6,15 +6,6 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 01:56:34 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/13 22:20:07 by tel-mouh         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "minishell.h"
-
-int execute_cmd(t_node *node, t_env *env)
-{
-	char	 **cmd;
 	char	 *path;
 	int		error;
 
@@ -47,7 +38,8 @@ int fork_cmd(t_node *node, t_env *env)
 		return -1;
 	if (pid)
 		return node->token.pid_child = pid , pid;
-	handle_redirection(node);
+	if (handle_redirection(node) == -1)
+		exit(1);
 	if (is_first(node))
 	{
 		close_before(node->file_in);

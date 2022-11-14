@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:17:18 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/04 07:38:57 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/13 23:30:33 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int handle_exblock(t_node *node, t_env *env)
 		return execute_builtins(node, env), node->token.exit_status = 0, 0; // ???
 	if (fork_cmd(node, env) < 0)
 		return 0;
-	
 	close_in_parent(node);
 	return 1;
 }
