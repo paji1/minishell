@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 23:10:31 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/15 03:19:40 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/15 09:16:05 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,10 @@ int handle_herdoc(t_node *new)
 	char			*tmp_token;
 
 	line = NULL;
-	
 	if (new->token.type == HERDOC)
 		return node = new, 0;
+	if (new->token.type != FILED)
+		return 0;
 	if (!node)
 		return 1;
 	ignore_signal_herdoc();
