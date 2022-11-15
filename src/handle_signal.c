@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 22:36:16 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/14 23:04:05 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/15 03:18:25 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,23 @@ void	ignore_signal(void)
 	struct sigaction	act;
 
 	sigemptyset(&act.sa_mask);
+	act.sa_flags = 0;
+	act.sa_handler = SIG_IGN;
+	sigaction(SIGINT, &act, NULL);
+	sigaction(SIGQUIT, &act, NULL);
+}
+
+void	ignore_signal_herdoc(void)
+{
+	struct sigaction	act;
+
+	sigemptyset(&act.sa_mask);
 	act.sa_flags = SA_SIGINFO;
 	act.sa_sigaction = &herdoc_signal;
 	sigaction(SIGINT, &act, NULL);
 	sigaction(SIGQUIT, &act, NULL);
 }
+
 void	remove_signal(void)
 {
 	struct sigaction	act;
