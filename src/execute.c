@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:17:18 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/13 23:30:33 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/15 09:43:38 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int handle_exop(t_node *node, char **env)
 	if (!is_sub(node) && node->node_type != OP)
 		return 0;
 	handle_expipe(node);
-	handle_bin(node);
+	return 1;
 }
 
 static void	wait_for_right_cmd(t_node *node)
@@ -69,7 +69,7 @@ void right_status(t_node *node)
 	{
 		wait_for_right_cmd(node);
 		if (node->left->token.exit_status == 0)
-			node->token.exit_status == 0;
+			node->token.exit_status = 0;
 	}
 }
 

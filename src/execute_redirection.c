@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_redirection.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 01:46:25 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/15 08:47:16 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/15 09:37:43 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,16 @@ static int	case_si(t_node *node, t_nodeq *q)
 	return (3);
 }
 
+static int	case_herd(t_node *node, t_nodeq *q)
+{
+	ft_putendl_fd("i am here", 2);
+	close(node->file_in);
+	ft_putnbr_fd(q->data->token.fd_HERDOC, 2);
+	ft_putchar_fd('\n', 2);
+	node->file_in = q->data->token.fd_HERDOC;
+	return (1);
+}
+
 int	handle_redirection(t_node *node)
 {
 	t_nodeq	*q;
@@ -61,6 +71,8 @@ int	handle_redirection(t_node *node)
 		case_so(node, q);
 		if (case_si(node, q) == -1)
 			return -1;
+		if (q->data->token.type == DELIMITER)
+			case_herd(node, q);
 	}
 	return (0);
 }

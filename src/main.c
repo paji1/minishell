@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/14 22:26:26 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/15 10:18:25 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int	main(int ac, char **av, char **env)
 			return free_env(vars.env), 1;
 	 	getdir(&vars.base_name);
 		vars.buff = readline(vars.base_name);
-		add_history_write(&vars);
 		if (vars.buff == NULL)
-			return free_env(vars.env), free_all(&vars), ft_putendl_fd("exit", 2), 0;
+			return free_env(vars.env), free_all(&vars), ft_putendl_fd("\033[1A\033[14Cexit", 1) , 0;
+		add_history_write(&vars);
 		if (vars.buff[0] && !parse(&vars))
 		{
 			free_all(&vars);

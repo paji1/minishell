@@ -6,18 +6,12 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 16:20:56 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/04 07:09:23 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/15 09:41:12 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-
-int handle_bin(t_node *node)
-{
-	if (node->token.type != AND && node->token.type != OR)
-		return 0;
-}
 
 int wait_for_bin(t_node *node)
 {

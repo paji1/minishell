@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 22:41:02 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/13 08:06:29 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/15 09:39:10 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 static int is_spacial_space(char *buff, int i)
 {
     if (i >= 0)
-    return (is_special(&buff[i]) || is_space(buff[i]));
+        return (is_special(&buff[i]) || is_space(buff[i]));
+    return 0;
 }
 /**
  * @brief check the end of tokens

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_op.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:10:39 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/14 02:19:59 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/15 09:39:57 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ static void *create_empty_node(t_node **root)
 	(*root)->token.args_q = NULL;
 	(*root)->token.exit_status = -1;
 	accepted((*root));
+	return (void *)1;
 }
 
 static void	put_redir_to_queue(t_node *node, t_node *new)

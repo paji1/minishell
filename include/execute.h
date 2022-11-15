@@ -3,7 +3,6 @@
 // #####################################################
 // ###                  bin                          ###
 // #####################################################
-int		handle_bin(t_node *node);
 int		wait_for_bin(t_node *node);
 int		bin_status(t_node *node, t_vars *vars);
 
