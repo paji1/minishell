@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   herdoc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 23:10:31 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/15 09:16:05 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/15 13:25:14 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+char	*g_name;
 
 static char	*create_file_name(void)
 {
@@ -30,18 +31,17 @@ static char	*create_file_name(void)
 
 static int	create_file(void)
 {
-	char	*name;
 	int		fd;
 
-	name = create_file_name();
-	if (!name)
+	g_name = create_file_name();
+	if (!g_name)
 		return -1;
-	fd = open(name, O_RDWR | O_EXCL | O_CREAT, 0600);
+	fd = open(g_name, O_WRONLY | O_EXCL | O_CREAT, 0600);
 	if (errno == EEXIST)
-		return errno = 0, free(name), create_file();
+		return errno = 0, free(g_name), create_file();
 	if (fd == -1)
-		return free(name), -1;
-	free(name);
+		return free(g_name), -1;
+	// free(g_name);
 	return fd;
 }
 
@@ -78,5 +78,9 @@ int handle_herdoc(t_node *new)
 		free(line);
 	free(tmp_token);
 	handle_signal();
+	close(new->token.fd_HERDOC);
+	// printf("{%s}\n", g_name);
+	new->token.fd_HERDOC = open(g_name, O_RDONLY, 0666);
+	// printf("{%d}\n", new->token.fd_HERDOC);
 	return 0;
 }

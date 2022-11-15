@@ -1,15 +1,13 @@
 Makefile
 README.md
 a
+a.txt
 errors.txt
 freelist.txt
 include
 lastcompiled.log
 libft
 minishell
-o
 obj
 src
 test_cmdd
-salam
-salam
