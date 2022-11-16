@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 22:36:16 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/15 03:18:25 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/16 06:39:24 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@ void	sigaction_hand(int sig, siginfo_t *info, void *data)
     rl_on_new_line(); // Regenerate the prompt on a newline
     rl_replace_line("", 0); // Clear the previous text
     rl_redisplay();
+	g_exit_status = 130;
 }
 void	herdoc_signal(int sig, siginfo_t *info, void *data)
 {
 	printf("\n"); // Move to a new line
     rl_on_new_line(); // Regenerate the prompt on a newline
     rl_replace_line("", 0); // Clear the previous text
+	g_exit_status = 130;
 }
 
 

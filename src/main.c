@@ -6,12 +6,19 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/16 04:53:27 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/16 07:44:30 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+int g_exit_status;
+void exit_status(t_vars *vars)
+{
+	if (vars->root->node_type != BLOCK)
+		return g_exit_status = WEXITSTATUS(vars->root->token.exit_status), (void)0;
+	g_exit_status = WEXITSTATUS(vars->exit_status);
+}
 
 int	main(int ac, char **av, char **env) 
 {
@@ -32,14 +39,16 @@ int	main(int ac, char **av, char **env)
 		if (vars.buff == NULL)
 			return free_env(vars.env), free_all(&vars), ft_putendl_fd("\033[1A\033[14Cexit", 1) , 0;
 		add_history_write(&vars);
-		if (vars.buff[0] && !parse(&vars))
+		if (!vars.buff[0] || !parse(&vars))
 		{
 			free_all(&vars);
 			continue ;
 		}
 		exucute(vars.root, &vars);
 		while (vars.pid_num-- >= 0)
-					wait(0);
+					wait(&vars.exit_status);
+		exit_status(&vars);
+		ft_putnbr_fd(g_exit_status, 2);
 		free_all(&vars);
 	}
 	return 0;

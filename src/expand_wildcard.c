@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 02:56:47 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/16 04:55:47 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/16 07:41:12 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void expand_wildcard(char **buff)
 	char	*temp;
 	char	*files;
 	int		i;
-	
+
 	if (!*buff)
 		return ;
 	ft_bzero(&quote, sizeof(t_quote));
@@ -108,4 +108,3 @@ void expand_wildcard(char **buff)
 	}
 	free(files);
 }
-
