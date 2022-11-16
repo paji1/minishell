@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/16 07:44:30 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/16 07:46:10 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	main(int ac, char **av, char **env)
 		while (vars.pid_num-- >= 0)
 					wait(&vars.exit_status);
 		exit_status(&vars);
-		ft_putnbr_fd(g_exit_status, 2);
 		free_all(&vars);
 	}
 	return 0;

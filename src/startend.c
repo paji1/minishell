@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   startend.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 22:41:02 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/15 09:39:10 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/16 08:02:44 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,16 @@ void start_token(char *buff, int i, t_sub *sub)
         sub->start = i + 1;
 }
 
+static int check_open_quote(int in_quote)
+{
+    if (in_quote != TRUE)
+        return 0;
+    accepted(NULL);
+    get_type(NULL);
+    ft_putendl_fd("minishell: syntax error near unexpected quote", 2);
+    return 1;
+}
+
 /**
  * @brief whene the parse loop exit white quote at end
  * 
@@ -66,8 +76,8 @@ int handle_last(t_vars *vars, int i, t_sub *sub, t_quote *quote)
         if (!handle_token(lexer(vars->buff, sub), vars))
             return 0;
     free_pr(NULL);
-    if (quote->in_quote == TRUE)
-        return ft_putendl_fd("minishell: syntax error near unexpected quote", 2), 0;
+    if (check_open_quote(quote->in_quote))
+        return 0;
     get_type(NULL);
     if (!accepted(NULL))
         return ft_putendl_fd("minishell: syntax error near unexpected token", 2), 0;
