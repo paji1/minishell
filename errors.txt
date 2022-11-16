@@ -1,7 +1,1 @@
-
-|||||||
-f || D && f| ff | fv | d| d| 3
-(> file1 < a)
-
-signalhandler herdoc free in exit
-"" """""""""""""" '''
+expand $?

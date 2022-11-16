@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 02:09:50 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/15 09:45:51 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/16 08:21:57 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 int	init(t_vars *vars, char **env)
 {
 	handle_signal();
+	ignore_signal_quit();
 	vars->buff = NULL;
 	vars->base_name = NULL;
 	vars->root = NULL;
