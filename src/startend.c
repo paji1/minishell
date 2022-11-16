@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 22:41:02 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/16 08:02:44 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/16 08:05:27 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void start_token(char *buff, int i, t_sub *sub)
     if (is_space(buff[i]))
         sub->start = i + 1;
 }
+
 
 static int check_open_quote(int in_quote)
 {
