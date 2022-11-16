@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 06:03:23 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/16 08:41:29 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/16 08:42:36 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int	count_lent(char *key)
 	size_t	i;
 
 	i = 1;
-	while ((ft_isalnum(key[i]) || (key[i] == '?' && key[i - 1] == '$')) && key[i] && key[i] != '$' && key[i] != '\"' && key[i] != '\'')
+	while ((ft_isalnum(key[i]) || (key[i] == '?' && key[i - 1] == '$')) \
+		&& key[i] && key[i] != '$' && key[i] != '\"' && key[i] != '\'')
 		i++;
 	if (i >= 1 && key[i] == '$' && key[i - 1] == '$')
 		i++;
