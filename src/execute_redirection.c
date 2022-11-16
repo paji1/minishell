@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_redirection.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 01:46:25 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/15 12:26:45 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/16 01:48:35 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,42 @@ static int	case_si(t_node *node, t_nodeq *q)
 	return (3);
 }
 
+char *get_name(int fd)
+{
+	char *s;
+	char *stemp;
+	struct stat buf;
+	DIR  *dir;
+	struct dirent *ddir;
+
+	s = NULL;
+	dir = opendir("/tmp");
+	ddir = readdir(dir);
+	fstat(fd, &buf);
+
+	while ((void *)ddir != NULL)
+	{
+		if (ddir->d_ino == buf.st_ino)
+		{
+			s = strdup(ddir->d_name);
+			break ;
+		}
+		ddir = readdir(dir);
+	}
+	closedir(dir);
+	stemp = ft_strjoin("/tmp/", s);
+	free(s);
+	return stemp;
+}
+
 static int	case_herd(t_node *node, t_nodeq *q)
 {
+	char *file_name;
+
+	file_name = get_name(q->data->token.fd_HERDOC);
+	close(q->data->token.fd_HERDOC);
+	q->data->token.fd_HERDOC = open(file_name, O_RDONLY, 0666);
+	free(file_name);
 	close(node->file_in);
 	node->file_in = q->data->token.fd_HERDOC;
 	return (1);

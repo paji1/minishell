@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/15 09:24:19 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/16 01:38:05 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #define __USE_GNU 
 #define _GNU_SOURCE
 
+# include <sys/types.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <string.h>
@@ -23,6 +24,7 @@
 # include <limits.h>
 # include <sys/wait.h>
 # include <sys/errno.h>
+# include <sys/stat.h>
 # include <fcntl.h>
 # include <limits.h>
 # include <dirent.h>
