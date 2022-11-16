@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/16 08:21:37 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/16 09:39:08 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,5 +137,6 @@ void		ignore_signal_herdoc(void);
 // =============================================
 
 void	print_env_tab(char **tab);
+int		create_file(void);
 extern int g_exit_status;
 #endif

@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 01:46:25 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/16 01:48:35 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/16 09:59:07 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,35 @@ char *get_name(int fd)
 	return stemp;
 }
 
-static int	case_herd(t_node *node, t_nodeq *q)
+void	expand_herdoc(int *fd, t_env *env)
+{
+	char *s;
+	char *file_name;
+	int new_fd;
+
+	file_name = get_name(*fd);
+	close(*fd);
+	*fd = open(file_name, O_RDONLY, 0666);
+	new_fd	= create_file();
+	s = get_next_line(*fd);
+	while (s)
+	{
+		expand_str(&s, env);
+		ft_putstr_fd(s, new_fd);
+		free(s);
+		s = get_next_line(*fd);
+	}
+	free(file_name);
+	close(*fd);
+	*fd = new_fd;
+}
+static int	case_herd(t_node *node, t_nodeq *q, t_env *env)
 {
 	char *file_name;
 
+	
+	if (q->data->token.token[0] != '\'' && q->data->token.token[0] != '\"')
+		expand_herdoc(&q->data->token.fd_HERDOC, env);
 	file_name = get_name(q->data->token.fd_HERDOC);
 	close(q->data->token.fd_HERDOC);
 	q->data->token.fd_HERDOC = open(file_name, O_RDONLY, 0666);
@@ -87,7 +112,7 @@ static int	case_herd(t_node *node, t_nodeq *q)
 	return (1);
 }
 
-int	handle_redirection(t_node *node)
+int	handle_redirection(t_node *node, t_env *env)
 {
 	t_nodeq	*q;
 	int		i;
@@ -103,7 +128,7 @@ int	handle_redirection(t_node *node)
 		if (case_si(node, q) == -1)
 			return -1;
 		if (q->data->token.type == DELIMITER)
-			case_herd(node, q);
+			case_herd(node, q, env);
 	}
 	return (0);
 }

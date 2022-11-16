@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 06:57:18 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/14 21:37:51 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/16 09:20:47 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int execute_builtins(t_node *node, t_env *env)
 	cmd = qto_tab(node, env);
 	out = dup(node->file_out);
 	in = dup(node->file_in);
-	if (handle_redirection(node))
+	if (handle_redirection(node, env))
 		return free(cmd), ft_get_backfd(node, in, out), -1;
 	if (!ft_strcmp(node->token.token, "cd"))
 		ft_cd(cmd, env);

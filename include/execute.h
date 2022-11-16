@@ -42,7 +42,7 @@ int		print_to_error(char *str, char *error, int re);
 // ###                  resdirection                 ###
 // #####################################################
 
-int		handle_redirection(t_node *node);
+int		handle_redirection(t_node *node, t_env *env);
 // #####################################################
 // ###                  builtins                     ###
 // #####################################################

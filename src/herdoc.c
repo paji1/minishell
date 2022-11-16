@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 23:10:31 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/16 01:53:21 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/16 09:55:28 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static char	*create_file_name(void)
 	return l++, joinstr;
 }
 
-static int	create_file(void)
+int	create_file(void)
 {
 	char	*name;
 	int		fd;
@@ -62,6 +62,7 @@ int handle_herdoc(t_node *new)
 	new->token.type = DELIMITER;
 	new->token.fd_HERDOC = create_file();
 	tmp_token = ft_strjoin(new->token.token, "\n");
+	expand_string_toquote(&tmp_token, (t_env *)NULL);
 	while (!line || ft_strcmp(line, tmp_token))
 	{
 		if (line)
@@ -69,7 +70,7 @@ int handle_herdoc(t_node *new)
 		line = get_next_line(0);
 		if (!line)
 			return free(tmp_token), 1;
-		if (line)
+		if (line && ft_strcmp(line, tmp_token))
 			write(new->token.fd_HERDOC, line, ft_strlen(line));
 	}
 	if (line)

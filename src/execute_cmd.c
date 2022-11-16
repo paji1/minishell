@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 01:56:34 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/16 08:24:23 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/16 09:21:02 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int fork_cmd(t_node *node, t_env *env)
 	if (pid)
 		return ignore_signal(), node->token.pid_child = pid , pid;
 	remove_signal();
-	if (handle_redirection(node) == -1)
+	if (handle_redirection(node, env) == -1)
 		exit(1);
 	if (is_first(node))
 	{
