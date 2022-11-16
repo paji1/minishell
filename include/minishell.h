@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/16 01:38:05 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/16 04:52:37 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,8 @@ void		expand_string_toquote(char **str, t_env *env);
 void		expand_str(char **str, t_env *env);
 char 		*allocate_to_value(char **str, size_t start, size_t end, t_env *env);
 int			count_lent(char *key);
+void		expand_wildcard(char **buff);
+
 // =============================================
 
 void		hide_ctrl_c(void);
