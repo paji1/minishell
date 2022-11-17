@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 22:36:16 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/16 08:20:34 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/17 19:05:08 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,23 @@
 
 void	sigaction_hand(int sig, siginfo_t *info, void *data)
 {
+	printf("\e[?25l");
 	printf("\n"); // Move to a new line
 	rl_on_new_line(); // Regenerate the prompt on a newline
 	rl_replace_line("", 0); // Clear the previous text
 	rl_redisplay();
 	g_exit_status = 130;
+	printf("\e[?25h");
 }
 
 void	herdoc_signal(int sig, siginfo_t *info, void *data)
 {
+	printf("\e[?25l");
 	printf("\n"); // Move to a new line
 	rl_on_new_line(); // Regenerate the prompt on a newline
 	rl_replace_line("", 0); // Clear the previous text
 	g_exit_status = 130;
+	printf("\e[?25h");
 }
 
 void handle_signal()

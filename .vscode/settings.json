@@ -4,6 +4,7 @@
 		"errno.h": "c",
 		"limits.h": "c",
 		"unistd.h": "c",
-		"get_next_line.h": "c"
+		"get_next_line.h": "c",
+		"curses.h": "c"
 	}
 }

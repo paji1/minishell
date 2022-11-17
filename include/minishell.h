@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/17 13:44:45 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/17 19:01:32 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,11 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
+#include <curses.h>
+#include <term.h>
 // ---------------------------------------------
 
+#undef tab
 // --------------free_functions-----------------
 void		free_all(t_vars *vars);
 void		free_tree(t_node *root);
