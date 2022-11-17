@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_redirection.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 01:46:25 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/16 09:59:07 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/17 08:45:57 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,13 +102,13 @@ static int	case_herd(t_node *node, t_nodeq *q, t_env *env)
 	char	*file_name;
 
 	if (q->data->token.token[0] != '\'' && q->data->token.token[0] != '\"')
-		expand_herdoc(&q->data->token.fd_HERDOC, env);
-	file_name = get_name(q->data->token.fd_HERDOC);
-	close(q->data->token.fd_HERDOC);
-	q->data->token.fd_HERDOC = open(file_name, O_RDONLY, 0666);
+		expand_herdoc(&q->data->token.fd_herdoc, env);
+	file_name = get_name(q->data->token.fd_herdoc);
+	close(q->data->token.fd_herdoc);
+	q->data->token.fd_herdoc = open(file_name, O_RDONLY, 0666);
 	free(file_name);
 	close(node->file_in);
-	node->file_in = q->data->token.fd_HERDOC;
+	node->file_in = q->data->token.fd_herdoc;
 	return (1);
 }
 

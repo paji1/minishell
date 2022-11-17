@@ -12,9 +12,9 @@
 
 #include "minishell.h"
 
-static int check_option(char *arg)
+static int	check_option(char *arg)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (arg[++i])
@@ -27,10 +27,10 @@ static int check_option(char *arg)
 	return (TRUE);
 }
 
-int			ft_echo(char **cmd)
+int	ft_echo(char **cmd)
 {
-	int i;
-	int lock;
+	int	i;
+	int	lock;
 
 	lock = 0;
 	i = 0;
@@ -39,7 +39,7 @@ int			ft_echo(char **cmd)
 		if (lock >= 0 && cmd[i][0] == '-' && check_option(cmd[i]) == TRUE)
 		{
 			lock = 1;
-			continue;
+			continue ;
 		}
 		if (lock == 1)
 			lock = -1;

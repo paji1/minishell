@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/16 09:39:08 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/17 08:37:03 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-#define __USE_GNU 
-#define _GNU_SOURCE
+# define __USE_GNU 
+# define _GNU_SOURCE
 
 # include <sys/types.h>
 # include <unistd.h>
@@ -41,13 +41,13 @@
 # include "execute.h"
 # include "builtins.h"
 // --------include readline header--------------
-#include <readline/readline.h>
-#include <readline/history.h>
+# include <readline/readline.h>
+# include <readline/history.h>
 
 // ---------------------------------------------
 
 // --------------free_functions-----------------
-void    	free_all(t_vars *vars);
+void		free_all(t_vars *vars);
 void		free_tree(t_node *root);
 void		free_pr(t_node *node);
 void		free_tab(char **tab);
@@ -61,8 +61,8 @@ int			end_token(char *buff, int i, t_sub *sub);
 int			handle_last(t_vars *vars, int i, t_sub *sub, t_quote *quote);
 int			quote_handle(t_quote *quote, int i, char *buff);
 // -------------------lexer --------------------
-char    	*handle_special(char *buff, t_sub *sub, int *i);
-char    	*lexer(char *buff, t_sub *sub);
+char		*handle_special(char *buff, t_sub *sub, int *i);
+char		*lexer(char *buff, t_sub *sub);
 int			accepted(t_node *new);
 // ------------------dir------------------------
 char		*getbasename(char *path);
@@ -74,11 +74,11 @@ int			init(t_vars *vars, char **env);
 int			get_type(char *token);
 int			block_op(int type);
 int			is_sub(t_node *node);
-	
+
 // ---------------node__________________________
 t_node		*new_tnode(void);
 // ----------------handle_tree------------------
-int			handle_token(char *token ,t_vars *vars);
+int			handle_token(char *token, t_vars *vars);
 void		put_block(t_node **root, t_node *new);
 int			handle_op(t_vars *vars, t_node *node);
 int			handle_block(t_vars *vars, t_node *node);
@@ -90,9 +90,9 @@ int			handle_herdoc(t_node *new);
 // -------------node ---------------------------
 t_node		*create_token(t_node *new, char *token);
 // =====	===========print========================
-void		print_tree(t_node *root,t_vars *vars);
+void		print_tree(t_node *root, t_vars *vars);
 // ---------------------------------------------
-void		exucute(t_node *root,t_vars *vars);
+void		exucute(t_node *root, t_vars *vars);
 char		**qto_tab(t_node *node, t_env *env);
 
 // =============================================
@@ -115,7 +115,8 @@ int			free_and_allocate(t_env *env);
 // =================expader=====================
 void		expand_string_toquote(char **str, t_env *env);
 void		expand_str(char **str, t_env *env);
-char 		*allocate_to_value(char **str, size_t start, size_t end, t_env *env);
+char		*allocate_to_value(char **str, size_t start, \
+			size_t end, t_env *env);
 int			count_lent(char *key);
 void		expand_wildcard(char **buff);
 
@@ -136,7 +137,9 @@ void		ignore_signal_herdoc(void);
 
 // =============================================
 
-void	print_env_tab(char **tab);
-int		create_file(void);
-extern int g_exit_status;
+void		print_env_tab(char **tab);
+int			create_file(void);
+
+extern int	g_exit_status;
+
 #endif

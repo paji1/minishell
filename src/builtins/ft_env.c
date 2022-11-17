@@ -14,8 +14,8 @@
 
 int	ft_env(t_env *env)
 {
-	t_env_node *node;
-	
+	t_env_node	*node;
+
 	node = env->head;
 	while (node)
 	{

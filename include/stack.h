@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/17 08:43:41 by akharraz          #+#    #+#             */
+/*   Updated: 2022/11/17 08:44:17 by akharraz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STACK_H
 # define STACK_H
 
-typedef struct s_node t_node;
+typedef struct s_node	t_node;
 /**
  * @file types.h
  * @brief Contains the types used in the project.
@@ -37,11 +49,10 @@ typedef struct s_stack
 }t_stack;
 
 t_snode	*new_snode(t_node *data);
-t_stack	*new_stack();
+t_stack	*new_stack(void);
 void	push(t_stack *stack, t_snode *new);
 t_snode	*sget(t_stack *stack);
 t_snode	*pop(t_stack *stack);
 void	free_stack(t_stack *stack);
-
 
 #endif

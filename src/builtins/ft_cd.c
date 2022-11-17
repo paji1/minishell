@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 05:17:34 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/13 09:43:51 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/17 08:42:50 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,14 @@ static int	go_to_home(t_env *env, char **cmd)
 	return (ft_putendl_fd("minishell: cd: HOME not set", 2), 1);
 }
 
-int	ft_cd(char  **cmd, t_env *env)
+int	ft_cd(char **cmd, t_env *env)
 {
-	char newpath[PATH_MAX];
-	char oldpath[PATH_MAX];
-	DIR *dir;
+	char	newpath[PATH_MAX];
+	char	oldpath[PATH_MAX];
+	DIR		*dir;
 
 	ft_bzero(newpath, PATH_MAX);
 	ft_bzero(oldpath, PATH_MAX);
-	
 	if (!cmd[1])
 		return (go_to_home(env, cmd));
 	if (cmd[1])
@@ -58,15 +57,15 @@ int	ft_cd(char  **cmd, t_env *env)
 		if (readdir(dir) == NULL)
 			return (perror("reddir"), 1);
 		if (!getcwd(oldpath, PATH_MAX))
-			return closedir(dir), 1;
+			return (closedir(dir), 1);
 		add_or_change_value(env, "OLDPWD", ft_strdup(oldpath));
 		if (chdir(cmd[1]) == -1)
-			return closedir(dir), perror("mnishell chdir"), 1;
+			return (closedir(dir), perror("mnishell chdir"), 1);
 		if (!getcwd(newpath, PATH_MAX))
-			return closedir(dir), 1;
+			return (closedir(dir), 1);
 		add_or_change_value(env, "PWD", ft_strdup(newpath));
 		if (closedir(dir) == -1)
-			return perror("mnishell closeder"), 1;
+			return (perror("mnishell closeder"), 1);
 	}
 	return (0);
 }

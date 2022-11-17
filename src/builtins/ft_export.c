@@ -48,7 +48,6 @@ int	ft_export(char **cmd, t_env *env)
 		mode = export_isvalid("export", cmd[i], &sub);
 		key = ft_substr(cmd[i], sub.start, sub.end);
 		node = search_env_node(env, key);
-			
 		if (node)
 		{
 			free (key);

@@ -6,13 +6,14 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 05:22:52 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/02 05:12:01 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/17 08:45:26 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPES_Q_H
 # define TYPES_Q_H
-typedef struct s_node t_node;
+
+typedef struct s_node	t_node;
 /**
  * @file types.h
  * @brief Contains the types used in the project.

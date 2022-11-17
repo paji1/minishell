@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   node.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 20:22:43 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/09 14:07:52 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/17 08:45:57 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_node	*create_token(t_node *new, char *token)
 	new->token.type = get_type(token);
 	new->node_type = block_op(new->token.type);
 	new->token.token = token;
-	new->token.fd_HERDOC = -1;
+	new->token.fd_herdoc = -1;
 	new->token.pid_child = -1;
 	new->token.redir = NULL;
 	new->token.args_q = NULL;

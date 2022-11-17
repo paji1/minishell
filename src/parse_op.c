@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:10:39 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/15 09:39:57 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/17 08:45:57 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void	*create_empty_node(t_node **root)
 	if (!(*root)->token.token)
 		return (NULL);
 	(*root)->token.redir = new_queue();
-	(*root)->token.fd_HERDOC = -1;
+	(*root)->token.fd_herdoc = -1;
 	(*root)->file_in = 0;
 	(*root)->file_out = 1;
 	(*root)->token.args_q = NULL;
