@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 01:46:25 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/17 15:08:21 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/17 16:56:45 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,14 +123,11 @@ int	handle_redirection(t_node *node, t_env *env)
 	while (++i < node->token.redir->size)
 	{
 		q = q_n_get(node->token.redir);
-		if (q->data->token.type == DELIMITER)
-		{
-			case_herd(node, q, env), 0;
-			// continue;
-		}
 		case_so(node, q);
 		if (case_si(node, q) == -1)
 			return (-1);
+		if (q->data->token.type == DELIMITER)
+			case_herd(node, q, env);
 	}
 	return (0);
 }
