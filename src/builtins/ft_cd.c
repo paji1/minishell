@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 05:17:34 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/17 08:42:50 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/17 11:21:53 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,12 @@ static int	go_to_home(t_env *env, char **cmd)
 	{
 		if (!ft_strncmp(node->key, "HOME", 4))
 		{
-			path = malloc(2 * sizeof(char *));
+			path = malloc(3 * sizeof(char *));
 			path[0] = ft_strdup("cd");
 			path[1] = ft_strdup(node->value);
+			path[2] = NULL;
 			ft_cd(path, env);
-			while (++i < 2)
-				free(path[i]);
-			free(path);
+			free_tab(path);
 			return (0);
 		}
 		node = node->next;
@@ -58,12 +57,12 @@ int	ft_cd(char **cmd, t_env *env)
 			return (perror("reddir"), 1);
 		if (!getcwd(oldpath, PATH_MAX))
 			return (closedir(dir), 1);
-		add_or_change_value(env, "OLDPWD", ft_strdup(oldpath));
+		add_or_change_value(env, ft_strdup("OLDPWD"), ft_strdup(oldpath));
 		if (chdir(cmd[1]) == -1)
 			return (closedir(dir), perror("mnishell chdir"), 1);
 		if (!getcwd(newpath, PATH_MAX))
 			return (closedir(dir), 1);
-		add_or_change_value(env, "PWD", ft_strdup(newpath));
+		add_or_change_value(env, ft_strdup("PWD"), ft_strdup(newpath));
 		if (closedir(dir) == -1)
 			return (perror("mnishell closeder"), 1);
 	}

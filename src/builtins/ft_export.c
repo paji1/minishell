@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 23:30:16 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/14 03:33:59 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/17 12:11:06 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_export(char **cmd, t_env *env)
 	err = 0;
 	node = NULL;
 	ft_bzero((void *)&sub, sizeof(t_sub));
-	if (!cmd[i])
+	if (!cmd[1])
 		return export_print(env), 0;
 	while (cmd[++i])
 	{
@@ -51,7 +51,8 @@ int	ft_export(char **cmd, t_env *env)
 		if (node)
 		{
 			free (key);
-			key = node->key;
+			key = ft_strdup(node->key);
+			ft_putendl_fd("hello ---", 2);
 		}
 		if (mode == -1)
 		{
@@ -69,6 +70,7 @@ int	ft_export(char **cmd, t_env *env)
 			value = ft_substr(cmd[i], sub.end + 2, ft_strlen(cmd[i]) - sub.end);
 			add_or_change_value(env, key, export_strjoin(get_value(env, key), value));
 			free(value);
+			ft_putendl_fd("hello", 2);
 		}
 		if (mode == 3 && !node)
 		{

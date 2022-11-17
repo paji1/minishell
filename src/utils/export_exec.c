@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 06:45:36 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/14 02:40:50 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/17 12:20:19 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ char	*export_strjoin(char *s1, char *s2)
 
 	if (!s1)
 		s1 = ft_strdup("");
-	else
-		s1=ft_strdup(s1);
+
 	i[0] = 0;
 	i[1] = 0;
 	len[0] = ft_strlen(s1) + ft_strlen(s2);

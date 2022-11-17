@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   herdoc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 23:10:31 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/17 08:45:57 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/17 11:04:32 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,5 @@ int	handle_herdoc(t_node *new)
 	}
 	if (line)
 		free(line);
-	free(tmp_token);
-	handle_signal();
-	return (0);
+	return (free(tmp_token), handle_signal(), node = NULL, 0);
 }

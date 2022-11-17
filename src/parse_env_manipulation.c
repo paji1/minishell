@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 23:10:26 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/14 04:37:48 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/17 11:41:26 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ static int	is_in_env_change(t_env_node *head, char *key, char *value)
 		if (!ft_strcmp(head->key, key))
 		{
 			free(head->value);
+			free(key);
 			head->value = value;
 			return (1);
 		}
