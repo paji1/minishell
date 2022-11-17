@@ -22,22 +22,22 @@ int	count_lent(char *key)
 		i++;
 	if (i >= 1 && key[i] == '$' && key[i - 1] == '$')
 		i++;
-	return i -1;
+	return (i - 1);
 }
 
-char *allocate_to_value(char **str, size_t start, size_t end, t_env *env)
+char	*allocate_to_value(char **str, size_t start, size_t end, t_env *env)
 {
 	char	*key;
 	char	*value;
 
-	key = ft_substr(*str, start+1, end - 1);
+	key = ft_substr(*str, start + 1, end - 1);
 	if (!ft_strcmp(key, "?"))
-		return free(key), ft_itoa(g_exit_status);
+		return (free(key), ft_itoa(g_exit_status));
 	if (!key)
-		return NULL;
+		return (NULL);
 	value = get_value(env, key);
 	free(key);
 	if (!value)
-		return ft_strdup("");
-	return value;
+		return (ft_strdup(""));
+	return (value);
 }

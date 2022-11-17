@@ -26,7 +26,7 @@ char	*dub_add(char *str, char *ad)
 	int		ad_len;
 
 	if (!str || !ad)
-		return NULL;
+		return (NULL);
 	len = ft_strlen(str);
 	ad_len = ft_strlen(ad);
 	s = malloc(11 + 1 + len + ad_len);
@@ -35,8 +35,7 @@ char	*dub_add(char *str, char *ad)
 	ft_strlcat(s, str, 8 + len);
 	ft_strlcat(s, ad, 8 + len + ad_len);
 	ft_strlcat(s, "\033[0m", 12 + len + ad_len);
-	return s;
-	
+	return (s);
 }
 
 /**
@@ -47,8 +46,8 @@ char	*dub_add(char *str, char *ad)
  */
 char	*getbasename(char *path)
 {
-	char *last_slash;
-	char *str;
+	char	*last_slash;
+	char	*str;
 
 	str = path;
 	last_slash = "\0";
@@ -59,10 +58,10 @@ char	*getbasename(char *path)
 		str++;
 	}
 	if (!(*last_slash))
-		return path;
+		return (path);
 	if  (!(*(last_slash + 1)))
-		return last_slash;
-	return last_slash  + 1;
+		return (last_slash);
+	return (last_slash + 1);
 }
 
 /**
@@ -73,11 +72,12 @@ char	*getbasename(char *path)
  */
 size_t	getdir(char **base_name)
 {
-	char *buff;
+	char	*buff;
 
-	buff = malloc(PATH_MAX);	
+	buff = malloc(PATH_MAX);
 	if (!getcwd(buff, -1))
-		return free(buff), *base_name = dub_add(getbasename("."), "-> ") , -1;
+		return (free(buff), *base_name = \
+			dub_add(getbasename("."), "-> ") ,-1);
 	*base_name = dub_add(getbasename(buff), "-> ");
 	free(buff);
 	return (ft_strlen(*base_name));

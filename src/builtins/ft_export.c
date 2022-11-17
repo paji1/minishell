@@ -27,34 +27,42 @@ static t_env_node	*search_env_node(t_env *env, char *key)
 }
 
 
-void	ft_export(char **cmd, t_env *env)
+int	ft_export(char **cmd, t_env *env)
 {
 	int			i;
 	int			mode;
+	int			err;
 	char		*key;
 	char		*value;
 	t_sub		sub;
 	t_env_node	*node;
 	
-	i = 1;
+	i = 0;
+	err = 0;
 	node = NULL;
 	ft_bzero((void *)&sub, sizeof(t_sub));
 	if (!cmd[i])
-		return export_print(env);
-	while (cmd[i])
+		return export_print(env), 0;
+	while (cmd[++i])
 	{
-		mode = export_isvalid(cmd[i], &sub);
+		mode = export_isvalid("export", cmd[i], &sub);
 		key = ft_substr(cmd[i], sub.start, sub.end);
 		node = search_env_node(env, key);
+			
 		if (node)
 		{
 			free (key);
 			key = node->key;
 		}
+		if (mode == -1)
+		{
+			free(key);
+			err = 1;
+			continue ;
+		}
 		if (mode == 1)
 		{
 			value = ft_substr(cmd[i], sub.end + 1, ft_strlen(cmd[i]) - sub.end);
-			// free(value);
 			add_or_change_value(env, key, value);
 		}
 		if (mode == 2)
@@ -70,6 +78,6 @@ void	ft_export(char **cmd, t_env *env)
 			node = search_env_node(env, key);
 			node->is_env = 0;
 		}
-		i++;
 	}
+	return (err);
 }

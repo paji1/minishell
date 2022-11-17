@@ -12,21 +12,20 @@
 
 #include "minishell.h"
 
-
 // enum SPEACIAL {
 // 	OR,AND,PIP,REDIRECT_SO,REDIRECT_Si,APPEND,HEREDOC
 // };
 int is_special(char *str)
 {
-	char *twochar; 
-	
+	char	*twochar; 
+
 	twochar = ft_substr(str, 0, 2);
 	if (!twochar)
-		return -1;
+		return (-1);
 	if (!ft_strcmp("||", twochar) || !ft_strcmp("&&", twochar))
-		return free(twochar), 2;
+		return (free(twochar), 2);
 	else if (!ft_strcmp(">>", twochar) || !ft_strcmp("<<", twochar))
-		return free(twochar), 2;
+		return (free(twochar), 2);
 	if (ft_strchr("|<>()", twochar[0]))
 		return (free(twochar), 1);
 	return (free(twochar), 0);

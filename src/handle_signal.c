@@ -15,23 +15,23 @@
 void	sigaction_hand(int sig, siginfo_t *info, void *data)
 {
 	printf("\n"); // Move to a new line
-    rl_on_new_line(); // Regenerate the prompt on a newline
-    rl_replace_line("", 0); // Clear the previous text
-    rl_redisplay();
+	rl_on_new_line(); // Regenerate the prompt on a newline
+	rl_replace_line("", 0); // Clear the previous text
+	rl_redisplay();
 	g_exit_status = 130;
 }
+
 void	herdoc_signal(int sig, siginfo_t *info, void *data)
 {
 	printf("\n"); // Move to a new line
-    rl_on_new_line(); // Regenerate the prompt on a newline
-    rl_replace_line("", 0); // Clear the previous text
+	rl_on_new_line(); // Regenerate the prompt on a newline
+	rl_replace_line("", 0); // Clear the previous text
 	g_exit_status = 130;
 }
 
-
 void handle_signal()
 {
-	struct sigaction act;
+	struct sigaction	act;
 
 	sigemptyset(&act.sa_mask);
 	act.sa_flags = SA_SIGINFO;

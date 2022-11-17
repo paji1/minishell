@@ -12,19 +12,19 @@
 
 #include "minishell.h"
 
-int handle_sub(t_node *node, t_vars *vars)
+int	handle_sub(t_node *node, t_vars *vars)
 {
-	int pid;
+	int	pid;
 
 	if (!is_sub(node))
-		return 0;
+		return (0);
 	node->node_type = OP;
 	pid = fork();
 	if (!pid)
 	{
 		if (!node)
-			return 0;
-		dup2(node->file_in , 0);
+			return (0);
+		dup2(node->file_in, 0);
 		dup2(node->file_out, 1);
 		vars->pid_num = 0;
 		exucute(node, vars);
@@ -37,5 +37,5 @@ int handle_sub(t_node *node, t_vars *vars)
 	}
 	waitpid(pid, &node->token.exit_status, 0);
 	close_in_parent(node);
-	return 1;
+	return (1);
 }

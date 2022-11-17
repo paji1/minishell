@@ -12,23 +12,20 @@
 
 #include "minishell.h"
 
-
-
-void expand_key(char **str, size_t start, size_t end, t_env *env)
+void	expand_key(char **str, size_t start, size_t end, t_env *env)
 {
-	char *first;
-	char *second;
-	char *value;
-	char *temp;
+	char	*first;
+	char	*second;
+	char	*value;
+	char	*temp;
 
 	if (end == start)
 		return ;
 	first = ft_substr(*str, 0, start);
 	second = ft_strdup(*str + end);
-	value = allocate_to_value(str, start, end - start ,env);
+	value = allocate_to_value(str, start, end - start, env);
 	temp = ft_strjoin(first, value);
-	// if (!value[0])
-		free(value);
+	free(value);
 	free(first);
 	first = ft_strjoin(temp, second);
 	free(temp);
@@ -37,11 +34,10 @@ void expand_key(char **str, size_t start, size_t end, t_env *env)
 	*str = first;
 }
 
-
 void	expand_str(char **str, t_env *env)
 {
 	char	*temp;
-	t_quote quote;
+	t_quote	quote;
 	int		i;
 
 	i = -1;
@@ -59,10 +55,3 @@ void	expand_str(char **str, t_env *env)
 	}
 	expand_string_toquote(str, env);
 }
-
-
-// void	expander(char **str, t_env *env)
-// {
-	
-	
-// }

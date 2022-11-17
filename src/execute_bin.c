@@ -12,16 +12,15 @@
 
 #include "minishell.h"
 
-
-int wait_for_bin(t_node *node)
+int	wait_for_bin(t_node *node)
 {
 	if (node->left->node_type == BLOCK)
 		waitpid(node->left->token.pid_child, &node->left->token.exit_status, 0);
 	node->token.exit_status = node->left->token.exit_status;
-	return node->left->token.exit_status;
+	return (node->left->token.exit_status);
 }
 
-int bin_status(t_node *node, t_vars *vars)
+int	bin_status(t_node *node, t_vars *vars)
 {
 	int	status;
 
@@ -31,12 +30,12 @@ int bin_status(t_node *node, t_vars *vars)
 	if (node->token.type == AND)
 	{
 		if (WEXITSTATUS(status) != 0)
-			return node->token.exit_status = status, 0;
+			return (node->token.exit_status = status, 0);
 	}
 	if (node->token.type == OR)
 	{
 		if (WEXITSTATUS(status) == 0)
-			return node->token.exit_status = status, 0;
+			return (node->token.exit_status = status, 0);
 	}
-	return 1;
+	return (1);
 }

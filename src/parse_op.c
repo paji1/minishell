@@ -12,29 +12,29 @@
 
 #include "minishell.h"
 
-int is_sub(t_node *node)
+int	is_sub(t_node *node)
 {
 	if (node->node_type == BLOCK && node->token.type <= PIP \
 		&& node->token.type >= AND)
-		return 1;
-	return 0;
+		return (1);
+	return (0);
 }
 
-int handle_OP(t_vars *vars, t_node *node)
+int	handle_op(t_vars *vars, t_node *node)
 {
 	if (node->node_type != OP)
-		return 0;
-	if(node->token.type >= REDIRECT_SO && node->token.type <= HERDOC)
-		return put_redir(&vars->root, node), 1;
+		return (0);
+	if (node->token.type >= REDIRECT_SO && node->token.type <= HERDOC)
+		return (put_redir(&vars->root, node), 1);
 	if (vars->root->node_type == BLOCK && node->node_type == OP)
-		return node->left = vars->root,vars->root = node , 1;
+		return (node->left = vars->root, vars->root = node, 1);
 	if (node->token.type == OR || node->token.type == AND)
-		return above_root(&vars->root, node), 1;
+		return (above_root(&vars->root, node), 1);
 	if (node->token.type <= vars->root->token.type)
-		return above_root(&vars->root, node), 1;
+		return (above_root(&vars->root, node), 1);
 	else
-		return nested(&vars->root, node), 1;
-	return 0;
+		return (nested(&vars->root, node), 1);
+	return (0);
 }
 
 void	above_root(t_node **root, t_node *new)
@@ -56,7 +56,7 @@ void	nested(t_node **root, t_node *new)
 	nested(&(*root)->right, new);
 }
 
-static void *create_empty_node(t_node **root)
+static void	*create_empty_node(t_node **root)
 {
 	*root = new_tnode();
 	(*root)->node_type = BLOCK;
@@ -71,7 +71,7 @@ static void *create_empty_node(t_node **root)
 	(*root)->token.args_q = NULL;
 	(*root)->token.exit_status = -1;
 	accepted((*root));
-	return (void *)1;
+	return ((void *)1);
 }
 
 static void	put_redir_to_queue(t_node *node, t_node *new)

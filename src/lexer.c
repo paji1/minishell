@@ -12,18 +12,18 @@
 
 #include "minishell.h"
 
-char    *lexer(char *buff, t_sub *sub)
+char	*lexer(char *buff, t_sub *sub)
 {
-    if (!(sub->end - sub->start))
-        return NULL;
-    return (ft_substr(buff, sub->start, sub->end - sub->start));
+	if (!(sub->end - sub->start))
+		return (NULL);
+	return (ft_substr(buff, sub->start, sub->end - sub->start));
 }
 
-char    *handle_special(char *buff, t_sub *sub, int *i)
+char	*handle_special(char *buff, t_sub *sub, int *i)
 {
-    if (is_special(buff) == 1)
-        return (sub->start = *i + 1, ft_substr(buff, 0, 1));
-    else if (is_special(buff) == 2)
-        return (sub->start = *i + 2, *i += 1, ft_substr(buff, 0, 2));
-    return NULL;
+	if (is_special(buff) == 1)
+		return (sub->start = *i + 1, ft_substr(buff, 0, 1));
+	else if (is_special(buff) == 2)
+		return (sub->start = *i + 2, *i += 1, ft_substr(buff, 0, 2));
+	return (NULL);
 }

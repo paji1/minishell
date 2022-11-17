@@ -12,10 +12,10 @@
 
 #include "minishell.h"
 
-t_node *create_token(t_node *new, char *token)
+t_node	*create_token(t_node *new, char *token)
 {
 	if (!new)
-		return NULL;
+		return (NULL);
 	new->token.type = get_type(token);
 	new->node_type = block_op(new->token.type);
 	new->token.token = token;
@@ -24,7 +24,7 @@ t_node *create_token(t_node *new, char *token)
 	new->token.redir = NULL;
 	new->token.args_q = NULL;
 	new->token.exit_status = -1;
-	return new;
+	return (new);
 }
 
 /**
@@ -32,14 +32,16 @@ t_node *create_token(t_node *new, char *token)
  * 
  * @return t_node* new allocated node to put in tree
  */
-t_node *new_tnode(void)
+t_node	*new_tnode(void)
 {
-	t_node *new = (t_node *)malloc(sizeof(t_node));
+	t_node	*new;
+
+	new = (t_node *)malloc(sizeof(t_node));
 	if (new == NULL)
-		return NULL;
+		return (NULL);
 	new->file_in = 0;
 	new->file_out = 1;
 	new->left = NULL;
 	new->right = NULL;
-	return new;
+	return (new);
 }

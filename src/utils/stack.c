@@ -20,15 +20,15 @@
  */
 t_snode	*new_snode(t_node *data)
 {
-	t_snode *node;
+	t_snode	*node;
 
 	node = (t_snode *)malloc(sizeof(t_snode));
 	if (!node)
-		return NULL;
+		return (NULL);
 	node->root = data;
 	node->next = NULL;
 	node->prev = NULL;
-	return node;
+	return (node);
 }
 
 /**
@@ -37,13 +37,13 @@ t_snode	*new_snode(t_node *data)
  * 
  * @return allocate address for stack structure
  */
-t_stack *new_stack()
+t_stack	*new_stack(void)
 {
-	t_stack *stack;
+	t_stack	*stack;
 
 	stack = (t_stack *)malloc(sizeof(t_stack));
 	if (!stack)
- 		return (NULL);
+		return (NULL);
 	stack->head = NULL;
 	stack->tail = NULL;
 	stack->size = 0;
@@ -80,17 +80,17 @@ void	push(t_stack *stack, t_snode *new)
  */
 t_snode	*sget(t_stack *stack)
 {
-	t_snode *tail;
+	t_snode	*tail;
 
 	if (stack->head == NULL)
-		return NULL;
+		return (NULL);
 	stack->size -= 1;
 	tail = stack->tail;
 	if (!(stack->size))
 		return (stack->head = NULL, stack->tail = NULL, tail);
 	stack->tail = stack->tail->prev;
 	stack->tail->next = NULL;
-	return tail;
+	return (tail);
 }
 
 /**
@@ -101,12 +101,12 @@ t_snode	*sget(t_stack *stack)
  */
 t_snode	*pop(t_stack *stack)
 {
-	t_snode *front;
+	t_snode	*front;
+
 	if (stack->head == NULL)
-		return NULL;
+		return (NULL);
 	stack->size -= 1;
 	front = stack->head;
 	stack->head = stack->head->next;
-	return front;
+	return (front);
 }
-

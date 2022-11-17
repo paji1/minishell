@@ -36,7 +36,7 @@ static int	go_to_home(t_env *env, char **cmd)
 		}
 		node = node->next;
 	}
-	return (ft_putendl_fd("minishell: cd: HOME not set", 2), -1);
+	return (ft_putendl_fd("minishell: cd: HOME not set", 2), 1);
 }
 
 int	ft_cd(char  **cmd, t_env *env)
@@ -49,25 +49,24 @@ int	ft_cd(char  **cmd, t_env *env)
 	ft_bzero(oldpath, PATH_MAX);
 	
 	if (!cmd[1])
-		go_to_home(env, cmd);
+		return (go_to_home(env, cmd));
 	if (cmd[1])
 	{
 		dir = opendir(cmd[1]);
 		if (dir == NULL)
-			return (perror("mnishell"), -1);
+			return (perror("mnishell"), 1);
 		if (readdir(dir) == NULL)
-			return (perror("reddir"), -1);
-		getcwd(oldpath, PATH_MAX);
+			return (perror("reddir"), 1);
 		if (!getcwd(oldpath, PATH_MAX))
-			return closedir(dir), -4;
+			return closedir(dir), 1;
 		add_or_change_value(env, "OLDPWD", ft_strdup(oldpath));
 		if (chdir(cmd[1]) == -1)
-			return closedir(dir), perror("mnishell chdir"), -2;
+			return closedir(dir), perror("mnishell chdir"), 1;
 		if (!getcwd(newpath, PATH_MAX))
-			return closedir(dir), -4;
+			return closedir(dir), 1;
 		add_or_change_value(env, "PWD", ft_strdup(newpath));
 		if (closedir(dir) == -1)
-			return perror("mnishell closeder"), -3;
+			return perror("mnishell closeder"), 1;
 	}
 	return (0);
 }

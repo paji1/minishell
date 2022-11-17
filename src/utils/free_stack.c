@@ -12,7 +12,6 @@
 
 #include "minishell.h"
 
-
 /**
  * @brief free node recursively
  * 

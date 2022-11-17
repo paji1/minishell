@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-static void ft_get_backfd(t_node *node, int in, int out)
+static void	ft_get_backfd(t_node *node, int in, int out)
 {
 	close(node->file_out);
 	node->file_out = dup(out);
@@ -21,7 +21,7 @@ static void ft_get_backfd(t_node *node, int in, int out)
 	close(in);
 }
 
-int execute_builtins(t_node *node, t_env *env)
+int	execute_builtins(t_node *node, t_env *env)
 {
 	char			**cmd;
 	int				out;
@@ -31,9 +31,9 @@ int execute_builtins(t_node *node, t_env *env)
 	out = dup(node->file_out);
 	in = dup(node->file_in);
 	if (handle_redirection(node, env))
-		return free(cmd), ft_get_backfd(node, in, out), -1;
+		return (free(cmd), ft_get_backfd(node, in, out), -1);
 	if (!ft_strcmp(node->token.token, "cd"))
-		ft_cd(cmd, env);
+		node->token.exit_status = ft_cd(cmd, env);
 	else if (!ft_strcmp(node->token.token, "echo"))
 		ft_echo(cmd);
 	else if (!ft_strcmp(node->token.token, "env"))

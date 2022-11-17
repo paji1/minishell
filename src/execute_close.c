@@ -21,13 +21,13 @@ void close_before(int fd)
 	}
 }
 
-int close_in_parent(t_node *node)
+int	close_in_parent(t_node *node)
 {
-	int fd;
-	
+	int	fd;
+
 	fd = 0;
 	if (node->file_in == 0 && node->file_out == 1)
-		return 0;
+		return (0);
 	if (is_first(node))
 	{	
 		if (node->file_out != STDOUT_FILENO)
@@ -40,5 +40,5 @@ int close_in_parent(t_node *node)
 		if (node->file_out != STDOUT_FILENO)
 			close(node->file_out);
 	}
-	return 0;
+	return (0);
 }

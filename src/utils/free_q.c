@@ -19,7 +19,7 @@
  */
 static void	free_nodes(t_nodeq *node)
 {
-	t_token *temp;
+	t_token	*temp;
 
 	if (!node)
 		return ;

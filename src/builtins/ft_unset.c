@@ -12,13 +12,20 @@
 
 #include "minishell.h"
 
-void	ft_unset(char **cmd ,t_env *env)
+int	ft_unset(char **cmd ,t_env *env)
 {
-	int	i;
+	int		i;
+	int		err;
+	t_sub	sub;
 
 	i = 0;
+	err = 0;
+	ft_bzero((void *)&sub, sizeof(t_sub));
 	while (cmd[++i])
 	{
+		if (export_isvalid("unset", cmd[i], &sub) == -1)
+			err = 1;
 		remove_env_node(env, cmd[i]);
 	}
+	return (err);
 }

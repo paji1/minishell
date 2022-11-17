@@ -12,11 +12,13 @@
 
 #include "minishell.h"
 
-int g_exit_status;
-void exit_status(t_vars *vars)
+int	g_exit_status;
+
+void	exit_status(t_vars *vars)
 {
 	if (vars->root->node_type != BLOCK)
-		return g_exit_status = WEXITSTATUS(vars->root->token.exit_status), (void)0;
+		return (g_exit_status = \
+				WEXITSTATUS(vars->root->token.exit_status), (void)0);
 	g_exit_status = WEXITSTATUS(vars->exit_status);
 }
 
@@ -26,18 +28,19 @@ int	main(int ac, char **av, char **env)
 
 	(void)ac, (void)av;
 	if (init_env(&vars, env))
-		return  (2);
+		return (2);
 	handle_history(&vars);
 	while (1)
 	{
 		hide_ctrl_c();
 		if (init(&vars, env))
-			return free_env(vars.env), 1;
-	 	getdir(&vars.base_name);
+			return (free_env(vars.env), 1);
+		getdir(&vars.base_name);
 		vars.buff = readline(vars.base_name);
 		expand_wildcard(&vars.buff);
 		if (vars.buff == NULL)
-			return free_env(vars.env), free_all(&vars), ft_putendl_fd("\033[1A\033[14Cexit", 1) , 0;
+			return (free_env(vars.env), free_all(&vars), \
+				ft_putendl_fd("\033[1A\033[14Cexit", 1) , 0);
 		add_history_write(&vars);
 		if (!vars.buff[0] || !parse(&vars))
 		{
@@ -46,9 +49,9 @@ int	main(int ac, char **av, char **env)
 		}
 		exucute(vars.root, &vars);
 		while (vars.pid_num-- >= 0)
-					wait(&vars.exit_status);
+			wait(&vars.exit_status);
 		exit_status(&vars);
 		free_all(&vars);
 	}
-	return 0;
+	return (0);
 }

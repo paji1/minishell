@@ -80,7 +80,7 @@ t_node		*new_tnode(void);
 // ----------------handle_tree------------------
 int			handle_token(char *token ,t_vars *vars);
 void		put_block(t_node **root, t_node *new);
-int			handle_OP(t_vars *vars, t_node *node);
+int			handle_op(t_vars *vars, t_node *node);
 int			handle_block(t_vars *vars, t_node *node);
 void		above_root(t_node **root, t_node *new);
 void		nested(t_node **root, t_node *new);

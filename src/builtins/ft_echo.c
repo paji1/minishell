@@ -27,7 +27,7 @@ static int check_option(char *arg)
 	return (TRUE);
 }
 
-void ft_echo(char **cmd)
+int			ft_echo(char **cmd)
 {
 	int i;
 	int lock;
@@ -49,4 +49,5 @@ void ft_echo(char **cmd)
 	}
 	if (lock != 1 && lock != -1)
 		write(STDOUT_FILENO, "\n", 1);
+	return (0);
 }

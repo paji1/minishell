@@ -15,8 +15,8 @@
 int	handle_block(t_vars *vars, t_node *node)
 {
 	if (node->node_type != BLOCK)
-		return 0;
-	return put_block(&vars->root, node), 1;
+		return (0);
+	return (put_block(&vars->root, node), 1);
 }
 
 static int	put_arg_option(t_node **root, t_node *new)
@@ -27,9 +27,9 @@ static int	put_arg_option(t_node **root, t_node *new)
 			(*root)->token.args_q = new_queue();
 		qput((*root)->token.args_q, new_node(new));
 		handle_herdoc(new);
-		return	(1);
+		return (1);
 	}
-	return 0;
+	return (0);
 }
 
 static int	put_arg_as_cmd(t_node **root, t_node *new)
@@ -50,9 +50,9 @@ static int	put_file(t_node **root, t_node *new)
 	{
 		qput((*root)->token.redir, new_node(new));
 		handle_herdoc(new);
-		return	(1);
+		return (1);
 	}
-	return 0;
+	return (0);
 }
 
 void	put_block(t_node **root, t_node *new)
@@ -64,7 +64,6 @@ void	put_block(t_node **root, t_node *new)
 	}
 	if ((*root)->right == NULL || is_sub(*root))
 	{
-
 		if (put_file(root, new))
 			return ;
 		if (put_arg_as_cmd(root, new))

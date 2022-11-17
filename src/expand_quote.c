@@ -12,17 +12,17 @@
 
 #include <minishell.h>
 
-static void expand_quote(char **str, size_t start, size_t end)
+static void	expand_quote(char **str, size_t start, size_t end)
 {
-	char *first;
-	char *second;
-	char *value;
-	char *temp;
+	char	*first;
+	char	*second;
+	char	*value;
+	char	*temp;
 
 	if (end == start)
 		return ;
 	first = ft_substr(*str, 0, start);
-	temp = ft_substr(*str, start + 1, end -start-1);
+	temp = ft_substr(*str, start + 1, end - start - 1);
 	value = ft_strjoin(first, temp);
 	free(first);
 	free(temp);
@@ -31,14 +31,14 @@ static void expand_quote(char **str, size_t start, size_t end)
 	if (second)
 		free(second);
 	if (value)
-	free(value);
+		free(value);
 	free(*str);
 	*str = first;
 }
 
-static int count_sub(int	i, int quote, t_sub *sub)
+static int	count_sub(int i, int quote, t_sub *sub)
 {
-	static int flag;
+	static int	flag;
 
 	if (flag == 0 && quote == 1)
 	{
@@ -49,17 +49,17 @@ static int count_sub(int	i, int quote, t_sub *sub)
 	{
 		flag = 0;
 		sub->end = i;
-		return 1;
+		return (1);
 	}
-	return 0;
+	return (0);
 }
 
-void expand_string_toquote(char **str, t_env *env)
+void	expand_string_toquote(char **str, t_env *env)
 {
 	t_sub	sub;
-	t_quote quote;
+	t_quote	quote;
 	char	*temp;
-	int	i;
+	int		i;
 
 	i = -1;
 	temp = *str;

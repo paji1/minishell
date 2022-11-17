@@ -18,5 +18,5 @@ int	print_to_error(char *str, char *error, int re)
 	if (str)
 		ft_putstr_fd(str, 2);
 	ft_putendl_fd(error, 2);
-	return re;
+	return (re);
 }

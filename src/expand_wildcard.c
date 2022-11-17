@@ -12,31 +12,31 @@
 
 #include <minishell.h>
 
-int is_accepted(char *buff, int i)
+int	is_accepted(char *buff, int i)
 {
 	if (buff[i] != '*')
-		return 0;
+		return (0);
 	if (i == 0 && !ft_isalnum(buff[i]))
-		return 1;
+		return (1);
 	if (i == 0)
-		return 0;
+		return (0);
 	if (!ft_isalnum(buff[i - 1]) && !buff[i + 1])
-		return 1;
+		return (1);
 	if (!ft_isalnum(buff[i + 1]) && !ft_isalnum(buff[i - 1]))
-		return 1;
-	return 0;
+		return (1);
+	return (0);
 }
 
-static char *join_free(char *s1, char *s2)
+static char	*join_free(char *s1, char *s2)
 {
-	char *s;
+	char	*s;
 
 	s = ft_strjoin(s1, s2);
 	free(s1);
-	return s;
+	return (s);
 }
 
-char *get_files(void)
+char	*get_files(void)
 {
 	DIR				*dir;
 	struct dirent	*ddir;
@@ -50,22 +50,22 @@ char *get_files(void)
 		if (!ft_strcmp(ddir->d_name, ".") || !ft_strcmp(ddir->d_name, ".."))
 		{
 			ddir = readdir(dir);
-			continue;;
+			continue ;
 		}
 		str = join_free(str, ddir->d_name);
 		str = join_free(str, " ");
 		ddir = readdir(dir);
 	}
 	closedir(dir);
-	return str;
+	return (str);
 }
 
-static void expand_key(char **str, size_t start, size_t end, char *files)
+static void	expand_key(char **str, size_t start, size_t end, char *files)
 {
-	char *first;
-	char *second;
-	char *value;
-	char *temp;
+	char	*first;
+	char	*second;
+	char	*value;
+	char	*temp;
 
 	if (end == start)
 		return ;
@@ -81,9 +81,9 @@ static void expand_key(char **str, size_t start, size_t end, char *files)
 	*str = first;
 }
 
-void expand_wildcard(char **buff)
+void	expand_wildcard(char **buff)
 {
-	t_quote quote;
+	t_quote	quote;
 	char	*temp;
 	char	*files;
 	int		i;

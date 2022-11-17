@@ -12,11 +12,12 @@
 
 #include "minishell.h"
 
-void	ft_pwd(t_env *env)
+int	ft_pwd(t_env *env)
 {
 	char	pwd[PATH_MAX];
 	char	*to_free;
 
 	getcwd(pwd, PATH_MAX);
 	ft_putendl_fd(pwd, STDOUT_FILENO);
+	return (0);
 }

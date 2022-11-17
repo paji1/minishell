@@ -12,8 +12,6 @@
 
 #include "minishell.h"
 
-
-
 /**
  * @brief initialize vars structure
  * 
@@ -30,5 +28,5 @@ int	init(t_vars *vars, char **env)
 	if (!vars->roots)
 		return (1);
 	vars->pid_num = 0;
-	return (0);	
+	return (0);
 }

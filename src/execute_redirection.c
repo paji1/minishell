@@ -20,9 +20,11 @@ static int	case_so(t_node *node, t_nodeq *q)
 		return (0);
 	close(node->file_out);
 	if (q->next->data->token.type == REDIRECT_SO)
-		node->file_out = open(q->data->token.token, O_CREAT | O_RDWR | O_TRUNC, 0644);
+			node->file_out = open(q->data->token.token, \
+		O_CREAT | O_RDWR | O_TRUNC, 0644);
 	if (q->next->data->token.type == APPEND)
-		node->file_out = open(q->data->token.token, O_CREAT | O_RDWR | O_APPEND, 0644);
+		node->file_out = open(q->data->token.token, \
+			O_CREAT | O_RDWR | O_APPEND, 0644);
 	if (node->file_out == -1)
 		return (-1);
 	return (0);
@@ -30,35 +32,33 @@ static int	case_so(t_node *node, t_nodeq *q)
 
 static int	case_si(t_node *node, t_nodeq *q)
 {
-	static int lock;
-
 	if ((q->data->token.type >= REDIRECT_SO && q->data->token.type <= HERDOC))
 		return (0);
-	if (q->next->data->token.type == REDIRECT_SO || q->next->data->token.type == APPEND)
+	if (q->next->data->token.type == REDIRECT_SO || \
+		q->next->data->token.type == APPEND)
 		return (0);
-	close(node->file_in); 
+	close(node->file_in);
 	if (access(q->data->token.token, F_OK) == -1)
-		return check_permission(q->data->token.token);
+		return (check_permission(q->data->token.token));
 	if (access(q->data->token.token, R_OK) == -1)
-		return check_permission(q->data->token.token);
+		return (check_permission(q->data->token.token));
 	if (q->next->data->token.type == REDIRECT_SI)
 		node->file_in = open(q->data->token.token, 0);
 	return (3);
 }
 
-char *get_name(int fd)
+char	*get_name(int fd)
 {
-	char *s;
-	char *stemp;
-	struct stat buf;
-	DIR  *dir;
-	struct dirent *ddir;
+	char			*s;
+	char			*stemp;
+	struct stat		buf;
+	DIR				*dir;
+	struct dirent	*ddir;
 
 	s = NULL;
 	dir = opendir("/tmp");
 	ddir = readdir(dir);
 	fstat(fd, &buf);
-
 	while ((void *)ddir != NULL)
 	{
 		if (ddir->d_ino == buf.st_ino)
@@ -71,19 +71,19 @@ char *get_name(int fd)
 	closedir(dir);
 	stemp = ft_strjoin("/tmp/", s);
 	free(s);
-	return stemp;
+	return (stemp);
 }
 
 void	expand_herdoc(int *fd, t_env *env)
 {
-	char *s;
-	char *file_name;
-	int new_fd;
+	char	*s;
+	char	*file_name;
+	int		new_fd;
 
 	file_name = get_name(*fd);
 	close(*fd);
 	*fd = open(file_name, O_RDONLY, 0666);
-	new_fd	= create_file();
+	new_fd = create_file();
 	s = get_next_line(*fd);
 	while (s)
 	{
@@ -96,11 +96,11 @@ void	expand_herdoc(int *fd, t_env *env)
 	close(*fd);
 	*fd = new_fd;
 }
+
 static int	case_herd(t_node *node, t_nodeq *q, t_env *env)
 {
-	char *file_name;
+	char	*file_name;
 
-	
 	if (q->data->token.token[0] != '\'' && q->data->token.token[0] != '\"')
 		expand_herdoc(&q->data->token.fd_HERDOC, env);
 	file_name = get_name(q->data->token.fd_HERDOC);
@@ -119,14 +119,14 @@ int	handle_redirection(t_node *node, t_env *env)
 	int		out;
 
 	if (!node->token.redir)
-		return 0;
+		return (0);
 	i = -1;
 	while (++i < node->token.redir->size)
 	{
 		q = q_n_get(node->token.redir);
 		case_so(node, q);
 		if (case_si(node, q) == -1)
-			return -1;
+			return (-1);
 		if (q->data->token.type == DELIMITER)
 			case_herd(node, q, env);
 	}

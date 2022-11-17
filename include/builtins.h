@@ -15,11 +15,11 @@
 
 int		ft_isbuiltin(char *str);
 int		ft_cd(char  **cmd, t_env *env);
-void	ft_echo(char **cmd);
-void    ft_pwd(t_env *env);
-void	ft_env(t_env *env);
-void	ft_unset(char **cmd ,t_env *env);
-void	ft_export(char **cmd ,t_env *env);
+int 	ft_echo(char **cmd);
+int     ft_pwd(t_env *env);
+int     ft_env(t_env *env);
+int     ft_unset(char **cmd ,t_env *env);
+int     ft_export(char **cmd ,t_env *env);
 void    ft_exit(char **cmd);
 
 // #####################################################
@@ -27,5 +27,5 @@ void    ft_exit(char **cmd);
 // #####################################################
 void	export_print(t_env *env);
 char	*export_strjoin(char *s1, char *s2);
-int		export_isvalid(char *cmd, t_sub *sub);
+int	export_isvalid(char *name, char *cmd, t_sub *sub);
 #endif /* !BUILTINS_H */

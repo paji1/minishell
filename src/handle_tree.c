@@ -12,8 +12,7 @@
 
 #include "minishell.h"
 
-	
-static void free_onenode(t_node	*node)
+static void	free_onenode(t_node	*node)
 {
 	free(node->token.token);
 	free(node);
@@ -21,10 +20,10 @@ static void free_onenode(t_node	*node)
 
 int	sub_shell(t_vars	*vars, t_node *node)
 {
-	t_snode *temp;
+	t_snode	*temp;
 
 	if (node->node_type != PR)
-		return 0;
+		return (0);
 	if (node->token.type == LP)
 	{
 		push(vars->roots, new_snode(vars->root));
@@ -38,29 +37,29 @@ int	sub_shell(t_vars	*vars, t_node *node)
 		vars->root = temp->root;
 		free(temp);
 	}
-	return 1;
+	return (1);
 }
 
-int	handle_token(char *token ,t_vars *vars)
+int	handle_token(char *token, t_vars *vars)
 {
-	t_node 		*node;
+	t_node	*node;
 
 	if (token == NULL)
-		return -1;
+		return (-1);
 	node = create_token(new_tnode(), token);
 	if (node == NULL)
-		return -1;
+		return (-1);
 	if (!accepted(node))
-		return printf("Minishell: syntax error near unexpected token '%s'\n",\
-			 node->token.token), free_onenode(node), 0;
+		return (printf("Minishell: syntax error near unexpected token '%s'\n", \
+				node->token.token), free_onenode(node), 0);
 	free_pr(node);
 	if (vars->root == NULL && node->node_type != OP && node->node_type != PR)
-		return vars->root = node, 1;
+		return (vars->root = node, 1);
 	if (sub_shell(vars, node))
-		return 1;
+		return (1);
 	if (handle_block(vars, node))
-		return 1;
-	if (handle_OP(vars, node))
-		return 1;
-	return 1;
+		return (1);
+	if (handle_op(vars, node))
+		return (1);
+	return (1);
 }

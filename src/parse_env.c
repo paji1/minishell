@@ -17,25 +17,25 @@ char	**alloc_to_env(char **tab, t_env *env)
 	char		**env_tab;
 	int			i;
 	t_env_node	*node;
-	
+
 	env_tab = malloc((size_env(tab) + 1) * sizeof(char *));
 	i = -1;
 	if (!env_tab)
-		return NULL;
+		return (NULL);
 	while (tab[++i])
 	{
 		node = new_env_node();
 		if (!node)
-			return free_env(env), NULL;
+			return (free_env(env), NULL);
 		if (split_with_equal(node, tab[i]))
-			return free_env(env), NULL;
+			return (free_env(env), NULL);
 		add_to_env_tail(env, node);
 		env_tab[i] = ft_strdup(tab[i]);
 		if (!env_tab[i])
-			return free_env(env), free_tab(env_tab), NULL;
+			return (free_env(env), free_tab(env_tab), NULL);
 	}
 	env_tab[i] = NULL;
-	return env_tab;
+	return (env_tab);
 }
 
 char	**env_lst_to_tab(t_env *env)
@@ -48,23 +48,23 @@ char	**env_lst_to_tab(t_env *env)
 	i = 0;
 	tmp = env->head;
 	if (!tmp)
-		return NULL;
+		return (NULL);
 	tab = malloc((env->size + 1) * sizeof(char *));
 	if (!tab)
-		return NULL;
+		return (NULL);
 	while (tmp)
 	{
 		equal = ft_strjoin(tmp->key, "=");
 		if (!equal)
-			return free_tab(tab), NULL;
+			return (free_tab(tab), NULL);
 		tab[i] = ft_strjoin(equal, tmp->value);
 		if (!tab[i])
-			return free_tab(tab), free(equal), NULL;
+			return (free_tab(tab), free(equal), NULL);
 		free(equal);
 		i++;
 		tmp = tmp->next;
 	}
-	return tab[i] = NULL, tab;
+	return (tab[i] = NULL, tab);
 }
 
 int	init_env(t_vars *vars, char **env_tab)

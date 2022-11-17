@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-int is_first(t_node *node)
+int	is_first(t_node *node)
 {
 	return (node->file_in == node->file_out - 1);
 }

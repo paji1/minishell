@@ -12,43 +12,42 @@
 
 #include "minishell.h"
 
-int execute_cmd(t_node *node, t_env *env)
+int	execute_cmd(t_node *node, t_env *env)
 {
-	char	 **cmd;
-	char	 *path;
+	char	**cmd;
+	char	*path;
 	int		error;
 
 	if (node->token.type != CMD)
-		return 0;
+		return (0);
 	path = NULL;
 	free_and_allocate(env);
 	hide_ctrl_c();
 	cmd = qto_tab(node, env);
-	if(!cmd)
-		return -1;
+	if (!cmd)
+		return (-1);
 	expand_str(&node->token.token, env);
 	if (ft_isbuiltin(cmd[0]))
-		return (execute_builtins(node, env), exit(0), 0);
-	if (check_cmd(node, env, &path) < 0 || execve(path, cmd, env->env_tab) == -1)
+		return (execute_builtins(node, env), exit(node->token.exit_status), 0);
+	if (check_cmd(node, env, &path) < 0 \
+	|| execve(path, cmd, env->env_tab) == -1)
 		return free(cmd), free(path), exit(1), -3;
 	if (path)
 		free(path);
 	if (cmd)
 		free(cmd);
-	return 0;
+	return (0);
 }
 
-int fork_cmd(t_node *node, t_env *env)
+int	fork_cmd(t_node *node, t_env *env)
 {
-	int pid;
+	int	pid;
 
-	
 	pid = fork();
-	
 	if (pid == -1)
-		return -1;
+		return (-1);
 	if (pid)
-		return ignore_signal(), node->token.pid_child = pid , pid;
+		return (ignore_signal(), node->token.pid_child = pid , pid);
 	remove_signal();
 	if (handle_redirection(node, env) == -1)
 		exit(1);
@@ -66,7 +65,7 @@ int fork_cmd(t_node *node, t_env *env)
 		close_before(node->file_out);
 	}
 	if (execute_cmd(node, env) < 0)
-		return -1;
+		return (-1);
 	remove_signal();
-	return 0;
+	return (0);
 }

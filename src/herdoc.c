@@ -20,12 +20,12 @@ static char	*create_file_name(void)
 
 	str = ft_itoa(l);
 	if (!str)
-		return NULL;
-	joinstr = ft_strjoin("/tmp/minishell-",str);
+		return (NULL);
+	joinstr = ft_strjoin("/tmp/minishell-", str);
 	if (!joinstr)
-		return free(str), NULL;
+		return (free(str), NULL);
 	free(str);
-	return l++, joinstr;
+	return (l++, joinstr);
 }
 
 int	create_file(void)
@@ -35,17 +35,17 @@ int	create_file(void)
 
 	name = create_file_name();
 	if (!name)
-		return -1;
+		return (-1);
 	fd = open(name, O_RDWR | O_EXCL | O_CREAT, 0600);
 	if (errno == EEXIST)
-		return errno = 0, free(name), create_file();
+		return (errno = 0, free(name), create_file());
 	if (fd == -1)
-		return free(name), -1;
+		return (free(name), -1);
 	free(name);
-	return fd;
+	return (fd);
 }
 
-int handle_herdoc(t_node *new)
+int	handle_herdoc(t_node *new)
 {
 	static t_node	*node;
 	char			*line;
@@ -53,23 +53,23 @@ int handle_herdoc(t_node *new)
 
 	line = NULL;
 	if (new->token.type == HERDOC)
-		return node = new, 0;
+		return (node = new, 0);
 	if (new->token.type != FILED)
-		return 0;
+		return (0);
 	if (!node)
-		return 1;
+		return (1);
 	ignore_signal_herdoc();
 	new->token.type = DELIMITER;
 	new->token.fd_HERDOC = create_file();
 	tmp_token = ft_strjoin(new->token.token, "\n");
-	expand_string_toquote(&tmp_token, (t_env *)NULL);
+	expand_string_toquote(&tmp_token, (t_env *) NULL);
 	while (!line || ft_strcmp(line, tmp_token))
 	{
 		if (line)
 			free(line);
 		line = get_next_line(0);
 		if (!line)
-			return free(tmp_token), 1;
+			return (free(tmp_token), 1);
 		if (line && ft_strcmp(line, tmp_token))
 			write(new->token.fd_HERDOC, line, ft_strlen(line));
 	}
@@ -77,5 +77,5 @@ int handle_herdoc(t_node *new)
 		free(line);
 	free(tmp_token);
 	handle_signal();
-	return 0;
+	return (0);
 }

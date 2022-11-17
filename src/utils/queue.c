@@ -20,15 +20,15 @@
  */
 t_nodeq	*new_node(void *data)
 {
-	t_nodeq *node;
+	t_nodeq	*node;
 
 	node = (t_nodeq *)malloc(sizeof(t_nodeq));
 	if (!node)
-		return NULL;
+		return (NULL);
 	node->data = data;
 	node->next = NULL;
 	node->prev = NULL;
-	return node;
+	return (node);
 }
 
 /**
@@ -37,13 +37,13 @@ t_nodeq	*new_node(void *data)
  * 
  * @return allocate address for queue structure
  */
-t_queue *new_queue()
+t_queue	*new_queue(void)
 {
-	t_queue *queue;
+	t_queue	*queue;
 
 	queue = (t_queue *)malloc(sizeof(t_queue));
 	if (!queue)
- 		return (NULL);
+		return (NULL);
 	queue->head = NULL;
 	queue->tail = NULL;
 	queue->size = 0;
@@ -80,16 +80,17 @@ void	qput(t_queue *queue, t_nodeq *new)
  */
 t_nodeq	*qget(t_queue *queue)
 {
-	t_nodeq *tail;
+	t_nodeq	*tail;
+
 	if (queue->head == NULL)
-		return NULL;
+		return (NULL);
 	queue->size -= 1;
 	tail = queue->tail;
 	if (!(queue->size))
 		return (queue->head = NULL, queue->tail = NULL, tail);
 	queue->tail = queue->tail->prev;
 	queue->tail->next = NULL;
-	return tail;
+	return (tail);
 }
 
 /**
@@ -100,16 +101,17 @@ t_nodeq	*qget(t_queue *queue)
  */
 t_nodeq	*qget_front(t_queue *queue)
 {
-	t_nodeq *front;
+	t_nodeq	*front;
+
 	if (queue->head == NULL)
-		return NULL;
+		return (NULL);
 	queue->size -= 1;
 	front = queue->head;
 	queue->head = queue->head->next;
-	return front;
+	return (front);
 }
 
-t_nodeq *q_n_get(t_queue *queue)
+t_nodeq	*q_n_get(t_queue *queue)
 {
 	static t_nodeq	*tail;
 	t_nodeq			*temp;
@@ -118,5 +120,5 @@ t_nodeq *q_n_get(t_queue *queue)
 		tail = queue->tail;
 	temp = tail;
 	tail = tail->prev;
-	return temp;
+	return (temp);
 }
