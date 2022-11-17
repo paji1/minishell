@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 02:20:25 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/17 13:43:54 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/17 18:39:27 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	expand_str(char **str, t_env *env)
 	while (temp[++i])
 	{
 		quote_handle(&quote, i, temp);
-		if (!is_delim(temp, i),  temp[i] == '$' && quote.quote != '\'' )
+		if (!is_delim(temp, i) &&  temp[i] == '$' && quote.quote != '\'' )
 		{
 			expand_key(str, i, count_lent(&temp[i]) + i + 1, env);
 			i--;
@@ -68,7 +68,7 @@ void	expand_str_before(char **str, t_env *env)
 	while (temp[++i])
 	{
 		quote_handle(&quote, i, temp);
-		if (!is_delim(temp, i),  temp[i] == '$' && !quote.in_quote)
+		if (!is_delim(temp, i) &&  temp[i] == '$' && !quote.in_quote)
 		{
 			expand_key(str, i, count_lent(&temp[i]) + i + 1, env);
 			i--;

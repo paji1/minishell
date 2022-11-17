@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/17 16:08:11 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/17 18:38:51 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,17 @@ void expand_before_parse(char **str, t_env *env)
 	expand_wildcard(str);
 }
 
+int is_empty(char *str)
+{
+	while (*str)
+	{
+		if (!is_space(*str))
+			return 0;
+		str++;
+	}
+	return 1;
+}
+
 int	main(int ac, char **av, char **env) 
 {
 	t_vars	vars;
@@ -44,13 +55,12 @@ int	main(int ac, char **av, char **env)
 			return (free_env(vars.env), 1);
 		getdir(&vars.base_name);
 		vars.buff = readline(vars.base_name);
-		
 		if (vars.buff == NULL)
 			return (free_env(vars.env), free_all(&vars), \
 				ft_putendl_fd("\033[1A\033[14Cexit", 1) , 0);
 		add_history_write(&vars);
 		expand_before_parse(&vars.buff, vars.env);
-		if (!vars.buff[0] || !parse(&vars))
+		if (is_empty(vars.buff) || !parse(&vars))
 		{
 			free_all(&vars);
 			continue ;
