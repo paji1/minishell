@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/17 13:46:55 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/17 16:08:11 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void expand_before_parse(char **str, t_env *env)
 	expand_str_before(str, env);
 	expand_wildcard(str);
 }
+
 int	main(int ac, char **av, char **env) 
 {
 	t_vars	vars;

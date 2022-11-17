@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_redirection.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 01:46:25 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/17 08:45:57 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/17 15:08:21 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,6 @@ static int	case_herd(t_node *node, t_nodeq *q, t_env *env)
 	close(q->data->token.fd_herdoc);
 	q->data->token.fd_herdoc = open(file_name, O_RDONLY, 0666);
 	free(file_name);
-	close(node->file_in);
 	node->file_in = q->data->token.fd_herdoc;
 	return (1);
 }
@@ -124,11 +123,14 @@ int	handle_redirection(t_node *node, t_env *env)
 	while (++i < node->token.redir->size)
 	{
 		q = q_n_get(node->token.redir);
+		if (q->data->token.type == DELIMITER)
+		{
+			case_herd(node, q, env), 0;
+			// continue;
+		}
 		case_so(node, q);
 		if (case_si(node, q) == -1)
 			return (-1);
-		if (q->data->token.type == DELIMITER)
-			case_herd(node, q, env);
 	}
 	return (0);
 }
