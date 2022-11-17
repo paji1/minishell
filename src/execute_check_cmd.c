@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_check_cmd.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 23:29:09 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/15 12:21:21 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/17 18:53:10 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,12 @@ static int	check_if_dir(char *path)
 	return (1);
 }
 
+void	print_cnf(char *key)
+{
+	ft_putstr_fd(key, 2);
+	ft_putendl_fd(": command not found", 2);
+}
+
 int	check_cmd(t_node *node, t_env *env, char **path)
 {
 	char	*key;
@@ -103,8 +109,8 @@ int	check_cmd(t_node *node, t_env *env, char **path)
 	}
 	key = search_path(env);
 	if (!key)
-		return (ft_putstr_fd("command not found\n", 2), -4);
+		return (print_cnf(node->token.token), -4);
 	if (search_cmd(node->token.token, key, path) == -1)
-		return (ft_putstr_fd("command not found\n", 2), -4);
+		return (print_cnf(node->token.token), -4);
 	return (check_permission(*path));
 }
