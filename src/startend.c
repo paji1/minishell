@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 22:41:02 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/16 08:05:27 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/17 13:37:27 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	handle_last(t_vars *vars, int i, t_sub *sub, t_quote *quote)
 		return (0);
 	get_type(NULL);
 	if (!accepted(NULL))
-		return (ft_putendl_fd("minishell: syntax error\
-				 near unexpected token", 2), 0);
+		return (ft_putendl_fd(\
+			"minishell: syntax error near unexpected token", 2), 0);
 	return (1);
 }
