@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/17 08:37:03 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/17 13:44:45 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,8 @@ char		*allocate_to_value(char **str, size_t start, \
 			size_t end, t_env *env);
 int			count_lent(char *key);
 void		expand_wildcard(char **buff);
-
+void		expand_str_before(char **str, t_env *env);
+int			is_delim(char *str, int i);
 // =============================================
 
 void		hide_ctrl_c(void);

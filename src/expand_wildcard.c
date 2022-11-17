@@ -6,22 +6,14 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 02:56:47 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/17 13:30:00 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/17 13:40:11 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-static int is_delim(char *str, int i)
-{
-	if (i < 3)
-		return 0;
-	while (is_space(str[--i]))
-		;
-	if (str[i - 1] == '<' && str[i] == '<')
-		return 1;
-	return 0;
-}
+
+
 int	is_accepted(char *buff, int i)
 {
 	if (buff[i] != '*')

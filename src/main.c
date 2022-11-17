@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/17 13:21:46 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/17 13:46:55 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ void	exit_status(t_vars *vars)
 }
 
 
-// void expand_before_parse(char **str, t_env *env)
-// {
-// 	expand_wildcard(str);
-// }
+void expand_before_parse(char **str, t_env *env)
+{
+	expand_str_before(str, env);
+	expand_wildcard(str);
+}
 int	main(int ac, char **av, char **env) 
 {
 	t_vars	vars;
@@ -47,7 +48,7 @@ int	main(int ac, char **av, char **env)
 			return (free_env(vars.env), free_all(&vars), \
 				ft_putendl_fd("\033[1A\033[14Cexit", 1) , 0);
 		add_history_write(&vars);
-		expand_wildcard(&vars.buff);
+		expand_before_parse(&vars.buff, vars.env);
 		if (!vars.buff[0] || !parse(&vars))
 		{
 			free_all(&vars);
