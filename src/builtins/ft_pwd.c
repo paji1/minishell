@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 18:40:28 by akharraz          #+#    #+#             */
-/*   Updated: 2022/10/29 06:27:57 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/18 19:42:43 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,13 @@ int	ft_pwd(t_env *env)
 	char	pwd[PATH_MAX];
 	char	*to_free;
 
-	getcwd(pwd, PATH_MAX);
+	if (!getcwd(pwd, PATH_MAX))
+	{
+		to_free = get_value(env, "PWD");
+		ft_putendl_fd(to_free, STDOUT_FILENO);
+		free(to_free);
+		return 0;
+	}
 	ft_putendl_fd(pwd, STDOUT_FILENO);
 	return (0);
 }

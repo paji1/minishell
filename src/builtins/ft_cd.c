@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 05:17:34 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/17 11:21:53 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/18 19:36:56 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,13 @@ int	ft_cd(char **cmd, t_env *env)
 		dir = opendir(cmd[1]);
 		if (dir == NULL)
 			return (perror("mnishell"), 1);
-		if (readdir(dir) == NULL)
-			return (perror("reddir"), 1);
+		// if (readdir(dir) == NULL)
+		// 	return (perror("reddir"), 1);
 		if (!getcwd(oldpath, PATH_MAX))
-			return (closedir(dir), 1);
+		{
+			add_or_change_value(env, ft_strdup("PWD"), ft_strjoin(get_value(env, "OLDPWD"), ft_strjoin("/", cmd[1])));
+			return  (perror("minishell :"), closedir(dir), 1);
+		}
 		add_or_change_value(env, ft_strdup("OLDPWD"), ft_strdup(oldpath));
 		if (chdir(cmd[1]) == -1)
 			return (closedir(dir), perror("mnishell chdir"), 1);
