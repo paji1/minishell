@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:17:18 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/15 09:43:38 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/18 18:36:59 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	handle_exblock(t_node *node, t_env *env)
 		return (0);
 	if (ft_isbuiltin(node->token.token) && \
 		!node->file_in && node->file_out == 1)
-		return (execute_builtins(node, env), node->token.exit_status = 0 ,0);
+		return (execute_builtins(node, env) ,0);
 	if (fork_cmd(node, env) < 0)
 		return (0);
 	close_in_parent(node);

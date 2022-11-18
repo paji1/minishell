@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/17 18:38:51 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/18 18:38:31 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	exit_status(t_vars *vars)
 	if (vars->root->node_type != BLOCK)
 		return (g_exit_status = \
 				WEXITSTATUS(vars->root->token.exit_status), (void)0);
+	if (ft_isbuiltin(vars->root->token.token))
+		return g_exit_status = vars->root->token.exit_status , (void)0;
 	g_exit_status = WEXITSTATUS(vars->exit_status);
 }
 
