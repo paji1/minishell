@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/19 02:11:32 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/19 06:11:51 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	main(int ac, char **av, char **env)
 		if (is_empty(vars.buff) || !parse(&vars))
 		{
 			free_all(&vars);
+			// system("leaks minishell");
 			continue ;
 		}
 		exucute(vars.root, &vars);
@@ -78,6 +79,7 @@ int	main(int ac, char **av, char **env)
 			wait(&vars.exit_status);
 		exit_status(&vars);
 		free_all(&vars);
+		// system("leaks minishell");
 	}
 	return (0);
 }

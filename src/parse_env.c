@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 19:19:50 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/19 03:11:55 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/19 05:34:53 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	if_impty(t_vars *vars , char **env_tab)
 		return (1);
 	path = malloc(PATH_MAX);
 	if (!path)
-		return (exit(12), -1); 
+		return (exit(12), -1);
 	vars->env->env_tab = alloc_to_env((char **)new_tab, vars->env);
 	getcwd(path, PATH_MAX);
 	add_or_change_value(vars->env, ft_strdup("PWD"), ft_strdup(path));

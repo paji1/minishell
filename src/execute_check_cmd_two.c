@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 21:50:28 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/18 21:52:50 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/19 06:24:02 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	check_if_dir(char *path)
 
 void	print_cnf(char *key)
 {
+	ft_putstr_fd("minishell: ", 2);
 	ft_putstr_fd(key, 2);
 	ft_putendl_fd(": command not found", 2);
 }

@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 08:33:43 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/19 03:38:14 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/19 05:31:47 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,15 @@ int		handle_expipe(t_node *node);
 int		print_to_error(char *str, char *error, int re);
 
 // #####################################################
-// ###                  resdirection                 ###
+// ###                  redirection                 ###
 // #####################################################
 
 int		handle_redirection(t_node *node, t_env *env);
+int		case_so(t_node *node, t_nodeq *q);
+int		case_si(t_node *node, t_nodeq *q);
+int		case_herd(t_node *node, t_nodeq *q, t_env *env);
+char	*get_name(int fd);
+void	expand_herdoc(int *fd, t_env *env);
 // #####################################################
 // ###                  builtins                     ###
 // #####################################################

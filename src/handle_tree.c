@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_tree.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 04:28:56 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/14 22:53:25 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/19 06:20:04 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	handle_token(char *token, t_vars *vars)
 	if (node == NULL)
 		return (-1);
 	if (!accepted(node))
-		return (printf("Minishell: syntax error near unexpected token '%s'\n", \
+		return (printf("minishell: syntax error near unexpected token '%s'\n", \
 				node->token.token), free_onenode(node), 0);
 	free_pr(node);
 	if (vars->root == NULL && node->node_type != OP && node->node_type != PR)

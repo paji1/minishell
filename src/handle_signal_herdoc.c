@@ -6,13 +6,13 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 03:39:51 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/19 03:42:38 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/19 05:32:00 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void herdoc_signal(int sig, siginfo_t *info, void *data)
+static void	herdoc_signal(int sig, siginfo_t *info, void *data)
 {
 	(void)sig, (void)info, (void)data;
 	printf("\e[?25l");

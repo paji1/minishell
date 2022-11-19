@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 05:17:34 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/19 02:18:42 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/19 05:35:29 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	ft_cd(char **cmd, t_env *env)
 		if (!getcwd(oldpath, PATH_MAX))
 		{
 			if (!ft_strcmp("..", cmd[1]))
-				return add_or_change_value(env, ft_strdup("PWD"), ft_strjoin(get_value(env, "OLDPWD"), ft_strjoin("/", cmd[1]))), 1; // free getvalue free ft_trjoin;
+				return add_or_change_value(env, ft_strdup("PWD"), ft_strjoin(get_value(env, "OLDPWD"), ft_strjoin("/", cmd[1]))), 1;
 			return (perror("minishell"), closedir(dir), 1);
 		}
 		add_or_change_value(env, ft_strdup("OLDPWD"), ft_strdup(oldpath));

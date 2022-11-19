@@ -6,7 +6,7 @@
 #    By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/11/19 03:40:25 by akharraz         ###   ########.fr        #
+#    Updated: 2022/11/19 05:05:57 by akharraz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ endif
 SRC = main.c dir.c init.c free_all.c free_all2.c parse.c startend.c quote.c lexer.c\
 	type.c type_handle.c handle_tree.c node.c herdoc.c  cmd.c\
 	parse_op.c is_sub.c parse_block.c \
-	execute_bin.c execute.c execute_recurs.c execute_close.c execute_redirection.c\
+	execute_bin.c execute.c execute_recurs.c execute_close.c execute_redirection.c execute_redirection_cases.c\
 	execute_cmd.c execute_sub_shell.c execute_utils.c execute_check_cmd.c execute_check_cmd_two.c\
 	parse_env.c parse_env_utils.c parse_env_manipulation.c parse_env_manipulation_two.c\
 	expander.c expander_utils.c expand_quote.c execute_builtins.c\
