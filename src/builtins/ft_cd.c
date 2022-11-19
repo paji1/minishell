@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 05:17:34 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/19 22:39:31 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/19 22:43:01 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ static int	curent_parentdir_error(t_env *env, char *cmd, DIR *dir)
 	if (chdir(cmd) == -1)
 			return (closedir(dir), perror("mnishell chdir"), 1);
 	if (getcwd(oldpath, PATH_MAX))
-		return (0);
+		return (closedir(dir);, 0);
 	old = get_value(env, "OLDPWD");
 	if (!old)
 		return -1;
 	point_path = ft_strjoin("/", cmd);
 	if (!point_path)
-		return -1;
+		return (free(old), closedir(dir), -1);
 	add_or_change_value(env, ft_strdup("PWD"), ft_strjoin(old, point_path));
 	free(point_path);
 	free(old);
