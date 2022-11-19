@@ -3,21 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   is_special.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 17:28:35 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/16 01:34:59 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/18 19:34:31 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// enum SPEACIAL {
-// 	OR,AND,PIP,REDIRECT_SO,REDIRECT_Si,APPEND,HEREDOC
-// };
-int is_special(char *str)
+/* enum SPEACIAL {
+ 	OR,AND,PIP,REDIRECT_SO,REDIRECT_Si,APPEND,HEREDOC
+ };
+ */
+int	is_special(char *str)
 {
-	char	*twochar; 
+	char	*twochar;
 
 	twochar = ft_substr(str, 0, 2);
 	if (!twochar)

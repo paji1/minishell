@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_builtins.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 06:57:18 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/16 09:20:47 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/18 23:08:58 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,25 @@ static void	ft_get_backfd(t_node *node, int in, int out)
 	close(in);
 }
 
+static int	execute_the_cmd(t_node *node, t_env *env, char **cmd)
+{
+	if (!ft_strcmp(node->token.token, "cd"))
+		node->token.exit_status = ft_cd(cmd, env);
+	else if (!ft_strcmp(node->token.token, "echo"))
+		node->token.exit_status = ft_echo(cmd);
+	else if (!ft_strcmp(node->token.token, "env"))
+		node->token.exit_status = ft_env(env, cmd);
+	else if (!ft_strcmp(node->token.token, "pwd"))
+		node->token.exit_status = ft_pwd(env);
+	else if (!ft_strcmp(node->token.token, "unset"))
+		node->token.exit_status = ft_unset(cmd, env);
+	else if (!ft_strcmp(node->token.token, "export"))
+		node->token.exit_status = ft_export(cmd, env);
+	else if (!ft_strcmp(node->token.token, "exit"))
+		node->token.exit_status = ft_exit(cmd);
+	return (0);
+}
+
 int	execute_builtins(t_node *node, t_env *env)
 {
 	char			**cmd;
@@ -32,20 +51,7 @@ int	execute_builtins(t_node *node, t_env *env)
 	in = dup(node->file_in);
 	if (handle_redirection(node, env))
 		return (free(cmd), ft_get_backfd(node, in, out), -1);
-	if (!ft_strcmp(node->token.token, "cd"))
-		node->token.exit_status = ft_cd(cmd, env);
-	else if (!ft_strcmp(node->token.token, "echo"))
-		ft_echo(cmd);
-	else if (!ft_strcmp(node->token.token, "env"))
-		ft_env(env);
-	else if (!ft_strcmp(node->token.token, "pwd"))
-		ft_pwd(env);
-	else if (!ft_strcmp(node->token.token, "unset"))
-		ft_unset(cmd, env);
-	else if (!ft_strcmp(node->token.token, "export"))
-		ft_export(cmd, env);
-	else if (!ft_strcmp(node->token.token, "exit"))
-		ft_exit(cmd);
+	execute_the_cmd(node, env, cmd);
 	ft_get_backfd(node, in, out);
 	free(cmd);
 	return (0);

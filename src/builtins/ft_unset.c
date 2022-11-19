@@ -6,13 +6,13 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 13:22:47 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/13 06:46:23 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/18 19:39:00 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_unset(char **cmd ,t_env *env)
+int	ft_unset(char **cmd, t_env *env)
 {
 	int		i;
 	int		err;

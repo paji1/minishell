@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/17 19:01:32 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/18 21:47:16 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-#include <curses.h>
-#include <term.h>
+# include <curses.h>
+# include <term.h>
 // ---------------------------------------------
 
-#undef tab
+# undef tab
 // --------------free_functions-----------------
 void		free_all(t_vars *vars);
 void		free_tree(t_node *root);
@@ -67,6 +67,8 @@ int			quote_handle(t_quote *quote, int i, char *buff);
 char		*handle_special(char *buff, t_sub *sub, int *i);
 char		*lexer(char *buff, t_sub *sub);
 int			accepted(t_node *new);
+int			handle_pranteses(t_node *new);
+int			handle_empty_cmd(t_node *new);
 // ------------------dir------------------------
 char		*getbasename(char *path);
 size_t		getdir(char **base_name);
@@ -77,6 +79,7 @@ int			init(t_vars *vars, char **env);
 int			get_type(char *token);
 int			block_op(int type);
 int			is_sub(t_node *node);
+void		above_root(t_node **root, t_node *new);
 
 // ---------------node__________________________
 t_node		*new_tnode(void);
@@ -88,6 +91,8 @@ int			handle_block(t_vars *vars, t_node *node);
 void		above_root(t_node **root, t_node *new);
 void		nested(t_node **root, t_node *new);
 void		put_redir(t_node **root, t_node *new);
+int			is_sub(t_node *node);
+
 // -------------herdoc -------------------------
 int			handle_herdoc(t_node *new);
 // -------------node ---------------------------
@@ -105,6 +110,8 @@ void		add_to_env_tail(t_env *env, t_env_node *new);
 t_env_node	*new_env_node(void);
 void		free_node_env(t_env_node *node);
 void		free_env(t_env *env);
+char		*get_value(t_env *env, char *key);
+
 char		*get_value(t_env *env, char *key);
 // =============================================
 int			split_with_equal(t_env_node *node, char *str);
@@ -138,11 +145,12 @@ void		handle_signal(void);
 void		remove_signal(void);
 void		ignore_signal_quit(void);
 void		ignore_signal_herdoc(void);
-
 // =============================================
 
 void		print_env_tab(char **tab);
 int			create_file(void);
+// ==============================================
+void		right_status(t_node *node);
 
 extern int	g_exit_status;
 

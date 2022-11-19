@@ -6,13 +6,12 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 21:01:38 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/17 08:46:53 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/18 21:39:26 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPES_H
 # define TYPES_H
-
 
 # define FALSE 0
 # define TRUE 1
@@ -21,7 +20,6 @@
 # define SPECIAL 5
 # define OP 26
 # define PR 30
-
 
 typedef enum e_etokens
 {
@@ -101,9 +99,8 @@ typedef struct s_quote
 
 typedef struct s_sub
 {
-    int					start;
-    int					end;
+	int					start;
+	int					end;
 }t_sub;
-
 
 #endif

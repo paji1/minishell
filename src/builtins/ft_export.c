@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 23:30:16 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/17 12:11:06 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/18 19:40:57 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static t_env_node	*search_env_node(t_env *env, char *key)
 {
-	t_env_node *node;
+	t_env_node	*node;
 
 	node = env->head;
 	while (node)
@@ -26,7 +26,6 @@ static t_env_node	*search_env_node(t_env *env, char *key)
 	return (NULL);
 }
 
-
 int	ft_export(char **cmd, t_env *env)
 {
 	int			i;
@@ -36,13 +35,13 @@ int	ft_export(char **cmd, t_env *env)
 	char		*value;
 	t_sub		sub;
 	t_env_node	*node;
-	
+
 	i = 0;
 	err = 0;
 	node = NULL;
 	ft_bzero((void *)&sub, sizeof(t_sub));
 	if (!cmd[1])
-		return export_print(env), 0;
+		return (export_print(env), 0);
 	while (cmd[++i])
 	{
 		mode = export_isvalid("export", cmd[i], &sub);
@@ -52,7 +51,6 @@ int	ft_export(char **cmd, t_env *env)
 		{
 			free (key);
 			key = ft_strdup(node->key);
-			ft_putendl_fd("hello ---", 2);
 		}
 		if (mode == -1)
 		{
@@ -68,7 +66,8 @@ int	ft_export(char **cmd, t_env *env)
 		if (mode == 2)
 		{
 			value = ft_substr(cmd[i], sub.end + 2, ft_strlen(cmd[i]) - sub.end);
-			add_or_change_value(env, key, export_strjoin(get_value(env, key), value));
+			add_or_change_value(env, key, \
+			export_strjoin(get_value(env, key), value));
 			free(value);
 			ft_putendl_fd("hello", 2);
 		}

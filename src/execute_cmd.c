@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_cmd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 01:56:34 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/17 14:44:26 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/18 22:21:29 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	execute_cmd(t_node *node, t_env *env)
 		return (execute_builtins(node, env), exit(node->token.exit_status), 0);
 	if (check_cmd(node, env, &path) < 0 \
 	|| execve(path, cmd, env->env_tab) == -1)
-		return free(cmd), free(path), exit(1), -3;
+		return (free(cmd), free(path), exit(1), -3);
 	if (path)
 		free(path);
 	if (cmd)
@@ -47,7 +47,7 @@ int	fork_cmd(t_node *node, t_env *env)
 	if (pid == -1)
 		return (-1);
 	if (pid)
-		return (ignore_signal(), node->token.pid_child = pid , pid);
+		return (ignore_signal(), node->token.pid_child = pid, pid);
 	remove_signal();
 	if (handle_redirection(node, env) == -1)
 	{

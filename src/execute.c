@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:17:18 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/18 18:36:59 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/18 21:47:43 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	handle_expipe(t_node *node)
 {
-	int fd[2];
+	int	fd[2];
 
 	if (node->token.type != PIP)
 		return (0);
@@ -35,7 +35,7 @@ int	handle_exblock(t_node *node, t_env *env)
 		return (0);
 	if (ft_isbuiltin(node->token.token) && \
 		!node->file_in && node->file_out == 1)
-		return (execute_builtins(node, env) ,0);
+		return (execute_builtins(node, env), 0);
 	if (fork_cmd(node, env) < 0)
 		return (0);
 	close_in_parent(node);
@@ -72,19 +72,4 @@ void	right_status(t_node *node)
 		if (node->left->token.exit_status == 0)
 			node->token.exit_status = 0;
 	}
-}
-
-void	exucute(t_node *root, t_vars *vars)
-{
-	if (root == NULL)
-		return ;
-	if (handle_exblock(root, vars->env))
-		vars->pid_num++;
-	if (handle_sub(root, vars))
-		return ;
-	handle_exop(root, vars->env->env_tab);
-	exucute(root->left, vars);
-	if (bin_status(root, vars))
-		exucute(root->right, vars);
-	right_status(root);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_env_manipulation.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 23:10:26 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/17 11:41:26 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/18 23:06:36 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,6 @@ t_env_node	*new_env_node(void)
 	node->value = NULL;
 	node->next = NULL;
 	return (node);
-}
-
-void	add_to_env_tail(t_env *env, t_env_node *new)
-{
-	if (!new)
-		return ;
-	if (!env->tail)
-	{
-		env->head = new;
-		env->tail = new;
-	}
-	else
-	{
-		env->tail->next = new;
-		env->tail = new;
-	}
-	env->size += 1;
 }
 
 static int	remove_first(t_env *env, char *key)
@@ -100,22 +83,6 @@ void	remove_env_node(t_env *env, char *key)
 	remove_rest(env, key);
 }
 
-static int	is_in_env_change(t_env_node *head, char *key, char *value)
-{
-	while (head)
-	{
-		if (!ft_strcmp(head->key, key))
-		{
-			free(head->value);
-			free(key);
-			head->value = value;
-			return (1);
-		}
-		head = head->next;
-	}
-	return (0);
-}
-
 int	free_and_allocate(t_env *env)
 {
 	if (env->is_change == 0)
@@ -126,39 +93,4 @@ int	free_and_allocate(t_env *env)
 		return (-1);
 	env->is_change = 0;
 	return (0);
-}
-
-int	add_or_change_value(t_env *env, char *key, char *value)
-{
-	t_env_node	*new;
-
-	if (!key && !value)
-		return (-1);
-	if (!value)
-		return (free(key), 1);
-	if (!key)
-		return (free(value), 1);
-	if (!is_in_env_change(env->head, key, value))
-	{
-		new = new_env_node();
-		new->key = key;
-		new->value = value;
-		add_to_env_tail(env, new);
-	}
-	env->is_change = 1;
-	return (0);
-}
-
-char	*get_value(t_env *env, char *key)
-{
-	t_env_node	*tmp;
-
-	tmp = env->head;
-	while (tmp)
-	{
-		if (!ft_strcmp(key, tmp->key))
-			return (ft_strdup(tmp->value));
-		tmp = tmp->next;
-	}
-	return (NULL);
 }

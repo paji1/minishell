@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 16:20:56 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/15 09:41:12 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/18 21:48:00 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	bin_status(t_node *node, t_vars *vars)
 
 	status = 0;
 	if (node->token.type == AND || node->token.type == OR)
-		status  = wait_for_bin(node);
+		status = wait_for_bin(node);
 	if (node->token.type == AND)
 	{
 		if (WEXITSTATUS(status) != 0)

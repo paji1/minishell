@@ -1,16 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_space.c                                         :+:      :+:    :+:   */
+/*   execute_recurs.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 22:43:15 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/18 19:34:38 by akharraz         ###   ########.fr       */
+/*   Created: 2022/11/18 21:42:27 by akharraz          #+#    #+#             */
+/*   Updated: 2022/11/18 21:46:16 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_space(char c)
+#include "minishell.h"
+
+void	exucute(t_node *root, t_vars *vars)
 {
-	return (c == ' ' || c == '\t' || c == '\n' || c == '\r' || c == '\b');
+	if (root == NULL)
+		return ;
+	if (handle_exblock(root, vars->env))
+		vars->pid_num++;
+	if (handle_sub(root, vars))
+		return ;
+	handle_exop(root, vars->env->env_tab);
+	exucute(root->left, vars);
+	if (bin_status(root, vars))
+		exucute(root->right, vars);
+	right_status(root);
 }

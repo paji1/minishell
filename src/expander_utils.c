@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 06:03:23 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/17 13:40:17 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/18 22:22:51 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ char	*allocate_to_value(char **str, size_t start, size_t end, t_env *env)
 	return (value);
 }
 
-int is_delim(char *str, int i)
+int	is_delim(char *str, int i)
 {
 	if (i < 3)
-		return 0;
+		return (0);
 	while (is_space(str[--i]))
 		;
 	if (str[i - 1] == '<' && str[i] == '<')
-		return 1;
-	return 0;
+		return (1);
+	return (0);
 }
