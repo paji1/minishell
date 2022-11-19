@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_signal.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 22:36:16 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/17 19:05:08 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/18 22:23:47 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	sigaction_hand(int sig, siginfo_t *info, void *data)
 {
 	printf("\e[?25l");
-	printf("\n"); // Move to a new line
-	rl_on_new_line(); // Regenerate the prompt on a newline
-	rl_replace_line("", 0); // Clear the previous text
+	printf("\n");
+	rl_on_new_line();
+	rl_replace_line("", 0);
 	rl_redisplay();
 	g_exit_status = 130;
 	printf("\e[?25h");
@@ -26,14 +26,14 @@ void	sigaction_hand(int sig, siginfo_t *info, void *data)
 void	herdoc_signal(int sig, siginfo_t *info, void *data)
 {
 	printf("\e[?25l");
-	printf("\n"); // Move to a new line
-	rl_on_new_line(); // Regenerate the prompt on a newline
-	rl_replace_line("", 0); // Clear the previous text
+	printf("\n");
+	rl_on_new_line();
+	rl_replace_line("", 0);
 	g_exit_status = 130;
 	printf("\e[?25h");
 }
 
-void handle_signal()
+void	handle_signal(void)
 {
 	struct sigaction	act;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 02:20:25 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/17 18:39:27 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/18 22:22:18 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	expand_str(char **str, t_env *env)
 	while (temp[++i])
 	{
 		quote_handle(&quote, i, temp);
-		if (!is_delim(temp, i) &&  temp[i] == '$' && quote.quote != '\'' )
+		if (!is_delim(temp, i) && temp[i] == '$' && quote.quote != '\'')
 		{
 			expand_key(str, i, count_lent(&temp[i]) + i + 1, env);
 			i--;

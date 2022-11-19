@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   execute_close.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 16:11:06 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/10/09 16:15:45 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/18 21:55:58 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void close_before(int fd)
+void	close_before(int fd)
 {
 	while (fd > 2)
 	{

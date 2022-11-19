@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_check_cmd.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 23:29:09 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/17 18:53:10 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/18 21:55:45 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,30 +24,6 @@ static char	*search_path(t_env *env)
 		node = node->next;
 	}
 	return (NULL);
-}
-
-static int check_if_path(char *cmd)
-{
-	int i;
-
-	i = -1;
-	while (cmd[++i])
-	{
-		if (cmd[i] == '/')
-			return (1);
-	}
-	return (0);
-}
-
-int	check_permission(char *cmd)
-{
-	if (access(cmd, F_OK) == -1)
-		return (print_to_error(cmd," No such file or directory", -1));
-	if (access(cmd, R_OK) == -1)
-		return (print_to_error(NULL, "Permission denied", -2));
-	if (access(cmd, X_OK) == -1)
-		return (print_to_error(NULL, "Permission denied", -3));
-	return (1);
 }
 
 static int	search_cmd(char *cmd, char *env, char **path)
@@ -78,22 +54,6 @@ static int	search_cmd(char *cmd, char *env, char **path)
 		sub.end++;
 	}
 	return (-1);
-}
-
-static int	check_if_dir(char *path)
-{
-	DIR	*dir;
-
-	dir = opendir(path);
-	if (dir)
-		return (print_to_error(path, ": is a directory", -1));
-	return (1);
-}
-
-void	print_cnf(char *key)
-{
-	ft_putstr_fd(key, 2);
-	ft_putendl_fd(": command not found", 2);
 }
 
 int	check_cmd(t_node *node, t_env *env, char **path)

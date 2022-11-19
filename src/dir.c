@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 21:00:52 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/09 12:19:36 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/18 21:41:59 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	*getbasename(char *path)
 	}
 	if (!(*last_slash))
 		return (path);
-	if  (!(*(last_slash + 1)))
+	if (!(*(last_slash + 1)))
 		return (last_slash);
 	return (last_slash + 1);
 }
@@ -77,7 +77,7 @@ size_t	getdir(char **base_name)
 	buff = malloc(PATH_MAX);
 	if (!getcwd(buff, -1))
 		return (free(buff), *base_name = \
-			dub_add(getbasename("."), "-> ") ,-1);
+			dub_add(getbasename("."), "-> "), -1);
 	*base_name = dub_add(getbasename(buff), "-> ");
 	free(buff);
 	return (ft_strlen(*base_name));

@@ -1,16 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_space.c                                         :+:      :+:    :+:   */
+/*   q_n_get.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 22:43:15 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/18 19:34:38 by akharraz         ###   ########.fr       */
+/*   Created: 2022/11/18 19:32:19 by akharraz          #+#    #+#             */
+/*   Updated: 2022/11/18 19:32:35 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_space(char c)
+#include "queue.h"
+
+t_nodeq	*q_n_get(t_queue *queue)
 {
-	return (c == ' ' || c == '\t' || c == '\n' || c == '\r' || c == '\b');
+	static t_nodeq	*tail;
+	t_nodeq			*temp;
+
+	if (tail == NULL)
+		tail = queue->tail;
+	temp = tail;
+	tail = tail->prev;
+	return (temp);
 }

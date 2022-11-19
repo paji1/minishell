@@ -3,23 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   expand_wildcard.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 02:56:47 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/17 13:40:11 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/18 22:21:59 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
-
-
 
 int	is_accepted(char *buff, int i)
 {
 	if (buff[i] != '*')
 		return (0);
 	if (is_delim(buff, i))
-		return 0;
+		return (0);
 	if (i == 0 && !ft_isalnum(buff[i]))
 		return (1);
 	if (i == 0)

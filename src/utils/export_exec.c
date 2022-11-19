@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_exec.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 06:45:36 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/17 12:20:19 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/18 19:35:53 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ char	*export_strjoin(char *s1, char *s2)
 
 	if (!s1)
 		s1 = ft_strdup("");
-
 	i[0] = 0;
 	i[1] = 0;
 	len[0] = ft_strlen(s1) + ft_strlen(s2);
@@ -44,7 +43,7 @@ char	*export_strjoin(char *s1, char *s2)
 		i[0]++;
 		i[1]++;
 	}
-	return (new[i[0]] = '\0',free(s1), new);
+	return (new[i[0]] = '\0', free(s1), new);
 }
 
 int	export_isvalid(char *name, char *cmd, t_sub *sub)
