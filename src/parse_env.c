@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 19:19:50 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/13 22:14:01 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/19 00:32:10 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,41 @@ char	**env_lst_to_tab(t_env *env)
 	return (tab[i] = NULL, tab);
 }
 
+int	if_impty(t_vars *vars , char **env_tab)
+{
+	char *path;
+	const char	*new_tab[] = {
+	[0] = "PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin",
+	[1] = "OLDPWD=",
+	[2] = "PWD=",
+	[3] = "SHLVL=1",
+	[4] = NULL
+	};
+
+	if (*env_tab)
+		return 1;
+	path = malloc(PATH_MAX);
+	if (!path)
+		return exit(12), -1; 
+	vars->env->env_tab = alloc_to_env((char **)new_tab, vars->env);
+	getcwd(path, PATH_MAX);
+	add_or_change_value(vars->env, ft_strdup("PWD"), ft_strdup(path));
+	free(path);
+	return 0;
+}
+
+void	increment_shell_level(t_env *env)
+{
+	char *value;
+	int	value_nb;
+
+	value = get_value(env, "SHLVL");
+	value_nb = ft_atoi(value);
+	value_nb++;
+	free(value);
+	add_or_change_value(env, ft_strdup("SHLVL"), ft_itoa(value_nb));
+}
+
 int	init_env(t_vars *vars, char **env_tab)
 {
 	vars->env = malloc(sizeof(t_env));
@@ -76,7 +111,9 @@ int	init_env(t_vars *vars, char **env_tab)
 	vars->env->tail = NULL;
 	vars->env->size = 0;
 	vars->env->is_change = 0;
-	vars->env->env_tab = alloc_to_env(env_tab, vars->env);
+	if (if_impty(vars, env_tab))
+		vars->env->env_tab = alloc_to_env(env_tab, vars->env);
+	increment_shell_level(vars->env);
 	if (!vars->env->env_tab)
 		return (1);
 	return (0);
