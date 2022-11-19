@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 02:20:25 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/19 03:03:02 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/19 19:55:32 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,17 @@ void	expand_key(char **str, size_t start, size_t end, t_env *env)
 	*str = first;
 }
 
+static int	is_dollar_expand(char *temp, int i)
+{
+	if (temp[i] != '$')
+		return (0);
+	if (!temp[i + 1])
+		return (0);
+	if (is_space(temp[i + 1]))
+		return (1);
+	return (1);
+}
+
 void	expand_str(char **str, t_env *env)
 {
 	char	*temp;
@@ -46,7 +57,8 @@ void	expand_str(char **str, t_env *env)
 	while (temp[++i])
 	{
 		quote_handle(&quote, i, temp);
-		if (!is_delim(temp, i) && temp[i] == '$' && quote.quote != '\'')
+		if (!is_delim(temp, i) && is_dollar_expand(temp, i) \
+			&& quote.quote != '\'')
 		{
 			expand_key(str, i, count_lent(&temp[i]) + i + 1, env);
 			i--;
@@ -68,7 +80,7 @@ void	expand_str_before(char **str, t_env *env)
 	while (temp[++i])
 	{
 		quote_handle(&quote, i, temp);
-		if (!is_delim(temp, i) && temp[i] == '$' && !quote.in_quote)
+		if (!is_delim(temp, i) && is_dollar_expand(temp, i) && !quote.in_quote)
 		{
 			expand_key(str, i, count_lent(&temp[i]) + i + 1, env);
 			i--;
