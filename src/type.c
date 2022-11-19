@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   type.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 04:22:26 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/19 04:54:52 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/19 19:30:03 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,14 +91,13 @@ int	accepted(t_node *new)
 	{
 		if (!node)
 			return (0);
-		return (cond = node->node_type != OP, \
-			node = NULL, cond);
+		return (cond = node->node_type != OP, node = NULL, cond);
 	}
 	if (node == NULL)
 	{
 		node = new;
-	cond = !(node->token.type >= AND && node->token.type <= PIP) \
-			&& node->token.type != RP;
+		cond = (!(node->token.type >= AND && node->token.type <= PIP) && \
+			(node->token.type != RP));
 		if (!cond)
 			node = NULL;
 		return (cond);
