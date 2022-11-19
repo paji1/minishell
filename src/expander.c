@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 02:20:25 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/19 19:55:32 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/19 22:22:41 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,21 @@ void	expand_key(char **str, size_t start, size_t end, t_env *env)
 	if (end == start)
 		return ;
 	first = ft_substr(*str, 0, start);
+	if (!first)
+		return ;
 	second = ft_strdup(*str + end);
+	if (!second)
+		return (free(first), (void)0);
 	value = allocate_to_value(str, start, end - start, env);
+	if (!value)
+		return (free(first), free(second), (void)0);
 	temp = ft_strjoin(first, value);
+	if (!temp)
+		return (free(first), free(second), free(temp), (void)0);
 	free(value);
 	free(first);
 	first = ft_strjoin(temp, second);
-	free(temp);
-	free(second);
-	free(*str);
-	*str = first;
+	return (free(temp), free(second), free(*str), *str = first, (void)0);
 }
 
 static int	is_dollar_expand(char *temp, int i)
