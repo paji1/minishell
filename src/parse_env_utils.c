@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 04:09:04 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/19 02:03:22 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/19 23:41:49 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,19 @@ int	split_with_equal(t_env_node *node, char *str)
 int	size_env(char **tab)
 {
 	int	i;
+	int	sk;
 
 	i = 0;
+	sk = 0;
 	if (!tab)
 		return (-1);
 	while (tab[i])
+	{
+		if (ft_strncmp(tab[i], "OLDPWD=", 7))
+			sk = 1;
 		i++;
-	return (i);
+	}
+	return (i - sk);
 }
 
 void	print_env_tab(char **tab)
@@ -49,12 +55,13 @@ void	print_env_tab(char **tab)
 		ft_putendl_fd(tab[i], 2);
 }
 
-int	ignore_oldpwd(t_env_node *node)
+int	ignore_oldpwd(t_env_node *node, int *sk)
 {	
 	if (ft_strcmp("OLDPWD", node->key))
 		return (0);
 	free(node->key);
 	free(node->value);
 	free(node);
+	*sk = 1;
 	return (1);
 }

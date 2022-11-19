@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 19:19:50 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/19 19:14:59 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/19 23:55:45 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@ char	**alloc_to_env(char **tab, t_env *env)
 {
 	char		**env_tab;
 	int			i;
+	int			sk;
 	t_env_node	*node;
 
 	env_tab = malloc((size_env(tab) + 1) * sizeof(char *));
 	i = -1;
+	sk = 0;
 	if (!env_tab)
 		return (NULL);
 	while (tab[++i])
@@ -29,14 +31,14 @@ char	**alloc_to_env(char **tab, t_env *env)
 			return (free_env(env), NULL);
 		if (split_with_equal(node, tab[i]))
 			return (free_env(env), NULL);
-		if (ignore_oldpwd(node))
+		if (ignore_oldpwd(node, &sk))
 			continue ;
 		add_to_env_tail(env, node);
-		env_tab[i] = ft_strdup(tab[i]);
-		if (!env_tab[i])
+		env_tab[i - sk] = ft_strdup(tab[i]);
+		if (!env_tab[i - sk])
 			return (free_env(env), free_tab(env_tab), NULL);
 	}
-	return (env_tab[i] = NULL, env_tab);
+	return (env_tab[i - sk] = NULL, env_tab);
 }
 
 char	**env_lst_to_tab(t_env *env)
@@ -75,7 +77,8 @@ int	if_impty(t_vars *vars , char **env_tab)
 	[0] = "PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin",
 	[1] = "PWD=",
 	[2] = "SHLVL=1",
-	[3] = NULL
+	[3] = "OLDPWD=1",
+	[4] = NULL
 	};
 
 	if (*env_tab)
