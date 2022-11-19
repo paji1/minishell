@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/19 02:16:14 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/19 03:39:00 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,7 @@ void		handle_signal(void);
 void		remove_signal(void);
 void		ignore_signal_quit(void);
 void		ignore_signal_herdoc(void);
+
 // =============================================
 
 void		print_env_tab(char **tab);

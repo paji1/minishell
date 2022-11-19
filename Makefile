@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+         #
+#    By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/11/19 02:05:21 by tel-mouh         ###   ########.fr        #
+#    Updated: 2022/11/19 03:40:25 by akharraz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,10 +37,10 @@ SRC = main.c dir.c init.c free_all.c free_all2.c parse.c startend.c quote.c lexe
 	type.c type_handle.c handle_tree.c node.c herdoc.c  cmd.c\
 	parse_op.c is_sub.c parse_block.c \
 	execute_bin.c execute.c execute_recurs.c execute_close.c execute_redirection.c\
-	execute_cmd.c execute_sub_shell.c  execute_utils.c execute_check_cmd.c execute_check_cmd_two.c\
+	execute_cmd.c execute_sub_shell.c execute_utils.c execute_check_cmd.c execute_check_cmd_two.c\
 	parse_env.c parse_env_utils.c parse_env_manipulation.c parse_env_manipulation_two.c\
 	expander.c expander_utils.c expand_quote.c execute_builtins.c\
-	hide_ctrlc.c handle_history.c handle_signal.c expand_wildcard.c
+	hide_ctrlc.c handle_history.c handle_signal.c handle_signal_herdoc.c expand_wildcard.c
 OBJ = $(addprefix obj/, $(SRC:.c=.o))
 
 # ################SRCS_Objs_Utils####################

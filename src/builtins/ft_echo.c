@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 01:30:00 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/01 04:15:35 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/19 04:31:14 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,10 @@ int	ft_echo(char **cmd)
 			lock = 1;
 			continue ;
 		}
-		if (lock == 1)
+		if (lock == 1 || lock == 0)
 			lock = -1;
+		if (lock == 0)
+			lock = -42;
 		ft_putstr_fd(cmd[i], STDOUT_FILENO);
 		if (cmd[i + 1])
 			write(1, " ", 1);

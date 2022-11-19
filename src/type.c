@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 04:22:26 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/18 22:25:01 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/19 04:54:52 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,12 @@ int	accepted(t_node *new)
 	if (handle_pranteses(new))
 		return (node = NULL, 0);
 	if (new == NULL)
+	{
+		if (!node)
+			return (0);
 		return (cond = node->node_type != OP, \
 			node = NULL, cond);
+	}
 	if (node == NULL)
 	{
 		node = new;

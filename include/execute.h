@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 08:33:43 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/19 02:14:57 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/19 03:38:14 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ int		check_cmd(t_node *node, t_env *env, char **path);
 int		check_permission(char *cmd);
 int		check_if_path(char *cmd);
 int		check_if_dir(char *path);
-void    print_cnf(char *key);
-
+void	print_cnf(char *key);
 
 // #####################################################
 // ###                  subshell                     ###

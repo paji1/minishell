@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_cmd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 01:56:34 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/19 02:15:40 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/19 03:49:36 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,21 @@ int	execute_cmd(t_node *node, t_env *env)
 	return (0);
 }
 
+static void	cmd_first(t_node *node)
+{
+	close_before(node->file_in);
+	dup2(node->file_out, 1);
+	if (node->file_out != STDOUT_FILENO)
+		close(node->file_out);
+}
+
+static void	cmd_not_first(t_node *node)
+{
+	dup2(node->file_in, 0);
+	dup2(node->file_out, 1);
+	close_before(node->file_out);
+}
+
 int	fork_cmd(t_node *node, t_env *env)
 {
 	int	pid;
@@ -49,25 +64,12 @@ int	fork_cmd(t_node *node, t_env *env)
 		return (ignore_signal(), node->token.pid_child = pid, pid);
 	remove_signal();
 	if (handle_redirection(node, env) == -1)
-	{
 		exit(1);
-	}
 	if (is_first(node))
-	{
-		close_before(node->file_in);
-		dup2(node->file_out, 1);
-		if (node->file_out != STDOUT_FILENO)
-			close(node->file_out);
-	}
+		cmd_first(node);
 	if (!is_first(node))
-	{
-		dup2(node->file_in, 0);
-		dup2(node->file_out, 1);
-		close_before(node->file_out);
-	}
+		cmd_not_first(node);
 	if (execute_cmd(node, env) < 0)
 		return (-1);
-	remove_signal();
-	ft_putendl_fd("he error", 2);
-	return (0);
+	return (remove_signal(), 0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_env.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 19:19:50 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/19 02:04:36 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/19 03:11:55 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	**alloc_to_env(char **tab, t_env *env)
 		if (split_with_equal(node, tab[i]))
 			return (free_env(env), NULL);
 		if (ignore_oldpwd(node))
-			continue;
+			continue ;
 		add_to_env_tail(env, node);
 		env_tab[i] = ft_strdup(tab[i]);
 		if (!env_tab[i])
@@ -70,7 +70,7 @@ char	**env_lst_to_tab(t_env *env)
 
 int	if_impty(t_vars *vars , char **env_tab)
 {
-	char *path;
+	char		*path;
 	const char	*new_tab[] = {
 	[0] = "PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin",
 	[1] = "PWD=",
@@ -79,21 +79,21 @@ int	if_impty(t_vars *vars , char **env_tab)
 	};
 
 	if (*env_tab)
-		return 1;
+		return (1);
 	path = malloc(PATH_MAX);
 	if (!path)
-		return exit(12), -1; 
+		return (exit(12), -1); 
 	vars->env->env_tab = alloc_to_env((char **)new_tab, vars->env);
 	getcwd(path, PATH_MAX);
 	add_or_change_value(vars->env, ft_strdup("PWD"), ft_strdup(path));
 	free(path);
-	return 0;
+	return (0);
 }
 
 void	increment_shell_level(t_env *env)
 {
-	char *value;
-	int	value_nb;
+	char	*value;
+	int		value_nb;
 
 	value = get_value(env, "SHLVL");
 	value_nb = ft_atoi(value);

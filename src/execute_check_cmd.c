@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 23:29:09 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/18 21:55:45 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/19 03:37:21 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,21 @@ static char	*search_path(t_env *env)
 	return (NULL);
 }
 
+static int	fill_sub(char *subtr, t_sub *sub)
+{
+	subtr[sub->end - sub->start] = '/';
+	sub->start = sub->end + 1;
+	return (0);
+}
+
 static int	search_cmd(char *cmd, char *env, char **path)
 {
 	t_sub	sub;
 	char	*subtr;
 	char	*jointr;
 
-	sub.start = 0;
-	sub.end = 0;
+	ft_bzero(&sub, sizeof(t_sub));
+	subtr = NULL;
 	while (env[sub.end])
 	{
 		if (env[sub.end] == ':')
@@ -41,8 +48,7 @@ static int	search_cmd(char *cmd, char *env, char **path)
 			subtr = ft_substr(env, sub.start, sub.end - sub.start + 1);
 			if (!subtr)
 				return (ft_putstr_fd("allocation failed\n", 2), -1);
-			subtr[sub.end - sub.start] = '/';
-			sub.start = sub.end + 1;
+			fill_sub(subtr, &sub);
 			jointr = ft_strjoin(subtr, cmd);
 			if (!jointr)
 				return (free(subtr), ft_putstr_fd("allocation failed\n", 2), -1);
