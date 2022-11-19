@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 05:13:23 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/18 19:20:21 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/19 20:09:50 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_exit(char **cmd)
 		if (is_numeric(cmd[1]) == -1)
 		{
 			exit_errors(cmd[1], 0);
-			exit(-1);
+			exit(2);
 		}
 		if (cmd[2])
 		{
