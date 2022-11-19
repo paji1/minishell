@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 21:45:02 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/14 19:44:38 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/19 02:15:59 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	count_sub(int i, int quote, t_sub *sub)
 	return (0);
 }
 
-void	expand_string_toquote(char **str, t_env *env)
+void	expand_string_toquote(char **str)
 {
 	t_sub	sub;
 	t_quote	quote;

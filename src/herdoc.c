@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   herdoc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 23:10:31 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/18 21:36:57 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/19 02:16:23 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	handle_herdoc(t_node *new)
 	new->token.type = DELIMITER;
 	new->token.fd_herdoc = create_file();
 	tmp_token = ft_strjoin(new->token.token, "\n");
-	expand_string_toquote(&tmp_token, (t_env *) NULL);
+	expand_string_toquote(&tmp_token);
 	while (!line || ft_strcmp(line, tmp_token))
 	{
 		if (line)

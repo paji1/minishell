@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:17:18 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/18 21:47:43 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/19 02:14:16 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ int	handle_expipe(t_node *node)
 
 int	handle_exblock(t_node *node, t_env *env)
 {
-	int	pid;
-
 	if (is_sub(node) || node->node_type != BLOCK)
 		return (0);
 	if (ft_isbuiltin(node->token.token) && \
@@ -42,7 +40,7 @@ int	handle_exblock(t_node *node, t_env *env)
 	return (1);
 }
 
-int	handle_exop(t_node *node, char **env)
+int	handle_exop(t_node *node)
 {
 	if (!is_sub(node) && node->node_type != OP)
 		return (0);

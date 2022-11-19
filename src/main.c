@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/18 21:27:56 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/19 02:11:32 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,25 +41,24 @@ int	is_empty(char *str)
 	return (1);
 }
 
-static int	half_minishell(t_vars *vars, char **env)
+static int	half_minishell(t_vars *vars)
 {
 	hide_ctrl_c();
-	if (init(vars, env))
+	if (init(vars))
 		return (free_env(vars->env), 1);
 	getdir(&vars->base_name);
 	vars->buff = readline(vars->base_name);
 	if (vars->buff == NULL)
 		return (free_env(vars->env), free_all(vars), \
-			ft_putendl_fd("\033[1A\033[14Cexit", 1), 0);
+			ft_putendl_fd("\033[1A\033[14Cexit", 1), vars->return_nb = 1, 1);
 	add_history_write(vars);
 	expand_before_parse(&vars->buff, vars->env);
-	return (2);
+	return (0);
 }
 
 int	main(int ac, char **av, char **env)
 {
 	t_vars	vars;
-	int		i;
 
 	(void)ac, (void)av;
 	if (init_env(&vars, env))
@@ -67,9 +66,8 @@ int	main(int ac, char **av, char **env)
 	handle_history(&vars);
 	while (1)
 	{
-		i = half_minishell(&vars, env);
-		if (i != 2)
-			return (i);
+		if (half_minishell(&vars))
+			return (vars.return_nb);
 		if (is_empty(vars.buff) || !parse(&vars))
 		{
 			free_all(&vars);

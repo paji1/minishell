@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_signal.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 22:36:16 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/18 22:23:47 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/19 02:18:02 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	sigaction_hand(int sig, siginfo_t *info, void *data)
 {
+	(void)sig, (void)info, (void)data;
 	printf("\e[?25l");
 	printf("\n");
 	rl_on_new_line();
@@ -25,6 +26,7 @@ void	sigaction_hand(int sig, siginfo_t *info, void *data)
 
 void	herdoc_signal(int sig, siginfo_t *info, void *data)
 {
+	(void)sig, (void)info, (void)data;
 	printf("\e[?25l");
 	printf("\n");
 	rl_on_new_line();

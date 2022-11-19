@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 08:33:43 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/18 21:53:11 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/19 02:14:57 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 // ###                  bin                          ###
 // #####################################################
 int		wait_for_bin(t_node *node);
-int		bin_status(t_node *node, t_vars *vars);
+int		bin_status(t_node *node);
 
 // #####################################################
 // ###                  close                        ###
@@ -49,7 +49,7 @@ int		is_first(t_node *node);
 // #####################################################
 // ###                  execute                      ###
 // #####################################################
-int		handle_exop(t_node *node, char **env);
+int		handle_exop(t_node *node);
 int		handle_exblock(t_node *node, t_env *env);
 int		handle_expipe(t_node *node);
 int		print_to_error(char *str, char *error, int re);

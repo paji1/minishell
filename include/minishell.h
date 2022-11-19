@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/18 21:47:16 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/19 02:16:14 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char		*getbasename(char *path);
 size_t		getdir(char **base_name);
 char		*dub_add(char *str, char *ad);
 // -----------------init------------------------
-int			init(t_vars *vars, char **env);
+int			init(t_vars *vars);
 // -------------------type----------------------
 int			get_type(char *token);
 int			block_op(int type);
@@ -111,8 +111,7 @@ t_env_node	*new_env_node(void);
 void		free_node_env(t_env_node *node);
 void		free_env(t_env *env);
 char		*get_value(t_env *env, char *key);
-
-char		*get_value(t_env *env, char *key);
+int			ignore_oldpwd(t_env_node *node);
 // =============================================
 int			split_with_equal(t_env_node *node, char *str);
 int			size_env(char **tab);
@@ -123,7 +122,7 @@ char		**env_lst_to_tab(t_env *env);
 int			free_and_allocate(t_env *env);
 
 // =================expader=====================
-void		expand_string_toquote(char **str, t_env *env);
+void		expand_string_toquote(char **str);
 void		expand_str(char **str, t_env *env);
 char		*allocate_to_value(char **str, size_t start, \
 			size_t end, t_env *env);

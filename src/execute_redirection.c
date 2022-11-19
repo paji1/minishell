@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 01:46:25 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/17 16:56:45 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/19 02:15:31 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,6 @@ int	handle_redirection(t_node *node, t_env *env)
 {
 	t_nodeq	*q;
 	int		i;
-	int		out;
 
 	if (!node->token.redir)
 		return (0);

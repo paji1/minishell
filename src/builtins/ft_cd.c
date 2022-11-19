@@ -3,22 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 05:17:34 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/18 22:25:38 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/19 02:18:42 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	go_to_home(t_env *env, char **cmd)
+static int	go_to_home(t_env *env)
 {
-	int			i;
 	char		**path;
 	t_env_node	*node;
 
-	i = -1;
 	path = NULL;
 	node = env->head;
 	while (node)
@@ -47,7 +45,7 @@ int	ft_cd(char **cmd, t_env *env)
 	ft_bzero(newpath, PATH_MAX);
 	ft_bzero(oldpath, PATH_MAX);
 	if (!cmd[1])
-		return (go_to_home(env, cmd));
+		return (go_to_home(env));
 	if (cmd[1])
 	{
 		dir = opendir(cmd[1]);

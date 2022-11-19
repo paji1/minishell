@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_bin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 16:20:56 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/18 21:48:00 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/19 02:13:11 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	wait_for_bin(t_node *node)
 	return (node->left->token.exit_status);
 }
 
-int	bin_status(t_node *node, t_vars *vars)
+int	bin_status(t_node *node)
 {
 	int	status;
 

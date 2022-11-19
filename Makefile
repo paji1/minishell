@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+         #
+#    By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/11/18 21:53:32 by akharraz         ###   ########.fr        #
+#    Updated: 2022/11/19 02:05:21 by tel-mouh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ UHEADERS := $(addprefix include/, $(UHEADERS))
 
 RM = rm -rf
 CC = gcc 
-CFLAG := -g  -pthread -I include $$LDFLAGS $$CPPFLAGS  
+CFLAG := -Wall -Wextra -Werror -g  -pthread -I include $$LDFLAGS $$CPPFLAGS  
 OS = $(shell uname -s)
 ifneq ($(OS),Linux)
 	CFLAG := $(CFLAG) $$LDFLAGS $$CPPFLAGS -Qunused-arguments  

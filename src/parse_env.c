@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 19:19:50 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/19 00:32:10 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/19 02:04:36 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,14 @@ char	**alloc_to_env(char **tab, t_env *env)
 			return (free_env(env), NULL);
 		if (split_with_equal(node, tab[i]))
 			return (free_env(env), NULL);
+		if (ignore_oldpwd(node))
+			continue;
 		add_to_env_tail(env, node);
 		env_tab[i] = ft_strdup(tab[i]);
 		if (!env_tab[i])
 			return (free_env(env), free_tab(env_tab), NULL);
 	}
-	env_tab[i] = NULL;
-	return (env_tab);
+	return (env_tab[i] = NULL, env_tab);
 }
 
 char	**env_lst_to_tab(t_env *env)
@@ -72,10 +73,9 @@ int	if_impty(t_vars *vars , char **env_tab)
 	char *path;
 	const char	*new_tab[] = {
 	[0] = "PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin",
-	[1] = "OLDPWD=",
-	[2] = "PWD=",
-	[3] = "SHLVL=1",
-	[4] = NULL
+	[1] = "PWD=",
+	[2] = "SHLVL=1",
+	[3] = NULL
 	};
 
 	if (*env_tab)

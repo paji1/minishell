@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_env_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 04:09:04 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/13 08:07:53 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/19 02:03:22 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,14 @@ void	print_env_tab(char **tab)
 	i = -1;
 	while (tab[++i])
 		ft_putendl_fd(tab[i], 2);
+}
+
+int	ignore_oldpwd(t_env_node *node)
+{	
+	if (ft_strcmp("OLDPWD", node->key))
+		return (0);
+	free(node->key);
+	free(node->value);
+	free(node);
+	return (1);
 }
