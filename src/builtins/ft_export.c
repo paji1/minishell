@@ -6,84 +6,77 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 23:30:16 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/20 02:25:37 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/20 10:01:10 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static t_env_node	*search_env_node(t_env *env, char *key)
+static void	mode_one(t_export *export, t_env *env, char **cmd)
 {
-	t_env_node	*node;
+	export->value = ft_substr(cmd[export->i], export->sub.end + 1, \
+	ft_strlen(cmd[export->i]) - export->sub.end);
+	add_or_change_value(env, export->key, export->value);
+	if (export->node)
+		export->node->is_env = 1;
+}
 
-	node = env->head;
-	while (node)
+static void	mode_two(t_export *export, t_env *env, char **cmd)
+{
+	export->value = ft_substr(cmd[export->i], export->sub.end + 2, \
+	ft_strlen(cmd[export->i]) - export->sub.end);
+	add_or_change_value(env, export->key, \
+	export_strjoin(get_value(env, export->key), export->value));
+	if (export->node)
+		export->node->is_env = 1;
+	free(export->value);
+}
+
+static void	mode_three(t_export *export, t_env *env, char **cmd)
+{
+	export->value = ft_substr(cmd[export->i], export->sub.end + 1, \
+	ft_strlen(cmd[export->i]) - export->sub.end);
+	add_or_change_value(env, export->key, export->value);
+	export->node = search_env_node(env, export->key);
+	export->node->is_env = 0;
+}
+
+static int	exec_mode(t_export *export, t_env *env, char **cmd)
+{
+	if (export->mode == 1)
+		mode_one(export, env, cmd);
+	if (export->mode == 2)
+		mode_two(export, env, cmd);
+	if (export->mode == 3)
 	{
-		if (!ft_strcmp(key, node->key))
-			return (node);
-		node = node->next;
+		if (export->node)
+		{
+			free(export->key);
+			return (1);
+		}
+		mode_three(export, env, cmd);
 	}
-	return (NULL);
+	return (0);
 }
 
 int	ft_export(char **cmd, t_env *env)
 {
-	int			i;
-	int			mode;
-	int			err;
-	char		*key;
-	char		*value;
-	t_sub		sub;
-	t_env_node	*node;
+	t_export	export;
 
-	i = 0;
-	err = 0;
-	node = NULL;
-	ft_bzero((void *)&sub, sizeof(t_sub));
+	ft_bzero((void *)&export, sizeof(t_export));
 	if (!cmd[1])
 		return (export_print(env), 0);
-	while (cmd[++i])
+	while (cmd[++export.i])
 	{
-		mode = export_isvalid("export", cmd[i], &sub);
-		key = ft_substr(cmd[i], sub.start, sub.end);
-		node = search_env_node(env, key);
-		if (node)
+		mode_init(&export, env, cmd);
+		if (export.mode == -1)
 		{
-			free (key);
-			key = ft_strdup(node->key);
-		}
-		if (mode == -1)
-		{
-			free(key);
-			err = 1;
+			free(export.key);
+			export.err = 1;
 			continue ;
 		}
-		if (mode == 1)
-		{
-			value = ft_substr(cmd[i], sub.end + 1, ft_strlen(cmd[i]) - sub.end);
-			add_or_change_value(env, key, value);
-			node->is_env = 1;
-		}
-		if (mode == 2)
-		{
-			value = ft_substr(cmd[i], sub.end + 2, ft_strlen(cmd[i]) - sub.end);
-			add_or_change_value(env, key, \
-			export_strjoin(get_value(env, key), value));
-			node->is_env = 1;
-			free(value);
-		}
-		if (mode == 3)
-		{
-			if (node)
-			{
-				free(key);
-				continue ;
-			}
-			value = ft_substr(cmd[i], sub.end + 1, ft_strlen(cmd[i]) - sub.end);
-			add_or_change_value(env, key, value);
-			node = search_env_node(env, key);
-			node->is_env = 0;
-		}
+		if (exec_mode(&export, env, cmd))
+			continue ;
 	}
-	return (err);
+	return (export.err);
 }

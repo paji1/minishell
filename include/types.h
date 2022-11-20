@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 21:01:38 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/19 02:09:36 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/20 09:19:17 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,17 @@ typedef struct s_sub
 	int					start;
 	int					end;
 }t_sub;
+
+typedef struct s_export
+{
+	int			i;
+	int			mode;
+	int			err;
+	char		*key;
+	char		*value;
+	t_sub		sub;
+	t_env_node	*node;
+
+}t_export;
 
 #endif

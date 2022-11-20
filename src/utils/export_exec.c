@@ -6,11 +6,23 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 06:45:36 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/18 19:35:53 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/20 10:01:19 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	mode_init(t_export *export, t_env *env, char **cmd)
+{
+	export->mode = export_isvalid("export", cmd[export->i], &export->sub);
+	export->key = ft_substr(cmd[export->i], export->sub.start, export->sub.end);
+	export->node = search_env_node(env, export->key);
+	if (export->node)
+	{
+		free (export->key);
+		export->key = ft_strdup(export->node->key);
+	}
+}
 
 static int	export_is_append(char *cmd, int i)
 {
@@ -68,4 +80,18 @@ int	export_isvalid(char *name, char *cmd, t_sub *sub)
 		i++;
 	}
 	return (3);
+}
+
+t_env_node	*search_env_node(t_env *env, char *key)
+{
+	t_env_node	*node;
+
+	node = env->head;
+	while (node)
+	{
+		if (!ft_strcmp(key, node->key))
+			return (node);
+		node = node->next;
+	}
+	return (NULL);
 }
