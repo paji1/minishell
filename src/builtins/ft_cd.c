@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 05:17:34 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/19 22:43:28 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/20 03:51:29 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ static int	curent_parentdir_error(t_env *env, char *cmd, DIR *dir)
 	char	oldpath[PATH_MAX];
 
 	if (chdir(cmd) == -1)
-			return (closedir(dir), perror("mnishell chdir"), 1);
+		return (closedir(dir), perror("mnishell chdir"), 1);
 	if (getcwd(oldpath, PATH_MAX))
 		return (closedir(dir), 0);
 	old = get_value(env, "OLDPWD");
 	if (!old)
-		return -1;
+		return (-1);
 	point_path = ft_strjoin("/", cmd);
 	if (!point_path)
 		return (free(old), closedir(dir), -1);
@@ -80,7 +80,7 @@ int	ft_cd(char **cmd, t_env *env)
 		if (!getcwd(oldpath, PATH_MAX))
 		{
 			if (!ft_strcmp("..", cmd[1]))
-				return curent_parentdir_error(env, cmd[1], dir);
+				return (curent_parentdir_error(env, cmd[1], dir));
 			return (perror("minishell"), closedir(dir), 1);
 		}
 		add_or_change_value(env, ft_strdup("OLDPWD"), ft_strdup(oldpath));

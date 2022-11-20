@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_env.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 19:19:50 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/19 23:55:45 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/20 03:59:25 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	**env_lst_to_tab(t_env *env)
 	return (tab[i] = NULL, tab);
 }
 
-int	if_impty(t_vars *vars , char **env_tab)
+int	if_impty(t_vars *vars, char **env_tab)
 {
 	char		*path;
 	const char	*new_tab[] = {

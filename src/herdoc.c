@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   herdoc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 23:10:31 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/19 02:16:23 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/20 03:58:46 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,21 @@ int	create_file(void)
 	return (fd);
 }
 
+static int	fill_heeredoc(int fd, char **line, char *tmp_token)
+{
+	while (!*line || ft_strcmp(*line, tmp_token))
+	{
+		if (*line)
+			free(*line);
+		*line = get_next_line(0);
+		if (!*line)
+			return (free(tmp_token), 1);
+		if (*line && ft_strcmp(*line, tmp_token))
+			write(fd, *line, ft_strlen(*line));
+	}
+	return (0);
+}
+
 int	handle_herdoc(t_node *new)
 {
 	static t_node	*node;
@@ -63,16 +78,8 @@ int	handle_herdoc(t_node *new)
 	new->token.fd_herdoc = create_file();
 	tmp_token = ft_strjoin(new->token.token, "\n");
 	expand_string_toquote(&tmp_token);
-	while (!line || ft_strcmp(line, tmp_token))
-	{
-		if (line)
-			free(line);
-		line = get_next_line(0);
-		if (!line)
-			return (free(tmp_token), 1);
-		if (line && ft_strcmp(line, tmp_token))
-			write(new->token.fd_herdoc, line, ft_strlen(line));
-	}
+	if (fill_heeredoc(new->token.fd_herdoc, &line, tmp_token))
+		return (1);
 	if (line)
 		free(line);
 	return (free(tmp_token), handle_signal(), node = NULL, 0);
