@@ -17,7 +17,8 @@ int	count_lent(char *key)
 	size_t	i;
 
 	i = 1;
-	while ((ft_isalnum(key[i]) || (key[i] == '?' && key[i - 1] == '$')) \
+	while ((ft_isalnum(key[i]) || key[i] == '_' || \
+		(key[i] == '?' && key[i - 1] == '$')) \
 		&& key[i] && key[i] != '$' && key[i] != '\"' && key[i] != '\'')
 		i++;
 	if (i >= 1 && key[i] == '$' && key[i - 1] == '$')
