@@ -15,6 +15,7 @@
 static void	ft_get_backfd(t_node *node, int in, int out)
 {
 	close(node->file_out);
+	close(node->file_in);
 	node->file_out = dup(out);
 	node->file_in = dup(in);
 	close(out);

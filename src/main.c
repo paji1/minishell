@@ -23,7 +23,7 @@ void	exit_status(t_vars *vars)
 		return (g_exit_status = vars->root->token.exit_status, (void)0);
 	g_exit_status = WEXITSTATUS(vars->exit_status);
 	if (WIFSIGNALED(vars->exit_status))
-		g_exit_status = 130;
+		g_exit_status = WTERMSIG(vars->exit_status) + 128;
 }
 
 void	expand_before_parse(char **str, t_env *env)
@@ -73,7 +73,7 @@ int	main(int ac, char **av, char **env)
 		if (is_empty(vars.buff) || !parse(&vars))
 		{
 			free_all(&vars);
-			g_exit_status = 2;
+			g_exit_status = 258;
 			continue ;
 		}
 		exucute(vars.root, &vars);
