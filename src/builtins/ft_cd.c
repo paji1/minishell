@@ -6,22 +6,26 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 05:17:34 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/20 10:04:41 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/20 23:00:20 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	go_to_home(t_env *env)
+static int	go_to_home(t_env *env, char *str)
 {
 	char		**path;
 	t_env_node	*node;
 
 	path = NULL;
 	node = env->head;
+	if (!str)
+		str = "HOME";
+	else
+		str = "OLDPWD";
 	while (node)
 	{
-		if (!ft_strncmp(node->key, "HOME", 4))
+		if (!ft_strncmp(node->key, str, ft_strlen(str)))
 		{
 			path = malloc(3 * sizeof(char *));
 			path[0] = ft_strdup("cd");
@@ -33,7 +37,7 @@ static int	go_to_home(t_env *env)
 		}
 		node = node->next;
 	}
-	return (ft_putendl_fd("minishell: cd: HOME not set", 2), 1);
+	return (print_to_error(str, " not set", 1));
 }
 
 static int	curent_parentdir_error(t_env *env, char *cmd, DIR *dir)
@@ -82,8 +86,8 @@ int	ft_cd(char **cmd, t_env *env)
 
 	ft_bzero(newpath, PATH_MAX);
 	ft_bzero(oldpath, PATH_MAX);
-	if (!cmd[1])
-		return (go_to_home(env));
+	if (!cmd[1] || !ft_strcmp(cmd[1], "-"))
+		return (go_to_home(env, cmd[1]));
 	if (cmd[1])
 	{
 		dir = opendir(cmd[1]);

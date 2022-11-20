@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 04:37:50 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/18 19:23:37 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/20 21:33:54 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_env(t_env *env, char **cmd)
 
 	if (cmd[1])
 		return (ft_putendl_fd("minishell: env: \
-			only one argumant required", 2), 1);
+		no argumants are required", 2), 1);
 	node = env->head;
 	while (node)
 	{
