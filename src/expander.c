@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 02:20:25 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/19 22:22:41 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/20 05:09:03 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,24 @@ void	expand_str_before(char **str, t_env *env)
 	{
 		quote_handle(&quote, i, temp);
 		if (!is_delim(temp, i) && is_dollar_expand(temp, i) && !quote.in_quote)
+		{
+			expand_key(str, i, count_lent(&temp[i]) + i + 1, env);
+			i--;
+			temp = *str;
+		}
+	}
+}
+
+void	expand_str_herdoc(char **str, t_env *env)
+{
+	char	*temp;
+	int		i;
+
+	i = -1;
+	temp = *str;
+	while (temp[++i])
+	{
+		if (is_dollar_expand(temp, i))
 		{
 			expand_key(str, i, count_lent(&temp[i]) + i + 1, env);
 			i--;

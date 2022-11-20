@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_redirection.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 01:46:25 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/19 05:05:27 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/20 05:10:07 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	expand_herdoc(int *fd, t_env *env)
 	s = get_next_line(*fd);
 	while (s)
 	{
-		expand_str(&s, env);
+		expand_str_herdoc(&s, env);
 		ft_putstr_fd(s, new_fd);
 		free(s);
 		s = get_next_line(*fd);

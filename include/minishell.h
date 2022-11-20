@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/19 23:27:10 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/20 05:09:22 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ int			count_lent(char *key);
 void		expand_wildcard(char **buff);
 void		expand_str_before(char **str, t_env *env);
 int			is_delim(char *str, int i);
+void		expand_str_herdoc(char **str, t_env *env);
 // =============================================
 
 void		hide_ctrl_c(void);
