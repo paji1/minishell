@@ -2,3 +2,5 @@
 *.log
 ./minishell
 bash
+minishell
+libft/library/libft.a
