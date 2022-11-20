@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 23:30:16 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/19 06:08:59 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/20 02:25:37 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,14 @@ int	ft_export(char **cmd, t_env *env)
 		{
 			value = ft_substr(cmd[i], sub.end + 1, ft_strlen(cmd[i]) - sub.end);
 			add_or_change_value(env, key, value);
+			node->is_env = 1;
 		}
 		if (mode == 2)
 		{
 			value = ft_substr(cmd[i], sub.end + 2, ft_strlen(cmd[i]) - sub.end);
 			add_or_change_value(env, key, \
 			export_strjoin(get_value(env, key), value));
+			node->is_env = 1;
 			free(value);
 		}
 		if (mode == 3)
