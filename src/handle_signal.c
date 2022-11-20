@@ -20,7 +20,7 @@ void	sigaction_hand(int sig, siginfo_t *info, void *data)
 	rl_on_new_line();
 	rl_replace_line("", 0);
 	rl_redisplay();
-	g_exit_status = 130;
+	g_exit_status = 1;
 	printf("\e[?25h");
 }
 

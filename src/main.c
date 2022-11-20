@@ -22,6 +22,8 @@ void	exit_status(t_vars *vars)
 	if (ft_isbuiltin(vars->root->token.token))
 		return (g_exit_status = vars->root->token.exit_status, (void)0);
 	g_exit_status = WEXITSTATUS(vars->exit_status);
+	if (WIFSIGNALED(vars->exit_status))
+		g_exit_status = 130;
 }
 
 void	expand_before_parse(char **str, t_env *env)
@@ -50,7 +52,7 @@ static int	half_minishell(t_vars *vars)
 	vars->buff = readline(vars->base_name);
 	if (vars->buff == NULL)
 		return (free_env(vars->env), free_all(vars), \
-			ft_putendl_fd("\033[1A\033[14Cexit", 1), vars->return_nb = 1, 1);
+			ft_putendl_fd("\033[1A\033[18Cexit", 1), vars->return_nb = 1, 1);
 	add_history_write(vars);
 	expand_before_parse(&vars->buff, vars->env);
 	return (0);
