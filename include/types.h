@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 21:01:38 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/21 06:48:50 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/21 08:44:30 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,8 @@ typedef struct s_export
 
 typedef struct s_g_exit
 {
-	int status;
-	int status_signal_herdoc;
+	int	status;
+	int	status_signal_herdoc;
 }t_g_exit;
 
 #endif

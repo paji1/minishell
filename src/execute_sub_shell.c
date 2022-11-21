@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_sub_shell.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 16:09:31 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/21 05:34:38 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/21 08:46:35 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,12 @@ int	handle_sub(t_node *node, t_vars *vars)
 		dup2(node->file_out, 1);
 		vars->pid_num = 0;
 		exucute(node, vars);
-		while (vars->pid_num > 0)
-		{
+		while (vars->pid_num-- > 0)
 			wait(0);
-			vars->pid_num--;
-		}
 		exit(WEXITSTATUS(node->token.exit_status));
 	}
 	waitpid(pid, &node->token.exit_status, 0);
 	if (node->node_type == OP)
 		node->is_sub = 1;
-	close_in_parent(node);
-	return (1);
+	return (close_in_parent(node), 1);
 }

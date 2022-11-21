@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_env.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 19:19:50 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/21 06:41:36 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/21 08:45:48 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ char	**alloc_to_env(char **tab, t_env *env)
 	env_tab = malloc((size_env(tab) + 1) * sizeof(char *));
 	i = -1;
 	sk = 0;
-
 	if (!env_tab)
 		return (NULL);
 	while (tab[++i])

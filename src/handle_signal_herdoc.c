@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_signal_herdoc.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 03:39:51 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/21 07:11:42 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/21 08:45:58 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,4 @@ void	ignore_signal_herdoc(void)
 	act.sa_flags = SA_SIGINFO;
 	act.sa_sigaction = &herdoc_signal;
 	sigaction(SIGINT, &act, NULL);
-	// sigaction(SIGQUIT, &act, NULL);
 }
