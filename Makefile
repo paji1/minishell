@@ -6,18 +6,17 @@
 #    By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/11/21 07:22:52 by tel-mouh         ###   ########.fr        #
+#    Updated: 2022/11/21 07:44:23 by tel-mouh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SHELL := /bin/bash # Use bash syntax
 
 # #################HEADERS###########################
-HEADERS = minishell.h types.h
+HEADERS = builtins.h  get_next_line.h  queue.h  types.h\
+		execute.h   minishell.h      stack.h  types_q.h
 HEADERS := $(addprefix include/, $(HEADERS))
-# #################HEADERS_utils###########################
-UHEADERS = queue.h types_q.h
-UHEADERS := $(addprefix include/, $(UHEADERS))
+
 
 # ################COMMANDS###########################
 
@@ -100,7 +99,7 @@ $(NAME): $(ALL_OBJS)  | library
 library : 
 	@ make -C libft
 
-obj/%.o : src/%.c  $(HEADERS) $(UHEADERS)
+obj/%.o : src/%.c  $(HEADERS)
 	@ mkdir -p obj
 	@ mkdir -p obj/utils
 	@ mkdir -p obj/builtins
