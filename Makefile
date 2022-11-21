@@ -6,7 +6,7 @@
 #    By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/31 04:31:34 by tel-mouh          #+#    #+#              #
-#    Updated: 2022/11/21 06:22:21 by tel-mouh         ###   ########.fr        #
+#    Updated: 2022/11/21 07:22:52 by tel-mouh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,13 +23,12 @@ UHEADERS := $(addprefix include/, $(UHEADERS))
 
 RM = rm -rf
 CC = gcc 
-CFLAG := -Wall -Wextra -Werror -g  -pthread -I include $$LDFLAGS $$CPPFLAGS 
+CFLAG := -Wall -Wextra -Werror  -I include $$LDFLAGS $$CPPFLAGS 
 OS = $(shell uname -s)
 ifneq ($(OS),Linux)
 	CFLAG := $(CFLAG) $$LDFLAGS $$CPPFLAGS -Qunused-arguments  
 endif
 
-# -fsanitize=address 
 
 # ################SRCS_Objs##########################
 
