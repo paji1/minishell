@@ -6,7 +6,7 @@
 /*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 16:09:31 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/20 23:12:08 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/21 01:38:40 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	handle_sub(t_node *node, t_vars *vars)
 	pid = fork();
 	if (!pid)
 	{
+		handle_redirection(node, vars->env);
 		if (!node)
 			return (0);
 		dup2(node->file_in, 0);
