@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 05:13:23 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/19 20:09:50 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/21 02:00:22 by akharraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	exit_errors(char *str, int mode)
 	ft_putstr_fd("minishell: exit: ", 2);
 	ft_putstr_fd(str, 2);
 	if (mode == 0)
-		ft_putendl_fd("numeric argument required", 2);
+		ft_putendl_fd(": numeric argument required", 2);
 	if (mode == 1)
 		ft_putendl_fd(": too many arguments", 2);
 }
