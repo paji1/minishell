@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   expander_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 06:03:23 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/18 22:22:51 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/21 06:50:02 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+
+static int	break_itg(int i, char *key)
+{
+	if (key[i - 1] == '?')
+		return (0);
+	return (1);
+}
 
 int	count_lent(char *key)
 {
@@ -19,7 +27,8 @@ int	count_lent(char *key)
 	i = 1;
 	while ((ft_isalnum(key[i]) || key[i] == '_' || \
 		(key[i] == '?' && key[i - 1] == '$')) \
-		&& key[i] && key[i] != '$' && key[i] != '\"' && key[i] != '\'')
+		&& key[i] && key[i] != '$' && break_itg(i, key) \
+			&& key[i] != '\"' && key[i] != '\'')
 		i++;
 	if (i >= 1 && key[i] == '$' && key[i - 1] == '$')
 		i++;
@@ -33,7 +42,7 @@ char	*allocate_to_value(char **str, size_t start, size_t end, t_env *env)
 
 	key = ft_substr(*str, start + 1, end - 1);
 	if (!ft_strcmp(key, "?"))
-		return (free(key), ft_itoa(g_exit_status));
+		return (free(key), ft_itoa(g_exit.status));
 	if (!key)
 		return (NULL);
 	value = get_value(env, key);

@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 04:09:04 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/19 23:41:49 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/21 06:21:05 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	size_env(char **tab)
 		return (-1);
 	while (tab[i])
 	{
-		if (ft_strncmp(tab[i], "OLDPWD=", 7))
+		if (!ft_strncmp(tab[i], "OLDPWD=", 7))
 			sk = 1;
 		i++;
 	}

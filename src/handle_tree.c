@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 04:28:56 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/21 04:49:05 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/21 06:57:50 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ int	sub_shell(t_vars	*vars, t_node *node)
 	}
 	if (node->token.type == RP)
 	{
-		vars->root->node_type = BLOCK;
-		temp = pop(vars->roots);
 		if (vars->root && vars->root->node_type == BLOCK)
 			vars->root->is_sub = 1;
+		vars->root->node_type = BLOCK;
+		temp = pop(vars->roots);
 		put_block(&temp->root, vars->root);
 		vars->root = temp->root;
 		free(temp);
@@ -46,7 +46,7 @@ int	handle_token(char *token, t_vars *vars)
 {
 	t_node	*node;
 
-	if (token == NULL)
+	if (token == NULL || g_exit.status_signal_herdoc)
 		return (-1);
 	node = create_token(new_tnode(), token);
 	if (node == NULL)

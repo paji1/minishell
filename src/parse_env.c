@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_env.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 19:19:50 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/20 03:59:25 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/21 06:41:36 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ char	**alloc_to_env(char **tab, t_env *env)
 	env_tab = malloc((size_env(tab) + 1) * sizeof(char *));
 	i = -1;
 	sk = 0;
+
 	if (!env_tab)
 		return (NULL);
 	while (tab[++i])
@@ -99,7 +100,11 @@ void	increment_shell_level(t_env *env)
 	int		value_nb;
 
 	value = get_value(env, "SHLVL");
+	if (!value)
+		return ;
 	value_nb = ft_atoi(value);
+	if (value_nb < 0)
+		value_nb = -1;
 	value_nb++;
 	free(value);
 	add_or_change_value(env, ft_strdup("SHLVL"), ft_itoa(value_nb));

@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:55:30 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/20 05:09:22 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/21 06:47:57 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,6 @@ int			create_file(void);
 // ==============================================
 void		right_status(t_node *node);
 
-extern int	g_exit_status;
+extern t_g_exit	g_exit;
 
 #endif

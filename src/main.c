@@ -6,24 +6,27 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:44:53 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/21 03:24:39 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/21 07:04:29 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	g_exit_status;
+t_g_exit g_exit;
 
 void	exit_status(t_vars *vars)
 {
+	if (vars->root->is_sub && vars->root->node_type == OP)
+		return (g_exit.status = WEXITSTATUS(vars->root->token.exit_status), \
+			(void)0);
 	if (vars->root->node_type != BLOCK)
-		return (g_exit_status = \
+		return (g_exit.status = \
 				WEXITSTATUS(vars->root->token.exit_status), (void)0);
 	if (ft_isbuiltin(vars->root->token.token))
-		return (g_exit_status = vars->root->token.exit_status, (void)0);
-	g_exit_status = WEXITSTATUS(vars->exit_status);
+		return (g_exit.status = vars->root->token.exit_status, (void)0);
+	g_exit.status = WEXITSTATUS(vars->exit_status);
 	if (WIFSIGNALED(vars->exit_status))
-		g_exit_status = WTERMSIG(vars->exit_status) + 128;
+		g_exit.status = WTERMSIG(vars->exit_status) + 128;
 }
 
 void	expand_before_parse(char **str, t_env *env)
@@ -73,7 +76,7 @@ int	main(int ac, char **av, char **env)
 		if (is_empty(vars.buff) || !parse(&vars))
 		{
 			free_all(&vars);
-			g_exit_status = 258;
+			g_exit.status = 258;
 			continue ;
 		}
 		exucute(vars.root, &vars);

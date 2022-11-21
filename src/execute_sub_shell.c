@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 16:09:31 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/21 05:07:41 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/21 05:34:38 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	handle_sub(t_node *node, t_vars *vars)
 		exit(WEXITSTATUS(node->token.exit_status));
 	}
 	waitpid(pid, &node->token.exit_status, 0);
+	if (node->node_type == OP)
+		node->is_sub = 1;
 	close_in_parent(node);
 	return (1);
 }
