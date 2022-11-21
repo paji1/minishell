@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_signal_herdoc.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 03:39:51 by akharraz          #+#    #+#             */
-/*   Updated: 2022/11/19 05:32:00 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/21 03:08:06 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 static void	herdoc_signal(int sig, siginfo_t *info, void *data)
 {
-	(void)sig, (void)info, (void)data;
+	(void)sig;
 	printf("\e[?25l");
 	printf("\n");
 	rl_on_new_line();
 	rl_replace_line("", 0);
 	g_exit_status = 130;
+	ft_putnbr_fd(info->si_uid, 2);
+	printf("%s\n", (char *)data);
 	printf("\e[?25h");
 }
 

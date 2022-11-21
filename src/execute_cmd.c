@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 01:56:34 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/19 19:58:02 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/21 03:08:28 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	execute_cmd(t_node *node, t_env *env)
 		return (execute_builtins(node, env), exit(node->token.exit_status), 0);
 	if (check_cmd(node, env, &path) < 0 \
 	|| execve(path, cmd, env->env_tab) == -1)
-		return (free(cmd), free(path), exit(1), -3);
+		return (free(cmd), free(path), exit(127), -3);
 	if (path)
 		free(path);
 	if (cmd)

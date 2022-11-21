@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 01:46:25 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/20 05:10:07 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/21 01:45:30 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ int	handle_redirection(t_node *node, t_env *env)
 	while (++i < node->token.redir->size)
 	{
 		q = q_n_get(node->token.redir);
+		if (check_if_dir(q->data->token.token) < 0)
+			return (-1);
 		case_so(node, q);
 		if (case_si(node, q) == -1)
 			return (-1);

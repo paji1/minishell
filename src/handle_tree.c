@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_tree.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 04:28:56 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/19 06:20:04 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/21 04:49:05 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	sub_shell(t_vars	*vars, t_node *node)
 	{
 		vars->root->node_type = BLOCK;
 		temp = pop(vars->roots);
+		if (vars->root && vars->root->node_type == BLOCK)
+			vars->root->is_sub = 1;
 		put_block(&temp->root, vars->root);
 		vars->root = temp->root;
 		free(temp);

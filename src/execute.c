@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:17:18 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/19 02:14:16 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2022/11/21 05:01:27 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	handle_expipe(t_node *node)
 
 int	handle_exblock(t_node *node, t_env *env)
 {
-	if (is_sub(node) || node->node_type != BLOCK)
+	if (is_sub(node) || node->node_type != BLOCK || node->is_sub)
 		return (0);
 	if (ft_isbuiltin(node->token.token) && \
 		!node->file_in && node->file_out == 1)

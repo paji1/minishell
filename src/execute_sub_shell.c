@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_sub_shell.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akharraz <akharraz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tel-mouh <tel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 16:09:31 by tel-mouh          #+#    #+#             */
-/*   Updated: 2022/11/21 01:38:40 by akharraz         ###   ########.fr       */
+/*   Updated: 2022/11/21 05:07:41 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ int	handle_sub(t_node *node, t_vars *vars)
 {
 	int	pid;
 
-	if (!is_sub(node))
+	if (!is_sub(node) && node->is_sub == 0)
 		return (0);
-	node->node_type = OP;
+	if (!node->is_sub)
+		node->node_type = OP;
+	node->is_sub = 0;
 	pid = fork();
 	if (!pid)
 	{
