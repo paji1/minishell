@@ -1,6 +1,6 @@
 # Minishell
-This project is about creating a bash shell. You will learn a lot about processes and file descriptors.
-you’ll be able to travel through time and come back to problems people faced when modern OS's didn’t exist.
+This project is about creating a bash shell
+
 
 ## Mendatory Part
 Here are the requirements of this 42 Network project:
